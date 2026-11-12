@@ -263,7 +263,141 @@
    }
   ],
   "landmark": true,
-  "built": 2021
+  "built": 2021,
+  "en": {
+   "title": "Nokia Arena",
+   "lede": "This multi-purpose arena was built on top of a working railway and links the city centre with the area east of the tracks. It opened in December 2021 and is the largest multi-purpose arena in Finland.",
+   "aka": "The Tampere Deck arena",
+   "before": "The site was the rail yard south of the railway station. The deck was built over the tracks, and trains still run beneath the arena.",
+   "facts": [
+    [
+     "15.12.2021",
+     "opening"
+    ],
+    [
+     "13 455",
+     "spectators for ice hockey"
+    ],
+    [
+     "n. 15 000",
+     "spectators for concerts"
+    ],
+    [
+     "LEED Gold",
+     "environmental certificate"
+    ]
+   ],
+   "who": [
+    [
+     "Architect",
+     "Studio Daniel Libeskind and Aihio Architects (now ARCO)"
+    ],
+    [
+     "Developer",
+     "SRV"
+    ],
+    [
+     "Structural design",
+     "Ramboll"
+    ],
+    [
+     "Owners",
+     "LähiTapiola, OP, Ilmarinen, SRV and the City of Tampere"
+    ]
+   ],
+   "tl": [
+    [
+     "1876",
+     "The railway from Hämeenlinna to Tampere opens, and the rail yard begins to divide the city",
+     "asema"
+    ],
+    [
+     "2000-l.",
+     "Central arena project: the 2012 World Championships were meant to be played in the new hall",
+     "yle"
+    ],
+    [
+     "2009",
+     "The new target year of 2013 also proves too optimistic",
+     "yle"
+    ],
+    [
+     "2017",
+     "Construction of the deck and the arena begins",
+     "ele"
+    ],
+    [
+     "19.11.2021",
+     "The arena is named Nokia Arena",
+     "nok"
+    ],
+    [
+     "3.12.2021",
+     "Tappara and Ilves play the first match in the arena",
+     "tre"
+    ],
+    [
+     "15.12.2021",
+     "Opening: Eppu Normaali and the Tampere Philharmonic",
+     "wen"
+    ],
+    [
+     "2022",
+     "Main venue of the Ice Hockey World Championships, and again the following year",
+     "wen"
+    ],
+    [
+     "2022",
+     "Prix Versailles architecture award in the sports category",
+     "lib"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "A deck over the railway",
+     "p": "The Tampere rail yard has separated the city centre from the area east of the tracks since the 19th century. The arena and the surrounding block were built on a concrete deck while trains kept running underneath. Installing the roof trusses above a live railway required careful planning. Besides the arena, the complex includes a hotel, a casino, a practice rink and five towers with homes and offices.",
+     "s": [
+      "ram",
+      "nor",
+      "lib"
+     ]
+    },
+    {
+     "h": "A long road",
+     "p": "The project began with the ice hockey community's wish for a new hall to replace the Hakametsä ice rink, completed in the 1960s, and the 2012 World Championships were originally meant to be played there. Raising the funding took time, appeals caused delays and partners changed. The completion date was postponed several times. In the end the arena was finished just before the 2021–22 season and the 2022 World Championships.",
+     "s": [
+      "yle",
+      "hw",
+      "ram"
+     ]
+    },
+    {
+     "h": "Architecture",
+     "p": "Designed by Daniel Libeskind, the arena is wrapped in spiralling bands of metal slats. The façade combines anodised aluminium slats in three neutral shades, black metal panels and black-washed concrete. According to Libeskind, the form is meant to be iconic yet fit its surroundings. The building has LEED Gold environmental certification.",
+     "s": [
+      "arc",
+      "iaks"
+     ]
+    },
+    {
+     "h": "A new home for a hockey city",
+     "p": "Tappara and Ilves moved their home games from Hakametsä to the city centre in December 2021. The arena has hosted two consecutive World Championships, NHL regular-season games and a basketball international. It also hosts concerts and other events.",
+     "s": [
+      "tre",
+      "wen"
+     ]
+    }
+   ],
+   "gt": [
+    "The Tampere Deck and the arena",
+    "Tampere rail yard and railway station",
+    "Rail yard",
+    "View from the station tower, with the rail yard in the foreground",
+    "The Tampere Deck",
+    "The Tampere Deck and the arena",
+    "The Tampere Deck"
+   ]
+  }
  },
  "Keskustori 2|1912": {
   "title": "Tampereen Teatteri",
@@ -466,7 +600,120 @@
     "h": 233
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Tampere Theatre",
+   "lede": "Designed by the Kallio brothers, the theatre closes the eastern end of the Central Square on the bank of the Tammerkoski rapids. It has been the main stage of the Tampere Theatre since 1913.",
+   "aka": "Theatre building on the Central Square",
+   "facts": [
+    [
+     "1912",
+     "completed"
+    ],
+    [
+     "14.2.1913",
+     "inaugurated"
+    ],
+    [
+     "1904",
+     "theatre founded"
+    ],
+    [
+     "RKY",
+     "part of the nationally significant Central Square area"
+    ]
+   ],
+   "who": [
+    [
+     "Architects",
+     "Kauno S. Kallio and Oiva Kallio"
+    ],
+    [
+     "Style",
+     "late Art Nouveau and Classicism"
+    ],
+    [
+     "Owner",
+     "Tampere Theatre Building Foundation"
+    ]
+   ],
+   "tl": [
+    [
+     "1904",
+     "The Tampere Theatre begins without a building of its own",
+     "wiki"
+    ],
+    [
+     "1912",
+     "The theatre building is completed on the edge of the Central Square",
+     "rhs"
+    ],
+    [
+     "1913",
+     "Opening on 14 February",
+     "yle"
+    ],
+    [
+     "1918",
+     "Performances are suspended during the Civil War",
+     "rhs"
+    ],
+    [
+     "1931",
+     "The Hämeenkatu wing is raised",
+     "rhs"
+    ],
+    [
+     "1939",
+     "The restaurant section is extended",
+     "rhs"
+    ],
+    [
+     "1982",
+     "A second stage, TT-Frenckell, opens in the former paper mill",
+     "wiki"
+    ],
+    [
+     "1988–89",
+     "Extension to the north and renovation",
+     "rhs"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "From touring to a home of its own",
+     "p": "The Tampere Theatre was founded in 1904, but in its first years it performed in other venues such as the Temperance House, the Seurahuone and the volunteer fire brigade's hall. The design competition for its own building was won by Kauno S. Kallio and Oiva Kallio. The building was completed at the end of 1912 and inaugurated in February 1913. It was Kauno's first major work.",
+     "s": [
+      "wiki",
+      "yle",
+      "kallio"
+     ]
+    },
+    {
+     "h": "Closing the square",
+     "p": "The theatre stands next to the Hämeensilta bridge and closes the view of the Central Square to the east. Stylistically it belongs to the transition between Art Nouveau and Classicism. The building is part of the Central Square cultural environment, designated nationally significant by the Finnish Heritage Agency, with Georg Schreck's city hall on the other side of the square.",
+     "s": [
+      "rhs"
+     ]
+    },
+    {
+     "h": "A growing building",
+     "p": "Over the decades the theatre has been raised and extended several times. It has operated in the building continuously since 1913, interrupted only briefly by the war of 1918 and the Winter and Continuation Wars. The latest renovation was shortlisted for the city's Good Building award in 2025.",
+     "s": [
+      "rhs",
+      "hrp"
+     ]
+    }
+   ],
+   "gt": [
+    "Tampere Theatre",
+    "Tampere Theatre",
+    "Tampere Theatre",
+    "Tampere Theatre",
+    "Tampere Theatre",
+    "Tampere Theatre"
+   ]
+  }
  },
  "Keskustori 6|1920": {
   "title": "Vanha kirkko",
@@ -671,7 +918,124 @@
     "h": 532
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Old Church",
+   "lede": "This wooden cruciform church on the edge of the Central Square is the oldest surviving building in central Tampere, and its bell tower the second oldest. The church was completed in 1824 and the bell tower a few years later.",
+   "aka": "The first church of the town of Tampere",
+   "facts": [
+    [
+     "1824",
+     "completed"
+    ],
+    [
+     "1825",
+     "consecrated"
+    ],
+    [
+     "1828–29",
+     "bell tower built"
+    ],
+    [
+     "vanhin",
+     "building in central Tampere"
+    ]
+   ],
+   "who": [
+    [
+     "Church",
+     "Carlo (Charles) Bassi"
+    ],
+    [
+     "Bell tower",
+     "Carl Ludvig Engel"
+    ],
+    [
+     "Pulpit",
+     "Carl Aleksander Engel"
+    ],
+    [
+     "Contractor",
+     "merchant Adolf Fredrik Lindberg"
+    ]
+   ],
+   "tl": [
+    [
+     "1779",
+     "The church site is marked on the town's first town plan",
+     "wiki"
+    ],
+    [
+     "1786",
+     "The old building of the Tammerkoski manor is turned into a temporary prayer house",
+     "wiki"
+    ],
+    [
+     "1813",
+     "A plot by the square is approved for the church",
+     "wiki"
+    ],
+    [
+     "1824",
+     "First service on Advent Sunday",
+     "srk"
+    ],
+    [
+     "1825",
+     "The church is consecrated on 11 April",
+     "srk"
+    ],
+    [
+     "1828–29",
+     "Engel's bell tower is built",
+     "srk"
+    ],
+    [
+     "1831",
+     "Altarpiece by Robert Ekman",
+     "wiki"
+    ],
+    [
+     "1953–54",
+     "Restoration returns the church almost to its original appearance",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "A quarter-century church project",
+     "p": "The 1779 town plan reserved a site for a church by the square, but the plot stayed empty for a long time. The people of Tampere went to church in Messukylä, and from 1786 services were held in a building of the Tammerkoski manor converted into a prayer house. Money was raised through collections and donations. The Finnish War and a dispute over whether to build in wood or stone delayed the project.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "Bassi's church, Engel's tower",
+     "p": "Carlo Bassi, Finland's first trained architect, designed a wooden church originally meant to be temporary. The Neoclassical cruciform church was completed in autumn 1824. The bell tower was designed by Carl Ludvig Engel and built in brick on a grey stone base in 1828–29. Emperor Alexander I granted 10,000 roubles for its construction.",
+     "s": [
+      "srk",
+      "wiki"
+     ]
+    },
+    {
+     "h": "The Swedish-speaking congregation's church",
+     "p": "The church has been altered and repaired many times. The 1953–54 restoration, based on a plan by Nils Erik Wickberg, returned it almost to its original appearance. Today the Old Church is used mainly by the Swedish-speaking parish of Tampere.",
+     "s": [
+      "wiki",
+      "srk"
+     ]
+    }
+   ],
+   "gt": [
+    "Tampere Old Church and bell tower",
+    "The Old Church on the Central Square",
+    "Tampere Old Church",
+    "Tampere Old Church",
+    "Old Church",
+    "Old Church",
+    "Old Church"
+   ]
+  }
  },
  "Keskustori 10|2004": {
   "title": "Tampereen Raatihuone",
@@ -856,7 +1220,114 @@
     "h": 600
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Tampere City Hall",
+   "lede": "Designed by Georg Schreck, this Neo-Renaissance palace on the edge of the Central Square housed the city administration and the courts for decades. Today it is used for the city's official receptions.",
+   "aka": "The city's representative building",
+   "facts": [
+    [
+     "8.1.1890",
+     "inaugurated"
+    ],
+    [
+     "1885",
+     "architecture competition"
+    ],
+    [
+     "1905",
+     "Red Manifesto read from the balcony"
+    ],
+    [
+     "1995",
+     "protected in the town plan"
+    ]
+   ],
+   "who": [
+    [
+     "Architect",
+     "Georg Schreck"
+    ],
+    [
+     "Style",
+     "Neo-Renaissance"
+    ]
+   ],
+   "tl": [
+    [
+     "1802",
+     "The first city hall, a single-storey wooden building, is completed on the site",
+     "wiki"
+    ],
+    [
+     "1878",
+     "The market stalls on the square are destroyed by fire",
+     "wiki"
+    ],
+    [
+     "1885",
+     "Georg Schreck wins the competition for a new city hall",
+     "wiki"
+    ],
+    [
+     "1890",
+     "The city hall is inaugurated on 8 January",
+     "wiki"
+    ],
+    [
+     "1905",
+     "During the general strike the Tampere Red Manifesto is read from the balcony",
+     "wiki"
+    ],
+    [
+     "1918",
+     "Red offices and hospital, surrenders on 6 April",
+     "raitti"
+    ],
+    [
+     "1964",
+     "The wings are demolished",
+     "wiki"
+    ],
+    [
+     "2003–04",
+     "Latest restoration",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "From wood to palace",
+     "p": "The first city hall was a single-storey wooden building completed in 1802. After the market stalls on the square burned down in 1878, a competition was held for a new building. Georg Schreck won it, work began in 1887 and the building was inaugurated in January 1890. It housed the city council, the finance office, the magistrate and the town court.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "A stage of history",
+     "p": "During the general strike of 1905 the Tampere Red Manifesto was read from the city hall balcony. In 1918 the building housed Red offices, a militia office and a hospital, and a machine gun was placed where the clock face had been. The city hall held out for two days and surrendered when the Whites threatened to shell it with artillery.",
+     "s": [
+      "wiki",
+      "raitti"
+     ]
+    },
+    {
+     "h": "A sinking building",
+     "p": "The wings once housed a city hotel, the police station and the city prison, among other things. They were demolished in 1964. In the 1970s the wooden piles of the foundations began to rot and the building to sink, so the foundations were reinforced with concrete piles. The year 2004 shown in the register is the year of the latest restoration.",
+     "s": [
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "Tampere City Hall",
+    "Tampere City Hall decorated for the Snellman centenary",
+    "Tampere City Hall",
+    "City Hall",
+    "Tampere City Hall illuminated at night",
+    "City Hall"
+   ]
+  }
  },
  "Tuomiokirkonkatu 3b|1907": {
   "title": "Tampereen tuomiokirkko",
@@ -1048,7 +1519,117 @@
     "h": 800
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Tampere Cathedral",
+   "lede": "Lars Sonck's granite National Romantic church is known for Hugo Simberg's frescoes, which shocked his contemporaries. Today they are regarded as masterpieces of Finnish Symbolism.",
+   "aka": "St John's Church",
+   "facts": [
+    [
+     "1902–07",
+     "built"
+    ],
+    [
+     "1923",
+     "became a cathedral"
+    ],
+    [
+     "n. 70",
+     "organ stops"
+    ],
+    [
+     "1918",
+     "refuge for civilians"
+    ]
+   ],
+   "who": [
+    [
+     "Architect",
+     "Lars Sonck"
+    ],
+    [
+     "Frescoes and stained glass",
+     "Hugo Simberg"
+    ],
+    [
+     "Altarpiece",
+     "Magnus Enckell"
+    ],
+    [
+     "Decorative painting",
+     "Carl Slotte"
+    ]
+   ],
+   "tl": [
+    [
+     "1902",
+     "Construction begins",
+     "wiki"
+    ],
+    [
+     "1907",
+     "St John's Church is completed, as is its first organ",
+     "wiki"
+    ],
+    [
+     "1918",
+     "A refuge for civilians during the siege of Tampere",
+     "raitti"
+    ],
+    [
+     "1923",
+     "The church becomes the cathedral of the Diocese of Tampere",
+     "wiki"
+    ],
+    [
+     "1929",
+     "The present organ is completed",
+     "wiki"
+    ],
+    [
+     "2007",
+     "Vihan päivät 1918 church play",
+     "wiki"
+    ],
+    [
+     "2021",
+     "Renovation of the main organ",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "Granite from Uusikaupunki",
+     "p": "Designed by Lars Sonck, the church was built in 1902–1907 of grey granite from Uusikaupunki. Its models included the church of Finström in Åland. On completion it was St John's Church, and it became the cathedral of the Diocese of Tampere in 1923.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "The Wounded Angel",
+     "p": "The frescoes in the nave were painted by Hugo Simberg. On either side of the altar are The Wounded Angel and The Garden of Death, boys carrying a garland run around the gallery balustrade, and in the vault there is a paradise serpent with an apple in its mouth. Skeletons, naked boys and a serpent in a place of honour caused outrage at the time, and the frescoes were demanded to be removed as late as after the Second World War.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "Refuge in 1918",
+     "p": "During the siege of Tampere the church sheltered refugees and was partly guarded by women soldiers of the Red Guard. A child was born in the sacristy in the middle of the shelling. These events were the subject of the play Vihan päivät 1918, performed in the church in 2007.",
+     "s": [
+      "raitti",
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "Tampere Cathedral",
+    "Tampere Cathedral",
+    "Tampere Cathedral",
+    "Tampere Cathedral",
+    "Tampere Cathedral",
+    "Tampere Cathedral"
+   ]
+  }
  },
  "Milavidanrinne 8|1920": {
   "title": "Näsilinna",
@@ -1237,7 +1818,114 @@
     "h": 372
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Näsilinna",
+   "lede": "The Neo-Baroque palace of Finlayson's owner family on Näsikallio hill was hardly ever lived in because of a family tragedy. Since then it has been a museum, a battlefield and a museum again.",
+   "aka": "Milavida",
+   "facts": [
+    [
+     "1898",
+     "completed"
+    ],
+    [
+     "1908–1997",
+     "Häme Museum"
+    ],
+    [
+     "n. 4 000",
+     "shells hit it in 1918"
+    ],
+    [
+     "2015",
+     "Museum Milavida opened"
+    ]
+   ],
+   "who": [
+    [
+     "Architect",
+     "Karl August Wrede"
+    ],
+    [
+     "Commissioned by",
+     "Peter von Nottbeck"
+    ]
+   ],
+   "tl": [
+    [
+     "1860",
+     "Wilhelm von Nottbeck's wooden villa, the original Milavida",
+     "wiki"
+    ],
+    [
+     "1898",
+     "The palace is completed; Olga von Nottbeck dies",
+     "wiki"
+    ],
+    [
+     "1899",
+     "Peter von Nottbeck dies in Paris",
+     "wiki"
+    ],
+    [
+     "1905",
+     "The city buys the palace and names it Näsilinna",
+     "wiki"
+    ],
+    [
+     "1908",
+     "The Häme Museum opens",
+     "wiki"
+    ],
+    [
+     "1918",
+     "Hospital and Red base; Melin's troops capture it on 3 April",
+     "raitti"
+    ],
+    [
+     "1998–2013",
+     "Empty, awaiting renovation",
+     "wiki"
+    ],
+    [
+     "2015",
+     "Renovation completed, Museum Milavida opens",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "A family tragedy",
+     "p": "Peter von Nottbeck, son of Finlayson's owner, commissioned the palace designed by Karl August Wrede, which was completed in 1898 under the name Milavida. The family never got to live there: Olga von Nottbeck died in childbirth in Baden-Baden in October 1898, and Peter died six months later in Paris. The children lived in the palace with the servants for a couple of years until their guardian sold it to the city in 1905.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "Museum and battlefield",
+     "p": "The city named the palace Näsilinna and opened the Häme Museum there in 1908. In 1918 the building housed a Red Cross hospital and a Red base. Gunnar Melin's troops captured it on 3 April, and within two days it changed hands three times. About 4,000 shells hit the building.",
+     "s": [
+      "wiki",
+      "raitti"
+     ]
+    },
+    {
+     "h": "Back to life",
+     "p": "The Häme Museum operated in Näsilinna until 1997, after which the building stood closed for 17 years. In the 2013–2015 renovation the first-floor halls were restored in the spirit of the von Nottbecks, and Museum Milavida opened on the second floor.",
+     "s": [
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "Näsilinna",
+    "The old Milavida",
+    "The wooden Milavida",
+    "Näsilinna",
+    "Näsilinna",
+    "Näsilinna"
+   ]
+  }
  },
  "Kuninkaankatu 1|1920": {
   "title": "Finlaysonin palatsi",
@@ -1380,7 +2068,86 @@
     "h": 265
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Finlayson Palace",
+   "lede": "This Neo-Renaissance palace in Wilhelm von Nottbeck's park was built on the site where James Finlayson had lived. It later became the home of the factory director and is now a restaurant.",
+   "aka": "The factory director's residence",
+   "facts": [
+    [
+     "1899",
+     "completed"
+    ],
+    [
+     "1910-l.–1970-l.",
+     "residence of the managing director"
+    ],
+    [
+     "RKM",
+     "protected in the town plan"
+    ]
+   ],
+   "who": [
+    [
+     "Architect",
+     "Lambert Pettersson"
+    ],
+    [
+     "Commissioned by",
+     "Alexander von Nottbeck"
+    ]
+   ],
+   "tl": [
+    [
+     "1800-l.",
+     "The site has a crown distillery, which also served as James Finlayson's home",
+     "wiki"
+    ],
+    [
+     "1899",
+     "The palace is completed",
+     "wiki"
+    ],
+    [
+     "1910-l.",
+     "Official residence of Finlayson's managing director",
+     "wiki"
+    ],
+    [
+     "1970-l.",
+     "The company's reception venue",
+     "wiki"
+    ],
+    [
+     "nykyään",
+     "Restaurant and events venue",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "On the site of Finlayson's home",
+     "p": "The palace was built on the site of a former crown distillery, which had served, among other things, as the home of the factory's founder James Finlayson. Designed by Lambert Pettersson, the palace was completed in 1899 for Alexander von Nottbeck.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "The factory's palace",
+     "p": "From the 1910s to the end of the 1970s the building was the official residence of Finlayson's managing director, and after that the company's reception venue. Today it is used as a restaurant and events venue. The town plan protects it as architecturally and culturally valuable.",
+     "s": [
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "Finlayson Palace",
+    "Finlayson Palace and greenhouses",
+    "Finlayson Palace and Kotkankallio",
+    "Finlayson Palace",
+    "Finlayson Palace"
+   ]
+  }
  },
  "Veturiaukio 1|0": {
   "title": "Museokeskus Vapriikki",
@@ -1551,7 +2318,96 @@
     "h": 524
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Vapriikki Museum Centre",
+   "lede": "The old workshop halls of the Tampella engineering works on the bank of the Tammerkoski rapids became a museum centre in 1996. The name comes from fabrik, the Swedish word for factory.",
+   "aka": "Tampella's former workshop",
+   "facts": [
+    [
+     "1880-l.",
+     "oldest parts"
+    ],
+    [
+     "1996",
+     "museum centre opened"
+    ],
+    [
+     "n. 14 000 m²",
+     "floor area"
+    ],
+    [
+     "2017",
+     "museum of the century"
+    ]
+   ],
+   "who": [
+    [
+     "Original use",
+     "Tampella engineering works and workshops"
+    ],
+    [
+     "Museums",
+     "incl. the Ice Hockey Museum, Game Museum, Postal Museum, Natural History Museum"
+    ]
+   ],
+   "tl": [
+    [
+     "1880-l.",
+     "The oldest parts of the Tampella workshop are built",
+     "wiki"
+    ],
+    [
+     "1995",
+     "The building is protected in the town plan",
+     "wiki"
+    ],
+    [
+     "1996",
+     "Vapriikki Museum Centre opens",
+     "wiki"
+    ],
+    [
+     "2008",
+     "The Tampere 1918 exhibition opens",
+     "wiki"
+    ],
+    [
+     "2017",
+     "Chosen Museum of the Century at the Finland 100 gala",
+     "wiki"
+    ],
+    [
+     "2020",
+     "Finlayson 200 – from factory to brand",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "From workshops to a museum",
+     "p": "Vapriikki is housed in the former workshop of the Tampella factory, whose oldest parts date from the 1880s. The building is part of the nationally significant Tammerkoski industrial landscape and was protected in the town plan in 1995. The museum centre opened in autumn 1996.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "A house of many museums",
+     "p": "About half of the roughly 14,000 square metres is exhibition and visitor space. Vapriikki houses, among others, the Finnish Ice Hockey Museum, the Finnish Museum of Games, the Postal Museum, the Mineral Museum, the Rupriikki Media Museum and the Tampere Natural History Museum. Most of the old photographs on this site also come from the Vapriikki Photo Archive.",
+     "s": [
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "Tampella's lower lathe workshop",
+    "The upper falls and Tampella's lower workshop",
+    "Tampella workshop",
+    "Tampella's lower workshop",
+    "Vapriikki Museum Centre",
+    "Vapriikki Museum Centre"
+   ]
+  }
  },
  "Rautatienkatu 25|1900": {
   "title": "Tampereen rautatieasema",
@@ -1754,7 +2610,118 @@
     "h": 532
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Tampere Railway Station",
+   "lede": "The functionalist station building and its 47-metre clock tower are among the city's landmarks. The railway changed Tampere more than any other single project.",
+   "aka": "Station building and clock tower",
+   "facts": [
+    [
+     "1876",
+     "first station"
+    ],
+    [
+     "1936",
+     "present station building"
+    ],
+    [
+     "47 m",
+     "clock tower above street level"
+    ],
+    [
+     "6,4 milj.",
+     "journeys in 2024"
+    ]
+   ],
+   "who": [
+    [
+     "Station building",
+     "Eero Seppälä and Otto Flodin"
+    ],
+    [
+     "Clock tower",
+     "Aulis Blomstedt"
+    ],
+    [
+     "First station",
+     "Knut Nylander (believed to be the designer)"
+    ]
+   ],
+   "tl": [
+    [
+     "1876",
+     "The Hämeenlinna–Tampere railway and a wooden station building are completed",
+     "wiki"
+    ],
+    [
+     "1883",
+     "The old Ostrobothnia line makes Tampere a junction",
+     "wiki"
+    ],
+    [
+     "1895",
+     "The Pori line opens",
+     "wiki"
+    ],
+    [
+     "1905",
+     "Bruno Granholm's goods station",
+     "wiki"
+    ],
+    [
+     "1926",
+     "Design competition for a new station",
+     "wiki"
+    ],
+    [
+     "1936",
+     "The present station building is completed",
+     "wiki"
+    ],
+    [
+     "1937",
+     "The clock tower and north wing are completed",
+     "wiki"
+    ],
+    [
+     "2021",
+     "Nokia Arena is completed south of the rail yard",
+     "kansi"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "A station behind Kyttälä",
+     "p": "There were two possible sites for the station. The people of Tampere would have preferred the west side of the Tammerkoski rapids, but the eastern option was chosen, placing the railway behind the disreputable suburb of Kyttälä. The first wooden station building was completed in 1876. Tampere was Finland's northernmost railway station until 1882, when Vaasa overtook it.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "The city turns east",
+     "p": "The railway boosted industry and trade, and between 1870 and 1935 the population of Tampere grew eightfold. The centre expanded eastwards, and a new district replaced the shacks of Kyttälä. After the war the centre spread east of the railway to Tammela. The rail yard has divided the city almost as much as the Tammerkoski rapids.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "A functionalist station and clock tower",
+     "p": "A competition for a new station was held in 1926. The functionalist station building by Eero Seppälä and Otto Flodin was completed in 1936. The clock tower was added to the plans afterwards at the demand of the Board of Railways, and the tower designed by Aulis Blomstedt was completed in 1937. The Finnish Heritage Agency has classified the station area as nationally significant.",
+     "s": [
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "Tampere railway station",
+    "Tampere railway station",
+    "Tampere railway station",
+    "Tampere railway station",
+    "Tampere railway station",
+    "Tampere railway station",
+    "Tampere railway station"
+   ]
+  }
  },
  "Liisanpuisto 1|1966": {
   "title": "Kalevan kirkko",
@@ -1917,7 +2884,106 @@
     "h": 800
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Kaleva Church",
+   "lede": "Raili and Reima Pietilä's slip-formed concrete church rises on Liisankallio like a grain silo. The Finnish Heritage Agency has called it the most monumental example of modern church architecture in Finland.",
+   "aka": "“The silo of souls”",
+   "facts": [
+    [
+     "1966",
+     "consecrated in August"
+    ],
+    [
+     "49",
+     "entries in the competition"
+    ],
+    [
+     "12 vrk",
+     "slip-forming of the walls"
+    ],
+    [
+     "150 000",
+     "façade tiles"
+    ]
+   ],
+   "who": [
+    [
+     "Architects",
+     "Reima and Raili Pietilä"
+    ],
+    [
+     "Builder",
+     "Auttila Oy"
+    ],
+    [
+     "Competition entry",
+     "“Hellitä mäkivyötä, meridiaani”"
+    ]
+   ],
+   "tl": [
+    [
+     "1953",
+     "The Kaleva parish is founded",
+     "wiki"
+    ],
+    [
+     "1959",
+     "Architecture competition, 49 entries",
+     "wiki"
+    ],
+    [
+     "1963",
+     "Brander café as a test ground for the church interior",
+     "wiki"
+    ],
+    [
+     "1964",
+     "Construction begins",
+     "wiki"
+    ],
+    [
+     "1966",
+     "The church is consecrated in August",
+     "wiki"
+    ],
+    [
+     "2006",
+     "The church is protected",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "A fish-shaped church",
+     "p": "The Kaleva parish was founded in 1953, but its own church was completed only 13 years later. The 1959 competition received 49 entries. The winner was Reima Pietilä's “Hellitä mäkivyötä, meridiaani”, whose floor plan resembles a fish. Pietilä completed the design together with his wife Raili Pietilä, and they also designed all the furnishings.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "Slip-forming and English clay",
+     "p": "The church was cast in concrete using slip-forming, which was exceptional for a church building in the 1960s. Casting the walls took 12 days. The roughly 150,000 pale yellow façade tiles were fired from seven English clays. The tiles were moved to the façade only when it was realised that the concrete reinforcement would rust the walls over time.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "Light and height",
+     "p": "Eighteen floor-to-ceiling windows bring plenty of light into the nave and emphasise its height. Because of its shape, the church has been called the Silo of Souls. It was protected in 2006 and is one of Tampere's best-known sights.",
+     "s": [
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "Kaleva Church",
+    "Kaleva Church",
+    "Kaleva Church",
+    "Kaleva Church",
+    "Kaleva Church"
+   ]
+  }
  },
  "Näkötornintie 20|1920": {
   "title": "Pyynikin näkötorni",
@@ -2112,7 +3178,118 @@
     "h": 244
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Pyynikki Observation Tower",
+   "lede": "Vilho Kolho's granite tower stands on top of the world's highest glacial gravel ridge. It was built for the city's 150th anniversary to replace a wooden tower damaged in the Civil War.",
+   "aka": "and its doughnut café",
+   "facts": [
+    [
+     "1929",
+     "completed"
+    ],
+    [
+     "26 m",
+     "height"
+    ],
+    [
+     "152 m",
+     "above sea level"
+    ],
+    [
+     "1888",
+     "first wooden tower"
+    ]
+   ],
+   "who": [
+    [
+     "Architect",
+     "deputy city architect Vilho Kolho"
+    ],
+    [
+     "Wooden tower 1888",
+     "Georg Schreck"
+    ],
+    [
+     "Material",
+     "red granite from Åland"
+    ]
+   ],
+   "tl": [
+    [
+     "1830-l.",
+     "The ridge is protected and tree felling banned",
+     "wiki"
+    ],
+    [
+     "1868",
+     "Ilomäki pavilion on top of the ridge",
+     "wiki"
+    ],
+    [
+     "1888",
+     "The city builds the wooden Ilomäki observation tower",
+     "wiki"
+    ],
+    [
+     "1918",
+     "The wooden tower is damaged in the Battle of Tampere",
+     "wiki"
+    ],
+    [
+     "1929",
+     "The granite tower is completed for the city's 150th anniversary",
+     "wiki"
+    ],
+    [
+     "1930",
+     "A medium-wave radio station in the tower's west wing",
+     "wiki"
+    ],
+    [
+     "1939–40",
+     "Air surveillance post in the Winter War",
+     "wiki"
+    ],
+    [
+     "1980-l.",
+     "The tower is finally inaugurated",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "From wood to granite",
+     "p": "The Pyynikki ridge was protected as early as the 1830s. In 1888 the city built a wooden observation tower on the ridge, designed by Georg Schreck, which was damaged in the Battle of Tampere in 1918. To celebrate the city's 150th anniversary it was replaced with a 26-metre tower of red granite quarried in Åland.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "A cancelled inauguration",
+     "p": "The tower was to be inaugurated in September 1929, but the ceremony was cancelled when the steamship Kuru sank on Lake Näsijärvi. The tower was finally inaugurated only in the 1980s. In the meantime it served as a radio station and as an air surveillance post in the Winter War.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "Doughnuts and views",
+     "p": "At the foot of the tower is a café famous for its doughnuts and a well-known amateur radio station. The Finnish Heritage Agency has listed the tower among the nationally significant built cultural environments.",
+     "s": [
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "The brand-new wooden Pyynikki observation tower, the Ilomäki tower",
+    "The old Pyynikki observation tower, the Ilomäki tower",
+    "Sledgers with the Pyynikki observation tower in the background",
+    "Pyynikki observation tower",
+    "Pyynikki observation tower",
+    "Pyynikki observation tower",
+    "Pyynikki observation tower"
+   ]
+  }
  },
  "Finlaysoninkuja 2|1920": {
   "title": "Finlaysonin tehdas",
@@ -2324,7 +3501,133 @@
     "h": 1200
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Finlayson Factory",
+   "lede": "The engineering workshop founded by the Scotsman James Finlayson in 1820 grew into the largest factory in Finland and for a long time the largest in the Nordic countries. A whole community grew up around it on the west bank of the Tammerkoski rapids.",
+   "aka": "The largest factory in the Nordic countries",
+   "facts": [
+    [
+     "1820",
+     "founded"
+    ],
+    [
+     "1828",
+     "became a cotton mill"
+    ],
+    [
+     "1882",
+     "first electric lights in the Nordic countries"
+    ],
+    [
+     "1837",
+     "Kuusvooninkinen completed"
+    ]
+   ],
+   "who": [
+    [
+     "Founder",
+     "James Finlayson"
+    ],
+    [
+     "Kuusvooninkinen",
+     "Carl Leszig, with John Barker"
+    ],
+    [
+     "Owners from 1836",
+     "Carl Samuel Nottbeck and Georg Adolf Rauch"
+    ],
+    [
+     "Protection",
+     "town plan (RKM I, II)"
+    ]
+   ],
+   "tl": [
+    [
+     "1820",
+     "James Finlayson founds an engineering workshop and foundry on the Tammerkoski rapids",
+     "wiki"
+    ],
+    [
+     "1828",
+     "The factory becomes a cotton mill, regarded as the beginning of the Finnish cotton industry",
+     "wiki"
+    ],
+    [
+     "1836",
+     "Finlayson sells the factory to Nottbeck and Rauch",
+     "wiki"
+    ],
+    [
+     "1837",
+     "Kuusvooninkinen is completed, Finland's first modern factory building",
+     "tre"
+    ],
+    [
+     "1840-l.",
+     "The largest factory in Finland",
+     "wiki"
+    ],
+    [
+     "1850-l.–1920-l.",
+     "The largest factory in the Nordic countries",
+     "wiki"
+    ],
+    [
+     "1882",
+     "The first electric lights in the Nordic countries are switched on at the factory",
+     "wiki"
+    ],
+    [
+     "1934",
+     "Merger with Forssa: Finlayson-Forssa",
+     "wiki"
+    ],
+    [
+     "1990-l. alku",
+     "Production by the rapids ends; all production in Tampere ends in 1999",
+     "vt"
+    ],
+    [
+     "1995",
+     "New town plan for the area",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "From machines to cotton",
+     "p": "In 1820 James Finlayson founded an engineering workshop making spinning machines for wool and flax. The machines did not sell, so the factory began spinning and weaving itself. The year 1828, when Finlayson became a cotton mill, is regarded as the beginning of the Finnish cotton industry. In 1836 the ageing Finlayson sold the factory to Carl Samuel Nottbeck from Tallinn and Georg Adolf Rauch on condition that his name be kept.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "A factory in the middle of the city",
+     "p": "In the 1840s Finlayson was the largest factory in Finland, and from the 1850s to the 1920s the largest in the Nordic countries. In 1882 the first electric lights in the Nordic countries were switched on at the factory. Workers' housing, a school, a hospital, a sickness fund, a library and a church were built in the area, and the factory opened Tampere's first savings bank and cooperative shop. In the early 20th century it employed about 3,300 people.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "Kuusvooninkinen",
+     "p": "The new owners began an ambitious factory building in 1836, and the six-storey Kuusvooninkinen was completed the following year. It is considered Finland's first modern industrial building and already had an early sprinkler system: a water tank on the top floor. Over the years other buildings were joined to it, forming the Old Factory. Production by the rapids ended in the early 1990s, and today the area has offices, shops, museums and restaurants. The town plan protects it as nationally significant.",
+     "s": [
+      "tre",
+      "tw",
+      "vt"
+     ]
+    }
+   ],
+   "gt": [
+    "Finlayson cotton mill",
+    "Finlayson factory",
+    "Finlayson old factory",
+    "Finlayson factory from Satakunnansilta bridge",
+    "Finlayson cotton mill: quality control",
+    "Finlayson factory"
+   ]
+  }
  },
  "Kelloportinkatu 1|0": {
   "title": "Tampellan pellavatehdas",
@@ -2522,7 +3825,127 @@
     "h": 777
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Tampella Linen Mill",
+   "lede": "The linen mill on the east bank of the Tammerkoski rapids was one of the three pillars of the Tampella group. The old Tampella sign on its roof is still a landmark of the rapids.",
+   "aka": "The “Tampella” sign in the rapids landscape",
+   "facts": [
+    [
+     "1856",
+     "linen spinning mill founded"
+    ],
+    [
+     "1861",
+     "merged with the engineering works"
+    ],
+    [
+     "n. 25 ha",
+     "factory area"
+    ],
+    [
+     "1989–2000",
+     "industry moved out"
+    ]
+   ],
+   "who": [
+    [
+     "Founder",
+     "Adolf Törngren, LL.M."
+    ],
+    [
+     "Rescuer",
+     "chairman of the board Alfred Kihlman"
+    ],
+    [
+     "Many buildings",
+     "architect Georg Schreck"
+    ],
+    [
+     "New plan for the area",
+     "Helamaa-Heiskanen (1991)"
+    ]
+   ],
+   "tl": [
+    [
+     "1844",
+     "A blast furnace, the area's first factory, is built on the Tammerkoski rapids",
+     "wiki"
+    ],
+    [
+     "1856",
+     "Adolf Törngren founds a linen spinning and weaving mill",
+     "wiki"
+    ],
+    [
+     "1861",
+     "The linen mill and the engineering works merge into one company",
+     "wiki"
+    ],
+    [
+     "1900",
+     "The engineering works completes its first steam locomotive",
+     "wiki"
+    ],
+    [
+     "1960",
+     "The company is renamed Oy Tampella Ab",
+     "wiki"
+    ],
+    [
+     "1977",
+     "Textile production moves to Lapinniemi",
+     "wiki"
+    ],
+    [
+     "1989",
+     "Tampella decides to move its industry out of the area",
+     "wiki"
+    ],
+    [
+     "1995",
+     "New town plan for the area",
+     "wiki"
+    ],
+    [
+     "1996",
+     "Vapriikki opens in the former workshop",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "Linen and iron",
+     "p": "Adolf Törngren founded a linen spinning and weaving mill on the Tammerkoski rapids in 1856, and it employed hundreds of people from the start. Its best-known products were damask tablecloths designed by Finnish artists. In 1861 the mill and the neighbouring engineering works merged into a company later known as Tampereen Pellava- ja Rauta-Teollisuus (Tampere Linen and Iron Industry), which gave rise to the name Tampella.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "Three lines of business",
+     "p": "Besides textiles, Tampella built ships, water turbines, steam locomotives, paper machines and rock drills, and was also in the forest industry. Textile production moved to Lapinniemi in 1977 and ended in the mid-1980s. The company ran into financial difficulties and was broken up at the beginning of 1991.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "From factory to city district",
+     "p": "In 1989 Tampella decided to move its industry out of the roughly 25-hectare area. After an architecture competition a new town plan was approved in 1995. About 60,000 square metres of old buildings were kept, and mainly housing was built alongside them. The linen mill now houses offices, a restaurant and meeting rooms. The building already appears in photographs from the 1880s, so on the map's timeline it is shown from 1880, although its exact completion year is not in the register.",
+     "s": [
+      "wiki",
+      "bref"
+     ]
+    }
+   ],
+   "gt": [
+    "Linen mill",
+    "Linen mill",
+    "Linen mill",
+    "Tampella linen mill",
+    "Tampella factory buildings",
+    "Tampella linen mill – loom"
+   ]
+  }
  },
  "Hämeensilta|pt": {
   "title": "Hämeensilta",
@@ -2715,7 +4138,118 @@
     "h": 540
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Hämeensilta Bridge",
+   "lede": "The Hämeenkatu bridge over the Tammerkoski rapids and its four sculptures by Wäinö Aaltonen are among the city's best-known views. The bridge completed in 2019 replicates the appearance of the 1929 stone bridge.",
+   "aka": "The main bridge over the Tammerkoski rapids",
+   "lab": "Bridge",
+   "facts": [
+    [
+     "1929",
+     "first stone bridge"
+    ],
+    [
+     "68 m",
+     "length"
+    ],
+    [
+     "4",
+     "sculptures by Wäinö Aaltonen"
+    ],
+    [
+     "2019",
+     "new bridge for the tramway"
+    ]
+   ],
+   "who": [
+    [
+     "Bridge 1929",
+     "Tampere building office, based on E. R. Eriksson's proposal"
+    ],
+    [
+     "Sculptures",
+     "Wäinö Aaltonen"
+    ],
+    [
+     "Contractor 1928–29",
+     "Oy Constructor Ab"
+    ]
+   ],
+   "tl": [
+    [
+     "1556",
+     "A bridge across the Tammerkoski rapids is mentioned in documents",
+     "wiki"
+    ],
+    [
+     "1884",
+     "Otto Brander's Isosilta bridge is completed at Hämeenkatu",
+     "wiki"
+    ],
+    [
+     "1900",
+     "After Satakunnansilta is completed, Isosilta becomes Hämeensilta",
+     "wiki"
+    ],
+    [
+     "1918",
+     "The Reds withdraw across the bridge on 3 April",
+     "enc"
+    ],
+    [
+     "1924–25",
+     "16 entries in the design competition",
+     "wiki"
+    ],
+    [
+     "1929",
+     "The stone bridge is completed; the inauguration was cancelled because of the Kuru disaster",
+     "wiki"
+    ],
+    [
+     "2018–19",
+     "The bridge is rebuilt for the tramway",
+     "wiki"
+    ],
+    [
+     "2021",
+     "Trams begin crossing the bridge",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "An ancient crossing",
+     "p": "A bridge across the Tammerkoski rapids is first mentioned in 1556; it stood at the shallowest point of the rapids, a little north of the present one. When Kyttälä was annexed to the town in the 1870s, the wooden bridge became too narrow. In 1884 Isosilta, designed by engineer Otto Brander, was completed at Hämeenkatu, and Hämeenkatu was widened into the town's main street.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "The stone bridge and Aaltonen's sculptures",
+     "p": "By the 1920s the 12-metre-wide bridge was too narrow for buses and lorries. After a competition, the city building office drew up plans based on E. R. Eriksson's proposal. The new single-span arch bridge was completed in February 1929. It was meant to be part of the city's 150th anniversary celebrations, but these were cancelled after the steamship Kuru sank. The four sculptures by Wäinö Aaltonen on the railings are counted among the most important Classicist sculptures of the 1920s.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "The same bridge again",
+     "p": "The 2016 tram decision sealed the bridge's fate. It was rebuilt in two phases in 2018–2019, and the old granite cladding and statues were returned to their places, so its appearance stayed the same. Hämeensilta, Hämeenkatu and the Central Square together form a nationally significant cultural environment.",
+     "s": [
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "Hämeensilta bridge",
+    "Hämeensilta bridge",
+    "Hämeensilta bridge",
+    "Hämeensilta bridge",
+    "Hämeensilta bridge",
+    "Hämeensilta bridge"
+   ]
+  }
  },
  "Pyynikin kirkkopuisto 1|1920": {
   "title": "Aleksanterin kirkko",
@@ -2894,7 +4428,112 @@
     "h": 537
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Alexander Church",
+   "lede": "Theodor Decker's red-brick Neo-Gothic church at the end of the Hämeenpuisto esplanade was completed in 1881 as the main church of the Tampere town parish. It is named after Emperor Alexander II.",
+   "aka": "In Pyynikki church park",
+   "facts": [
+    [
+     "1881",
+     "consecrated in Advent"
+    ],
+    [
+     "1 430",
+     "seats"
+    ],
+    [
+     "1937",
+     "fire"
+    ],
+    [
+     "56+3",
+     "organ stops"
+    ]
+   ],
+   "who": [
+    [
+     "Architect",
+     "Theodor Decker"
+    ],
+    [
+     "Altarpiece",
+     "Alexandra Frosterus-Såltin (1883)"
+    ],
+    [
+     "Organ",
+     "Kangasala organ factory (1939)"
+    ]
+   ],
+   "tl": [
+    [
+     "1820-l.",
+     "The people of Tampere demand their own town parish",
+     "wiki"
+    ],
+    [
+     "1869",
+     "The Senate agrees, on condition of a new church",
+     "wiki"
+    ],
+    [
+     "1880–81",
+     "The church is built",
+     "wiki"
+    ],
+    [
+     "1881",
+     "Consecrated in Advent as the main church of the town parish",
+     "wiki"
+    ],
+    [
+     "1883",
+     "Altarpiece The Transfiguration of Christ",
+     "wiki"
+    ],
+    [
+     "1937",
+     "A fire badly damages the church at the end of a renovation",
+     "wiki"
+    ],
+    [
+     "1938",
+     "Repairs are completed in December",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "A parish of its own",
+     "p": "Until 1904 Tampere belonged to the parish of Messukylä. The townspeople demanded their own parish as early as the 1820s, but the proposals were rejected many times. In 1869 the Senate approved it on two conditions, one of which was building a new church.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "A brick cathedral in a park",
+     "p": "Designed by Theodor Decker, the church was built of exposed brick in 1880–1881. The long church with a tower at its end aims at a continental cathedral style. The pilasters on the façade are purely decorative and have no structural function. The church is surrounded by the Pyynikki church park, a former cemetery.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "The fire of 1937",
+     "p": "In November 1937 a fire that started from spontaneously igniting paint badly damaged the church just as its first major renovation was nearing completion. The work was nevertheless finished in December 1938. The present 59-stop organ dates from 1939.",
+     "s": [
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "Alexander Church",
+    "Alexander Church",
+    "Alexander Church",
+    "Alexander Church",
+    "Alexander Church",
+    "Alexander Church"
+   ]
+  }
  },
  "Haulikatu 8|1908": {
   "title": "Pispalan haulitorni",
@@ -3073,7 +4712,108 @@
     "h": 522
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Pispala Shot Tower",
+   "lede": "The 55-metre steel lattice tower on the northern slope of the Pispala ridge is the symbol of Pispala. Lead shot was made in it by dropping molten lead from the top of the tower into a water tank.",
+   "aka": "The only surviving shot tower in Finland",
+   "facts": [
+    [
+     "1908",
+     "built"
+    ],
+    [
+     "55 m",
+     "height"
+    ],
+    [
+     "1972",
+     "production ended"
+    ],
+    [
+     "300 000 kg",
+     "of shot a year"
+    ]
+   ],
+   "who": [
+    [
+     "Commissioned by",
+     "Oy K. Hjorth Ab"
+    ],
+    [
+     "Steel structures",
+     "Krupp, Germany"
+    ],
+    [
+     "Holder",
+     "Pispalan Moreeni association (factory building)"
+    ]
+   ],
+   "tl": [
+    [
+     "1856",
+     "Shot production begins in a wooden tower on the Pyynikki ridge",
+     "wiki"
+    ],
+    [
+     "1908",
+     "The present tower is built in Pispala",
+     "wiki"
+    ],
+    [
+     "1972",
+     "Shot production ends",
+     "wiki"
+    ],
+    [
+     "1990",
+     "Pispalan Moreeni takes over the factory",
+     "wiki"
+    ],
+    [
+     "2009",
+     "The tower gets permanent lighting",
+     "wiki"
+    ],
+    [
+     "2020",
+     "The tower is dismantled, restored and reassembled",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "Lead from the sky",
+     "p": "The shot master usually climbed the tower at four in the morning to light the fire. Antimony and arsenic were mixed into the lead, and the alloy was lifted as ingots to the casting workshop at the top. From there the molten lead was poured through sieves into a shaft as tall as the tower. As they fell, the drops rounded into shot and cooled in a water tank at the bottom. Finally the shot was dried, sorted and polished.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "The secret of two families",
+     "p": "The factory's workforce consisted of two families, the Heinänens and the Järvensivus. The management made lifelong contracts with them, obliging them to keep the production methods secret. Competition was fierce, and the secrets of the old Pyynikki factory had once already leaked to a competitor in Lahti.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "A Pispala landmark",
+     "p": "The tower is the only surviving tower in Finland used for making shot, and the factory and tower are protected. The local heritage society Pispalan Moreeni restored the factory building as a venue through voluntary work. In 2020 the tower was dismantled, restored and reassembled at a cost of about 1.6 million euros.",
+     "s": [
+      "wiki",
+      "inv"
+     ]
+    }
+   ],
+   "gt": [
+    "Pispala shot tower in autumn colours",
+    "Pispala shot tower under construction",
+    "Pispala shot tower",
+    "Pispala shot tower",
+    "Pispala shot tower",
+    "Pispala shot tower in the evening"
+   ]
+  }
  },
  "Särkänniemenraitti 3|0": {
   "title": "Näsinneula",
@@ -3251,7 +4991,111 @@
     "h": 800
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Näsinneula Tower",
+   "lede": "The 168-metre tower on the shore of Lake Näsijärvi was the tallest structure in Finland for more than 50 years. At the top is a revolving restaurant.",
+   "aka": "Särkänniemi observation tower",
+   "facts": [
+    [
+     "1971",
+     "opened"
+    ],
+    [
+     "168 m",
+     "height"
+    ],
+    [
+     "33 vrk",
+     "slip-forming of the shaft"
+    ],
+    [
+     "32 s",
+     "by lift to the top"
+    ]
+   ],
+   "who": [
+    [
+     "Architect",
+     "Pekka Ilveskoski"
+    ],
+    [
+     "Contractor",
+     "Tampereen Haka"
+    ],
+    [
+     "Lifts",
+     "Valmet (Tampere)"
+    ],
+    [
+     "Idea",
+     "city manager Erkki Lindfors"
+    ]
+   ],
+   "tl": [
+    [
+     "ennen 1970",
+     "City manager Lindfors gets the idea from the Puijo tower",
+     "wiki"
+    ],
+    [
+     "1970",
+     "Slip-forming of the shaft begins on 8 June and takes 33 days",
+     "wiki"
+    ],
+    [
+     "1970",
+     "Concrete Structure of the Year",
+     "wiki"
+    ],
+    [
+     "1971",
+     "The tower opens",
+     "wiki"
+    ],
+    [
+     "1997",
+     "The lifts are modernised",
+     "wiki"
+    ],
+    [
+     "2018",
+     "Tallest observation tower in the Nordic countries after Kaknäs closes",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "A Space Needle on Lake Näsijärvi",
+     "p": "The idea for the tower came when city manager Erkki Lindfors visited the Puijo tower in Kuopio. Ratina and Pispala were also considered as sites, as was raising the Pyynikki observation tower. The working name was Särkänneula. The name Näsinneula was coined by municipal counsellor Lauri Santamäki after Lake Näsijärvi and Seattle's Space Needle. The height of the restaurant was tested from a helicopter.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "In 33 days",
+     "p": "Designed by Pekka Ilveskoski, the tower was built in 1970–1971. Builders from Hungary slip-formed the reinforced concrete shaft in 33 days. The tower tapers by two centimetres per metre and can sway 15 centimetres in a strong wind. The lifts, made at Valmet's aircraft factory in Tampere, reach the top in 32 seconds.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "A revolving restaurant",
+     "p": "The Näsinneula restaurant turns around the tower once every 45 minutes. The tower held the title of Finland's tallest structure for over half a century, and since 2018 it has been the tallest observation tower in the Nordic countries.",
+     "s": [
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "Näsinneula",
+    "Näsinneula",
+    "Näsinneula",
+    "Näsinneula",
+    "Näsinneula",
+    "Näsinneula"
+   ]
+  }
  },
  "Yliopistonkatu 55|1990": {
   "title": "Tampere-talo",
@@ -3405,7 +5249,127 @@
     "h": 278
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Tampere Hall",
+   "lede": "Standing at the edge of Sorsapuisto park, Tampere Hall opened in 1990 on the site of a former slaughterhouse and zoo. The postmodern, ship-like building is the home of the Tampere Philharmonic and the largest concert and congress centre in the Nordic countries.",
+   "aka": "The largest concert and congress centre in the Nordic countries",
+   "facts": [
+    [
+     "19.2.1990",
+     "first concert"
+    ],
+    [
+     "1982",
+     "architecture competition"
+    ],
+    [
+     "605 500",
+     "visitors in the record year 2018"
+    ],
+    [
+     "2015",
+     "protected in the town plan"
+    ]
+   ],
+   "who": [
+    [
+     "Architects",
+     "Sakari Aartelo and Esa Piironen"
+    ],
+    [
+     "Acoustics",
+     "Alpo Halme"
+    ],
+    [
+     "Resident orchestra",
+     "Tampere Philharmonic"
+    ],
+    [
+     "Moomin Museum",
+     "Taina Väisänen (2017)"
+    ]
+   ],
+   "tl": [
+    [
+     "1930-l.",
+     "A concert hall is first discussed",
+     "wiki"
+    ],
+    [
+     "1910–1962",
+     "The city slaughterhouse operates on the site",
+     "wiki"
+    ],
+    [
+     "1964–1972",
+     "A zoo operates on the site",
+     "wiki"
+    ],
+    [
+     "1982",
+     "The competition is won by the entry “Tehtaan pilli” (The factory whistle)",
+     "wiki"
+    ],
+    [
+     "19.2.1990",
+     "First concert: Juice Leskinen 40 years",
+     "wiki"
+    ],
+    [
+     "29.9.1990",
+     "Official inauguration",
+     "wiki"
+    ],
+    [
+     "2013",
+     "The President's Independence Day reception",
+     "wiki"
+    ],
+    [
+     "2015",
+     "The building is protected in the town plan",
+     "wiki"
+    ],
+    [
+     "2016",
+     "An extension is completed",
+     "wiki"
+    ],
+    [
+     "2017",
+     "The Moomin Museum opens",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "From slaughterhouse to concert hall",
+     "p": "A concert hall was discussed in Tampere as early as the 1930s, but the project only entered the city's plans in the 1970s. Its role grew at the same time, and the 1982 architecture competition sought the largest concert and congress hall in the Nordic countries. The chosen site at the edge of Sorsapuisto park had been home to the city slaughterhouse and then a zoo.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "A ship inland",
+     "p": "The competition was won by Sakari Aartelo and Esa Piironen. The building combines round and rectangular forms, and its façade has ceramic tiles, metal sheets and glass. Its shape recalls an ocean liner stranded inland, a popular theme in 1980s architecture. One of its models was the Sydney Opera House, and the façade tiles came from the same factory.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "The city's living room",
+     "p": "The first concert in February 1990 featured Juice Leskinen celebrating his 40th birthday, and the official inauguration was held in the autumn. In 2013 the building hosted the President's Independence Day reception because the Presidential Palace was being renovated. It is home to the Tampere Philharmonic and, since 2017, the Moomin Museum.",
+     "s": [
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "Tampere Hall",
+    "Tampere Hall from the air 1995"
+   ]
+  }
  },
  "Pirkankatu 2|1986": {
   "title": "Pääkirjasto Metso",
@@ -3535,7 +5499,103 @@
     "h": 244
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Metso Main Library",
+   "lede": "Designed by Raili and Reima Pietilä, the main library opened in Hämeenpuisto in 1986. Seen from above, its copper roofs resemble a displaying capercaillie (metso), which gave the library its name.",
+   "aka": "Tampere City Main Library",
+   "facts": [
+    [
+     "1978",
+     "architecture competition"
+    ],
+    [
+     "120",
+     "competition entries"
+    ],
+    [
+     "21.8.1986",
+     "opened to the public"
+    ],
+    [
+     "2015–2017",
+     "renovation"
+    ]
+   ],
+   "who": [
+    [
+     "Architects",
+     "Raili and Reima Pietilä"
+    ],
+    [
+     "Competition entry",
+     "“Soidinmenot” (Courtship display)"
+    ],
+    [
+     "Art",
+     "Eila Hiltunen: Under the Water (1960)"
+    ]
+   ],
+   "tl": [
+    [
+     "1895",
+     "The Kaipio house designed by F. L. Calonius stands on the site",
+     "wiki"
+    ],
+    [
+     "1978",
+     "The Pietiläs' “Soidinmenot” wins the competition",
+     "wiki"
+    ],
+    [
+     "1983",
+     "The Kaipio house is demolished and construction begins",
+     "wiki"
+    ],
+    [
+     "21.8.1986",
+     "The library opens to the public",
+     "wiki"
+    ],
+    [
+     "10.10.1986",
+     "Inauguration",
+     "wiki"
+    ],
+    [
+     "2015–2017",
+     "Renovation; the museums downstairs move out",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "Courtship display",
+     "p": "The 1978 competition for a new main library received 120 entries. The jury unanimously judged Raili and Reima Pietilä's entry the best, as it promised a functional library and at the same time a distinctive, memorable addition to the cityscape. The name Metso (capercaillie) comes from the building's shape seen from above.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "On the site of the Kaipio house",
+     "p": "The Kaipio house on Hämeenpuisto, designed by F. L. Calonius, was demolished to make way for the library. Construction began in 1983 and took three years. The library opened to the public in August 1986, and the building came in clearly under budget.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "From museums to reading room",
+     "p": "For a long time the lower floor housed the Moomin Valley museum and the Mineral Museum. They moved out before the 2015–2017 renovation, and the Moomin Valley became the Moomin Museum in Tampere Hall. The renovation created a quiet room and lecture halls downstairs, and the Frenckell newspaper reading room moved to the gallery.",
+     "s": [
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "Metso, Tampere City Main Library",
+    "The Kaipio house (right), demolished to make way for the library"
+   ]
+  }
  },
  "Hämeenkatu 19|1901": {
   "title": "Tampereen kauppahalli",
@@ -3666,7 +5726,100 @@
     "h": 605
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Tampere Market Hall",
+   "lede": "The market hall was built when market trading in Tampere had grown large and unregulated. Designed by Hjalmar Åberg, it opened in 1901 and is still the largest market hall in the Nordic countries.",
+   "aka": "The largest market hall in the Nordic countries",
+   "facts": [
+    [
+     "1.6.1901",
+     "completed"
+    ],
+    [
+     "2 100 m²",
+     "floor area"
+    ],
+    [
+     "174",
+     "stalls"
+    ],
+    [
+     "1973",
+     "protected"
+    ]
+   ],
+   "who": [
+    [
+     "Architect",
+     "Hjalmar Åberg"
+    ],
+    [
+     "Owner",
+     "City of Tampere"
+    ]
+   ],
+   "tl": [
+    [
+     "1894",
+     "Planning of the hall begins",
+     "wiki"
+    ],
+    [
+     "1899",
+     "Construction begins",
+     "wiki"
+    ],
+    [
+     "1.6.1901",
+     "The market hall is completed",
+     "tre"
+    ],
+    [
+     "1951",
+     "The hall turns 50",
+     "wiki"
+    ],
+    [
+     "1972–1983",
+     "Dispute over protecting the office building on Hämeenkatu",
+     "wiki"
+    ],
+    [
+     "1973",
+     "The hall is protected by decision of the provincial government",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "From market square to hall",
+     "p": "By the end of the 19th century market trading in Tampere had grown large and unregulated, so the city decided to build a covered hall. Planning began in 1894 and construction in 1899. Designed by Hjalmar Åberg, the hall was placed between Hämeenkatu and Hallituskatu and completed in June 1901.",
+     "s": [
+      "wiki",
+      "tre"
+     ]
+    },
+    {
+     "h": "A conservation dispute",
+     "p": "The office building on the Hämeenkatu side is part of the same ensemble by Åberg. Its preservation was disputed from 1972 to 1983, and the dispute ended in victory for the conservationists. The hall itself was protected by decision of the Häme provincial government in 1973.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "The hall today",
+     "p": "The hall has 174 stalls. In 2013 they were used by 39 businesses, and a growing share of the stalls are occupied by cafés and restaurants.",
+     "s": [
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "Tampere Market Hall",
+    "Market hall under construction"
+   ]
+  }
  },
  "Messukylänkatu 54|0": {
   "title": "Messukylän vanha kirkko",
@@ -3819,7 +5972,122 @@
     "h": 888
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Messukylä Old Church",
+   "lede": "This medieval grey-stone church is the oldest building in Tampere. A wooden church stood on the site in the 1430s, and judging by the masonry the present stone church was built around 1510–1530.",
+   "aka": "The oldest building in Tampere",
+   "facts": [
+    [
+     "1434",
+     "probable year of the wooden church"
+    ],
+    [
+     "n. 1510–30",
+     "stone church"
+    ],
+    [
+     "1879",
+     "taken out of use"
+    ],
+    [
+     "1958–59",
+     "restored"
+    ]
+   ],
+   "who": [
+    [
+     "Patron saint",
+     "Archangel Michael (“Miko”)"
+    ],
+    [
+     "Pulpit",
+     "gift of governor E. J. Creutz (17th century)"
+    ],
+    [
+     "Repairs 1796–97",
+     "master builder Matti Åkerblom"
+    ],
+    [
+     "Restoration",
+     "architect Paavo Riihimäki"
+    ]
+   ],
+   "tl": [
+    [
+     "1434",
+     "Year found on a board of the wooden church's chancel screen",
+     "wiki"
+    ],
+    [
+     "1400-l. loppu",
+     "The sacristy, the oldest surviving part of the church",
+     "wiki"
+    ],
+    [
+     "n. 1510–30",
+     "The stone church replaces the wooden church",
+     "wiki"
+    ],
+    [
+     "1636",
+     "Messukylä becomes a parish of its own",
+     "wiki"
+    ],
+    [
+     "1775",
+     "Gustav III inspects troops in the churchyard",
+     "wiki"
+    ],
+    [
+     "1796–97",
+     "The church is repaired and altered",
+     "wiki"
+    ],
+    [
+     "1879",
+     "A new church is completed and the old one falls out of use",
+     "wiki"
+    ],
+    [
+     "1907",
+     "The church is repaired",
+     "wiki"
+    ],
+    [
+     "1958–59",
+     "Restoration brings the old paintings to light",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "From wood to stone",
+     "p": "A wooden church stood on the site in the 15th century; the year 1434, found on a board from its chancel screen, is considered its probable year of construction. The present grey-stone church was built to replace it. No exact years were recorded, but the masonry and windows date the work to 1510–1530. The oldest standing part is the sacristy, built against the side of the wooden church in the late 15th century.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "Used as a hay barn",
+     "p": "When the new Messukylä church was completed in 1879, the stone church fell out of use. It was neither valued nor maintained and was used as a hay barn and grain store. Vicar K. Olander demanded repairs, and the church was repaired in 1907.",
+     "s": [
+      "wiki"
+     ]
+    },
+    {
+     "h": "Restoration",
+     "p": "In 1958–1959 the church was restored to plans by Paavo Riihimäki. The lime covering the walls was removed, bringing to light what survived of the 17th-century paintings. The church still has four wooden sculptures from the 1430s–40s. Today it is open in summer.",
+     "s": [
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "Messukylä Old Church",
+    "Messukylä Old Church, drawing"
+   ]
+  }
  },
  "Satakunnankatu 49|1920": {
   "title": "Amurin museokortteli",
@@ -3940,6 +6208,90 @@
     "h": 800
    }
   ],
-  "landmark": true
+  "landmark": true,
+  "en": {
+   "title": "Amuri Museum Block",
+   "lede": "The wooden blocks of Amuri were built from the 1860s onwards for the factory workers of the growing city. Only this block remains, and its homes show how Tampere workers lived from 1882 to 1973.",
+   "aka": "Amuri Museum of Workers' Housing",
+   "facts": [
+    [
+     "1860-l.",
+     "construction of Amuri's wooden houses begins"
+    ],
+    [
+     "5 + 4",
+     "houses and outbuildings"
+    ],
+    [
+     "1882–1973",
+     "periods of the homes"
+    ],
+    [
+     "2024",
+     "protected in the town plan"
+    ]
+   ],
+   "who": [
+    [
+     "Run by",
+     "City of Tampere (museums)"
+    ],
+    [
+     "Café",
+     "Amurin Helmi"
+    ]
+   ],
+   "tl": [
+    [
+     "1860-l.",
+     "Construction of workers' housing in Amuri begins",
+     "vt"
+    ],
+    [
+     "1882",
+     "Period of the museum's oldest home",
+     "wiki"
+    ],
+    [
+     "1973",
+     "Period of the museum's newest home",
+     "wiki"
+    ],
+    [
+     "2024",
+     "The town plan protects the buildings and interiors",
+     "wiki"
+    ]
+   ],
+   "sections": [
+    {
+     "h": "A workers' district",
+     "p": "The wooden blocks of Amuri began to be built in the 1860s as the workforce of Tampere's factories grew rapidly. Of all the blocks, only this one has survived. It has five houses in their original places and four outbuildings.",
+     "s": [
+      "vt",
+      "wiki"
+     ]
+    },
+    {
+     "h": "A museum of homes",
+     "p": "The flats are furnished as workers' homes from different periods between 1882 and 1973, each with an imagined resident and life story. The block also has a public sauna, a bakery, a shoemaker's workshop, a general store and a stationery and haberdashery shop. The museum is open in summer, and the Amurin Helmi café is open all year round.",
+     "s": [
+      "vt",
+      "wiki"
+     ]
+    },
+    {
+     "h": "Protection",
+     "p": "The town plan approved in 2024 protects the block's buildings. They may not be demolished, and the regulations also apply to the interiors.",
+     "s": [
+      "wiki"
+     ]
+    }
+   ],
+   "gt": [
+    "The Amuri museum block from above, 1992",
+    "Amuri Museum of Workers' Housing – shared kitchen"
+   ]
+  }
  }
 }
