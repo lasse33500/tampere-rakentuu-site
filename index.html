@@ -328,12 +328,6 @@ function render(){
   // land outside the city in the selected year is greyed
   if(P.green&&!POP){ctx.fillStyle=GREEN.f;ctx.fill(P.green.f);ctx.fillStyle=GREEN.p;ctx.fill(P.green.p);}
   if(LCIMG&&LCIMG.complete&&!POP){ctx.imageSmoothingEnabled=true;ctx.drawImage(LCIMG,LC.x0,-LC.y1,LC.x1-LC.x0,LC.y1-LC.y0);}
-  // Kaupungin raja valittuna vuonna: alue, joka ei vielä kuulunut Tampereeseen, harmaannutetaan ja vuoden raja korostetaan
-  if(document.getElementById('lBorder').checked && YEAR<2026){
-    const out=new Path2D();out.addPath(P.border);for(const a of P.annex) if(a.y<=YEAR) out.addPath(a.p);
-    ctx.fillStyle='rgba(70,60,50,.38)'; ctx.fill(out,'evenodd');
-    ctx.strokeStyle='#a4472f'; ctx.lineWidth=2.4*px; ctx.setLineDash([8*px,5*px]); for(const a of P.annex) if(a.y<=YEAR) ctx.stroke(a.p); ctx.setLineDash([]);
-  }
   if(POP&&PAAVO){ for(const a of PAAVO.areas){const v=a.m[POP];ctx.fillStyle=v==null?'rgba(150,140,130,.25)':POPC[binOf(v)];ctx.globalAlpha=.92;ctx.fill(a.p);ctx.globalAlpha=1;}
     ctx.strokeStyle='rgba(255,250,240,.9)';ctx.lineWidth=1.4*px;for(const a of PAAVO.areas)ctx.stroke(a.p);}
   // district lines under water
@@ -368,6 +362,13 @@ function render(){
   }
   if(FO){const m=new Path2D();m.rect(-1e7,-1e7,2e7,2e7);for(const j of grpOf(sel))m.addPath(P.dist[j]);ctx.fillStyle='rgba(236,228,214,.62)';ctx.fill(m,'evenodd');ctx.strokeStyle='rgba(164,71,47,.55)';ctx.lineWidth=1.6*px;for(const j of grpOf(sel))ctx.stroke(P.dist[j]);}
   ctx.strokeStyle='#2b2420'; ctx.lineWidth=1.6*px; ctx.stroke(P.border);
+  // Kaupungin raja valittuna vuonna: alue, joka ei vielä kuulunut Tampereeseen, harmaannutetaan ja vuoden raja korostetaan
+  if(document.getElementById('lBorder').checked && YEAR<2026){
+    const out=new Path2D();out.addPath(P.border);for(const a of P.annex) if(a.y<=YEAR) out.addPath(a.p);
+    ctx.fillStyle='rgba(45,40,35,.55)'; ctx.fill(out,'evenodd');
+    // vain kaupungin ulkoraja: viiva leikataan ulkopuolisen alueen mukaan, jolloin liitosalueiden sisärajat eivät näy
+    ctx.save();ctx.clip(out,'evenodd');ctx.strokeStyle='#a4472f';ctx.lineWidth=7*px;for(const a of P.annex) if(a.y<=YEAR) ctx.stroke(a.p);ctx.restore();
+  }
   if(hov>=0&&hov!==sel){ctx.fillStyle='rgba(43,36,32,.06)';ctx.fill(P.dist[hov]);ctx.strokeStyle='#2b2420';ctx.lineWidth=1.6*px;ctx.stroke(P.dist[hov]);}
   if(HL.size){ctx.fillStyle='rgba(164,71,47,.08)';for(const i of HL)ctx.fill(P.dist[i]);ctx.strokeStyle='#a4472f';ctx.lineWidth=2*px;for(const i of HL)ctx.stroke(P.dist[i]);}
   if(sel>=0){ctx.strokeStyle='#a4472f';ctx.lineWidth=3.2*px;ctx.stroke(P.dist[sel]);}
@@ -377,10 +378,21 @@ function render(){
   drawStreetNames();
   const nb=drawNames();
   labels(nb);
+  drawBorderLabels();
   drawTPL();
   drawLM();
   drawArk();
 }
+function drawBorderLabels(){if(!document.getElementById('lBorder').checked||POP)return;const W2=cv.width/DPR;
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  const bb=[];const badge=(t,x,y,bg,fg,f,chk)=>{ctx.font=f;const w=ctx.measureText(t).width+20;const b=[x-w/2-4,y-17,x+w/2+4,y+17];if(chk&&bb.some(o=>b[0]<o[2]&&b[2]>o[0]&&b[1]<o[3]&&b[3]>o[1]))return;bb.push(b);ctx.fillStyle=bg;ctx.beginPath();ctx.roundRect(x-w/2,y-13,w,26,13);ctx.fill();ctx.fillStyle=fg;ctx.fillText(t,x,y+.5);};
+  if(YEAR>=2026){{const t=W2<600?'Kelaa aikaa taaksepäin':'Kelaa aikaa taaksepäin nähdäksesi kaupungin rajan';ctx.font="500 13px 'IBM Plex Sans',system-ui,sans-serif";badge(t,W2<600?W2/2:W2-80-(ctx.measureText(t).width+20)/2,W2<600?70:24,'rgba(31,26,20,.85)','#fff',"500 13px 'IBM Plex Sans',system-ui,sans-serif");}return;}
+  const bt=W2<600?`Raja vuonna ${YEAR}`:`Tampereen raja vuonna ${YEAR}`;ctx.font="600 14px 'IBM Plex Sans',system-ui,sans-serif";const bx=W2<600?W2/2:W2-80-(ctx.measureText(bt).width+20)/2;
+  badge(bt,bx,W2<600?70:24,'#a4472f','#fff',"600 14px 'IBM Plex Sans',system-ui,sans-serif");
+  // tulevat liitokset: nimi ja vuosi alueen keskelle
+  if(!P.annexC)P.annexC=DATA.base.annex.map(a=>{let best=null,ba=0;const R=typeof a.r==='string'?JSON.parse(a.r):a.r;for(const r of R){let x=r[0],y=r[1],x0=x,x1=x,y0=y,y1=y;for(let i=2;i<r.length;i+=2){x+=r[i];y+=r[i+1];x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y);}const ar=(x1-x0)*(y1-y0);if(ar>ba){ba=ar;best=[(x0+x1)/2,(y0+y1)/2];}}return {y:a.y,t:a.t,c:best,ar:ba};});
+  for(const a of P.annexC){if(a.y<=YEAR||!a.c||a.ar*T.k*T.k<6000)continue;const [sx,sy]=toScreen(a.c[0],a.c[1]);if(sx<0||sy<0||sx>W2||sy>cv.height/DPR)continue;
+    badge(`${a.t} liitetään ${a.y}`,sx,sy,'rgba(255,255,255,.92)','#3a332c',"500 12px 'IBM Plex Sans',system-ui,sans-serif",1);}}
 // Kadunnimet (Tampereen kaupungin katuosat, nimet nimistörekisteristä). Luokka 0 = pääväylä … 4 = tonttikatu.
 let KADUT=null;fetch('data/katunimet.json').then(r=>r.ok?r.json():null).then(d=>{if(!d)return;KADUT=d.map(([n,r,ls])=>({n,r,ls:ls.map(l=>{const o=[];let x=l[0],y=l[1];o.push(x,y);for(let i=2;i<l.length;i+=2){x+=l[i];y+=l[i+1];o.push(x,y);}return o;})}));draw();}).catch(()=>{});
 const KMIN=[.12,.16,.3,.45,.7];
