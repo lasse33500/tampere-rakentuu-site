@@ -268,7 +268,7 @@ const hit=document.createElement('canvas').getContext('2d');
 let W=0,H=0,DPR=1, T={k:.08,x:0,y:0};
 let mode='year', YEAR=2026, sel=-1, hov=-1;
 let DATA=null, P={};
-let THEMEDATA={}, TPL=null, TPSEL=-1;
+let THEMEDATA={}, TPL=null, TPSEL=-1, TLINES=null;
 let BSTORY={}, SB=-1, LOADED2=false, DKUVAT=null, HENK=null, MUUTOS={};
 let ARK=null, ASEL=new Set(), AHOV=-1, AQ='';
 let BL=[], BG={}, GS=150, HB=-1, BCODE=[], BLAB=[], BADDR=[], BSR=[];
@@ -410,6 +410,7 @@ function render(){
   labels(nb);
   drawSeutuNames(nb);
   drawBorderLabels();
+  drawTLines();
   drawTPL();
   drawLM();
   drawArk();
@@ -444,6 +445,15 @@ function drawStreetNames(){if(!KADUT||POP||!document.getElementById('lKadut').ch
       const hx=Math.abs(Math.cos(a))*tw/2+Math.abs(Math.sin(a))*7,hy=Math.abs(Math.sin(a))*tw/2+Math.abs(Math.cos(a))*7,b=[cx-hx,cy-hy,cx+hx,cy+hy];if(hit(b))continue;boxes.push(b);
       ctx.save();ctx.translate(cx,cy);ctx.rotate(a);ctx.lineWidth=3;ctx.strokeStyle='rgba(255,255,255,.9)';ctx.strokeText(st.n,0,0);ctx.fillStyle='#4f4b45';ctx.fillText(st.n,0,0);ctx.restore();
       if(++placed>=3)break;}}}
+function drawTLines(){if(!TLINES||VIEW!=='teema')return;
+  const segs=TLINES.filter(l=>l.y>2026||l.y<=YEAR);
+  for(const pass of [0,1])for(const l of segs){const fut=l.y>2026;ctx.beginPath();l.p.forEach((q,i)=>{const [x,y]=toScreen(q[0],q[1]);i?ctx.lineTo(x,y):ctx.moveTo(x,y);});
+    ctx.lineJoin='round';ctx.lineCap='round';
+    if(pass===0){if(fut)continue;ctx.setLineDash([]);ctx.lineWidth=7;ctx.strokeStyle='rgba(255,250,240,.9)';ctx.stroke();}
+    else{ctx.setLineDash(fut?[7,6]:[]);ctx.lineWidth=fut?3:4;ctx.strokeStyle=fut?'rgba(164,71,47,.85)':(l.y===YEAR?'#d9822b':'#a4472f');ctx.stroke();ctx.setLineDash([]);}}
+  const W2=cv.width/DPR,H2=cv.height/DPR,seen=new Set();ctx.font='600 11px Inter,system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+  for(const l of segs){if(seen.has(l.n)||l.p.length<4)continue;seen.add(l.n);const q=l.p[Math.floor(l.p.length/2)];const [x,y]=toScreen(q[0],q[1]);if(x<20||y<20||x>W2-20||y>H2-20)continue;const t=String(l.y),w=ctx.measureText(t).width+10;ctx.fillStyle=l.y>2026?'#fffaf0':'#a4472f';ctx.strokeStyle='#a4472f';ctx.lineWidth=1.5;ctx.beginPath();ctx.roundRect?ctx.roundRect(x-w/2,y-9,w,18,9):ctx.rect(x-w/2,y-9,w,18);ctx.fill();ctx.stroke();ctx.fillStyle=l.y>2026?'#a4472f':'#fffaf0';ctx.fillText(t,x,y+.5);}
+}
 function drawTPL(){if(!TPL||(VIEW!=='teema'&&VIEW!=='henk'))return;
   TPL.forEach((o,k)=>{const [sx,sy]=toScreen(o[1],o[2]);const on=k===TPSEL,r=on?13:10;ctx.beginPath();ctx.arc(sx,sy,r,0,7);ctx.fillStyle=on?'#1f1a14':'#a4472f';ctx.fill();ctx.lineWidth=2;ctx.strokeStyle='#fffaf0';ctx.stroke();ctx.fillStyle='#fffaf0';ctx.font='600 11px Inter,system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(k+1,sx,sy+.5);
     if(on){ctx.font='600 13px Inter,system-ui,sans-serif';ctx.textAlign='left';const w=ctx.measureText(o[0]).width;ctx.fillStyle='rgba(255,250,240,.95)';ctx.fillRect(sx+16,sy-11,w+12,22);ctx.strokeStyle='#1f1a14';ctx.lineWidth=1;ctx.strokeRect(sx+16,sy-11,w+12,22);ctx.fillStyle='#1f1a14';ctx.fillText(o[0],sx+22,sy+.5);}});
@@ -722,7 +732,7 @@ document.querySelectorAll('#nav a').forEach(a=>a.onclick=e=>{e.preventDefault();
 document.getElementById('srclink').onclick=e=>{e.preventDefault();showView('lahteet');};
 
 function showView(v,instant){
-  setNav(v); sel=-1; psel=-1; PLM=new Set(); HL=new Set(); DNAMES=null; TPL=null; TPSEL=-1; SB=-1; setWide(false); closeName();
+  setNav(v); sel=-1; psel=-1; PLM=new Set(); HL=new Set(); DNAMES=null; TPL=null; TPSEL=-1; TLINES=null; SB=-1; setWide(false); closeName();
   const ln=document.getElementById('lNames');
   if(v==='aika'){ ln.checked=false; setHash('aikakone'); side.innerHTML=aikaHTML(); home(!instant); }
   if(v==='alue'){ ln.checked=false; setHash('kaupunginosat'); side.innerHTML=subTabs('paikat')+alueIndexHTML(); }
@@ -1046,6 +1056,7 @@ const THEMES=[
  {id:'liitokset',n:'Kasvava kaupunki',d:'Miten Tampere laajeni alueliitoksin 1779–2025.',re:/liitetään|liitettiin|siirtyy tampereelle|alue lempäälästä/i},
  {id:'arkkitehtuuri',n:'Arkkitehtuuri',d:'Kirkot, stadionit ja kaavat sekä niiden suunnittelijat.',re:/kirkko|stadion|jäähalli|kaava|torni|arkkitehtuurikilpailu/i},
  {id:'pommi',n:'Pommitukset 1939–40',d:'Talvisodan ilmapommitukset ja tuhoutunut Kyttälä.',re:/pommit/i},
+ {id:'ratikka',n:'Ratikka 1907–2032',d:'Raitiotien pitkä tie aloitteesta 1907 ensimmäiseen ajoon 2021 ja jatkoihin Pirkkalaan ja Linnainmaalle.'},
  {id:'jatkosota',n:'Tampere jatkosodassa 1941–44',d:'Kotirintama: sotasairaalat, aseteollisuus, pula ja siirtolaiset. Pommituksia ei tullut.',re:/jatkosota|sotasairaala/i}
 ];
 function themeEvents(t){return allEvents().filter(e=>e.di>=0&&t.re&&t.re.test(e.t)).sort((a,b)=>a.y-b.y);}
@@ -1053,12 +1064,12 @@ function themeEvents(t){return allEvents().filter(e=>e.di>=0&&t.re&&t.re.test(e.
 function distAt(x,y){const ds=DATA.base.districts;for(let i=0;i<ds.length;i++){const b=ds[i].bb;if(x<b[0]||x>b[2]||y<b[1]||y>b[3])continue;if(hit.isPointInPath(P.dist[i],x,-y))return i;}return -1;}
 function openRichTheme(id,instant){
   const t=THEMEDATA[id], ds=DATA.base.districts; SB=-1; setWide(false); setNav('teema'); sel=-1; psel=-1; DNAMES=null; closeName(); setHash('teema-'+id);
-  TPL=t.places; TPSEL=-1;
+  TPL=t.places; TPSEL=-1; TLINES=t.lines||null;
   const keys=Object.keys(t.src), num=k=>keys.indexOf(k)+1, ref=k=>k&&t.src[k]?`<sup class="r"><a href="#src-${k}" data-ref="${k}">[${num(k)}]</a></sup>`:'';
   HL=new Set(); t.places.forEach(o=>{const i=distAt(o[1],o[2]);if(i>=0)HL.add(i);}); t.tl.forEach(e=>{if(e[2]){const i=ds.findIndex(d=>d.n===e[2]);if(i>=0)HL.add(i);}});
   document.getElementById('lNames').checked=false; document.getElementById('ngrp').style.display='none';
   stopPlay(); setYear(t.year||+String(t.tl[0][0]).slice(0,4));
-  let a=1e9,b=1e9,c=-1e9,e=-1e9;t.places.forEach(o=>{a=Math.min(a,o[1]);b=Math.min(b,o[2]);c=Math.max(c,o[1]);e=Math.max(e,o[2]);});fit([a-500,b-500,c+500,e+500],!instant,20);
+  let a=1e9,b=1e9,c=-1e9,e=-1e9;t.places.forEach(o=>{a=Math.min(a,o[1]);b=Math.min(b,o[2]);c=Math.max(c,o[1]);e=Math.max(e,o[2]);});fit([a-500,b-500,c+500,e+500],!instant,t.lines?70:20);
   const fd=d=>{const m=String(d).split('-');return m.length===3?`${+m[2]}.${+m[1]}.${m[0]}`:m.length===2?['tammikuu','helmikuu','maaliskuu','huhtikuu','toukokuu','kesäkuu','heinäkuu','elokuu','syyskuu','lokakuu','marraskuu','joulukuu'][+m[1]-1]+' '+m[0]:m[0];};
   const pk=n=>PEOPLE.findIndex(p=>p.n===n);
   const G=t.gallery||[];
@@ -1067,10 +1078,10 @@ function openRichTheme(id,instant){
   <h3>Paikat kartalla</h3><ol class="tpl">${t.places.map((o,k)=>`<li data-k="${k}"><i>${k+1}</i><div>${(()=>{const gi=G.findIndex(p=>p.p===k);return gi>=0?`<img src="${G[gi].f}" data-lb="${gi}" alt="">`:''})()}<b>${o[0]}</b> <small>${o[3]}</small><br><span style="font-size:13px">${o[4]}</span>${ref(o[5])}</div></li>`).join('')}</ol>
   <h3>Aikajana</h3><ul class="tl">${t.tl.map(([d,x,dn,sr])=>{const di=dn?ds.findIndex(z=>z.n===dn):-1;return `<li data-y="${String(d).slice(0,4)}"${di>=0?` data-di="${di}"`:''}><b>${fd(d)}</b> ${x}${ref(sr)}</li>`}).join('')}</ul>
   ${t.sections.map(x=>`<h3>${x.h}</h3><div class="story"><p>${x.p}${(x.s||[]).map(ref).join('')}</p></div>`).join('')}
-  <h3>Henkilöt</h3><div>${t.people.map(([n,y,r])=>{const k=pk(n);return `<span class="chip"${k>=0?` data-p="${k}"`:''} title="${r}">${n}${y?` <small>${y}</small>`:''}</span>`}).join('')}</div>
+  ${t.people.length?'<h3>Henkilöt</h3>':''}<div>${t.people.map(([n,y,r])=>{const k=pk(n);return `<span class="chip"${k>=0?` data-p="${k}"`:''} title="${r}">${n}${y?` <small>${y}</small>`:''}</span>`}).join('')}</div>
   <h3>Kaupunginosat</h3><div>${[...HL].map(i=>`<span class="chip has" data-i="${i}">${dname(ds[i])}</span>`).join('')}</div>
   <h3>Lähteet</h3><ol class="srcl">${keys.map(k=>`<li id="src-${k}"><a href="${t.src[k][1]}" target="_blank" rel="noopener">${t.src[k][0]}</a></li>`).join('')}</ol>
-  <p class="note">Kuvat: Finna, ${[...new Set(G.map(p=>p.org))].join(', ')} (CC BY 4.0), kuvaajat kuvateksteissä. Tekstit on kirjoitettu lähteiden tietojen pohjalta omin sanoin. Kapinaraitin ja tampere1918.fi:n tekstit ja kuvat ovat tekijöidensä, joten niihin linkitetään. Lue lisää: ${t.more.map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join(' · ')}</p>
+  <p class="note">Kuvat: Finna, ${[...new Set(G.map(p=>p.org))].join(', ')} (CC BY 4.0), kuvaajat kuvateksteissä. Tekstit on kirjoitettu lähteiden tietojen pohjalta omin sanoin.${id==='1918'?' Kapinaraitin ja tampere1918.fi:n tekstit ja kuvat ovat tekijöidensä, joten niihin linkitetään.':''}${t.lines?' Ratalinjat: Tampereen kaupunki, geodata.tampere.fi (CC BY 4.0). Yhtenäinen viiva = avattu, katkoviiva = rakenteilla tai suunnitteilla.':''} Lue lisää: ${t.more.map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join(' · ')}</p>
   <p style="margin-top:18px"><span class="chip" data-view="teema">← Kaikki teemat</span></p>`;
   wire();
   wireLB(G);
@@ -1237,7 +1248,7 @@ function teemaIndexHTML(){
 function openTheme(id,instant){
   if(THEMEDATA[id]){openRichTheme(id,instant);return;}
   const t=THEMES.find(x=>x.id===id); if(!t||t.soon){showView('teema',instant);return;}
-  setNav('teema'); sel=-1; psel=-1; DNAMES=null; setHash('teema-'+id);
+  setNav('teema'); sel=-1; psel=-1; DNAMES=null; TLINES=null; setHash('teema-'+id);
   const ev=themeEvents(t); HL=new Set(ev.flatMap(e=>e.dis));
   document.getElementById('lNames').checked=false; document.getElementById('ngrp').style.display='none';
   if(id==='liitokset'){document.getElementById('lBorder').checked=true;}
