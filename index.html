@@ -969,6 +969,13 @@ document.getElementById('brand').onclick=()=>showHome();
 // ---------- Henkilöt ----------
 const PRIO=['James Finlayson','Wilhelm von Nottbeck','Frenckell','Emil Aaltonen','Väinö Linna','Minna Canth','Kustaa III','Pietari Brahe','Lauri Viita','Hugo Simberg','Lambert Massart','Hugo Salmela','Lars Sonck'];
 const pri=n=>{const i=PRIO.findIndex(x=>n.includes(x));return i<0?99:i;};
+const AMAP={'Reima ja Raili Pietilä':['Reima Pietilä','Raili Pietilä']};
+const PCATS=[['perustajat','Kaupungin perustajat',['Kustaa III','Pietari Brahe']],
+ ['teoll','Teollisuus ja työ',['James Finlayson','Wilhelm von Nottbeck','Carl von Nottbeck','Wilhelm Fredrik von Nottbeck','Johan Christopher Frenckell','Emil Aaltonen','Maria Charlotta Hydén','Pehr Adrian Gadd']],
+ ['kult','Kulttuuri',['Väinö Linna','Minna Canth','Lauri Viita','Yrjö Jylhä','Hannu Salama','Hugo Simberg','Magnus Enckell','Jussi Hietanen']],
+ ['sota','1918, sodat ja politiikka',['Hugo Salmela','Verner Lehtimäki','Gunnar Melin','Eino Rahja','C. G. E. Mannerheim','Georgi Bulatsel','Aaro Pajari','Vladimir Lenin']],
+ ['ark','Arkkitehdit ja kaupunkisuunnittelijat',['Pentti Murole']],['muut','Muut',[]]];
+const pcat=p=>{for(const [id,,L] of PCATS)if(L.includes(p.n))return id;return (p.archs.length||/arkkiteh|kaava|kaupunkisuunnit/i.test(p.roles.join(' ')))?'ark':'muut';};
 function buildPeople(){
   const ds=DATA.base.districts, m=new Map(), AL=(HENK&&HENK.alias)||{};
   const distsFor=k=>ds.map((d,i)=>[d,i]).filter(([d])=>d.n===k||STORY_ALIAS[d.n]===k).map(([,i])=>i);
@@ -977,14 +984,15 @@ function buildPeople(){
   for(const [id,t] of Object.entries(THEMEDATA)) for(const [n,y,r] of (t.people||[])){add(n,y,r).th.add(id);}
   if(HENK) for(const [n,x] of Object.entries(HENK.p)){ if(!x.roles)continue; const p=add(n,'',null); x.roles.forEach(r=>{if(!p.roles.includes(r))p.roles.push(r);}); (x.pl||[]).forEach(o=>{const i=distAt(o[1],o[2]);if(i>=0)p.d.add(i);}); }
   PEOPLE=[...m.values()].map(p=>{const x=(HENK&&HENK.p[p.n])||{};const yrs=x.b?`${x.b}–${x.d||''}`:p.y;
-    let arch=-1;if(x.arch&&ARK)arch=ARK.arch.findIndex(a=>a.n===x.arch);const A=arch>=0?ARK.arch[arch]:null;
-    return {...p,d:[...p.d],k:[...p.k],th:[...p.th],slug:slug(p.n),yrs,bio:x.bio||(A&&A.bio)||'',img:x.img||(A&&A.img)||null,wiki:x.wiki||(A&&A.wiki)||'',lm:x.lm||[],arch,pl:x.pl||[],gal:x.gal||[],src:x.src||{}};})
+    const archs=ARK?(AMAP[p.n]||[x.arch||p.n]).map(n=>ARK.arch.findIndex(a=>a.n===n)).filter(i=>i>=0):[];const arch=archs.length?archs[0]:-1;const A=arch>=0?ARK.arch[arch]:null;
+    return {...p,d:[...p.d],k:[...p.k],th:[...p.th],slug:slug(p.n),yrs,bio:x.bio||(A&&A.bio)||'',img:x.img||(A&&A.img)||null,wiki:x.wiki||(A&&A.wiki)||'',lm:x.lm||[],arch,archs,pl:x.pl||[],gal:x.gal||[],src:x.src||{}};})
    .sort((a,b)=>pri(a.n)-pri(b.n)||(b.bio?1:0)-(a.bio?1:0)||(b.d.length+b.th.length)-(a.d.length+a.th.length)||a.n.localeCompare(b.n,'fi'));
 }
 function henkIndexHTML(){
   return `<div class="kick">Henkilöt</div><h2>Tampereen tekijät</h2>
   <p>${PEOPLE.length} henkilöä kaupunginosien tarinoista ja teemoista. Klikkaa henkilöä, niin kartalla korostuvat paikat, joihin hän jätti jälkensä.</p>
-  <div class="pgrid">${PEOPLE.map((p,k)=>`<div class="pcard" data-p="${k}">${p.img?`<img src="${p.img.f}" alt="" loading="lazy">`:'<div class="pimg0"></div>'}<div><b>${p.n}</b>${p.yrs?` <small>${p.yrs}</small>`:''}<br><small>${p.roles[0]||''}</small></div></div>`).join('')}</div>
+  ${PCATS.map(([id,t])=>{const L=PEOPLE.map((p,k)=>[p,k]).filter(([p])=>pcat(p)===id);if(!L.length)return '';
+    return `<h3>${t}</h3>${id==='ark'?`<p class="note" style="margin:-4px 0 8px">Tässä ovat suunnittelijat, joista on kirjoitettu tarina. Kaikki ${ARK?ARK.arch.length:''} arkkitehtia rakennuksineen löytyvät <a href="#arkkitehdit" data-view="ark">Arkkitehdit-hakemistosta →</a></p>`:''}<div class="pgrid">${L.map(([p,k])=>`<div class="pcard" data-p="${k}">${p.img?`<img src="${p.img.f}" alt="" loading="lazy">`:'<div class="pimg0"></div>'}<div><b>${p.n}</b>${p.yrs?` <small>${p.yrs}</small>`:''}<br><small>${p.roles[0]||''}</small></div></div>`).join('')}</div>`;}).join('')}
   <p class="note">Kuvat esittävät henkilöihin liittyviä paikkoja, eivät henkilöitä itseään. Elinvuodet: Wikidata.</p>`;
 }
 let PLM=new Set();
@@ -1003,7 +1011,7 @@ function openPerson(k,instant){
   ${p.bio?`<p style="margin-top:14px">${p.bio}</p>`:''}
   ${p.gal.length?`<div class="gal">${p.gal.map((g,j)=>`<img src="${g.f}" data-pg="${j}" alt="" title="${g.cap||g.t}">`).join('')}</div>`:''}
   <h3>Merkitys Tampereelle</h3><ul class="nlist" style="cursor:default">${p.roles.map(r=>`<li style="cursor:default">${r}</li>`).join('')}</ul>
-  ${p.arch>=0?`<p><span class="chip has" data-arc="${p.arch}">Arkkitehtina: ${ARK.arch[p.arch].c} kohdetta kartalla →</span></p>`:''}
+  ${p.archs.length?`<p><span class="chip has" data-arc="${p.archs.join(',')}">Katso ${p.archs.length>1?'heidän':'hänen'} kaikki ${p.archs.reduce((n,i)=>n+ARK.arch[i].c,0)} rakennustaan kartalla →</span></p>`:''}
   ${lmk.length?`<h3>Maamerkit</h3><div class="lmg">${lmk.map(i=>{const st=bStory(BL[i]);return `<div class="lmc" data-bk="${i}"><img src="${st.gallery[0].f}" alt="" loading="lazy"><b>${st.title}</b><small>${st.built||''}</small></div>`}).join('')}</div>`:''}
   ${p.pl.length?`<h3>Paikat kartalla</h3><ol class="tpl">${p.pl.map((o,j)=>`<li data-k="${j}"><i>${j+1}</i><div><b>${o[0]}</b> <small>${o[3]}</small><br><span style="font-size:13px">${o[4]}</span></div></li>`).join('')}</ol>`:''}
   ${p.th.length?`<h3>Teemat</h3><div>${p.th.map(id=>`<span class="chip has" data-t="${id}">${THEMEDATA[id].title} →</span>`).join('')}</div>`:''}
@@ -1012,7 +1020,7 @@ function openPerson(k,instant){
   <p class="note" style="margin-top:12px">${p.bio?'Esittely on kirjoitettu Wikipedian, Wikidatan ja sivuston muiden lähteiden pohjalta. ':''}Kuva esittää henkilöön liittyvää paikkaa.</p>
   <p style="margin-top:18px"><span class="chip" data-view="henk">← Kaikki henkilöt</span></p>`;
   wire(); const PG=[p.img,...p.gal].filter(Boolean); side.querySelectorAll('[data-plb]').forEach(x=>x.onclick=()=>openLB(PG,0)); side.querySelectorAll('[data-pg]').forEach(x=>x.onclick=()=>openLB(PG,+x.dataset.pg+(p.img?1:0))); side.querySelectorAll('.tpl li').forEach(li=>li.onclick=()=>selTPL(+li.dataset.k,true));
-  side.querySelectorAll('[data-arc]').forEach(c=>c.onclick=()=>{ASEL=new Set([+c.dataset.arc]);showView('ark');});
+  side.querySelectorAll('[data-arc]').forEach(c=>c.onclick=()=>{ASEL=new Set(c.dataset.arc.split(',').map(Number));showView('ark');});
   side.scrollTop=0; draw();
 }
 
@@ -1133,12 +1141,13 @@ function arkHTML(){
   const prof=one?`<div class="kick">Arkkitehti</div><h2>${one.n}</h2><p class="note" style="margin-top:2px">${one.b||'?'}–${one.d||''}${one.wiki?` · <a href="https://fi.wikipedia.org/wiki/${one.wiki}" target="_blank" rel="noopener">Wikipedia</a>`:''}</p>
     ${one.img?`<figure class="hero" data-alb="1" style="cursor:zoom-in"><img src="${one.img.f}" alt=""><figcaption><b>${one.img.cap||one.img.t}</b>${one.img.y&&!one.img.cap?' ('+one.img.y+')':''}<br>${credit(one.img)} · <a href="${one.img.url}" target="_blank" rel="noopener">Finna</a></figcaption></figure>`:''}
     ${one.bio?`<p style="margin-top:14px">${one.bio}</p><p class="note">Esittely on kirjoitettu suomenkielisen Wikipedian pohjalta. Teokset: Wikidata.</p>`:''}
+    ${(()=>{const ai=[...ASEL][0];const pk=PEOPLE?PEOPLE.findIndex(p=>p.archs.includes(ai)):-1;return pk>=0?`<p><span class="chip has" data-pk="${pk}">Lue tarina: ${PEOPLE[pk].n} →</span></p>`:'';})()}
     ${one.img&&one.img.lm?`<p><span class="chip has" data-lmk="${one.img.lm}">${(BSTORY[one.img.lm]||{}).title||''} →</span></p>`:''}`:'';
   return `${prof||`<div class="kick">Arkkitehdit</div><h2>Kuka suunnitteli Tampereen?</h2>`}
   ${one?'':`<p>${ARK.items.length} rakennusta ja ${ARK.arch.length} arkkitehtia. Valitse yksi tai useampi arkkitehti, niin hänen kohteensa korostuvat kartalla.</p>`}
   ${ASEL.size?`<div class="sbox" style="background:#fffaf0"><b>${its.length} kohdetta valituilla suunnittelijoilla</b> · <a href="#" id="aclr">Tyhjennä</a><ul class="nlist" style="margin-top:6px">${(ARKORD=new Map(),its.sort((a,b)=>(a[0].v||9999)-(b[0].v||9999))).map(([o,i],n)=>(ARKORD.set(i,n+1),`<li data-ai="${i}"><i class="anum">${n+1}</i><b>${o.n}</b> <small>· ${o.v||'vuosi ?'}${o.ad?' · '+o.ad:''}</small></li>`)).join('')}</ul></div>`:''}
   <input id="aq" placeholder="Etsi arkkitehtia nimellä" value="${AQ}" style="width:100%;font:inherit;padding:8px 10px;border:1px solid var(--rule);margin:14px 0 6px;background:#fffaf0">
-  <div class="alist">${list.map(([a,i])=>`<label class="arow${ASEL.has(i)?' on':''}"><input type="checkbox" data-ak="${i}" ${ASEL.has(i)?'checked':''}> <span>${a.n}${a.b?` <small>${a.b}–${a.d||''}</small>`:''}${a.bio?' <small title="esittely">●</small>':''}</span><small>${a.c}</small></label>`).join('')}</div>
+  <div class="alist">${list.map(([a,i])=>`<label class="arow${ASEL.has(i)?' on':''}"><input type="checkbox" data-ak="${i}" ${ASEL.has(i)?'checked':''}> <span>${a.n}${a.b?` <small>${a.b}–${a.d||''}</small>`:''}${a.bio?' <small title="esittely">●</small>':''}${PEOPLE&&PEOPLE.some(p=>p.archs.includes(i))?' <small title="tarina Henkilöissä" style="color:var(--brick)">tarina</small>':''}</span><small>${a.c}</small></label>`).join('')}</div>
   <p class="note" style="margin-top:12px">Lähde: Wikidata (CC0). Mukana ovat rakennukset, joille on merkitty arkkitehti ja sijainti. Lista ei ole täydellinen, ja sitä voi täydentää Wikidatassa.</p>`;}
 function wireArk(){
   const aq=document.getElementById('aq'); if(aq){aq.oninput=()=>{AQ=aq.value;const pos=aq.selectionStart;side.innerHTML=subTabs('ihmiset')+arkHTML();wire();wireArk();const n=document.getElementById('aq');n.focus();n.setSelectionRange(pos,pos);};}
@@ -1147,6 +1156,7 @@ function wireArk(){
   const cl=document.getElementById('aclr'); if(cl) cl.onclick=e=>{e.preventDefault();ASEL=new Set();showView('ark');};
   const one=ASEL.size===1?ARK.arch[[...ASEL][0]]:null;
   side.querySelectorAll('[data-alb]').forEach(x=>x.onclick=()=>openLB([one.img],0));
+  side.querySelectorAll('[data-pk]').forEach(x=>x.onclick=()=>openPerson(+x.dataset.pk));
   side.querySelectorAll('[data-lmk]').forEach(x=>x.onclick=()=>{const [a,y]=x.dataset.lmk.split('|');const k=BL.findIndex(o=>bAddr(o)===a&&String(o.y0)===y);if(k>=0)openBuilding(k);});
 }
 function arkFit(anim){const its=arkItems();if(!its.length)return;let a=1e9,b=1e9,c=-1e9,d=-1e9;its.forEach(([o])=>{a=Math.min(a,o.x);b=Math.min(b,o.y);c=Math.max(c,o.x);d=Math.max(d,o.y);});const p=Math.max(300,(c-a)*.15);fit([a-p,b-p,c+p,d+p],anim,30);}
