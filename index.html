@@ -146,9 +146,9 @@ sup.r a{color:var(--brick);text-decoration:none;font-size:10px;margin-left:1px}
 .hstats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.hstats div{background:var(--panel);border:1px solid var(--rule);padding:12px 14px;border-radius:10px}
 .hstats b{display:block;font-family:'IBM Plex Sans',system-ui,sans-serif;font-weight:600;letter-spacing:-.02em;font-size:28px;line-height:1.1;color:var(--brick)}.hstats span{font-size:12px;color:var(--muted)}
 .hgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
-#mhero{position:absolute;left:50%;bottom:64px;transform:translateX(-50%);z-index:6;width:min(440px,calc(100% - 24px));background:rgba(255,255,255,.94);backdrop-filter:blur(4px);border:1px solid var(--rule);border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.14);padding:16px 18px 16px;text-align:center}
-#mhero h2{font-family:'IBM Plex Sans',system-ui,sans-serif;font-weight:600;font-size:26px;letter-spacing:-.02em;margin:0 0 4px}#mhero p{margin:0 0 12px;font-size:14.5px;color:var(--muted)}
-#mhero .btn{background:var(--brick);color:#fff;border-color:var(--brick);font-size:15px;padding:9px 18px;font-weight:600}#mhero .x{position:absolute;top:4px;right:6px;border:0;background:none;font-size:20px;color:var(--muted);cursor:pointer;padding:4px 8px}
+#mhero{position:absolute;right:16px;bottom:20px;z-index:6;display:flex;align-items:center;gap:10px;max-width:calc(100% - 24px);background:rgba(255,255,255,.95);backdrop-filter:blur(4px);border:1px solid var(--rule);border-radius:999px;box-shadow:0 4px 16px rgba(0,0,0,.14);padding:6px 6px 6px 16px;white-space:nowrap}
+#mhero[hidden]{display:none}#mhero p{margin:0;font-size:14px;color:var(--ink);font-weight:500}
+#mhero .btn{background:var(--brick);color:#fff;border-color:var(--brick);font-size:14px;padding:6px 14px;font-weight:600;border-radius:999px}#mhero .x{border:0;background:none;font-size:18px;color:var(--muted);cursor:pointer;padding:2px 6px 2px 0}
 aside .hgrid{grid-template-columns:1fr;gap:10px}aside .hcard{flex-direction:row}aside .hci{width:112px;flex:none;aspect-ratio:auto;min-height:96px}aside .hct{padding:8px 10px}aside .hct b{font-size:15.5px}aside .hct p{font-size:13px;margin-bottom:3px}aside .hct small{font-size:10.5px}
 .homeside h3{margin-top:26px}
 .hcard{background:var(--panel);border:1px solid var(--rule);border-radius:10px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column}.hcard:hover,.hcard:focus{border-color:var(--brick);outline:none}
@@ -165,7 +165,7 @@ aside .hgrid{grid-template-columns:1fr;gap:10px}aside .hcard{flex-direction:row}
   #app,#app.wide{grid-template-columns:1fr;grid-template-rows:auto 44vh auto 1fr}
   #app.mapbig{grid-template-rows:auto 72vh auto 1fr}
   #app.homemap:not(.mapbig){grid-template-rows:auto 58vh auto 1fr}
-  #mhero{bottom:52px;padding:10px 12px 12px}#mhero h2{font-size:19px;margin-bottom:2px}#mhero p{font-size:13px;margin-bottom:8px}#mhero .btn{padding:7px 16px;font-size:14px}
+  #mhero{bottom:52px;right:auto;left:50%;transform:translateX(-50%)}#mhero p{font-size:13px}
   #zbig{display:block}
   footer{padding:6px 10px;gap:10px} #yr{font-size:24px;width:62px} #yrnote{display:none} footer .btn{padding:5px 9px}
   .legend{cursor:pointer} .legend:not(.open) .row,.legend:not(.open) .note{display:none} .legend .t{margin:0} .legend .t::after{content:" ▸";color:var(--muted)} .legend.open .t::after{content:" ▾"} .legend.open .t{margin-bottom:6px}
@@ -213,7 +213,7 @@ aside a{color:var(--brick)}
   </div></div>
   <div class="legend" id="legend"></div>
   <div class="ncard" id="ncard"></div>
-  <div id="mhero" hidden><button class="x" id="mhx" title="Sulje" aria-label="Sulje">×</button><h2>Tampere rakentuu</h2><p>Katso, miten kaupunki kasvoi 1800-luvulta tähän päivään, talo talolta.</p><button class="btn" id="mhplay">▶ Toista</button></div>
+  <div id="mhero" hidden><p>Katso kaupungin kasvu 1850–2026</p><button class="btn" id="mhplay">▶ Toista</button><button class="x" id="mhx" title="Sulje" aria-label="Sulje">×</button></div>
 </div>
 <aside id="side"></aside>
 <section id="home" hidden></section>
