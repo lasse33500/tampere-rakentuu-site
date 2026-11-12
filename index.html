@@ -704,7 +704,7 @@ function route(instant){
   if(h==='teemat'){showView('teema',instant);return;}
   if(h==='henkilot'){showView('henk',instant);return;}
   if(h==='lahteet'){showView('lahteet',instant);return;}
-  if(h==='arkkitehdit'){showView('ark',instant);return;}
+  if(h==='arkkitehdit'){ASEL=new Set();showView('ark',instant);return;}
   if(h==='maamerkit'){showView('lm',instant);return;}
   if(h.startsWith('arkkitehti-')&&ARK){const i=ARK.arch.findIndex(a=>a.slug===h.slice(11));if(i>=0){ASEL=new Set([i]);showView('ark',instant);return;}}
   if(h.startsWith('rakennus-')){const k=+h.slice(9);if(BL[k]){openBuilding(k,instant);return;}}
@@ -743,7 +743,7 @@ function wire(){
   side.querySelectorAll('[data-y]').forEach(li=>li.onclick=e=>{e.stopPropagation();stopPlay();setYear(li.dataset.y);const di=li.dataset.di;if(di!==undefined&&VIEW!=='alue'){const b=DATA.base.districts[+di].bb;fit([b[0]-600,b[1]-600,b[2]+600,b[3]+600]);}});
   side.querySelectorAll('[data-n]').forEach(li=>li.onclick=()=>{document.getElementById('lNames').checked=true;document.getElementById('ngrp').style.display='flex';openName(+li.dataset.n,true);});
   side.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{TAB=b.dataset.tab;renderTab();});
-  side.querySelectorAll('[data-view]').forEach(b=>b.onclick=e=>{e.preventDefault();showView(b.dataset.view);});
+  side.querySelectorAll('[data-view]').forEach(b=>b.onclick=e=>{e.preventDefault();if(b.dataset.view==='ark'){ASEL=new Set();AQ='';}showView(b.dataset.view);});
 }
 const dname=d=>d.n.replace(/\s*\([IVXL]+\)/,'');
 
