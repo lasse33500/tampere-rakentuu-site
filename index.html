@@ -226,7 +226,7 @@ const TOFF=new Set();
 const NG={as:['Asutus','#6b3f22'],pe:['Pellot ja niityt','#7f8f2e'],ve:['Vedet','#24708a'],ma:['Maasto','#857257'],ka:['Rakennettu ja kaupunki','#b23a1f'],ih:['Ihmiset','#7d4f8a']};
 let NAMES=null, NOFF=new Set(), nsel=-1, PAAVO=null, POP='', popBins=null;
 const PM={tih:['Asukastiheys','as/km²',0],kika:['Keski-ikä','v',0],mtu:['Asukkaiden mediaanitulot','€/v',0],korkea:['Korkeakoulutetut (18+)','%',1],vuokra:['Vuokralla asuvat taloudet','%',1],yksin:['Yhden hengen taloudet','%',1],lapset:['Lapset 0–15 v','%',1],yli65:['Yli 65-vuotiaat','%',1],tyott:['Työttömyysaste','%',1],kasvu:['Väestönmuutos 2013–2024','%',1]};
-const POPC=['#c590c0','#a875a3','#8c5b88','#71426d','#572953'];
+const POPC=['#f2dcef','#d3a6cd','#a8729f','#7a4673','#4b1f48'];
 const fmt=(v,d=0)=>v==null?'–':Number(v).toLocaleString('fi',{maximumFractionDigits:d});
 const C={land:'#efe6d4',outside:'#e2d9c6',water:'#a7c0c6',shore:'#7f9ea6',dist:'rgba(90,72,55,.55)',unk:'#cfc5b3'};
 
@@ -319,7 +319,7 @@ function render(){
     ctx.fillStyle='rgba(110,95,80,.22)'; ctx.fill(P.border);
     ctx.fillStyle=C.land; for(const a of P.annex) if(a.y<=YEAR) ctx.fill(a.p);
   }
-  if(POP&&PAAVO){ for(const a of PAAVO.areas){const v=a.m[POP];ctx.fillStyle=v==null?'rgba(150,140,130,.25)':POPC[binOf(v)];ctx.globalAlpha=.78;ctx.fill(a.p);ctx.globalAlpha=1;}
+  if(POP&&PAAVO){ for(const a of PAAVO.areas){const v=a.m[POP];ctx.fillStyle=v==null?'rgba(150,140,130,.25)':POPC[binOf(v)];ctx.globalAlpha=.92;ctx.fill(a.p);ctx.globalAlpha=1;}
     ctx.strokeStyle='rgba(255,250,240,.9)';ctx.lineWidth=1.4*px;for(const a of PAAVO.areas)ctx.stroke(a.p);}
   // district lines under water
   ctx.strokeStyle=C.dist; ctx.lineWidth=.9*px; P.dist.forEach(p=>ctx.stroke(p));
@@ -337,7 +337,7 @@ function render(){
   if(AE){AEY=aerYear(AE);const im=aerImg(AE.f);if(im.complete&&im.naturalWidth){const b=AE.bb,ix=AE.y.indexOf(AEY);ctx.drawImage(im,0,ix*AE.h,AE.w,AE.h,b[0],-b[3],b[2]-b[0],b[3]-b[1]);}}
   for(const b of (FO?focusBld(sel):P.bld)){
     if(b.y===0){ if(!unk&&VIEW!=='ark') continue; ctx.fillStyle=VIEW==='ark'?'#d6cdbd':C.unk; }
-    else { if(b.y>YEAR) break; if(TOFF.has(b.c)&&mode==='type'&&!POP) continue; ctx.fillStyle = VIEW==='ark'?'#d6cdbd':POP?'rgba(43,36,32,.42)':(mode==='year'?decColor(b.y):TYPES[b.c][1]); }
+    else { if(b.y>YEAR) break; if(TOFF.has(b.c)&&mode==='type'&&!POP) continue; ctx.fillStyle = VIEW==='ark'?'#d6cdbd':POP?'rgba(43,36,32,.22)':(mode==='year'?decColor(b.y):TYPES[b.c][1]); }
     if(AEY){ctx.strokeStyle=ctx.fillStyle;ctx.lineWidth=1.6*px;ctx.stroke(b.p);} else ctx.fill(b.p);
   }
   if(SB>=0){const o=BL[SB];if(!o.p)o.p=ringsToPath(o.r);ctx.strokeStyle='#a4472f';ctx.lineWidth=4*px;ctx.stroke(o.p);ctx.strokeStyle='#fffaf0';ctx.lineWidth=1.5*px;ctx.stroke(o.p);}
@@ -478,20 +478,20 @@ function stopPlay(){if(timer){clearInterval(timer);timer=null;document.getElemen
 document.getElementById('play').onclick=()=>{if(timer){stopPlay();return;}let y=YEAR>=2026?1850:YEAR;document.getElementById('play').textContent='❚❚ Tauko';
   timer=setInterval(()=>{y+=y<1900?5:1;if(y>=2026){setYear(2026);stopPlay();return;}setYear(y);},120);};
 
-function binOf(v){const b=popBins;let i=0;while(i<4&&v>b[i])i++;return i;}
-// Luokkarajat: selkeät, pyöreät ja riittävän leveät välit (ei kvantiileja, jotka tuottivat 40–41-tyyppisiä kapeita luokkia).
+function binOf(v){const b=popBins;let i=0;while(i<4&&v>=b[i])i++;return i;}
+// Luokkarajat: kiinteät, pyöreät luokat tilastojulkaisujen tapaan (esim. ikä 35–39, 40–44 v; osuudet 10 %-yksikön välein).
+// Rajat on valittu niin, että Tampereen postinumeroalueet jakautuvat useaan luokkaan. Alaraja kuuluu luokkaan.
+const POPFIX={tih:[500,1000,2500,5000],kika:[35,40,45,50],mtu:[23000,25000,27000,29000],korkea:[30,40,50,60],vuokra:[20,40,60,80],yksin:[30,40,50,60],lapset:[8,12,16,20],yli65:[10,15,20,25],tyott:[8,10,12,15],kasvu:[-5,0,10,25]};
 let popDec=0;
-function computeBins(){const vals=PAAVO.areas.map(a=>a.m[POP]).filter(v=>v!=null).sort((a,b)=>a-b);const q=f=>vals[Math.floor(f*(vals.length-1))],med=q(.5);
-  if(POP==='tih'){const S=[50,100,250,500,1000,2500,5000,10000,25000];let i=0;while(i<S.length-4&&S[i+2]<=med)i++;popBins=S.slice(i,i+4);popDec=0;return;}
-  const raw=Math.max((q(.9)-q(.1))/4,1e-9),m=Math.pow(10,Math.floor(Math.log10(raw))),st=[1,2,5,10].map(k=>k*m).find(v=>v>=raw)||10*m;
-  const m0=Math.floor(med/st)*st;popBins=[m0-st,m0,m0+st,m0+2*st].map(v=>+v.toFixed(6));popDec=st<1?1:0;}
+function computeBins(){popBins=POPFIX[POP];popDec=0;}
+function popLabel(i){const b=popBins,f=v=>fmt(v,0);if(POP==='kika')return i===0?'alle '+b[0]:i<4?b[i-1]+'–'+(b[i]-1):b[3]+' tai yli';return i===0?'alle '+f(b[0]):i<4?f(b[i-1])+'–'+f(b[i]):f(b[3])+' tai yli';}
 function popAt(sx,sy){if(!POP||!PAAVO)return null;const [wx,wy]=toWorld(sx,sy);for(const a of PAAVO.areas){const b=a.bb;if(wx<b[0]||wx>b[2]||wy<b[1]||wy>b[3])continue;if(hit.isPointInPath(a.p,wx,-wy))return a;}return null;}
 document.getElementById('pop').onchange=e=>{const v=e.target.value;if(v==='year'||v==='type'){mode=v;POP='';}else{POP=v;if(PAAVO)computeBins();}legend();draw();};
 function legend(){
   const el=document.getElementById('legend');
   if(VIEW==='ark'){el.innerHTML=`<div class="t">Arkkitehdit</div><div class="row"><span><i style="background:#b4452a;outline:1px solid #3a1a10"></i>valittujen arkkitehtien rakennukset</span><span><i style="background:#d6cdbd"></i>muut rakennukset</span></div>`;return;}
   if(POP&&PAAVO){const [n,u,d]=PM[POP],b=popBins;const lo=[PAAVO.areas.reduce((m,a)=>a.m[POP]!=null?Math.min(m,a.m[POP]):m,1e9),...b];
-    el.innerHTML=`<div class="t">${n} (${u}), postinumeroalueittain ${PAAVO.stat}</div><div class="row">`+POPC.map((c,i)=>`<span><i style="background:${c}"></i>${i===0?'alle '+fmt(b[0],popDec):i<4?fmt(b[i-1],popDec)+'–'+fmt(b[i],popDec):'yli '+fmt(b[3],popDec)}</span>`).join('')+`</div><div class="note" style="margin-top:4px">Lähde: Tilastokeskus, Paavo ${PAAVO.ed} (CC BY 4.0). Rakennukset tummennettu.</div>`;return;}
+    el.innerHTML=`<div class="t">${n} (${u}), postinumeroalueittain ${PAAVO.stat}</div><div class="row">`+POPC.map((c,i)=>`<span><i style="background:${c}"></i>${popLabel(i)}</span>`).join('')+`</div><div class="note" style="margin-top:4px">Lähde: Tilastokeskus, Paavo ${PAAVO.ed} (CC BY 4.0). Rakennukset tummennettu.</div>`;return;}
   if(mode==='year') el.innerHTML='<div class="t">Valmistumisaika <span class="note" style="font-weight:400">· tummempi = vanhempi</span></div><div class="row">'+DEC.map(([d,c,l])=>`<span><i style="background:${c}"></i>${l}</span>`).join('')+'</div>';
   else { const G=[...MGRP,['T','Talous-, sauna- ja muut',GCOL.T,['T']]];
     el.innerHTML='<div class="t">Käyttötarkoitus <span class="note" style="font-weight:400">· klikkaa piilottaaksesi</span></div><div class="row">'+G.map(([g,n,c,ks])=>`<span data-tg="${g}" style="cursor:pointer;${ks.every(k=>TOFF.has(k))?'opacity:.35;text-decoration:line-through':''}"><i style="background:${c}"></i>${n}</span>`).join('')+'</div>';
