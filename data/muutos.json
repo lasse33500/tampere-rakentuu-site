@@ -2107,5 +2107,159 @@
     "https://ekstrat.tampere.fi/ytoteto/aka/nahtavillaolevat/8330/selvitykset/rakhistoriaselv_rt_rakennuksista.pdf"
    ]
   }
+ },
+ "Hakametsä": {
+  "lede": "Hakametsä oli vielä 1800-luvulla metsää. 1900-luvun alkuun mennessä metsää oli raivattu niityiksi ja pelloiksi, ja läheisten tiilitehtaiden liepeille syntyi pientä asutusta. Alue siirtyi Tampereelle Messukylän liitoksessa 1947, ja kaupunginosan asemakaava laadittiin 1951. Pellon laitaan avattiin 1965 Suomen ensimmäinen jäähalli jääkiekon MM-kisoja varten (halli on nykyisin tilastoissa Kissanmaan puolella). Itse Hakametsän pellot rakennettiin vasta 1980-luvulla, enimmäkseen rivi- ja omakotitaloiksi.",
+  "kk": [
+   [
+    1855,
+    "Kartalla alue on vielä metsää"
+   ],
+   [
+    1912,
+    "Metsää on raivattu niityiksi ja pelloiksi"
+   ],
+   [
+    "1930-l.",
+    "Lähistöllä toimii neljä tiilitehdasta"
+   ],
+   [
+    1947,
+    "Liitetään Tampereeseen Messukylän mukana"
+   ],
+   [
+    1951,
+    "Hakametsän asemakaava"
+   ],
+   [
+    1965,
+    "Jäähalli avataan MM-kisoja varten"
+   ],
+   [
+    1975,
+    "Hervannan valtaväylä avataan"
+   ],
+   [
+    "1980-l.",
+    "Pelloille rakennetaan rivi- ja omakotitaloja"
+   ],
+   [
+    1995,
+    "Harjoitushalli Hakametsä 3 valmistuu"
+   ]
+  ],
+  "pair": [
+   {
+    "f": "img/fab3577e02.jpg",
+    "t": "Hakametsän jäähalli rakennusvaiheessa",
+    "y": "1964",
+    "a": "Veikko Lintinen",
+    "org": "Vapriikin kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fwww.profium.com%252Farchive%252FArchivedObject-6B6E39E4-0B5F-E916-EB3A-9BF00809D4F0",
+    "cap": "Jäähalli rakenteilla Hakametsän pellolla 1964"
+   },
+   {
+    "f": "img/844131bbaf.jpg",
+    "t": "Hakametsä",
+    "y": "2022",
+    "a": "Saarni Säilynoja",
+    "org": "Vapriikin kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fwww.profium.com%252Farchive%252FArchivedObject-84148155-0E95-6BF1-0CD6-B05B1EEB6A3C",
+    "cap": "Hakametsän asuinalue 2022"
+   }
+  ],
+  "src": {
+   "s0": [
+    "Tampereen kaupunki: Hakametsän kaupunkikuva- ja kulttuuriympäristöselvitys (kaava 8792)",
+    "https://www.tampere.fi/sites/default/files/2022-11/8792_luonnos_kaupunkikuva_kulttuuriymparistoselvitys_20220822.pdf"
+   ],
+   "s1": [
+    "Tampereen kaupunki: Hakametsän jäähallin rakennushistoriallinen selvitys 2015",
+    "https://www.tampere.fi/sites/default/files/2022-11/8792_luonnos_jaahallin_rakennushistoriaselvitys_20220822.pdf"
+   ],
+   "s2": [
+    "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
+    "https://georaster.tampere.fi/"
+   ]
+  }
+ },
+ "Turtola": {
+  "lede": "Turtola on vanha messukyläläinen talo, joka mainitaan vuoden 1540 maakirjassa. 1700-luvulla siitä tuli rustholli, ja 1773 tila jaettiin kahtia Turtolaksi ja Turtoseksi. Peltoja viljeltiin vielä 1900-luvun puolivälissä, kun Messukylä liitettiin Tampereeseen 1947. Ensimmäinen asemakaava vahvistettiin 1963. Vuonna 1970 kaavoitettiin Hervannan valtaväylä peltojen halki, ja väylän varteen varattiin tontteja liike- ja varastorakennuksille. Niistä kasvoi yksi Tampereen suurista kauppa-alueista, jonka ympärille on 1990-luvulta lähtien rakennettu myös asuntoja.",
+  "kk": [
+   [
+    1540,
+    "Turtola mainitaan Messukylän talona maakirjassa"
+   ],
+   [
+    1773,
+    "Tila jaetaan Turtolaksi ja Turtoseksi"
+   ],
+   [
+    1947,
+    "Liitetään Tampereeseen Messukylän mukana"
+   ],
+   [
+    1963,
+    "Ensimmäinen asemakaava"
+   ],
+   [
+    1970,
+    "Hervannan valtaväylän linjaus kaavoitetaan"
+   ],
+   [
+    1975,
+    "Hervannan valtaväylä avataan"
+   ],
+   [
+    1994,
+    "Uusi asuinalue kaavoitetaan kauppa-alueen viereen"
+   ],
+   [
+    1999,
+    "Citymarketin laajennus kaavoitetaan"
+   ]
+  ],
+  "pair": [
+   {
+    "f": "img/80f4f820c4.jpg",
+    "t": "Turtonen ja kylvökone",
+    "y": "1949",
+    "a": "Jussi Kangas",
+    "org": "Vapriikin kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fmuseosiiri.tampere.fi%253A8080%252FVALOKUVA%252Fcontent%252FSIR_EXEC%252Fimages%252Fprimary%252F2003092910%252F10648203614150.jpg",
+    "cap": "Turtosen tilan peltoa kylvetään 1949"
+   },
+   {
+    "f": "img/36e220feba.jpg",
+    "t": "Turtola",
+    "y": "2022",
+    "a": "Saarni Säilynoja",
+    "org": "Vapriikin kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fwww.profium.com%252Farchive%252FArchivedObject-8D54931F-5705-6C0D-BFB8-C75724967E41",
+    "cap": "Turtolan kauppa-alue 2022"
+   }
+  ],
+  "src": {
+   "s0": [
+    "Wikipedia (englanti): Turtola – mainita 1540, jako 1773, kaava 1963",
+    "https://en.wikipedia.org/wiki/Turtola,_Tampere"
+   ],
+   "s1": [
+    "Tampereen kaupunki: Turtolan kaava-alueen historia (kaava 7944, liite 4)",
+    "https://ekstrat.tampere.fi/ytoteto/aka/nahtavillaolevat/7944/7944liite4.pdf"
+   ],
+   "s2": [
+    "Tampereen kaupunki: Hakametsän kulttuuriympäristöselvitys – Hervannan valtaväylä 1975",
+    "https://www.tampere.fi/sites/default/files/2022-11/8792_luonnos_kaupunkikuva_kulttuuriymparistoselvitys_20220822.pdf"
+   ],
+   "s3": [
+    "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
+    "https://georaster.tampere.fi/"
+   ]
+  }
  }
 }
