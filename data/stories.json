@@ -601,22 +601,22 @@
   ]
  },
  "Tampella (IX)": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Veturien, turbiinien ja pellavan kaupunginosa. Pienestä masuunista kasvoi tuhansia työllistänyt teollisuusyhtiö, jonka verstaassa toimii nyt museokeskus Vapriikki.",
   "sections": [
    {
     "h": "Masuunista monialayhtiöksi",
-    "p": "Tampellan tarina alkoi 1844 pienestä masuunista. Ensimmäinen pellava- ja kutomotehdas rakennettiin kosken rantaan 1856, ja 1861 alueen kone- ja pellavatehtaat yhdistettiin yhdeksi yhtiöksi, Tampereen Pellava- ja Rauta-Teollisuus Oy:ksi. Nimi lyhennettiin myöhemmin Tampellaksi. Yhtiö valmisti vetureita, turbiineja, paperikoneita ja damastipellavaa. Tehtaan kelloportti on vuodelta 1891."
+    "p": "Tampellan juuret ovat 1840-luvulla kosken itärannalle perustetussa masuunissa. Ensimmäinen pellava- ja kutomotehdas rakennettiin kosken rantaan 1856, ja 1861 pellavatehdas ja konepaja yhdistettiin yhdeksi yhtiöksi, Tampereen Pellava- ja Rautateollisuus Oy:ksi. Nimi lyhennettiin myöhemmin Tampellaksi. Yhtiö valmisti muun muassa pellavakankaita, paperikoneita, höyry- ja dieselvetureita ja turbiineja."
    },
    {
     "h": "Verstaasta museoksi",
-    "p": "Teollinen toiminta päättyi 1990-luvun alussa. Vuonna 1996 alaverstaan halleihin avattiin museokeskus Vapriikki. Halleista vanhimmat ovat 1880-luvulta ja suurin, satametrinen halli 1910–1920-luvuilta. Johtajien asuinalue Herrainmäki oli suljettu yleisöltä vuoteen 1991. Kaupunginosan nimi oli Naistenlahti vuoteen 2002 asti. Alueen 104-metrinen savupiippu on kaupungin korkein."
+    "p": "Tehtaat pysyivät teollisessa käytössä 1990-luvun alkuun. Vuonna 1996 alaverstaan halleihin avattiin museokeskus Vapriikki, ja alueella toimii myös Pirkanmaan käräjäoikeus. Nykyiset tehdasrakennukset ovat pääosin 1800-luvun lopulta. Johtajien asuinalue Herrainmäki oli suljettu yleisöltä vuoteen 1991. Tampellan kaupunginosaan kuuluvat myös Naistenlahti ja Armonkallio. Naistenlahden nimen kerrotaan tulevan naisista, jotka soutivat Teiskosta Messukylän kirkkoon ja nousivat maihin täällä."
    }
   ],
   "tl": [
    [
-    1844,
-    "Pieni masuuni"
+    "1840-l.",
+    "Masuuni kosken itärannalle"
    ],
    [
     1856,
@@ -624,11 +624,11 @@
    ],
    [
     1861,
-    "Kone- ja pellavatehtaat yhdistyvät"
+    "Pellavatehdas ja konepaja yhdistyvät"
    ],
    [
-    1891,
-    "Kelloportti"
+    1888,
+    "Naistenlahti liitetään Tampereeseen"
    ],
    [
     1991,
@@ -637,10 +637,6 @@
    [
     1996,
     "Museokeskus Vapriikki avataan"
-   ],
-   [
-    2002,
-    "Naistenlahti saa nimen Tampella"
    ]
   ],
   "people": [],
@@ -654,16 +650,20 @@
     "https://tampere.fi/en/information-region/tampere-city-centre"
    ],
    [
-    "Visit Tampere: Teollisuusperintö",
-    "https://visittampere.fi/en/articles/industrial-heritage/"
-   ],
-   [
     "Vapriikki: Museokeskus",
     "https://www.vapriikki.fi/en/the-museum/museum-centre"
    ],
    [
     "Vapriikki 30 vuotta (STT)",
     "https://www.sttinfo.fi/tiedote/72477579/yli-35-miljoonaa-kavijaa-ja-200-nayttelya-vapriikki-juhlii-30-vuotista-taivaltaan?lang=fi"
+   ],
+   [
+    "Wikipedia (englanti): Tampella",
+    "https://en.wikipedia.org/wiki/Tampella"
+   ],
+   [
+    "Tampereen kaupunki: Tampellan kanta-alueen asemakaavaselostus 7300",
+    "https://kartat.tampere.fi/www/arkisto/kaava_seloste/007300.pdf"
    ]
   ]
  },
@@ -1699,26 +1699,26 @@
   ]
  },
  "Lielahti": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Keskiaikainen kylä, Nottbeckien kartano ja sellutehdas. Teollisuusalueelle on nyt rakenteilla uusi Hiedanranta.",
   "sections": [
    {
     "h": "Kylästä kartanoksi",
-    "p": "Lielahden kylästä on säilynyt maininta vuodelta 1540, ja kylässä oli silloin seitsemän taloa. Kylän taloista muodostettiin 1680-luvulla ratsutila, joka oli 1700-luvulla Tollet-suvun pääkartano. Finlaysonin Wilhelm von Nottbeck osti tilan 1872. Hänen poikansa Wilhelm Fredrik von Nottbeck kehitti siitä 1890-luvulla suurtilan ja rakennutti uuden päärakennuksen. Kartanoa alettiin kutsua Lielahden kartanoksi. Suvun kappeli ja hautausmaa ovat vuodelta 1885."
+    "p": "Lielahden kylä syntyi keskiajan lopulla, ja 1560-luvulla siinä oli kuusi taloa. Kylän taloista muodostettiin 1680-luvulla ratsutila. Finlaysonin Wilhelm von Nottbeck osti tilan 1872. Hänen poikansa Wilhelm Fredrik von Nottbeck kehitti siitä 1880- ja 1890-luvuilla suurtilan, jonka päärakennus valmistui 1893. Tilalle rakennettiin myös oma rautatie Tampere–Pori-radalle. Kartanoa alettiin kutsua Lielahden kartanoksi. Suvun kappeli ja hautausmaa ovat vuodelta 1885."
    },
    {
     "h": "Sellua ja rautatietä",
-    "p": "1910-luvulta alkaen Hiedanranta oli puunjalostusteollisuuden aluetta, ja sellutehtaan haju tuli tutuksi koko Länsi-Tampereelle. Thure Hällströmin suunnittelema punatiilinen Lielahden asemarakennus valmistui 1927. Lielahti liitettiin Tampereeseen Ylöjärvestä 1950. Nyt suljetun tehdasalueen paikalle rakennetaan Hiedanrannan kaupunginosaa."
+    "p": "J. W. Enqvist perusti kartanon talouspihalle sellutehtaan 1913, ja sen jälkeen Hiedanranta oli puunjalostusteollisuuden aluetta. Sellutehtaan haju tuli tutuksi koko Länsi-Tampereelle. Thure Hällströmin suunnittelema punatiilinen Lielahden asemarakennus valmistui 1927. Lielahti liitettiin Tampereeseen Ylöjärveltä 1950. Kaupunki osti tehdasalueen 2015, ja sen paikalle rakennetaan Hiedanrannan kaupunginosaa."
    }
   ],
   "tl": [
    [
-    1540,
-    "Lielahden kylä, 7 taloa"
+    "1560-l.",
+    "Lielahden kylässä kuusi taloa"
    ],
    [
-    1680,
-    "Ratsutila (1680-luku)"
+    "1680-l.",
+    "Ratsutila"
    ],
    [
     1872,
@@ -1729,12 +1729,24 @@
     "Nottbeckien kappeli"
    ],
    [
+    1893,
+    "Kartanon päärakennus"
+   ],
+   [
+    1913,
+    "Sellutehdas perustetaan"
+   ],
+   [
     1927,
     "Lielahden asemarakennus"
    ],
    [
     1950,
     "Liitetään Tampereeseen Ylöjärveltä"
+   ],
+   [
+    2015,
+    "Kaupunki ostaa tehdasalueen"
    ]
   ],
   "people": [
@@ -2131,18 +2143,22 @@
   ]
  },
  "Hatanpää (XXII)": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Kartano, jonka maat ulottuivat Härmälästä Nekalaan. Sen kaupat muuttivat Tampereen etelärajan.",
   "sections": [
    {
     "h": "Kartano kaupungille",
-    "p": "Hatanpään kartano perustettiin 1690-luvulla, ja sen maat ulottuivat Härmälästä Sääksjärvelle ja Nekalaan. Kartano omisti myös Kyttälän ja Tammelan maat, kunnes kaupunki osti ne 1876. Agronomi Idman tarjosi kartanoa kaupungille 1913, ja kaupunki päätti ostaa sen maineen. Alue liitettiin Tampereeseen hallinnollisesti 1920, ja liitos toi kaupunkiin 18,5 neliökilometriä ja 459 asukasta. Kartanon puiston viereen perustettiin 1970-luvulla arboretum ja ruusutarha."
+    "p": "Hatanpään kylästä muodostettiin 1690-luvulla ratsutila, ja 1698 tilat yhdistettiin kartanoksi. Kartanon maat ulottuivat Härmälästä Sääksjärvelle ja Nekalaan, ja se omisti myös Kyttälän ja Tammelan maat, kunnes kaupunki osti ne 1876. Idmanin suku omisti kartanon 1825 alkaen. Vuonna 1913 agronomi Frederik Idman myi koko 1 459 hehtaarin kartanoalueen Tampereen kaupungille. Alue liitettiin Tampereeseen hallinnollisesti 1920, ja liitos toi kaupunkiin 18,5 neliökilometriä ja 459 asukasta. Kartanon päärakennus kunnostettiin 1968–1970 kaupunginmuseon käyttöön, ja puistoa laajennettiin 1970-luvulla, jolloin syntyi myös arboretum."
    }
   ],
   "tl": [
    [
-    1690,
-    "Kartano perustetaan (1690-luku)"
+    1698,
+    "Tilat yhdistetään kartanoksi"
+   ],
+   [
+    1825,
+    "Idmanin suku omistajaksi"
    ],
    [
     1876,
@@ -2158,7 +2174,7 @@
    ],
    [
     1970,
-    "Arboretum (1970-luku)"
+    "Puistoa laajennetaan, arboretum (1970-luku)"
    ]
   ],
   "people": [],
@@ -2167,16 +2183,16 @@
   ],
   "src": [
    [
-    "Wikipedia: Hatanpää",
-    "https://EN.wikipedia.com/wiki/Hatanp%C3%A4%C3%A4"
+    "Wikipedia (englanti): Hatanpää",
+    "https://en.wikipedia.org/wiki/Hatanp%C3%A4%C3%A4"
    ],
    [
-    "Tampereen kaupunki: rakennushistoriaselvitys 9031",
-    "https://tampere.fi/sites/default/files/2025-01/9031_rakennushistoriaselvitys_20231114.pdf"
+    "Tampereen kaupunki: Idmanin huvilan rakennushistoriaselvitys 2008",
+    "https://tampere.fi/sites/default/files/2024-11/2008-Rakennushistoriaselvitys-Idmanin-huvila.pdf"
    ],
    [
-    "Wikipedia: Hatanpää Arboretum",
-    "https://Www.Wikipedia.org/wiki/Hatanp%C3%A4%C3%A4_Park"
+    "Wikipedia (englanti): Hatanpää Manor",
+    "https://en.wikipedia.org/wiki/Hatanp%C3%A4%C3%A4_Manor"
    ],
    [
     "Tampereen kaupunki: Tampereen historia (alueliitokset)",
@@ -2185,7 +2201,7 @@
   ]
  },
  "Viinikka (XXIII)": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Pula-ajan puutalokaupunki: Viinikka ja Nekala kaavoitettiin työväelle, joka rakensi kotinsa itse.",
   "sections": [
    {
@@ -2194,7 +2210,7 @@
    },
    {
     "h": "Vuokratontit työväelle",
-    "p": "Kun kaupunki oli ostanut Hatanpään 1913, Viinikasta osoitettiin 1914 ensimmäiset maapalstat työväestön vuokratonteiksi. Rakentaminen pääsi vauhtiin 1920-luvulla. Viinikka rakennettiin pääosin 1914–1924 ja Nekala 1923–1939. Alueet kaavoitettiin alusta asti suunnitelmallisesti, mutta asemakaavat vahvistettiin vasta 1936–1954. Viinikan kirkko valmistui puutalojen keskelle 1932 Yrjö Waskisen suunnittelemana, ja sen 50-metrinen torni näkyy kauas etelään. Viinikka-Nekalan pientaloalue on valtakunnallisesti arvokas kulttuuriympäristö."
+    "p": "Kaupunki osti Hatanpään kartanon 1913, ja kauppa tuli täysin voimaan 1920. Viinikasta osoitettiin jo 1914 ensimmäiset maapalstat työväestön vuokratonteiksi, ja rakentaminen pääsi vauhtiin 1920-luvulla. Alueen länsiosa oli rakennettu 1930-luvun loppuun mennessä. Alueet kaavoitettiin alusta asti suunnitelmallisesti, mutta asemakaavat vahvistettiin vasta 1936–1954. Viinikan kirkko valmistui puutalojen keskelle 1932 Yrjö Waskisen suunnittelemana, ja sen korkea torni näkyy kauas. Viinikan ja Nekalan pientaloalueet ovat valtakunnallisesti arvokas rakennettu kulttuuriympäristö."
    }
   ],
   "tl": [
@@ -2203,12 +2219,16 @@
     "Otava, Nekala ja Viinikka -tilat"
    ],
    [
+    1913,
+    "Kaupunki ostaa Hatanpään kartanon"
+   ],
+   [
     1914,
     "Ensimmäiset vuokratontit"
    ],
    [
-    1923,
-    "Nekalan rakentaminen alkaa"
+    "1920-l.",
+    "Rakentaminen vauhtiin"
    ],
    [
     1932,
