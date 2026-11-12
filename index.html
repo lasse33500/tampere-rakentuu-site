@@ -568,7 +568,7 @@ function m3Sync(){if(!M3||!M3.getLayer('bld'))return;const key=mode+'|'+[...TOFF
   if(key!==M3KEY){M3KEY=key;M3.getSource('bld').setData(m3Buildings());}
   const f=['all',['<=',['get','y'],YEAR]];const unk=document.getElementById('lUnk');if(!(unk&&unk.checked))f.push(['>',['get','y'],0]);const fs=JSON.stringify(f);if(fs!==M3.__f){M3.__f=fs;M3.setFilter('bld',f);}}
 function m3LoadLib(){return new Promise((ok,no)=>{if(window.maplibregl)return ok();const l=document.createElement('link');l.rel='stylesheet';l.href='lib/maplibre-gl.css';document.head.appendChild(l);
-  const sc=document.createElement('script');sc.src='lib/maplibre-gl-csp.js';sc.onload=()=>{maplibregl.setWorkerUrl('lib/maplibre-gl-csp-worker.js');maplibregl.addProtocol('trg',async p=>{if(!/\/0-255$/.test(p.url))return {data:new ArrayBuffer(0)};const r=await fetch('lib/noto-sans-0-255.pbf');return {data:await r.arrayBuffer()};});ok();};sc.onerror=no;document.head.appendChild(sc);});}
+  const sc=document.createElement('script');sc.src='lib/maplibre-gl-csp.js';sc.onload=()=>{maplibregl.setWorkerUrl('lib/maplibre-gl-csp-worker.js');maplibregl.addProtocol('trg',async p=>{if(!/\/0-255$/.test(p.url))return {data:new ArrayBuffer(0)};const t=await (await fetch('lib/noto-sans-0-255.b64.txt')).text();return {data:Uint8Array.from(atob(t.trim()),c=>c.charCodeAt(0)).buffer};});ok();};sc.onerror=no;document.head.appendChild(sc);});}
 async function m3Open(){M3ON=true;document.getElementById('z3d').classList.add('on');const el=document.getElementById('map3d');el.hidden=false;cv.style.visibility='hidden';
   ['zin','zout','zhome'].forEach(i=>document.getElementById(i).style.display='none');
   if(M3){M3.resize();m3Sync();return;}

@@ -117,5 +117,5 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 ---
-lib/noto-sans-0-255.pbf: Noto Sans Medium -kirjasimen merkit (glyphs), lähde github.com/protomaps/basemaps-assets.
+lib/noto-sans-0-255.b64.txt (base64): Noto Sans Medium -kirjasimen merkit (glyphs), lähde github.com/protomaps/basemaps-assets.
 Noto Sans (c) Google LLC, SIL Open Font License 1.1 (https://openfontlicense.org).
