@@ -479,14 +479,19 @@ document.getElementById('play').onclick=()=>{if(timer){stopPlay();return;}let y=
   timer=setInterval(()=>{y+=y<1900?5:1;if(y>=2026){setYear(2026);stopPlay();return;}setYear(y);},120);};
 
 function binOf(v){const b=popBins;let i=0;while(i<4&&v>b[i])i++;return i;}
-function computeBins(){const vals=PAAVO.areas.map(a=>a.m[POP]).filter(v=>v!=null).sort((a,b)=>a-b);popBins=[.2,.4,.6,.8].map(q=>vals[Math.floor(q*(vals.length-1))]);}
+// Luokkarajat: selkeät, pyöreät ja riittävän leveät välit (ei kvantiileja, jotka tuottivat 40–41-tyyppisiä kapeita luokkia).
+let popDec=0;
+function computeBins(){const vals=PAAVO.areas.map(a=>a.m[POP]).filter(v=>v!=null).sort((a,b)=>a-b);const q=f=>vals[Math.floor(f*(vals.length-1))],med=q(.5);
+  if(POP==='tih'){const S=[50,100,250,500,1000,2500,5000,10000,25000];let i=0;while(i<S.length-4&&S[i+2]<=med)i++;popBins=S.slice(i,i+4);popDec=0;return;}
+  const raw=Math.max((q(.9)-q(.1))/4,1e-9),m=Math.pow(10,Math.floor(Math.log10(raw))),st=[1,2,5,10].map(k=>k*m).find(v=>v>=raw)||10*m;
+  const m0=Math.floor(med/st)*st;popBins=[m0-st,m0,m0+st,m0+2*st].map(v=>+v.toFixed(6));popDec=st<1?1:0;}
 function popAt(sx,sy){if(!POP||!PAAVO)return null;const [wx,wy]=toWorld(sx,sy);for(const a of PAAVO.areas){const b=a.bb;if(wx<b[0]||wx>b[2]||wy<b[1]||wy>b[3])continue;if(hit.isPointInPath(a.p,wx,-wy))return a;}return null;}
 document.getElementById('pop').onchange=e=>{const v=e.target.value;if(v==='year'||v==='type'){mode=v;POP='';}else{POP=v;if(PAAVO)computeBins();}legend();draw();};
 function legend(){
   const el=document.getElementById('legend');
   if(VIEW==='ark'){el.innerHTML=`<div class="t">Arkkitehdit</div><div class="row"><span><i style="background:#b4452a;outline:1px solid #3a1a10"></i>valittujen arkkitehtien rakennukset</span><span><i style="background:#d6cdbd"></i>muut rakennukset</span></div>`;return;}
   if(POP&&PAAVO){const [n,u,d]=PM[POP],b=popBins;const lo=[PAAVO.areas.reduce((m,a)=>a.m[POP]!=null?Math.min(m,a.m[POP]):m,1e9),...b];
-    el.innerHTML=`<div class="t">${n} (${u}), postinumeroalueittain ${PAAVO.stat}</div><div class="row">`+POPC.map((c,i)=>`<span><i style="background:${c}"></i>${i<4?(i?fmt(b[i-1],d)+'–':'≤ ')+fmt(b[i],d):'> '+fmt(b[3],d)}</span>`).join('')+`</div><div class="note" style="margin-top:4px">Lähde: Tilastokeskus, Paavo ${PAAVO.ed} (CC BY 4.0). Rakennukset tummennettu.</div>`;return;}
+    el.innerHTML=`<div class="t">${n} (${u}), postinumeroalueittain ${PAAVO.stat}</div><div class="row">`+POPC.map((c,i)=>`<span><i style="background:${c}"></i>${i===0?'alle '+fmt(b[0],popDec):i<4?fmt(b[i-1],popDec)+'–'+fmt(b[i],popDec):'yli '+fmt(b[3],popDec)}</span>`).join('')+`</div><div class="note" style="margin-top:4px">Lähde: Tilastokeskus, Paavo ${PAAVO.ed} (CC BY 4.0). Rakennukset tummennettu.</div>`;return;}
   if(mode==='year') el.innerHTML='<div class="t">Valmistumisaika <span class="note" style="font-weight:400">· tummempi = vanhempi</span></div><div class="row">'+DEC.map(([d,c,l])=>`<span><i style="background:${c}"></i>${l}</span>`).join('')+'</div>';
   else { const G=[...MGRP,['T','Talous-, sauna- ja muut',GCOL.T,['T']]];
     el.innerHTML='<div class="t">Käyttötarkoitus <span class="note" style="font-weight:400">· klikkaa piilottaaksesi</span></div><div class="row">'+G.map(([g,n,c,ks])=>`<span data-tg="${g}" style="cursor:pointer;${ks.every(k=>TOFF.has(k))?'opacity:.35;text-decoration:line-through':''}"><i style="background:${c}"></i>${n}</span>`).join('')+'</div>';
