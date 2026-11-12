@@ -830,12 +830,12 @@
   ]
  },
  "Pyynikki": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Harju kahden järven välissä: laidun, huvittelupaikka, kilparata ja kesäteatteri.",
   "sections": [
    {
     "h": "Laitumelta näköalapaikaksi",
-    "p": "Pyynikki mainitaan asiakirjoissa 1540-luvulla, ja Pyynikin talo liitettiin Tammerkosken kartanoon 1650-luvulla. Alue oli aluksi yhteistä laidunta, mutta 1800-luvulta lähtien siitä tuli näköala- ja kokoontumispaikka. Harju suojeltiin jo 1830-luvulla, kun puiden kaataminen kiellettiin. Huvimaja rakennettiin 1840 ja ravintoloita 1864 ja 1866."
+    "p": "Pyynikki mainitaan asiakirjoissa 1540-luvulla, ja Pyynikin talo liitettiin Tammerkosken kartanoon 1650-luvulla. Alue oli aluksi yhteistä laidunta, mutta 1800-luvulta lähtien siitä tuli näköala- ja kokoontumispaikka. Harjulle rakennettiin huvimaja 1840 ja ravintoloita 1864 ja 1866."
    },
    {
     "h": "Tornit",
@@ -843,12 +843,12 @@
    },
    {
     "h": "Moottoripyöriä ja teatteria",
-    "p": "Pyynikin kesäteatteri aloitti Joselininniemessä 1948, ja vuodesta 1955 sen nimi on ollut Pyynikin kesäteatteri. Teatteri tunnetaan pyörivästä katsomostaan. Pyynikin katuradalla ajettiin 1962 ja 1963 moottoripyöräilyn MM-sarjan Suomen GP."
+    "p": "Pyynikin kesäteatteri aloitti Tampereen kesäteatterina Joselininniemessä 1948, ja vuodesta 1955 sen nimi on ollut Pyynikin kesäteatteri. Teatteri tunnetaan arkkitehti Reijo Ojasen suunnittelemasta pyörivästä katsomosta, joka valmistui 1959. Pyynikin katuradalla ajettiin 1962 ja 1963 moottoripyöräilyn MM-sarjan Suomen GP."
    }
   ],
   "tl": [
    [
-    1540,
+    "1540-l.",
     "Ensimmäinen maininta"
    ],
    [
@@ -870,6 +870,10 @@
    [
     1948,
     "Kesäteatteri aloittaa"
+   ],
+   [
+    1959,
+    "Pyörivä katsomo valmistuu"
    ],
    [
     1962,
@@ -907,7 +911,7 @@
    ],
    [
     "Wikipedia: Pyynikki",
-    "https://en.wikipedia.com/wiki/Pyynikki"
+    "https://en.wikipedia.org/wiki/Pyynikki"
    ],
    [
     "Pyynikin näkötorni ja munkkikahvila: tornin historia",
@@ -916,12 +920,12 @@
   ]
  },
  "Pyynikinrinne (VII)": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Harjun rinteelle 1920–30-luvuilla rakentunut yhtenäinen ja suojeltu puutaloalue.",
   "sections": [
    {
     "h": "Sonckin kaava, Strömmerin talot",
-    "p": "Pyynikinrinteen suurin osa rakennettiin 1920- ja 1930-luvuilla Lars Sonckin asemakaavan mukaan, ja Bertel Strömmer suunnitteli monet sen taloista. Alue on pääosin suojeltua, yhtenäistä puurakennuskantaa, ja siellä sijaitsee Suomen suurin piispantalo."
+    "p": "Pyynikinrinteen suurin osa rakennettiin 1920- ja 1930-luvuilla Lars Sonckin asemakaavan mukaan, ja Bertel Strömmer suunnitteli monet sen taloista. Alue on pääosin suojeltua, yhtenäistä puurakennuskantaa, ja siellä sijaitsee Suomen suurin piispantalo. Ennen vuoden 1937 alueliitoksia Pyynikinrinne oli Tampereen läntisin osa."
    }
   ],
   "tl": [
@@ -951,16 +955,16 @@
   ]
  },
  "Lapinniemi": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Näsijärven niemi, jonka puuvillatehtaasta tuli kylpylä vuoden 1990 asuntomessuille.",
   "sections": [
    {
     "h": "Naistenlahti ja Lapinniemi",
-    "p": "Naistenlahti liitettiin Tampereeseen 1888 ja Käpylä 1915. Naistenlahden nimen kerrotaan tulevan naisista, jotka soutivat Teiskosta Messukylän kirkkoon ja nousivat maihin tässä lahdessa."
+    "p": "Naistenlahti liitettiin Tampereeseen 1888, ja Käpylä on kuulunut kaupunginosaan vuodesta 1915. Naistenlahden nimen kerrotaan tulevan naisista, jotka soutivat Teiskosta Messukylän kirkkoon ja nousivat maihin tässä lahdessa."
    },
    {
     "h": "Puuvillatehdas",
-    "p": "Tampereen Puuvillateollisuus Oy:n tehdas valmistui Lapinniemeen 1899. Siitä tuli osa Tampellaa 1934, ja tehdas toimi 1980-luvun puoliväliin. Birger Federleyn suunnittelema konttori valmistui 1924, ja Wivi Lönn suunnitteli 1912 talon tehtaan apulaisisännöitsijä Magnus Lavoniukselle. Vuoden 1990 asuntomessuilla tehtaan kehräämöön avattiin kylpylä ja asuntoja."
+    "p": "Tampereen Puuvillateollisuus Oy:n kehräämö valmistui Lapinniemeen 1899. Tehdas siirtyi Tampellalle 1934 ja toimi 1980-luvun puoliväliin. Birger Federleyn suunnittelema konttori valmistui 1924, ja Wivi Lönn suunnitteli 1912 kaksikerroksisen talon tehtaan apulaisisännöitsijä Magnus Lavoniukselle. Lapinniemessä pidettiin asuntomessut 1990, ja vanhaan tehtaaseen rakennettiin kylpylä."
    }
   ],
   "tl": [
@@ -970,7 +974,7 @@
    ],
    [
     1899,
-    "Puuvillatehdas valmistuu"
+    "Kehräämö valmistuu"
    ],
    [
     1912,
@@ -978,7 +982,7 @@
    ],
    [
     1915,
-    "Käpylä liitetään"
+    "Käpylä osaksi kaupunginosaa"
    ],
    [
     1924,
@@ -990,7 +994,7 @@
    ],
    [
     1990,
-    "Asuntomessut, kylpylä vanhaan kehräämöön"
+    "Asuntomessut, kylpylä vanhaan tehtaaseen"
    ]
   ],
   "people": [
@@ -1169,35 +1173,25 @@
   ]
  },
  "Petsamo (XXI)": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Kaupin rinteen puutaloalue, joka sai nimensä Tarton rauhassa Suomeen liitetystä Petsamosta.",
   "sections": [
    {
     "h": "Puutaloja ja vesitorneja",
-    "p": "Kaupunginosa on nimetty Petsamon mukaan, jonka Suomi sai Tarton rauhassa. Petsamo oli rakennettu 1940-lukuun mennessä, ja arkkitehti Jaakko Tähtinen suunnitteli sinne 1954 Ahdinkadun ja Omakadun talot. Alueella ovat Kaupin vanha sairaala-alue, Kaupin tähtitorni sekä vanha ja uusi vesitorni. Vuonna 1989 valmistunut Kekkosentie halkaisi siirtolapuutarhan ja koko pientaloalueen."
+    "p": "Vuonna 1920, kun Suomi sai Tarton rauhassa Petsamon, useat suuret tamperelaiset tehtaat alkoivat rakentaa työläisilleen asuntoja kaupungin koilliskulmaan. Alue tuntui niin kaukaiselta, että se sai nimen Petsamo. Alueella ovat Kaupin vanha sairaala-alue, Kaupin tähtitorni sekä vanha ja uusi vesitorni. Vuonna 1989 valmistunut itäinen ohikulkutie Kekkosentie halkaisi Litukan siirtolapuutarhan ja koko Petsamon."
    }
   ],
   "tl": [
    [
-    1940,
-    "Alue rakennettu 1940-lukuun mennessä"
-   ],
-   [
-    1954,
-    "Tähtisen talot Ahdinkadulle ja Omakadulle"
+    1920,
+    "Tehtaat rakentavat työläisasuntoja, nimi Petsamo"
    ],
    [
     1989,
     "Kekkosentie halkaisee alueen"
    ]
   ],
-  "people": [
-   [
-    "Jaakko Tähtinen",
-    "",
-    "Arkkitehti"
-   ]
-  ],
+  "people": [],
   "places": [],
   "src": [
    [
@@ -1211,7 +1205,7 @@
   ]
  },
  "Kissanmaa": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Teiskontien varren kaupunginosa, jonka nimi on peräisin vuoden 1913 eläinaiheisesta nimistöstä.",
   "sections": [
    {
@@ -1236,7 +1230,7 @@
   "src": [
    [
     "Wikipedia: Kissanmaa",
-    "https://en.wikipedia.com/wiki/Kissanmaa"
+    "https://en.wikipedia.org/wiki/Kissanmaa"
    ],
    [
     "Tampereen kaupunki: History of Tampere",
@@ -1273,17 +1267,17 @@
   ]
  },
  "Hakametsä": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Savipelto, jolle nousi Suomen ensimmäinen jäähalli.",
   "sections": [
    {
     "h": "Jäähalli Tampereelle",
-    "p": "Hakametsään laadittiin ensimmäinen asemakaava 1950. Suomi sai järjestettäväkseen jääkiekon MM-kisat 1965, mutta ehtona oli jäähalli. Kun Helsingin hanke viivästyi, tamperelaiset päättäjät toimivat nopeasti kansalaisliikkeen ”Jäähalli Tampereelle” tukemina. Arkkitehti Jaakko Tähtisen suunnittelema halli valmistui joulukuussa 1964 ja avattiin 29.1.1965. Siitä tuli Ilveksen ja Tapparan koti, ja sen yhteyteen perustettiin 1979 Euroopan ensimmäinen jääkiekkomuseo."
+    "p": "Hakametsään laadittiin ensimmäinen asemakaava 1950-luvun alussa. Suomi sai järjestettäväkseen jääkiekon MM-kisat 1965, mutta ehtona oli jäähalli. Kun Helsingin hanke viivästyi, tamperelaiset päättäjät toimivat kaupunginjohtaja Erkki Lindforsin johdolla nopeasti kansalaisliikkeen ”Jäähalli Tampereelle” tukemina. Arkkitehti Jaakko Tähtisen suunnittelema halli valmistui joulukuussa 1964, ja se oli Suomen ensimmäinen jäähalli. Halli avattiin 29.1.1965. Siitä tuli Ilveksen ja Tapparan koti, ja sen yhteyteen perustettiin 1979 Euroopan ensimmäinen jääkiekkomuseo. Halli on tilastoissa Kissanmaan puolella."
    }
   ],
   "tl": [
    [
-    1950,
+    "1950-l. alku",
     "Ensimmäinen asemakaava"
    ],
    [
@@ -1311,10 +1305,6 @@
    [
     "Tampereen kaupunki: Kiakkoraitti",
     "https://www.tampere.fi/sites/default/files/2022-05/Kiakkoraitti.pdf"
-   ],
-   [
-    "Yle: Vuonna 1965 Hakametsän jäähalli nosti Tampereen kartalle",
-    "https://yle.fi/a/3-7768723"
    ]
   ]
  },
