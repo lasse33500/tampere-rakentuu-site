@@ -1446,21 +1446,33 @@
   "sections": [
    {
     "h": "Ata Oy",
-    "p": "Kaupunginosa on nimetty vuonna 1937 perustetun Ata Oy:n mukaan, joka valmistaa kartiohammaspyöriä. Atalan rakennuskanta on pääosin 1980-luvulta lähtien rakennettuja rivi- ja omakotitaloja."
+    "p": "Kaupunginosa on nimetty vuonna 1937 perustetun Ata Oy:n mukaan, joka valmistaa kartiohammaspyöriä. Atalan rakennuskanta on pääosin 1980-luvulta lähtien rakennettuja rivi- ja omakotitaloja. Alue kuului Messukylään ja liitettiin Tampereeseen 1947."
    }
   ],
   "tl": [
    [
     1937,
     "Ata Oy perustetaan"
+   ],
+   [
+    1947,
+    "Liitetään Tampereeseen Messukylän mukana"
+   ],
+   [
+    "1980-l.",
+    "Rivi- ja omakotitaloalueet rakennetaan"
    ]
   ],
   "people": [],
   "places": [],
   "src": [
    [
-    "Wikipedia: Atala (district)",
-    "https://wikiwand.com/en/Atala_(district)"
+    "Wikipedia (englanti): Atala",
+    "https://en.wikipedia.org/wiki/Atala_(district)"
+   ],
+   [
+    "Tampereen kaupunki: asemakaava 9015, Atala",
+    "https://www.tampere.fi/sites/default/files/2024-12/9015_o_a_s_20241205.pdf"
    ]
   ]
  },

@@ -2261,5 +2261,139 @@
     "https://georaster.tampere.fi/"
    ]
   }
+ },
+ "Takahuhti": {
+  "lede": "Takahuhti tunnetaan kirjallisista lähteistä jo vuodelta 1390, ja keskiajalta 1900-luvulle se oli Messukylän suurin kylä. Vuoden 1540 maakirjassa kylässä oli yli kaksikymmentä taloa. Kylä oli Aakkulanharjun pohjoispuolen hietamailla, ja sen peltoja viljeltiin vielä 1950-luvulla. Messukylä liitettiin Tampereeseen 1947, ja Takahuhdin ensimmäinen asemakaava vahvistettiin 1952. Ilmakuvissa pellot täyttyvät 1950-luvulla jälleenrakennuskauden omakotitaloista, ja 1960-luvun alussa Irjalan aukion ympärille nousi asuin- ja liiketaloja. Mänty-Jukolan rivitalot valmistuivat 1970-luvun alussa.",
+  "kk": [
+   [
+    1390,
+    "Kylä mainitaan kirjallisissa lähteissä"
+   ],
+   [
+    1540,
+    "Maakirjassa yli kaksikymmentä taloa"
+   ],
+   [
+    1947,
+    "Liitetään Tampereeseen Messukylän mukana"
+   ],
+   [
+    1952,
+    "Ensimmäinen asemakaava"
+   ],
+   [
+    "1950-l.",
+    "Jälleenrakennuskauden omakotitaloja pelloille"
+   ],
+   [
+    "1960-l. alku",
+    "Asuin- ja liiketaloja Irjalan aukiolle"
+   ],
+   [
+    "1970-l. alku",
+    "Mänty-Jukolan rivitalot valmistuvat"
+   ]
+  ],
+  "pair": [
+   {
+    "f": "img/c16eae9da1.jpg",
+    "t": "Heinäntekoa Takahuhdissa",
+    "y": "1955",
+    "a": "Pekka Kosonen",
+    "org": "Vapriikin kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fmuseosiiri.tampere.fi%253A8080%252FVALOKUVA%252Fcontent%252FSIR_EXEC%252Fimages%252Fprimary%252F2003092910%252F10648196549280.jpg",
+    "cap": "Heinäntekoa Takahuhdin pelloilla 1955"
+   },
+   {
+    "f": "img/a1cfb6dae1.jpg",
+    "t": "Näkymä Irjalan aukiolta Kuusimäenkatua pohjoiseen. Jälleenrakennuskauden omakotitaloja.",
+    "y": "2010",
+    "a": "Miinu Mäkelä",
+    "org": "Vapriikin kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fmuseosiiri.tampere.fi%253A8080%252FVALOKUVA%252Fcontent%252FSIR_EXEC%252Fimages%252Fprimary%252F20100719%252F12795295287340.JPG",
+    "cap": "Jälleenrakennuskauden omakotitaloja Irjalan aukion laidalla 2010"
+   }
+  ],
+  "src": {
+   "s0": [
+    "Tampereen kaupunki: arkeologinen selvitys, kaava 8867 (Takahuhdin kylän historia)",
+    "https://www.tampere.fi/sites/default/files/2024-12/8867_arkeologinen_selvitys_20231220.pdf"
+   ],
+   "s1": [
+    "Wikipedia (englanti): Takahuhti – Messukylän suurin kylä, kaava 1952",
+    "https://en.wikipedia.org/wiki/Takahuhti"
+   ],
+   "s2": [
+    "Vapriikin kuva-arkisto: Irjalan aukion 1960-luvun talot ja Mänty-Jukolan rivitalot (Miinu Mäkelä 2010)",
+    "https://www.finna.fi/Search/Results?lookfor=Takahuhti+Irjalan+aukio&type=AllFields"
+   ],
+   "s3": [
+    "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
+    "https://georaster.tampere.fi/"
+   ]
+  }
+ },
+ "Atala": {
+  "lede": "Atala oli vielä 1980-luvulle asti enimmäkseen metsää, jonka keskellä oli muutamia peltoja ja taloja. Alue kuului Messukylään ja siirtyi Tampereelle 1947. Kaupunginosa on nimetty vuonna 1937 perustetun Ata Oy:n mukaan, joka valmistaa kartiohammaspyöriä. Ilmakuvissa näkyy, miten 1980-luvulta alkaen metsään raivattiin rivi- ja omakotitaloalueita. Joitakin vanhempia taloja on säilynyt uusien joukossa.",
+  "kk": [
+   [
+    1937,
+    "Ata Oy perustetaan"
+   ],
+   [
+    1947,
+    "Liitetään Tampereeseen Messukylän mukana"
+   ],
+   [
+    "1980-l.",
+    "Metsään rakennetaan rivi- ja omakotitaloalueita"
+   ],
+   [
+    2011,
+    "Ilmakuvassa asuinalueet ovat valmiina"
+   ]
+  ],
+  "pair": [
+   {
+    "f": "img/ce7c83ebd1.jpg",
+    "t": "Tampere, Ata Oy",
+    "y": "1964",
+    "a": "U. A. Saarinen",
+    "org": "JOKA Journalistinen kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/museovirasto.e08ba55e-2af5-4729-aec4-bf2676632b4e",
+    "cap": "Ata Oy:n tehdas metsän keskellä 1964"
+   },
+   {
+    "f": "img/c72047c555.jpg",
+    "t": "Omakotitaloja Atalassa",
+    "y": "2009",
+    "a": "Ulla Rohunen",
+    "org": "Vapriikin kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fmuseosiiri.tampere.fi%253A8080%252FVALOKUVA%252Fcontent%252FSIR_EXEC%252Fimages%252Fprimary%252F20090622%252F12456615986340.jpg",
+    "cap": "Omakotitaloja Atalassa 2009"
+   }
+  ],
+  "src": {
+   "s0": [
+    "Wikipedia (englanti): Atala – nimi Ata Oy:n mukaan, 1980-luvun rakennuskanta",
+    "https://en.wikipedia.org/wiki/Atala_(district)"
+   ],
+   "s1": [
+    "Tampereen kaupunki: Atala, asemakaava 9015 – lähialueen rakennuskanta pääosin 1980-luvulta",
+    "https://www.tampere.fi/sites/default/files/2024-12/9015_o_a_s_20241205.pdf"
+   ],
+   "s2": [
+    "Liitosvuosi: Tampereen kaupungin alueliitosaineisto (sivuston kartta)",
+    "https://geodata.tampere.fi/"
+   ],
+   "s3": [
+    "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
+    "https://georaster.tampere.fi/"
+   ]
+  }
  }
 }
