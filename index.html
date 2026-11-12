@@ -195,7 +195,7 @@ aside a{color:var(--brick)}
   <div id="tip"></div>
   <div class="zoom"><button id="zin" title="Lähennä">+</button><button id="zout" title="Loitonna">−</button><button id="zhome" title="Kantakaupunki">⌂</button><button id="zbig" title="Suurenna kartta">⤢</button><button id="z3d" title="3D-näkymä: talot kerroskorkeuteen, kartan voi kallistaa ja kääntää">3D</button></div>
   <div class="layers" id="layers"><button class="ltog" id="ltog" title="Näytä tai piilota kerrokset">Kerrokset <span>▾</span></button><div class="lbody">
-    <label><input type="checkbox" id="lBorder"> Kaupungin raja valittuna vuonna</label>
+    <label title="Näkyy, kun aikakone on ennen vuotta 2026"><input type="checkbox" id="lBorder"> Kaupungin raja valittuna vuonna <span class="note" style="font-size:11px">(kelaa aikaa taaksepäin)</span></label>
     <label><input type="checkbox" id="lDem"> Puretut rakennukset</label>
     <label><input type="checkbox" id="lUnk"> Rakennukset, joiden vuosi puuttuu</label>
     <label><input type="checkbox" id="lLM"> Maamerkit (★)</label>
@@ -326,12 +326,14 @@ function render(){
   const px=1/k; // one CSS pixel in world units
   ctx.fillStyle=C.land; ctx.fill(P.border);
   // land outside the city in the selected year is greyed
-  if(document.getElementById('lBorder').checked && YEAR<2026){
-    ctx.fillStyle='rgba(110,95,80,.22)'; ctx.fill(P.border);
-    ctx.fillStyle=C.land; for(const a of P.annex) if(a.y<=YEAR) ctx.fill(a.p);
-  }
   if(P.green&&!POP){ctx.fillStyle=GREEN.f;ctx.fill(P.green.f);ctx.fillStyle=GREEN.p;ctx.fill(P.green.p);}
   if(LCIMG&&LCIMG.complete&&!POP){ctx.imageSmoothingEnabled=true;ctx.drawImage(LCIMG,LC.x0,-LC.y1,LC.x1-LC.x0,LC.y1-LC.y0);}
+  // Kaupungin raja valittuna vuonna: alue, joka ei vielä kuulunut Tampereeseen, harmaannutetaan ja vuoden raja korostetaan
+  if(document.getElementById('lBorder').checked && YEAR<2026){
+    const out=new Path2D();out.addPath(P.border);for(const a of P.annex) if(a.y<=YEAR) out.addPath(a.p);
+    ctx.fillStyle='rgba(70,60,50,.38)'; ctx.fill(out,'evenodd');
+    ctx.strokeStyle='#a4472f'; ctx.lineWidth=2.4*px; ctx.setLineDash([8*px,5*px]); for(const a of P.annex) if(a.y<=YEAR) ctx.stroke(a.p); ctx.setLineDash([]);
+  }
   if(POP&&PAAVO){ for(const a of PAAVO.areas){const v=a.m[POP];ctx.fillStyle=v==null?'rgba(150,140,130,.25)':POPC[binOf(v)];ctx.globalAlpha=.92;ctx.fill(a.p);ctx.globalAlpha=1;}
     ctx.strokeStyle='rgba(255,250,240,.9)';ctx.lineWidth=1.4*px;for(const a of PAAVO.areas)ctx.stroke(a.p);}
   // district lines under water
