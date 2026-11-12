@@ -220,7 +220,7 @@
   ]
  },
  "Tammerkoski (II)": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Kaupungin alkuperäinen ydin Tammerkosken länsirannalla. Täällä on Keskustori, Vanha kirkko, Hämeensilta ja Frenckellin paperitehdas.",
   "sections": [
    {
@@ -229,7 +229,7 @@
    },
    {
     "h": "Kirkko, silta ja paperi",
-    "p": "Kaupunki joutui odottamaan omaa kirkkoaan yli kaksi vuosikymmentä, kunnes Vanha kirkko valmistui Keskustorin laidalle vuonna 1824. Ensimmäinen Hämeensilta rakennettiin puusta 1807, ja nykyinen silta on vuodelta 1929. Koskella oli paperimylly jo 1783. Vuonna 1842 Johan Christopher Frenckell perusti sinne Suomen ensimmäisen jatkuvatoimisen paperitehtaan. Tehdas muutti Poriin 1928, ja sen rakennukset ovat nyt toimisto- ja kulttuurikäytössä."
+    "p": "Kaupunki joutui odottamaan omaa kirkkoaan yli kaksi vuosikymmentä, kunnes Vanha kirkko valmistui Keskustorin laidalle vuonna 1824. Ensimmäinen Hämeensilta rakennettiin puusta 1807, ja nykyinen silta on vuodelta 1929. Abraham Häggman perusti koskelle paperimyllyn 1783. Vuonna 1842 Johan Christopher Frenckellin tehtaaseen hankittiin Suomen ensimmäinen jatkuvatoiminen paperikone. Tehdas muutti Poriin 1928, ja kaupunki osti sen tontin seuraavana vuonna. Rakennukset ovat nyt toimisto- ja kulttuurikäytössä."
    },
    {
     "h": "Torin kaupunki",
@@ -251,7 +251,7 @@
    ],
    [
     1783,
-    "Paperimylly koskella"
+    "Häggmanin paperimylly koskelle"
    ],
    [
     1807,
@@ -263,7 +263,7 @@
    ],
    [
     1842,
-    "Frenckellin paperitehdas, Suomen ensimmäinen jatkuvatoiminen"
+    "Suomen ensimmäinen jatkuvatoiminen paperikone Frenckellille"
    ],
    [
     1905,
@@ -318,34 +318,50 @@
    [
     "Wikipedia: Tampere",
     "https://en.wikipedia.org/wiki/Tampere"
+   ],
+   [
+    "Tampereen kaupunki: Frenckellin konttorin rakennushistoriallinen selvitys",
+    "https://tampere.fi/sites/default/files/2023-04/frenckellin_konttorin_rakennushistoriallinen_selvitys.pdf"
    ]
   ]
  },
  "Amuri": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Tampereen ensimmäinen työläiskaupunginosa. Sen puutalokorttelit purettiin lähes kokonaan, ja yksi kortteli jäi museoksi.",
   "sections": [
    {
     "h": "Kaukana kuin Amur",
-    "p": "Amurin ensimmäiset tontit muodostettiin 1869, ja puutalokortteleita alettiin rakentaa 1860-luvulla kasvavan työväestön tarpeisiin. Nimi syntyi pilkasta: alue tuntui yhtä kaukaiselta kuin Amur Siperiassa, jonne suomalaisia oli juuri muuttanut. Ensin puhuttiin Amurinmaasta, ja nimi lyheni myöhemmin Amuriksi. Vuosina 1875–1885 Amuri laajeni vuokratontteina Sotkankadulle asti."
+    "p": "Amurin asemakaava vahvistettiin 1868, ja ensimmäiset tontit myytiin huutokaupassa 1869. Puutalokorttelit rakennettiin kasvavan työväestön tarpeisiin, ja monet asuinrakennukset valmistuivat 1880-luvulla. Nimi syntyi pilkasta: alue tuntui yhtä kaukaiselta kuin Amur Siperiassa, jonne suomalaisia oli juuri muuttanut. Vuosina 1875–1885 Amuri laajeni vuokratontteina Sotkankadulle asti."
    },
    {
     "h": "Saneeraus",
-    "p": "1960- ja 1970-luvuilla Amurin tunnusomaiset puutalot purettiin kerrostalojen tieltä. Tutkijat ovat käyttäneet Amuria esimerkkinä suomalaisesta kaupunkisaneerauksesta. Yksi kokonainen puutalokortteli säilyi, ja siitä tuli Amurin työläismuseokortteli, joka kertoo tehdastyöläisten asumisesta."
+    "p": "Amurin kaavauudistus käynnistyi 1952, ja uusi asemakaava vahvistettiin 1965. Tunnusomaiset puutalot purettiin, ja tilalle rakennettiin 1960- ja 1970-luvuilla kerrostaloja. Tutkijat ovat käyttäneet Amuria esimerkkinä suomalaisesta kaupunkisaneerauksesta. Yksi kokonainen puutalokortteli säilyi. Siitä tuli Amurin työläismuseokortteli, jonka museointi alkoi 1975."
    }
   ],
   "tl": [
    [
+    1868,
+    "Asemakaava vahvistetaan"
+   ],
+   [
     1869,
-    "Ensimmäiset tontit muodostetaan"
+    "Ensimmäiset tontit myydään huutokaupassa"
    ],
    [
     1875,
     "Amuri laajenee vuokratontein Sotkankadulle (1875–85)"
    ],
    [
-    1960,
-    "Saneeraus alkaa: puutaloja puretaan kerrostalojen tieltä"
+    1952,
+    "Kaavauudistus eli saneeraus käynnistyy"
+   ],
+   [
+    1965,
+    "Uusi asemakaava vahvistetaan"
+   ],
+   [
+    1975,
+    "Työläismuseokorttelin museointi alkaa"
    ]
   ],
   "people": [],
@@ -373,20 +389,20 @@
   ]
  },
  "Kyttälä": {
-  "status": "luonnos",
-  "lede": "Suomen ensimmäinen esikaupunki. Kosken itärannan kylä muuttui rautatien ja ruutukaavan myötä kaupungin keskustaksi.",
+  "status": "tarkistettu",
+  "lede": "Tampereen ensimmäinen esikaupunki. Kosken itärannan kylä muuttui rautatien ja ruutukaavan myötä kaupungin keskustaksi.",
   "sections": [
    {
     "h": "Messukylän kylä",
-    "p": "Skyttälän talo sijaitsi nykyisen Suomen Pankin talon paikalla. Alue siirtyi 1600-luvulla Tammerkosken kartanolle ja 1790 Hatanpään kartanolle. Vielä 1850-luvulla kosken itäranta kuului Messukylään, ja sinne kasvoi ilman kaavaa teollisuuden työväen asuinalue. Kyttälää pidetään Suomen ensimmäisenä teollisuuden synnyttämänä esikaupunkina."
+    "p": "Skyttälän talo sijaitsi nykyisen Suomen Pankin talon paikalla. Alue siirtyi 1600-luvulla Tammerkosken kartanolle ja 1790 Hatanpään kartanolle. Vielä 1850-luvulla kosken itäranta kuului Messukylään, ja sinne kasvoi ilman kaavaa teollisuuden työväen asuinalue. Kyttälää pidetään Tampereen ensimmäisenä teollisuuden synnyttämänä esikaupunkina."
    },
    {
     "h": "Rautatie ja ruutukaava",
-    "p": "Rautatie ja asema avattiin 1876 kosken itäpuolelle. Kaupunkilaiset olisivat halunneet aseman länsirannalle, varsinaiseen kaupunkiin. Kyttälä liitettiin Tampereeseen 1877, ja 1886 sen kylämäisen rakenteen korvasi ruutukaava. Tämän laajentumisen myötä kaupungin pinta-ala kolminkertaistui. Vuonna 1892 talolliset häädettiin, ja he saivat uudet tontit Armonkalliolta."
+    "p": "Rautatie ja asema avattiin 1876 kosken itäpuolelle. Kaupunkilaiset olisivat halunneet aseman länsirannalle, varsinaiseen kaupunkiin. Kyttälä liitettiin Tampereeseen 1877, ja 1886 vahvistettiin F. L. Caloniuksen johdolla laadittu ruutukaava, joka korvasi kylämäisen rakenteen. Laajentuessaan Kyttälään kaupungin pinta-ala kolminkertaistui. Vuonna 1892 talolliset häädettiin, ja he saivat uudet tontit Armonkalliolta."
    },
    {
     "h": "Tuhot",
-    "p": "Kyttälä tuhoutui pahoin vuoden 1918 taisteluissa. Talvisodan pommitukset vaurioittivat sen keskiosia, ja vuoden 1946 ilmakuvissa lähes joka korttelissa näkyy tyhjiä tontteja. Nykyinen funktionalistinen asemarakennus valmistui 1936."
+    "p": "Eteläinen Kyttälä paloi lähes kokonaan vuoden 1918 taisteluissa. Talvisodan pommitukset vaurioittivat pahasti sen keskiosia, ja vuoden 1946 ilmakuvissa lähes joka korttelissa näkyy tyhjiä tontteja. Nykyinen funktionalistinen asemarakennus valmistui 1936."
    }
   ],
   "tl": [
@@ -445,16 +461,16 @@
   ]
  },
  "Tammela": {
-  "status": "luonnos",
-  "lede": "Ruutukaavaan rakennettu työläiskaupunginosa, joka tunnettiin suutareistaan, toristaan ja mustamakkarastaan. Kaupunginosa tuhoutui 1918, ja se rakennettiin uudelleen.",
+  "status": "tarkistettu",
+  "lede": "Ruutukaavaan rakennettu työläiskaupunginosa, joka tunnettiin kenkätehtaistaan, torista ja mustamakkarasta. Suuri osa taloista paloi 1918, ja kaupunginosa rakennettiin uudelleen.",
   "sections": [
    {
     "h": "Kartanon pelloilta ruutukaavaan",
-    "p": "Kaupunki osti Kyttälän ja Tammelan maat Hatanpään kartanolta 1876, ja alueella oli silloin kartanon torppia ja peltoja. Kaupunginarkkitehti F. L. Calonius laati ensimmäisen ruutukaavaluonnoksen 1877, ja lopullinen asemakaava valmistui 1887. Ensimmäiset tontit vuokrattiin 1.11.1890. Tammela kaavoitettiin työväen asuinalueeksi, jossa umpikorttelit rajasivat katuja."
+    "p": "Kaupunki osti Kyttälän ja Tammelan maat 1876. Sitä ennen alue kuului Hatanpään kartanoon, ja siellä oli kartanon torppia ja peltoja. Ensimmäinen ruutukaava laadittiin 1877, mutta sitä ei toteutettu. Kaupunginarkkitehti F. L. Calonius viimeisteli uuden kaavan, joka hyväksyttiin 1887, ja ensimmäiset sen mukaiset tontit toteutettiin 1890. Tammela kaavoitettiin työväen asuinalueeksi, jossa umpikorttelit rajasivat katuja."
    },
    {
     "h": "Tuho ja jälleenrakennus",
-    "p": "Tammela tuhoutui lähes kokonaan vuoden 1918 Tampereen taistelussa, ja toisen maailmansodan ilmapommitukset vaurioittivat sitä pahoin. Tontit rakennettiin uudelleen 1920-luvulla, ja kaupunginosa laajeni Salhojankadun itäpuolelle 1921."
+    "p": "Suuri osa Tammelan taloista paloi vuoden 1918 Tampereen taistelussa, ja talvisodan pommituksissa tuhoutui lisää rakennuksia. Tontit rakennettiin uudelleen 1920-luvulla, ja kaupunginosa laajeni Salhojankadun itäpuolelle 1921."
    },
    {
     "h": "Suutarien pääkaupunki",
@@ -464,23 +480,23 @@
   "tl": [
    [
     1876,
-    "Kaupunki ostaa maat Hatanpään kartanolta"
+    "Kaupunki ostaa Kyttälän ja Tammelan maat"
    ],
    [
     1877,
-    "Caloniuksen ruutukaavaluonnos"
+    "Ensimmäinen ruutukaava, jota ei toteutettu"
    ],
    [
     1887,
-    "Lopullinen asemakaava"
+    "Caloniuksen viimeistelemä asemakaava hyväksytään"
    ],
    [
     1890,
-    "Ensimmäiset tontit vuokrataan 1.11."
+    "Ensimmäiset tontit uuden kaavan mukaan"
    ],
    [
     1918,
-    "Lähes täydellinen tuho Tampereen taistelussa"
+    "Suuri osa taloista palaa taistelussa"
    ],
    [
     1921,
@@ -491,7 +507,7 @@
    [
     "F. L. Calonius",
     "",
-    "Kaupunginarkkitehti, Tammelan ruutukaavan laatija"
+    "Kaupunginarkkitehti, viimeisteli Tammelan asemakaavan 1887"
    ]
   ],
   "places": [
@@ -1580,30 +1596,42 @@
   ]
  },
  "Pispala": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Suomen korkeimmalle soraharjulle omin käsin rakennettu työläisyhteisö: portaita, mökkejä ja näkymä kahdelle järvelle.",
   "sections": [
    {
     "h": "Harjun rinteille",
-    "p": "Pispala on saanut nimensä Pispan talosta. Alueella on asuttu jo esihistoriallisella ajalla, ja se on ollut kahden vesireitin ja maaliikenteen risteyspaikka. 1800-luvun puolivälin jälkeen alueelle alkoi tulla teollisuutta. Ensimmäinen oli vuonna 1875 perustettu Santalahden höyrysaha, ja haulitehtaan viereen rakennettiin punainen teräksinen haulitorni. Ensimmäiset työläisasumukset nousivat Pispalan valtatien varteen 1870-luvulla."
+    "p": "Pispala on saanut nimensä Pispan talosta, jonka piti majoittaa piispoja heidän matkoillaan. Nimi mainitaan ensimmäisen kerran 1492. Alueella on myös esihistoriallisen asutuksen jälkiä. Ensimmäinen suuri teollisuuslaitos oli vuonna 1875 perustettu Santalahden höyrysaha, ja Porin radan rakentaminen 1890–1896 vauhditti rakentamista. Ensimmäiset työläisasumukset nousivat Pispalan valtatien varteen 1870-luvulla. Haulitehdas muutti harjun pohjoisrinteelle 1908, ja sen punaiseksi maalatusta teräksisestä haulitornista tuli Pispalan maamerkki."
    },
    {
     "h": "Villi ja vapaa",
-    "p": "Pispala kuului Pirkkalaan ja vuodesta 1922 Pohjois-Pirkkalaan, eikä mikään asemakaava rajoittanut rakentamista. Talon sai tehdä niin kuin halusi. Rajaportin sauna aloitti 1906, ja se on Suomen vanhin yhä toimiva yleinen sauna. Pispalan rinteillä ovat asuneet muun muassa Lauri Viita, Yrjö Jylhä, Hannu Salama ja Olavi Virta."
+    "p": "Pispala kuului Pirkkalaan ja vuodesta 1922 Pohjois-Pirkkalaan, eikä mikään asemakaava rajoittanut rakentamista. Talon sai tehdä niin kuin halusi. Rajaportin sauna aloitti 1906, ja se on Suomen vanhin yhä toimiva yleinen sauna. Pispalan rinteillä ovat asuneet muun muassa Lauri Viita, Hannu Salama, Aaro Hellaakoski ja Olavi Virta."
    },
    {
     "h": "Kaupunkiin",
-    "p": "Pispala liitettiin Tampereeseen 1937 yhdessä muiden läntisten alueiden kanssa. Liitos toi kaupunkiin 9 287 asukasta. Rakentamista alettiin säädellä, ensimmäinen asemakaava tuli voimaan 1945, ja ensimmäiset kerrostalot nousivat valtatien varteen 1950-luvulla. Suojelukaavan valmistelu alkoi 1969 ja kesti lähes kymmenen vuotta. Nykyään Pispala on valtakunnallisesti merkittävä kulttuuriympäristö. Haulitorni purettiin, kunnostettiin ja pystytettiin uudelleen 2020."
+    "p": "Pispala liitettiin Tampereeseen 1937 yhdessä muiden läntisten alueiden kanssa. Liitos toi kaupunkiin 9 287 asukasta. Rakentamista alettiin säädellä, ensimmäinen asemakaava tuli voimaan 1945, ja ensimmäiset kerrostalot nousivat valtatien varteen 1950-luvulla. Vuonna 1968 järjestettiin suunnittelukilpailu, jonka pohjalta uusi asemakaava valmistui 1978. Nykyään Pispala on valtakunnallisesti merkittävä kulttuuriympäristö."
    }
   ],
   "tl": [
+   [
+    1492,
+    "Pispan talo mainitaan ensimmäisen kerran"
+   ],
    [
     1875,
     "Santalahden höyrysaha"
    ],
    [
+    1890,
+    "Porin rata rakennetaan (1890–96)"
+   ],
+   [
     1906,
     "Rajaportin sauna avataan"
+   ],
+   [
+    1908,
+    "Haulitehdas ja haulitorni"
    ],
    [
     1922,
@@ -1618,12 +1646,12 @@
     "Ensimmäinen asemakaava"
    ],
    [
-    1969,
-    "Suojelukaavan valmistelu alkaa"
+    1968,
+    "Suunnittelukilpailu"
    ],
    [
-    2020,
-    "Haulitorni kunnostetaan"
+    1978,
+    "Uusi asemakaava"
    ]
   ],
   "people": [
@@ -1633,14 +1661,14 @@
     "Runoilija, Moreenin kirjoittaja"
    ],
    [
-    "Yrjö Jylhä",
-    "",
-    "Runoilija"
-   ],
-   [
     "Hannu Salama",
     "",
     "Kirjailija"
+   ],
+   [
+    "Olavi Virta",
+    "",
+    "Laulaja"
    ]
   ],
   "places": [

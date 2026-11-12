@@ -987,7 +987,7 @@ const pri=n=>{const i=PRIO.findIndex(x=>n.includes(x));return i<0?99:i;};
 const AMAP={'Reima ja Raili Pietilä':['Reima Pietilä','Raili Pietilä']};
 const PCATS=[['perustajat','Kaupungin perustajat',['Kustaa III','Pietari Brahe']],
  ['teoll','Teollisuus ja työ',['James Finlayson','Wilhelm von Nottbeck','Carl von Nottbeck','Wilhelm Fredrik von Nottbeck','Johan Christopher Frenckell','Emil Aaltonen','Maria Charlotta Hydén','Pehr Adrian Gadd']],
- ['kult','Kulttuuri',['Väinö Linna','Minna Canth','Lauri Viita','Yrjö Jylhä','Hannu Salama','Hugo Simberg','Magnus Enckell','Jussi Hietanen']],
+ ['kult','Kulttuuri',['Väinö Linna','Minna Canth','Lauri Viita','Yrjö Jylhä','Hannu Salama','Hugo Simberg','Magnus Enckell','Jussi Hietanen','Olavi Virta']],
  ['sota','1918, sodat ja politiikka',['Hugo Salmela','Verner Lehtimäki','Gunnar Melin','Eino Rahja','C. G. E. Mannerheim','Georgi Bulatsel','Aaro Pajari','Vladimir Lenin']],
  ['ark','Arkkitehdit ja kaupunkisuunnittelijat',['Pentti Murole']],['muut','Muut',[]]];
 const pcat=p=>{for(const [id,,L] of PCATS)if(L.includes(p.n))return id;return (p.archs.length||/arkkiteh|kaava|kaupunkisuunnit/i.test(p.roles.join(' ')))?'ark':'muut';};
