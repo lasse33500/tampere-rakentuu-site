@@ -394,7 +394,7 @@ function drawBorderLabels(){if(!document.getElementById('lBorder').checked||POP)
   for(const a of P.annexC){if(a.y<=YEAR||!a.c||a.ar*T.k*T.k<6000)continue;const [sx,sy]=toScreen(a.c[0],a.c[1]);if(sx<0||sy<0||sx>W2||sy>cv.height/DPR)continue;
     badge(`${a.t} liitetään ${a.y}`,sx,sy,'rgba(255,255,255,.92)','#3a332c',"500 12px 'IBM Plex Sans',system-ui,sans-serif",1);}}
 // Kadunnimet (Tampereen kaupungin katuosat, nimet nimistörekisteristä). Luokka 0 = pääväylä … 4 = tonttikatu.
-let KADUT=null;fetch('data/katunimet.json').then(r=>r.ok?r.json():null).then(d=>{if(!d)return;KADUT=d.map(([n,r,ls])=>({n,r,ls:ls.map(l=>{const o=[];let x=l[0],y=l[1];o.push(x,y);for(let i=2;i<l.length;i+=2){x+=l[i];y+=l[i+1];o.push(x,y);}return o;})}));draw();}).catch(()=>{});
+let KADUT=null;fetch('data/katunimet.json').then(r=>r.ok?r.json():null).then(d=>{if(!d)return;KADUT=d.map(([n,r,ls])=>({n,r,ls:ls.map(l=>{const o=[];let x=l[0],y=l[1];o.push(x,y);for(let i=2;i<l.length;i+=2){x+=l[i];y+=l[i+1];o.push(x,y);}return o;})}));draw();m3Streets();}).catch(()=>{});
 const KMIN=[.12,.16,.3,.45,.7];
 function drawStreetNames(){if(!KADUT||POP||!document.getElementById('lKadut').checked)return;const k=T.k;if(k<KMIN[0])return;
   const W2=cv.width/DPR,H2=cv.height/DPR,boxes=[];ctx.font="500 11px 'IBM Plex Sans',system-ui,sans-serif";ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';
@@ -509,6 +509,7 @@ function pick(sx,sy){if(!DATA)return -1;const [wx,wy]=toWorld(sx,sy);const ds=DA
 
 // ---------- controls ----------
 ['lBorder','lDem','lUnk','lLM','lKadut'].forEach(id=>document.getElementById(id).onchange=draw);
+document.getElementById('lKadut').addEventListener('change',e=>{if(M3&&M3.getLayer('knames'))M3.setLayoutProperty('knames','visibility',e.target.checked?'visible':'none');});
 const yr=document.getElementById('year');
 function setYear(y){YEAR=+y;yr.value=YEAR;document.getElementById('yr').textContent=YEAR;
   const a=P.annex?P.annex.filter(x=>x.y<=YEAR).pop():null;
@@ -567,7 +568,7 @@ function m3Sync(){if(!M3||!M3.getLayer('bld'))return;const key=mode+'|'+[...TOFF
   if(key!==M3KEY){M3KEY=key;M3.getSource('bld').setData(m3Buildings());}
   const f=['all',['<=',['get','y'],YEAR]];const unk=document.getElementById('lUnk');if(!(unk&&unk.checked))f.push(['>',['get','y'],0]);const fs=JSON.stringify(f);if(fs!==M3.__f){M3.__f=fs;M3.setFilter('bld',f);}}
 function m3LoadLib(){return new Promise((ok,no)=>{if(window.maplibregl)return ok();const l=document.createElement('link');l.rel='stylesheet';l.href='lib/maplibre-gl.css';document.head.appendChild(l);
-  const sc=document.createElement('script');sc.src='lib/maplibre-gl-csp.js';sc.onload=()=>{maplibregl.setWorkerUrl('lib/maplibre-gl-csp-worker.js');ok();};sc.onerror=no;document.head.appendChild(sc);});}
+  const sc=document.createElement('script');sc.src='lib/maplibre-gl-csp.js';sc.onload=()=>{maplibregl.setWorkerUrl('lib/maplibre-gl-csp-worker.js');maplibregl.addProtocol('trg',async p=>{if(!/\/0-255$/.test(p.url))return {data:new ArrayBuffer(0)};const r=await fetch('lib/noto-sans-0-255.pbf');return {data:await r.arrayBuffer()};});ok();};sc.onerror=no;document.head.appendChild(sc);});}
 async function m3Open(){M3ON=true;document.getElementById('z3d').classList.add('on');const el=document.getElementById('map3d');el.hidden=false;cv.style.visibility='hidden';
   ['zin','zout','zhome'].forEach(i=>document.getElementById(i).style.display='none');
   if(M3){M3.resize();m3Sync();return;}
@@ -575,7 +576,7 @@ async function m3Open(){M3ON=true;document.getElementById('z3d').classList.add('
   try{await m3Load();}catch(e){el.innerHTML='<div id="m3hint">3D-näkymä ei toimi tässä selaimessa.</div>';return;}
   const [cx,cy]=toWorld(cv.clientWidth/2,cv.clientHeight/2),c=tm35toLL(cx,cy);
   M3=new maplibregl.Map({container:el,center:c,zoom:Math.max(12.5,Math.min(17,Math.log2(T.k*78271.5*Math.cos(c[1]*Math.PI/180)))),pitch:55,bearing:-20,maxPitch:75,attributionControl:{compact:true,customAttribution:'Tampereen kaupunki, avoin data (CC BY 4.0)'},
-    style:{version:8,sources:{},layers:[{id:'bg',type:'background',paint:{'background-color':'#efe6d4'}}]}});
+    style:{version:8,glyphs:'trg://{fontstack}/{range}',sources:{},layers:[{id:'bg',type:'background',paint:{'background-color':'#efe6d4'}}]}});
   M3.addControl(new maplibregl.NavigationControl({visualizePitch:true}),'bottom-right');
   M3.on('load',()=>{
     const D=DATA.base;
@@ -589,11 +590,23 @@ async function m3Open(){M3ON=true;document.getElementById('z3d').classList.add('
     M3.addLayer({id:'dist',type:'line',source:'dist',paint:{'line-color':'rgba(90,72,55,.45)','line-width':1}});
     M3.addSource('bld',{type:'geojson',data:m3Buildings()});M3KEY=mode+'|';
     M3.addLayer({id:'bld',type:'fill-extrusion',source:'bld',paint:{'fill-extrusion-color':['get','c'],'fill-extrusion-height':['get','h'],'fill-extrusion-base':0,'fill-extrusion-opacity':.92,'fill-extrusion-vertical-gradient':true}});
+    m3Labels();
     m3Sync();setTimeout(()=>{const at=el.querySelector('.maplibregl-ctrl-attrib');if(at)at.classList.remove('maplibregl-compact-show');},300);el.querySelector('#m3hint')&&el.querySelector('#m3hint').remove();
     const hint=document.createElement('div');hint.id='m3hint';hint.textContent=matchMedia('(pointer:coarse)').matches?'Kahdella sormella: käännä ja kallista':'Oikea hiiren painike tai Ctrl + veto: käännä ja kallista';el.appendChild(hint);setTimeout(()=>hint.remove(),5000);
     M3.on('click','bld',e=>{const k=e.features[0].properties.k;if(typeof openBuilding==='function')openBuilding(k);});
     M3.on('mouseenter','bld',()=>M3.getCanvas().style.cursor='pointer');M3.on('mouseleave','bld',()=>M3.getCanvas().style.cursor='');
   });}
+// 3D-nimet: kadunnimet viivaa pitkin (näkyvyys luokan mukaan kuten 2D:ssä) ja kaupunginosien nimet
+const KZ=KMIN.map(k=>Math.log2(k*37340));
+function m3Labels(){if(!M3||M3.getLayer('dnames'))return;const F="Noto Sans Medium";
+  M3.addSource('dnames',{type:'geojson',data:{type:'FeatureCollection',features:DATA.base.districts.map(d=>({type:'Feature',properties:{n:d.n.replace(/\s*\([IVXL]+\)/,'')},geometry:{type:'Point',coordinates:tm35toLL(d.lp[0],d.lp[1])}}))}});
+  M3.addLayer({id:'dnames',type:'symbol',source:'dnames',minzoom:11.5,layout:{'text-field':['get','n'],'text-font':[F],'text-size':['interpolate',['linear'],['zoom'],12,11,16,15],'text-padding':4},paint:{'text-color':'#2b2420','text-halo-color':'rgba(246,241,230,.95)','text-halo-width':2}});
+  m3Streets();}
+function m3Streets(){if(!M3||!KADUT||M3.getLayer('knames')||!M3.getLayer('dnames'))return;const F="Noto Sans Medium";
+  const feats=[];for(const st of KADUT)feats.push({type:'Feature',properties:{n:st.n,r:st.r},geometry:{type:'MultiLineString',coordinates:st.ls.map(L=>{const o=[];for(let i=0;i<L.length;i+=2)o.push(tm35toLL(L[i],L[i+1]));return o;})}});
+  M3.addSource('knames',{type:'geojson',data:{type:'FeatureCollection',features:feats}});
+  const tf=['step',['zoom'],''];KZ.forEach((z,i)=>{tf.push(z,['case',['<=',['get','r'],i],['get','n'],'']);});
+  M3.addLayer({id:'knames',type:'symbol',source:'knames',layout:{'symbol-placement':'line','symbol-sort-key':['get','r'],'text-field':tf,'text-font':[F],'text-size':['interpolate',['linear'],['zoom'],13,11.5,17,14],'text-pitch-alignment':'viewport','text-max-angle':35,'text-padding':2,'symbol-spacing':300,'visibility':document.getElementById('lKadut').checked?'visible':'none'},paint:{'text-color':'#4f4b45','text-halo-color':'rgba(255,255,255,.95)','text-halo-width':2}},'dnames');}
 async function m3Load(){await m3LoadLib();}
 function m3Close(){M3ON=false;document.getElementById('z3d').classList.remove('on');document.getElementById('map3d').hidden=true;cv.style.visibility='';['zin','zout','zhome'].forEach(i=>document.getElementById(i).style.display='');draw();}
 document.getElementById('z3d').onclick=()=>M3ON?m3Close():m3Open();
