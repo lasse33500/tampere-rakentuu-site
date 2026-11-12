@@ -807,7 +807,7 @@ function renderTab(){
   if(TAB==='nimet') body=tabNames(d);
   if(TAB==='kuvat') body=tabKuvat(d);
   side.innerHTML=`<div class="kick">${d.su?d.su+' · ':''}${roman?'kaupunginosa '+roman+' · ':''}${String(s.area).replace('.',',')} km²</div><h2>${dname(d)}</h2>
-  ${story?`<p>${story.lede}</p>${story.status&&story.status!=='valmis esimerkki'?`<p class="note" style="margin-top:-6px">✎ Tarina: ${story.status}, ei vielä tarkistettu.</p>`:''}`:''}
+  ${story?`<p>${story.lede}</p>${story.status==='tarkistettu'?`<p class="note" style="margin-top:-6px">✓ Tarkistettu lähteistä</p>`:story.status&&story.status!=='valmis esimerkki'?`<p class="note" style="margin-top:-6px">✎ Tarina: ${story.status}, ei vielä tarkistettu.</p>`:''}`:''}
   <div class="tabs">${tabs.map(([k,l])=>`<button data-tab="${k}" class="${TAB===k?'on':''}">${l}</button>`).join('')}</div>
   <div class="tabpane">${body}</div>
   ${nextCard(d,tabs,nN,nK)}

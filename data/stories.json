@@ -811,7 +811,7 @@
    },
    {
     "h": "Tornit",
-    "p": "Kaupunki rakensi harjulle 1888 Georg Schreckin piirtämän puisen näkötornin. Torni vaurioitui vuoden 1918 Tampereen taistelussa. Tilalle valmistui 1929, kaupungin 150-vuotisjuhlan kunniaksi, Vilho Kolhon suunnittelema 26-metrinen graniittitorni. Talvisodan aikana tornissa toimi ilmavalvonta-asema."
+    "p": "Kaupunki rakensi harjulle 1888 Georg Schreckin piirtämän puisen näkötornin. Torni vaurioitui vuoden 1918 Tampereen taistelussa. Tilalle valmistui 1929, kaupungin 150-vuotisjuhlan kunniaksi, Vilho Kolhon suunnittelema 26-metrinen punagraniittinen torni."
    },
    {
     "h": "Moottoripyöriä ja teatteria",
@@ -870,8 +870,8 @@
     "https://tampere.fi/en/information-region/tampere-city-centre"
    ],
    [
-    "Wikipedia (fi): Pyynikin näkötorni",
-    "https://wikiwand.com/fi/articles/Pyynikin_näkötorni"
+    "Wikipedia (englanti): Pyynikki observation tower",
+    "https://en.wikipedia.org/wiki/Pyynikki_observation_tower"
    ],
    [
     "Wikipedia: Pyynikki Summer Theatre",
@@ -880,6 +880,10 @@
    [
     "Wikipedia: Pyynikki",
     "https://en.wikipedia.com/wiki/Pyynikki"
+   ],
+   [
+    "Pyynikin näkötorni ja munkkikahvila: tornin historia",
+    "https://munkkikahvila.net/en/nakotorni"
    ]
   ]
  },
@@ -1922,12 +1926,12 @@
   ]
  },
  "Lentävänniemi": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Metsälähiö Näsijärven niemellä. Vielä 1970 siellä asui kaksi ihmistä.",
   "sections": [
    {
     "h": "Keuhkokaavio",
-    "p": "Lentävänniemen historia ulottuu kivi- ja rautakaudelle, ja Reuharinniemessä on kaksi rautakautista röykkiöhautaa. Niemi kuului Ylöjärveen ja siirtyi Tampereelle 1950-luvun alussa. Ensimmäinen asemakaava valmistui 1966, ja koko alue oli kaavoitettu 1974. Vuonna 1970 Lentävänniemessä oli vain kaksi asukasta. Lähiö on esimerkki 1960-luvun suunnitteluihanteesta, Olli Kivisen niin sanotusta keuhkokaaviosta: kadut kulkevat reunoilla, ja keskellä ovat puistoakseli ja kauppa."
+    "p": "Lentävänniemen historia ulottuu kivi- ja rautakaudelle, ja Reuharinniemessä on kaksi rautakautista röykkiöhautaa. Niemi kuului Ylöjärveen ja siirtyi Tampereelle 1950. Ensimmäinen asemakaava valmistui 1966, ja koko alue oli kaavoitettu 1974. Vuonna 1970 Lentävänniemessä oli vain kaksi asukasta. Lähiö on esimerkki 1960-luvun suunnitteluihanteesta, Olli Kivisen niin sanotusta keuhkokaaviosta: kadut kulkevat reunoilla, ja keskellä ovat puistoakseli ja kauppa."
    }
   ],
   "tl": [
@@ -1962,8 +1966,8 @@
     "https://www.tampere.fi/sites/default/files/2024-01/8939_lentavanniemen_arvot_ja_muutokset_20240108.pdf"
    ],
    [
-    "Wikipedia: Lentävänniemi",
-    "https://www.wikiwand.com/en/articles/Lent%C3%A4v%C3%A4nniemi"
+    "Wikipedia (englanti): Lentävänniemi – asemakaava 1966, koko alue kaavoitettu 1974",
+    "https://en.wikipedia.org/wiki/Lent%C3%A4v%C3%A4nniemi"
    ]
   ]
  },
