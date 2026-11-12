@@ -146,6 +146,11 @@ sup.r a{color:var(--brick);text-decoration:none;font-size:10px;margin-left:1px}
 .hstats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.hstats div{background:var(--panel);border:1px solid var(--rule);padding:12px 14px;border-radius:10px}
 .hstats b{display:block;font-family:'IBM Plex Sans',system-ui,sans-serif;font-weight:600;letter-spacing:-.02em;font-size:28px;line-height:1.1;color:var(--brick)}.hstats span{font-size:12px;color:var(--muted)}
 .hgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+#mhero{position:absolute;left:50%;bottom:64px;transform:translateX(-50%);z-index:6;width:min(440px,calc(100% - 24px));background:rgba(255,255,255,.94);backdrop-filter:blur(4px);border:1px solid var(--rule);border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.14);padding:16px 18px 16px;text-align:center}
+#mhero h2{font-family:'IBM Plex Sans',system-ui,sans-serif;font-weight:600;font-size:26px;letter-spacing:-.02em;margin:0 0 4px}#mhero p{margin:0 0 12px;font-size:14.5px;color:var(--muted)}
+#mhero .btn{background:var(--brick);color:#fff;border-color:var(--brick);font-size:15px;padding:9px 18px;font-weight:600}#mhero .x{position:absolute;top:4px;right:6px;border:0;background:none;font-size:20px;color:var(--muted);cursor:pointer;padding:4px 8px}
+aside .hgrid{grid-template-columns:1fr;gap:10px}aside .hcard{flex-direction:row}aside .hci{width:112px;flex:none;aspect-ratio:auto;min-height:96px}aside .hct{padding:8px 10px}aside .hct b{font-size:15.5px}aside .hct p{font-size:13px;margin-bottom:3px}aside .hct small{font-size:10.5px}
+.homeside h3{margin-top:26px}
 .hcard{background:var(--panel);border:1px solid var(--rule);border-radius:10px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column}.hcard:hover,.hcard:focus{border-color:var(--brick);outline:none}
 .hci{aspect-ratio:16/10;background-size:cover;background-position:center;background-color:#e2e0db;filter:sepia(.15)}
 .hct{padding:10px 12px 12px}.hct b{font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:18px;display:block;line-height:1.2;margin-bottom:4px}.hct p{margin:0 0 6px;font-size:13.5px}.hct small{font-size:10.5px;color:var(--muted);line-height:1.3;display:block}
@@ -159,6 +164,8 @@ sup.r a{color:var(--brick);text-decoration:none;font-size:10px;margin-left:1px}
 @media (max-width:900px){
   #app,#app.wide{grid-template-columns:1fr;grid-template-rows:auto 44vh auto 1fr}
   #app.mapbig{grid-template-rows:auto 72vh auto 1fr}
+  #app.homemap:not(.mapbig){grid-template-rows:auto 58vh auto 1fr}
+  #mhero{bottom:52px;padding:10px 12px 12px}#mhero h2{font-size:19px;margin-bottom:2px}#mhero p{font-size:13px;margin-bottom:8px}#mhero .btn{padding:7px 16px;font-size:14px}
   #zbig{display:block}
   footer{padding:6px 10px;gap:10px} #yr{font-size:24px;width:62px} #yrnote{display:none} footer .btn{padding:5px 9px}
   .legend{cursor:pointer} .legend:not(.open) .row,.legend:not(.open) .note{display:none} .legend .t{margin:0} .legend .t::after{content:" ▸";color:var(--muted)} .legend.open .t::after{content:" ▾"} .legend.open .t{margin-bottom:6px}
@@ -206,6 +213,7 @@ aside a{color:var(--brick)}
   </div></div>
   <div class="legend" id="legend"></div>
   <div class="ncard" id="ncard"></div>
+  <div id="mhero" hidden><button class="x" id="mhx" title="Sulje" aria-label="Sulje">×</button><h2>Tampere rakentuu</h2><p>Katso, miten kaupunki kasvoi 1800-luvulta tähän päivään, talo talolta.</p><button class="btn" id="mhplay">▶ Toista</button></div>
 </div>
 <aside id="side"></aside>
 <section id="home" hidden></section>
@@ -657,7 +665,7 @@ function pct(a,b){return b?Math.round(a/b*100):0}
 
 // ---------- views & routing ----------
 const NAVG={aika:'aika',alue:'paikat',lm:'paikat',henk:'ihmiset',ark:'ihmiset',teema:'teema',lahteet:''};
-function setNav(v){document.getElementById('home').hidden=true;const pv=VIEW;VIEW=v;if(pv!==v&&(pv==='ark'||v==='ark'))setTimeout(legend,0);const g=NAVG[v];document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.g===g));}
+function setNav(v){document.getElementById('home').hidden=true;homeOff();const pv=VIEW;VIEW=v;if(pv!==v&&(pv==='ark'||v==='ark'))setTimeout(legend,0);const g=NAVG[v];document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.g===g));}
 function subTabs(g){const T=g==='paikat'?[['alue','Kaupunginosat'],['lm','Maamerkit']]:[['henk','Henkilöt'],['ark','Arkkitehdit']];return `<div class="tabs subt" style="margin-top:0">${T.map(([v,l])=>`<button data-view="${v}" class="${VIEW===v?'on':''}">${l}</button>`).join('')}</div>`;}
 function route(instant){
   if(!DATA)return; const h=decodeURIComponent(location.hash.slice(1));
@@ -899,28 +907,26 @@ function wireMuutos(d){ if(aerFor(sel)) wireAer(aerFor(sel));
 
 // ---------- Etusivu ----------
 const HCARDS=[{"k": "dist:Hervanta Lounas", "sprite": "hervanta", "spy": 4, "ny": 7, "t": "Hervanta: metsästä kaupungiksi", "d": "Vuoden 1966 ilmakuvassa on pelkkää metsää, vuonna 1987 valmis kaupunginosa. Vertaa ilmakuvia itse.", "c": "Ilmakuva 1987, Tampereen kaupunki, CC BY 4.0"}, {"k": "play", "f": "img/3503dc0b08.jpg", "t": "Katso Tampereen kasvu", "d": "Aikakone näyttää 49 000 rakennusta valmistumisvuoden mukaan. Paina toista ja katso kaupungin kasvu 1850–2026.", "c": "Tammerkoski 1893, Gustin Lojander / Suur-Savon museo, PDM"}, {"k": "#teema-1918", "f": "img/85ec0204f2.jpg", "t": "Tampere 1918", "d": "Sisällissodan ratkaisutaistelu, tuhoutunut Tammela ja Kalevankankaan joukkohauta.", "c": "Valkoisia joukkoja Keskustorilla 1918, Historian kuvakokoelma, CC BY 4.0"}, {"k": "#teema-teollisuus", "f": "img/db010b1c92.jpg", "t": "Tammerkosken tehtaat", "d": "Finlayson, Frenckell ja Tampella tekivät Tampereesta Suomen Manchesterin.", "c": "Frenckellin paperitehdas ja koski 1880, Svante Lagergrén / Vapriikki, CC BY 4.0"}, {"k": "dist:Amuri A (IV)", "f": "img/34271c8746.jpg", "t": "Amuri: purettu puukaupunki", "d": "Finlaysonin työläisten puutalot korvattiin 1960–70-luvuilla elementtikerrostaloilla. Yksi kortteli säilyi museona.", "c": "Amuri 1950, Vapriikin kuva-arkisto, CC BY 4.0"}, {"k": "#henkilot", "f": "img/e0c429e1ba.jpg", "t": "Tampereen tekijät", "d": "Finlayson, von Nottbeck, Minna Canth, Väinö Linna, Emil Aaltonen ja 40 muuta – ja paikat, joihin he jättivät jälkensä.", "c": "Amurinlinna 1955, jossa Linna kirjoitti Tuntemattoman sotilaan. Vapriikki, CC BY 4.0"}, {"k": "#maamerkit", "f": "img/f4733e26e5.jpg", "t": "Maamerkit", "d": "17 rakennusta Vanhasta kirkosta Nokia Arenaan, jokaisella oma historia ja vanhoja kuvia.", "c": "Raatihuone 1890, Vapriikin kuva-arkisto, CC BY 4.0"}, {"k": "#teema-jatkosota", "f": "img/da8b1069b7.jpg", "t": "Tampere jatkosodassa", "d": "Kaupunkia ei pommitettu, mutta sota näkyi sotasairaaloina, tehtaiden aseina ja jonoina.", "c": "Blenheim-koneiden kokoonpanoa Härmälässä 1943, Vapriikki, CC BY 4.0"}];
-function showHome(){const h=document.getElementById('home');stopPlay();setHash('');document.querySelectorAll('#nav a').forEach(a=>a.classList.remove('on'));
-  const nb=BL.filter(o=>!o.virt).length,nd=DATA.base.districts.length,np=PEOPLE?PEOPLE.length:0,nt=Object.keys(THEMEDATA||{}).length+2;
+function homeOff(){document.getElementById('app').classList.remove('homemap');document.getElementById('mhero').hidden=true;}
+function showHome(){showView('aika',true);setHash('');document.querySelectorAll('#nav a').forEach(a=>a.classList.remove('on'));
+  document.getElementById('app').classList.add('homemap');document.getElementById('mhero').hidden=false;setTimeout(()=>{resize();if(W<600)fit([9800,6300,14600,9900],false,10);else home(false);},60);
   const mu=Object.keys(MUUTOS||{}).map(k=>{const i=DATA.base.districts.findIndex(d=>gKey(d)===k);return i>=0?[k.replace(/ \([IVXL]+\)/,''),i]:null;}).filter(Boolean).sort((a,b)=>a[0].localeCompare(b[0],'fi'));
-  h.innerHTML=`<div class="hhero" style="background-image:url(img/72140d11cd.jpg)"><div class="hin">
-    <div class="kick" style="color:#e9dfcb">Tampereen historiasivusto</div>
-    <h2>Tampere rakentuu</h2>
-    <p>Miten koskenrannan tehdaskylästä kasvoi Suomen suurin sisämaakaupunki? Kartta näyttää kaupungin jokaisen rakennuksen valmistumisvuoden mukaan, ja kaupunginosien tarinat, ilmakuvat ja ihmiset kertovat, mitä muutoksen takana oli.</p>
-    <div class="hbtn"><button class="btn hb1" data-hk="play">▶ Katso kaupungin kasvu</button><button class="btn hb2" data-hk="#kaupunginosat">Selaa kaupunginosia</button></div></div>
-    <div class="hcap">Frenckellin paperitehdas ja Tammerkoski 1870. Historian kuvakokoelma, CC BY 4.0</div></div>
-  <div class="hwrap">
-  <div class="hstats"><div><b>${nb.toLocaleString('fi')}</b><span>rakennusta kartalla</span></div><div><b>${nd}</b><span>kaupunginosaa</span></div><div><b>1946–2022</b><span>ilmakuvia 7 vuodelta</span></div><div><b>${np}</b><span>henkilöä</span></div></div>
+  side.innerHTML=`<div class="homeside"><div class="kick">Tampereen historiasivusto</div><h2>Tampere rakentuu</h2>
+  <p>Miten koskenrannan tehdaskylästä kasvoi Suomen suurin sisämaakaupunki? Kartalla on noin 46 700 tamperelaista rakennusta valmistumisvuotensa mukaan väritettynä. Kaupunginosien tarinat, ilmakuvat ja ihmiset kertovat, mitä muutoksen takana oli.</p>
   <h3>Aloita näistä</h3>
-  <div class="hgrid">${HCARDS.map((c,j)=>`<div class="hcard" data-hk="${c.k}" tabindex="0"><div class="hci" style="${c.sprite?`background-image:url(img/ilma/${c.sprite}.jpg);background-size:100% ${c.ny*100}%;background-position:0 ${c.spy/(c.ny-1)*100}%`:`background-image:url(${c.f})`}"></div><div class="hct"><b>${c.t}</b><p>${c.d}</p><small>${c.c}</small></div></div>`).join('')}</div>
-  <h3>Kaupunginosat, joista on muutostarina ja ilmakuvat</h3>
+  <div class="hgrid">${HCARDS.map(c=>`<div class="hcard" data-hk="${c.k}" tabindex="0"><div class="hci" style="${c.sprite?`background-image:url(img/ilma/${c.sprite}.jpg);background-size:100% ${c.ny*100}%;background-position:0 ${c.spy/(c.ny-1)*100}%`:`background-image:url(${c.f})`}"></div><div class="hct"><b>${c.t}</b><p>${c.d}</p><small>${c.c}</small></div></div>`).join('')}</div>
+  <h3>Kaupunginosat, joista on muutostarina</h3>
   <div>${mu.map(([n,i])=>`<span class="chip has" data-hk="dist:${DATA.base.districts[i].n}">${n}</span>`).join('')}</div>
   <h3>Näin sivua käytetään</h3>
   <ul class="huse"><li><b>Aikakone:</b> vedä vuosiliukua alhaalla tai paina ▶ Toista. Rakennukset ilmestyvät valmistumisvuotensa mukaan.</li><li><b>Paikat:</b> klikkaa kaupunginosaa kartalla. Välilehdillä ovat sen tarina, muutos, rakennukset, asukkaat, paikannimet ja kuvat.</li><li><b>Ihmiset ja teemat:</b> henkilöt, arkkitehdit ja aiheet (1918, teollisuus, sodat) korostavat paikkansa kartalla.</li></ul>
-  <p class="note" style="margin-top:22px">Prototyyppi, 11/2026. Aineistot: Tampereen kaupunki (avoin data, CC BY 4.0), Tilastokeskus, Finna (Vapriikin kuva-arkisto, Museovirasto ym.), Wikidata. <a href="#lahteet" data-hk="#lahteet">Kaikki lähteet →</a></p>
-  </div>`;
-  h.style.top=document.querySelector('header').offsetHeight+'px';h.hidden=false;h.scrollTop=0;
-  h.querySelectorAll('[data-hk]').forEach(el=>{const go=e=>{e.preventDefault();homeGo(el.dataset.hk);};el.onclick=go;el.onkeydown=e=>{if(e.key==='Enter')go(e);};});
+  <p class="note" style="margin-top:22px">Prototyyppi, 11/2026. Aineistot: Tampereen kaupunki (avoin data, CC BY 4.0), Tilastokeskus, Finna (Vapriikin kuva-arkisto, Museovirasto ym.), Wikidata. <a href="#lahteet" data-hk="#lahteet">Kaikki lähteet →</a></p></div>`;
+  side.scrollTop=0;
+  side.querySelectorAll('[data-hk]').forEach(el=>{const go=e=>{e.preventDefault();homeGo(el.dataset.hk);};el.onclick=go;el.onkeydown=e=>{if(e.key==='Enter')go(e);};});
 }
+document.getElementById('mhx').onclick=()=>{document.getElementById('mhero').hidden=true;};
+document.getElementById('mhplay').onclick=()=>{document.getElementById('mhero').hidden=true;if(!timer)document.getElementById('play').click();};
+document.getElementById('play').addEventListener('click',()=>{document.getElementById('mhero').hidden=true;});
+cv.addEventListener('pointerdown',()=>{document.getElementById('mhero').hidden=true;});
 function homeGo(k){document.getElementById('home').hidden=true;
   if(k==='play'){showView('aika');setYear(1850);setTimeout(()=>document.getElementById('play').click(),300);return;}
   if(k.startsWith('dist:')){const i=DATA.base.districts.findIndex(d=>d.n===k.slice(5));if(i>=0){TAB='muutos';select(i);}return;}
