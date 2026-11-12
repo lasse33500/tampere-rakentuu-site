@@ -134,7 +134,40 @@
     "Hietala: Maria Charlotta Hydén (pro gradu)",
     "https://trepo.tuni.fi/bitstream/10024/97474/1/GRADU-1435129420.pdf"
    ]
-  ]
+  ],
+  "en": {
+   "lede": "The factory Tampere grew up around. A Scottish Quaker's engineering works became the largest textile mill in the Nordic countries, and today its halls house a cinema, museums and restaurants.",
+   "sections": [
+    {
+     "h": "A Scot at Tammerkoski",
+     "p": "In 1820 Tampere was a small town of fewer than a thousand inhabitants when the Scotsman James Finlayson founded a factory on the banks of the Tammerkoski rapids. He was a self-taught engineer and a Quaker who had worked in St Petersburg. The water power of the rapids drew him to Tampere. His original idea was to build machinery for the textile industry, but the engineering works did not pay, and Finlayson turned to spinning and weaving cotton."
+    },
+    {
+     "h": "The Nottbeck era",
+     "p": "In 1836 Finlayson sold the factory to two St Petersburg businessmen, Carl Samuel Nottbeck and Georg Adolf Rauch, on condition that it would keep his name. Nottbeck's 20-year-old son Wilhelm was sent to learn how to run the mill. Under his leadership Finlayson became the largest factory in Finland and one of the largest industrial plants in the Nordic countries. The company looked after its workers in many ways: it had its own school from 1840, its own parish 1846–1860, workers' housing and, from 1879, a red-brick factory church."
+    },
+    {
+     "h": "The lights come on in Plevna",
+     "p": "The weaving hall Plevna was named after the Siege of Plevna in the Russo-Turkish War of 1877, since buildings were often named after current events. The mill had other nicknames too: the spinning and carding department is said to have been called Siberia, either because it was 'as big as Siberia' or because being sent there felt like exile. On 15 March 1882 Edison's incandescent lamps lit up in Plevna, the first in the Nordic countries and in the entire Russian Empire. A telegram was sent to Edison: 'Lighting installed at the 61st parallel. Complete success.'"
+    },
+    {
+     "h": "From factory to city district",
+     "p": "Even after the wars Tampere remained the centre of the Finnish textile industry. Among Finlayson's best-known products are the Moomin textiles, from a collaboration with Tove Jansson that began in the 1950s. Production shrank from the 1980s onwards and ended at Tammerkoski in 1996. An architectural competition on the future of the area had already been held in 1988. Museums, schools and companies moved into the old halls, and in 2001 the Siperia shopping centre opened in the old spinning mill."
+    }
+   ],
+   "tlt": [
+    "James Finlayson founds the factory by the Tammerkoski rapids",
+    "The factory is sold to Nottbeck and Rauch; the name is kept",
+    "The factory school opens (mamselle Hydén)",
+    "The Plevna weaving hall is built",
+    "Finlayson Church is completed",
+    "The first electric light in the Nordic countries comes on in Plevna, 15 March",
+    "Peter von Nottbeck's palace Milavida (Näsilinna) is completed",
+    "Architectural competition on the area's future",
+    "Production at Tammerkoski ends",
+    "Siperia shopping centre opens in the old spinning mill"
+   ]
+  }
  },
  "Kaleva": {
   "status": "valmis esimerkki",
@@ -217,7 +250,34 @@
     "Docomomo Suomi: Kaleva Church",
     "https://en.docomomo.fi/?p=401"
    ]
-  ]
+  ],
+  "en": {
+   "lede": "From the clay fields of brickworks to one of Finland's largest post-war residential areas. At its centre stands the Pietiläs' concrete cathedral.",
+   "sections": [
+    {
+     "h": "Clay fields",
+     "p": "Before the district was built, the area was farmland and pasture with good clay. Brickworks were founded there, and houses were built for the workers, such as the Red House, Vaissi's cottage, Monttula and Kaleva. The houses were demolished to make way for the district, but the name remained."
+    },
+    {
+     "h": "Plan and construction",
+     "p": "Even after the Winter War the city ended at the end of Itsenäisyydenkatu. In the late 1930s Elis Kaalamo, the city's town-planning architect from 1929 to 1946, designed the first part of the plan, Liisankallio. Kaleva's residential blocks were built between 1940 and 1960."
+    },
+    {
+     "h": "Church and tram",
+     "p": "A site for Kaleva Church had been reserved in the plan as early as the 1940s. The church was consecrated in 1966, and in 2021 a grassed tram track was completed down the middle of Sammonkatu."
+    }
+   ],
+   "tlt": [
+    "Kaalamo's plan for Liisankallio",
+    "The first slab blocks",
+    "The Teisko towers (11 point blocks, 1949–56)",
+    "Kaleva parish is founded",
+    "Sammonkatu is built as a boulevard",
+    "Reima Pietilä wins the church competition",
+    "Kaleva Church is consecrated, 21 August",
+    "The tram on Sammonkatu, 9 August"
+   ]
+  }
  },
  "Tammerkoski (II)": {
   "status": "tarkistettu",
@@ -323,7 +383,36 @@
     "Tampereen kaupunki: Frenckellin konttorin rakennushistoriallinen selvitys",
     "https://tampere.fi/sites/default/files/2023-04/frenckellin_konttorin_rakennushistoriallinen_selvitys.pdf"
    ]
-  ]
+  ],
+  "en": {
+   "lede": "The original core of the city on the west bank of the Tammerkoski rapids. Here are the Central Square, the Old Church, Hämeensilta bridge and the Frenckell paper mill.",
+   "sections": [
+    {
+     "h": "From rapids to town",
+     "p": "The mills of Tammerkoski are recorded as early as 1466, when Takahuhti, Messukylä and Tammerkoski quarrelled over shares in them. In 1638 Per Brahe ordered two markets a year to be held at the rapids. King Gustav III founded the town of Tampere on 1 October 1779. The town stretched from the rapids to the Pispala border, about 3.2 square kilometres, and had fewer than 200 inhabitants. At first the town lay only on the west bank of the rapids; it spread to the east bank only in the 1870s."
+    },
+    {
+     "h": "Church, bridge and paper",
+     "p": "The town had to wait more than two decades for its own church, until the Old Church was completed on the edge of the Central Square in 1824. The first Hämeensilta bridge was built of wood in 1807; the present bridge dates from 1929. Abraham Häggman founded a paper mill at the rapids in 1783. In 1842 Johan Christopher Frenckell's mill acquired Finland's first continuous paper machine. The mill moved to Pori in 1928, and the city bought its site the following year. The buildings are now used for offices and culture."
+    },
+    {
+     "h": "A town of squares",
+     "p": "The Central Square has been the city's political stage. During the general strike, on 1 November 1905, the so-called Red Declaration was proclaimed in the square."
+    }
+   ],
+   "tlt": [
+    "First mention of the mills at the rapids",
+    "Per Brahe orders two markets a year",
+    "Gustav III founds Tampere, 1 October",
+    "Häggman's paper mill at the rapids",
+    "The first, wooden Hämeensilta bridge",
+    "The Old Church is completed",
+    "Finland's first continuous paper machine at Frenckell",
+    "The Red Declaration in the Central Square, 1 November",
+    "The Frenckell mill moves to Pori",
+    "The present Hämeensilta bridge"
+   ]
+  }
  },
  "Amuri": {
   "status": "tarkistettu",
@@ -386,7 +475,28 @@
     "Visit Tampere: Amurin työläismuseokortteli",
     "https://visittampere.fi/en/destination/amuri-museum-of-historic-housing/"
    ]
-  ]
+  ],
+  "en": {
+   "lede": "Tampere's first working-class district. Its wooden blocks were almost entirely demolished, and one block was kept as a museum.",
+   "sections": [
+    {
+     "h": "As far away as the Amur",
+     "p": "Amuri's town plan was approved in 1868, and the first plots were sold at auction in 1869. The wooden blocks were built for the growing workforce, and many of the houses were completed in the 1880s. The name began as a joke: the area felt as remote as the Amur in Siberia, where Finns had just emigrated. In 1875–1885 Amuri expanded with leased plots as far as Sotkankatu."
+    },
+    {
+     "h": "Redevelopment",
+     "p": "Replanning of Amuri began in 1952, and a new town plan was approved in 1965. The characteristic wooden houses were demolished and replaced by apartment blocks in the 1960s and 70s. Researchers have used Amuri as an example of Finnish urban redevelopment. One complete block of wooden houses survived. It became the Amuri Museum of Workers' Housing, which began to be turned into a museum in 1975."
+    }
+   ],
+   "tlt": [
+    "The town plan is approved",
+    "The first plots are sold at auction",
+    "Amuri expands with leased plots to Sotkankatu (1875–85)",
+    "Replanning, i.e. redevelopment, begins",
+    "The new town plan is approved",
+    "Work on the workers' museum block begins"
+   ]
+  }
  },
  "Kyttälä": {
   "status": "tarkistettu",
@@ -458,7 +568,34 @@
     "Tampereen kaupunki: VR:n rakennusten rakennushistoriaselvitys 2003",
     "https://www.tampere.fi/sites/default/files/2022-11/rakennushistoriaselvitys_vr_n_rakennusten_2003.pdf"
    ]
-  ]
+  ],
+  "en": {
+   "lede": "Tampere's first suburb. With the railway and the grid plan, the village on the east bank of the rapids became the city centre.",
+   "sections": [
+    {
+     "h": "A village of Messukylä",
+     "p": "The Skyttälä farm stood where the Bank of Finland building is today. In the 17th century the area passed to the Tammerkoski manor and in 1790 to the Hatanpää manor. As late as the 1850s the east bank of the rapids belonged to Messukylä, and an unplanned residential area for industrial workers grew up there. Kyttälä is regarded as Tampere's first suburb created by industry."
+    },
+    {
+     "h": "Railway and grid plan",
+     "p": "The railway and station opened east of the rapids in 1876, although the townspeople would have preferred the station on the west bank, in the town proper. Kyttälä was annexed to Tampere in 1877, and in 1886 a grid plan drawn up under F. L. Calonius was approved, replacing the village-like layout. Expanding into Kyttälä tripled the area of the town. In 1892 the farmers were evicted and given new plots at Armonkallio."
+    },
+    {
+     "h": "Destruction",
+     "p": "Southern Kyttälä burned almost entirely in the fighting of 1918. The Winter War air raids badly damaged its central parts, and in the 1946 aerial photos there are empty plots in almost every block. The present functionalist station building was completed in 1936."
+    }
+   ],
+   "tlt": [
+    "The area passes to the Hatanpää manor",
+    "The railway and station open",
+    "Kyttälä is annexed to Tampere",
+    "Grid plan replaces the village layout",
+    "Farmers evicted to Armonkallio",
+    "Destruction in the Battle of Tampere",
+    "The present station building is completed",
+    "Winter War air raids"
+   ]
+  }
  },
  "Tammela": {
   "status": "tarkistettu",
@@ -534,7 +671,32 @@
     "Wikipedia: Tammelantori",
     "https://en.wikipedia.org/wiki/Tammelantori"
    ]
-  ]
+  ],
+  "en": {
+   "lede": "A working-class district built on a grid plan, known for its shoe factories, its market square and black sausage. Much of it burned in 1918 and was rebuilt.",
+   "sections": [
+    {
+     "h": "From manor fields to the grid",
+     "p": "The town bought the lands of Kyttälä and Tammela in 1876. Before that the area belonged to the Hatanpää manor and held the manor's crofts and fields. A first grid plan was drawn up in 1877 but never carried out. Town architect F. L. Calonius finished a new plan, approved in 1887, and the first plots under it were built in 1890. Tammela was planned as a workers' residential area of perimeter blocks lining the streets."
+    },
+    {
+     "h": "Destruction and rebuilding",
+     "p": "Much of Tammela burned in the Battle of Tampere in 1918, and more buildings were destroyed in the Winter War air raids. The plots were rebuilt in the 1920s, and the district expanded east of Salhojankatu in 1921."
+    },
+    {
+     "h": "Capital of the shoemakers",
+     "p": "Until the 1960s Tammela was one of Tampere's most important industrial centres, home to the Aaltonen and Attila shoe factories, among others. Tammelantori square became the heart of the district. Later, old wooden apartment houses were demolished to make way for blocks of flats."
+    }
+   ],
+   "tlt": [
+    "The town buys the lands of Kyttälä and Tammela",
+    "First grid plan, never carried out",
+    "The town plan finished by Calonius is approved",
+    "First plots built under the new plan",
+    "Much of the district burns in the battle",
+    "Expansion east of Salhojankatu"
+   ]
+  }
  },
  "Osmonmäki (XIV)": {
   "status": "tarkistettu",
@@ -673,7 +835,28 @@
     "Tampereen kaupunki: Tampellan kanta-alueen asemakaavaselostus 7300",
     "https://kartat.tampere.fi/www/arkisto/kaava_seloste/007300.pdf"
    ]
-  ]
+  ],
+  "en": {
+   "lede": "A district of locomotives, turbines and linen. A small blast furnace grew into an industrial company employing thousands, and its old workshop now houses the Vapriikki museum centre.",
+   "sections": [
+    {
+     "h": "From blast furnace to conglomerate",
+     "p": "Tampella's roots lie in a blast furnace founded on the east bank of the rapids in the 1840s. The first linen and weaving mill was built on the shore in 1856, and in 1861 the linen mill and the engineering works merged into one company, Tampereen Pellava- ja Rautateollisuus Oy, later shortened to Tampella. Its products included linen fabrics, paper machines, steam and diesel locomotives and turbines."
+    },
+    {
+     "h": "From workshop to museum",
+     "p": "The factories remained in industrial use until the early 1990s. In 1996 the Vapriikki museum centre opened in the halls of the lower workshop, and the Pirkanmaa District Court also operates in the area. Most of the present factory buildings date from the late 19th century. Herrainmäki, the managers' residential area, was closed to the public until 1991. The district also includes Naistenlahti and Armonkallio. The name Naistenlahti ('women's bay') is said to come from the women who rowed from Teisko to Messukylä church and came ashore here."
+    }
+   ],
+   "tlt": [
+    "Blast furnace on the east bank of the rapids",
+    "The first linen and weaving mill",
+    "The linen mill and engineering works merge",
+    "Naistenlahti is annexed to Tampere",
+    "Herrainmäki opens to the public",
+    "The Vapriikki museum centre opens"
+   ]
+  }
  },
  "Särkänniemi (VIII)": {
   "status": "tarkistettu",
@@ -727,7 +910,24 @@
     "Finnish Architecture: Näsinneula",
     "https://finnisharchitecture.fi/nasinneula-observation-tower"
    ]
-  ]
+  ],
+  "en": {
+   "lede": "A headland on Lake Näsijärvi that became the city's entertainment centre in the 1970s: Näsinneula tower, an amusement park, an aquarium and an art museum.",
+   "sections": [
+    {
+     "h": "An amusement park at the foot of the tower",
+     "p": "The Särkänniemi children's zoo opened in 1970. In 1971 the 168-metre Näsinneula tower, designed by the architect Pekka Ilveskoski and topped by a revolving restaurant, was opened. The Neula amusement park started on the same site in 1973, and on 1 May 1975 the Särkänniemi amusement park opened when the city took over its operation. The Sara Hildén Art Museum opened in 1979. A dolphinarium opened in 1985; the park gave it up in 2016."
+    }
+   ],
+   "tlt": [
+    "Children's zoo",
+    "Näsinneula tower opens",
+    "Neula amusement park",
+    "Särkänniemi amusement park opens, 1 May",
+    "Sara Hildén Art Museum",
+    "Dolphinarium opens (closed 2016)"
+   ]
+  }
  },
  "Ratina (XIII)": {
   "status": "tarkistettu",
@@ -770,7 +970,20 @@
     "Yle: Ratinan stadion",
     "https://yle.fi/a/3-11825851"
    ]
-  ]
+  ],
+  "en": {
+   "lede": "A headland at the mouth of the Tammerkoski rapids with a stadium, the bus station and the city's largest shopping centre.",
+   "sections": [
+    {
+     "h": "A concrete stadium by the still water",
+     "p": "The town plan for eastern Ratina, which reserved a site for a new bus station, was approved in 1935. Planning of the stadium was delayed for many reasons: the architectural competition was won by Yrjö Lindegren's entry, and there were disputes over moving the stadium to the Kauppi sports park. The ground under the main stand had not been properly surveyed, and load-bearing soil was found only 30 metres down, so new plans were commissioned from the architect Timo Penttilä. The stadium was built in 1963–1966 to plans by Penttilä and the engineer Bertel Ekengren. Laukonsilta bridge links the Ratina headland to Laukontori square."
+    }
+   ],
+   "tlt": [
+    "Town plan for the bus station area",
+    "Ratina Stadium is completed (built 1963–66)"
+   ]
+  }
  },
  "Jussinkylä (X)": {
   "status": "tarkistettu",
@@ -914,7 +1127,34 @@
     "Pyynikin näkötorni ja munkkikahvila: tornin historia",
     "https://munkkikahvila.net/en/nakotorni"
    ]
-  ]
+  ],
+  "en": {
+   "lede": "A ridge between two lakes: pasture, pleasure ground, racetrack and summer theatre.",
+   "sections": [
+    {
+     "h": "From pasture to viewpoint",
+     "p": "Pyynikki is mentioned in documents in the 1540s, and the Pyynikki farm was joined to the Tammerkoski manor in the 1650s. At first the area was common pasture, but from the 19th century it became a place for views and gatherings. A pavilion was built on the ridge in 1840 and restaurants in 1864 and 1866."
+    },
+    {
+     "h": "The towers",
+     "p": "In 1888 the town built a wooden observation tower on the ridge, designed by Georg Schreck. The tower was damaged in the Battle of Tampere in 1918. It was replaced in 1929, for the city's 150th anniversary, by a 26-metre red granite tower designed by Vilho Kolho."
+    },
+    {
+     "h": "Motorcycles and theatre",
+     "p": "The Pyynikki Summer Theatre started out as the Tampere Summer Theatre on Joselininniemi in 1948 and has been called Pyynikki Summer Theatre since 1955. It is known for its revolving auditorium designed by the architect Reijo Ojanen and completed in 1959. The Finnish Grand Prix of the Motorcycle World Championship was raced on the Pyynikki street circuit in 1962 and 1963."
+    }
+   ],
+   "tlt": [
+    "First mention",
+    "Pavilion on the ridge",
+    "Wooden observation tower",
+    "The tower is damaged in the battle",
+    "Granite observation tower",
+    "The summer theatre opens",
+    "The revolving auditorium is completed",
+    "Motorcycle World Championship round (1962–63)"
+   ]
+  }
  },
  "Pyynikinrinne (VII)": {
   "status": "tarkistettu",
@@ -1841,7 +2081,36 @@
     "Tampereen kaupunki: Tampereen historia (alueliitokset)",
     "https://www.tampere.fi/en/information-on-tampere/history-tampere"
    ]
-  ]
+  ],
+  "en": {
+   "lede": "A workers' community built by hand on Finland's highest gravel ridge: stairways, cottages and a view of two lakes.",
+   "sections": [
+    {
+     "h": "Onto the ridge slopes",
+     "p": "Pispala takes its name from the Pispa farm, which was obliged to lodge bishops on their travels. The name is first mentioned in 1492, and there are also traces of prehistoric settlement in the area. The first large industrial plant was the Santalahti steam sawmill, founded in 1875, and building the Pori railway in 1890–1896 sped up construction. The first workers' dwellings went up along Pispalan valtatie in the 1870s. The shot factory moved to the northern slope of the ridge in 1908, and its red-painted steel shot tower became the landmark of Pispala."
+    },
+    {
+     "h": "Wild and free",
+     "p": "Pispala belonged to Pirkkala and, from 1922, to Pohjois-Pirkkala, and no town plan restricted building. You could build your house as you liked. Rajaportti sauna opened in 1906 and is the oldest public sauna still operating in Finland. The slopes of Pispala have been home to, among others, Lauri Viita, Hannu Salama, Aaro Hellaakoski and Olavi Virta."
+    },
+    {
+     "h": "Into the city",
+     "p": "Pispala was annexed to Tampere in 1937 together with other western areas. The annexation brought 9,287 new residents to the city. Building began to be regulated, the first town plan came into force in 1945, and the first apartment blocks rose along the main road in the 1950s. A planning competition was held in 1968, and a new town plan based on it was completed in 1978. Today Pispala is a nationally significant cultural environment."
+    }
+   ],
+   "tlt": [
+    "The Pispa farm is first mentioned",
+    "Santalahti steam sawmill",
+    "The Pori railway is built (1890–96)",
+    "Rajaportti sauna opens",
+    "The shot factory and shot tower",
+    "Pirkkala is divided; Pispala goes to Pohjois-Pirkkala",
+    "Annexed to Tampere",
+    "First town plan",
+    "Planning competition",
+    "New town plan"
+   ]
+  }
  },
  "Lielahti": {
   "status": "tarkistettu",
@@ -1930,7 +2199,31 @@
     "Tampereen kaupunki: Tampereen historia (alueliitokset)",
     "https://www.tampere.fi/en/information-on-tampere/history-tampere"
    ]
-  ]
+  ],
+  "en": {
+   "lede": "A medieval village, the Nottbecks' manor and a pulp mill. The new Hiedanranta district is now being built on the industrial site.",
+   "sections": [
+    {
+     "h": "From village to manor",
+     "p": "Lielahti village arose at the end of the Middle Ages, and in the 1560s it had six farms. In the 1680s the village farms were combined into a cavalry estate. Wilhelm von Nottbeck of Finlayson bought the estate in 1872. His son Wilhelm Fredrik von Nottbeck developed it into a large estate in the 1880s and 1890s, and its main building was completed in 1893. The estate also got its own railway to the Tampere–Pori line. It came to be called the Lielahti manor. The family chapel and cemetery date from 1885."
+    },
+    {
+     "h": "Pulp and railway",
+     "p": "In 1913 J. W. Enqvist founded a pulp mill in the manor's farmyard, and from then on Hiedanranta was a wood-processing area. The smell of the pulp mill became familiar across western Tampere. The red-brick Lielahti station building, designed by Thure Hällström, was completed in 1927. Lielahti was transferred to Tampere from Ylöjärvi in 1950. The city bought the factory site in 2015, and the Hiedanranta district is being built in its place."
+    }
+   ],
+   "tlt": [
+    "Six farms in Lielahti village",
+    "Cavalry estate",
+    "Wilhelm von Nottbeck buys the estate",
+    "The Nottbecks' chapel",
+    "Main building of the manor",
+    "The pulp mill is founded",
+    "Lielahti station building",
+    "Annexed to Tampere from Ylöjärvi",
+    "The city buys the factory site"
+   ]
+  }
  },
  "Tesoma": {
   "status": "tarkistettu",
@@ -2224,7 +2517,21 @@
     "Tampereen kaupunki: arkeologinen inventointi 2014",
     "https://www.tampere.fi/sites/default/files/2022-06/Ksoyk_arkeologinenInventointi2014Kohdeluettelo.pdf"
    ]
-  ]
+  ],
+  "en": {
+   "lede": "The industrial shore at the foot of Pispala.",
+   "sections": [
+    {
+     "h": "Santalahti",
+     "p": "The Santalahti steam sawmill, founded in 1875, was the first large industrial plant in the Pispala area. Other industry later came to the shore, such as a paper mill and the OTK match factory built in 1926, whose brick chimney still stands. The area was annexed to Tampere in 1937."
+    }
+   ],
+   "tlt": [
+    "Santalahti steam sawmill",
+    "The OTK match factory",
+    "Annexed to Tampere"
+   ]
+  }
  },
  "Ikuri": {
   "status": "tarkistettu",
@@ -2323,7 +2630,32 @@
     "Ikäheimo: Unelmien ja arjen Hervanta (2021)",
     "https://trepo.tuni.fi/handle/10024/134689"
    ]
-  ]
+  ],
+  "en": {
+   "lede": "A satellite town and compact city planned in the forest, with the technical university at its heart.",
+   "sections": [
+    {
+     "h": "From manor forests",
+     "p": "Hervanta was built on the lands of the Turtola, Viiala and Vilunen manors, which passed to the city in the 1940s. The area was annexed to Tampere along with Messukylä in 1947. Until the end of the 1960s the only access was a road from Messukylä church, and the area was mostly forest."
+    },
+    {
+     "h": "A compact city is a contact city",
+     "p": "The city held an ideas competition for Hervanta in 1967, won by Aarno Ruusuvuori's entry. Its basic structure can still be seen: a main thoroughfare cuts through the district, with the centre along it. The spirit of the time was captured by Pentti Murole's 1967 slogan 'a compact city is a contact city'. The first town plan, for the campus, was completed in 1970 and the final master plan in 1975. At first the University of Tampere was also planned to move to Hervanta alongside the technical university, but this did not happen. The technical university's engineering building was completed in 1973, and the large blocks of flats went up in the 1970s."
+    },
+    {
+     "h": "The tram",
+     "p": "The route between the centre and Hervanta became one of the busiest in Tampere. The main thoroughfare solved part of the problem, and since 2021 the tram has carried most of the traffic."
+    }
+   ],
+   "tlt": [
+    "Annexed to Tampere along with Messukylä",
+    "Ideas competition won by Ruusuvuori; 'a compact city is a contact city'",
+    "Town plan for the campus",
+    "The technical university's engineering building is completed",
+    "Master plan",
+    "The tram reaches Hervanta"
+   ]
+  }
  },
  "Hatanpää (XXII)": {
   "status": "tarkistettu",

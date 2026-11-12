@@ -66,6 +66,21 @@
     "Docomomo Suomi: Kaleva Church",
     "https://en.docomomo.fi/?p=401"
    ]
+  },
+  "en": {
+   "lede": "In the 1930s the slopes of Liisankallio and Kaleva were still the clay pits and fields of brickworks. The post-war housing shortage transformed the area in a couple of decades: slab blocks rose following Kaalamo's plan, point blocks went up along Teiskontie, and Sammonkatu became a boulevard. By the mid-1960s Kaleva was a complete district of apartment blocks, with the Pietiläs' concrete church as its landmark. Since 2021 the tram has run along Sammonkatu.",
+   "kkt": [
+    "Kaalamo's plan for Liisankallio",
+    "The first slab blocks",
+    "The 11 point blocks of Teiskontie",
+    "Sammonkatu is built as a boulevard",
+    "Kaleva Church is consecrated",
+    "The tram on Sammonkatu"
+   ],
+   "caps": [
+    "Kaleva under construction",
+    "Kaleva in the 2020s"
+   ]
   }
  },
  "Hervanta": {
@@ -150,6 +165,23 @@
    "h2": [
     "Tampereen kaupunki: asemakaavaluonnos 8745",
     "https://www.tampere.fi/sites/default/files/2022-11/3_8745_luonnos_selostus_20180611.pdf"
+   ]
+  },
+  "en": {
+   "lede": "As late as the end of the 1960s Hervanta was almost untouched forest far from the inner city. Aarno Ruusuvuori's winning plan (1968) made it a satellite town, and the first residents moved to Orivedenkatu in 1973, the same year the technical university's first building was completed. A whole district rose in the forest by 1987: first the 1970s apartment blocks west of the main thoroughfare, then terraced and detached houses around the edges in the 1980s. Since the late 1990s the centre and the thoroughfare corridor have been filled in, and the tram arrived in 2021.",
+   "kkt": [
+    "Annexed to Tampere along with Messukylä",
+    "Aarno Ruusuvuori's winning entry",
+    "First residents and the university's engineering building",
+    "The first blocks are finished",
+    "Building moves to the edges",
+    "The district is largely complete",
+    "Infill building begins in the centre",
+    "The tram reaches Hervanta"
+   ],
+   "caps": [
+    "Hervanta before settlement",
+    "Northern Hervanta built up"
    ]
   }
  },
@@ -236,6 +268,22 @@
     "Kuitunen: Oma tupa, oma lupa (Väki Voimakas)",
     "https://journal.fi/vakivoimakas/article/download/137098/85488/301645"
    ]
+  },
+  "en": {
+   "lede": "The town bought Tammela's land from the Hatanpää manor in 1876, and from the 1890s a wooden working-class district grew up on Calonius's grid plan. Much of it was destroyed in the Battle of Tampere in 1918 and rebuilt. In the 1910s and 20s shoe factories rose around Tammelantori, such as Aaltonen's castle-like factory. After the wars the city's redevelopment targeted the wooden districts of Amuri and Tammela, and the wooden houses gave way to apartment blocks. The factories closed in the 1980s and were turned into flats and offices.",
+   "kkt": [
+    "Land bought from the Hatanpää manor",
+    "Final town plan",
+    "First plots leased",
+    "Aaltonen's shoe factory is built",
+    "Almost total destruction in the Battle of Tampere",
+    "Wooden houses replaced by apartment blocks",
+    "Shoe factories close; Aaltonen's factory becomes flats"
+   ],
+   "caps": [
+    "Bus on the Tammela route 1927",
+    "Tammela from the air 2009"
+   ]
   }
  },
  "Amuri": {
@@ -313,6 +361,21 @@
     "Tampereen kaupunki: rakennetun kulttuuriympäristön inventointi 2016",
     "https://www.tampere.fi/sites/default/files/2022-10/rakennetun_kulttuuriympariston_inventointi_2016.pdf"
    ]
+  },
+  "en": {
+   "lede": "Amuri was the wooden district of Finlayson's workers. The first plots were laid out in 1869; by 1890 more than 3,200 people lived there, and around the turn of the century about 5,350. After the wars the wooden houses came to be seen as outdated and poorly equipped. Replanning began in 1952, a new town plan was approved in 1965, and in the 1960s and 70s almost the entire district was rebuilt with prefabricated concrete apartment blocks. One block survived and became the Amuri Museum of Workers' Housing.",
+   "kkt": [
+    "The first plots",
+    "Expands to Sotkankatu",
+    "More than 3,200 residents",
+    "Replanning (redevelopment) begins",
+    "The new town plan is approved",
+    "Wooden houses demolished, replaced by prefabricated blocks"
+   ],
+   "caps": [
+    "Amuri 1950",
+    "Redeveloped Amuri 2015"
+   ]
   }
  },
  "Pispala": {
@@ -389,6 +452,21 @@
    "p1": [
     "Kuitunen: Oma tupa, oma lupa (Väki Voimakas)",
     "https://journal.fi/vakivoimakas/article/download/137098/85488/301645"
+   ]
+  },
+  "en": {
+   "lede": "The workers' community built by hand on the slopes of the gravel ridge belonged to Pirkkala and, from 1922, to Pohjois-Pirkkala until it was annexed to Tampere in 1937. The first town plan came only in 1945. After Amuri and Tammela, post-war redevelopment threatened Pispala too, but in 1969 work began on a conservation plan. That is why the cottages, stairways and lanes survived, and change in Pispala has meant repair and infill rather than demolition.",
+   "kkt": [
+    "Santalahti steam sawmill",
+    "To Pohjois-Pirkkala",
+    "Annexed to Tampere",
+    "First town plan",
+    "Work on the conservation plan begins",
+    "The shot tower is restored"
+   ],
+   "caps": [
+    "Ala-Pispala 1920",
+    "Ala-Pispala 2011"
    ]
   }
  },
@@ -475,6 +553,21 @@
     "Arkkitehti-lehti: Ranta-Tampella",
     "https://www.ark.fi/en/2022/01/canal-city-shaped-by-wind-and-waves/"
    ]
+  },
+  "en": {
+   "lede": "From a small blast furnace of the 1840s grew an engineering and linen industry that filled the east bank of the Tammerkoski rapids. Over the decades the shore was extended by filling in the gaps between islands and headlands in Lake Näsijärvi. When industry ended, the old buildings were taken over by the Vapriikki museum centre (1996), flats and offices. The newest phase is Ranta-Tampella: when the Rantaväylä tunnel was completed, space opened up on the shore for a canal district of about 4,000 residents. Building began in 2016, the first residents moved in in 2018, and the area is due to be finished by 2030.",
+   "kkt": [
+    "A small blast furnace",
+    "The engineering works and linen mill merge",
+    "The shore is filled in",
+    "The Vapriikki museum centre opens",
+    "Rantaväylä tunnel; building of Ranta-Tampella begins",
+    "First residents in Ranta-Tampella"
+   ],
+   "caps": [
+    "Tampella factory hall 1947",
+    "Ranta-Tampella 2023"
+   ]
   }
  },
  "Hiedanranta": {
@@ -557,6 +650,23 @@
    "h5": [
     "Tampereen kaupunki: Hiedanrannan asemakaava 8793 (OAS)",
     "https://www.tampere.fi/sites/default/files/2022-11/8793_OAS_20210204_0.pdf"
+   ]
+  },
+  "en": {
+   "lede": "In 1913 a sulphite pulp mill was founded on the land of the Lielahti manor. Pulp production ended in the 1980s, but other production continued at the mill until 2008. The city bought the factory site in 2014, and the following year it took the old name Hiedanranta. At first the area came alive with temporary uses and events. Now a district of at least 18,500 residents is being planned on the shore of Lake Näsijärvi, with the manor and the old factory buildings at its core.",
+   "kkt": [
+    "Wilhelm von Nottbeck buys Lielahti",
+    "J. W. Enqvist founds the pulp mill",
+    "Annexed to Tampere from Ylöjärvi",
+    "Pulp production ends",
+    "The mill closes",
+    "The city buys the area",
+    "Named Hiedanranta",
+    "The master plan is approved"
+   ],
+   "caps": [
+    "Lielahti pulp mill from the air 1969",
+    "Hiedanranta 2022"
    ]
   }
  },
@@ -683,6 +793,21 @@
    "k1": [
     "Tampereen kaupunki: Asemapuiston ympäristöhistoriallinen selvitys",
     "https://www.tampere.fi/sites/default/files/2022-11/tampereen_asemapuisto_ymparistohistoriallinen_selvitys_20200122_0.pdf"
+   ]
+  },
+  "en": {
+   "lede": "The village on the east bank of the rapids was Hatanpää manor land. The railway arrived in 1876, and the following year Kyttälä was annexed to the town. A grid plan replaced the village layout in 1886, and the old farmers were moved to Armonkallio. Wooden houses were destroyed in the Battle of Tampere in 1918 and in the Winter War air raids of 1940. After the wars Kyttälä became part of the stone-built centre, and the wooden houses gave way to commercial and apartment buildings.",
+   "kkt": [
+    "The railway and station open",
+    "Annexed to Tampere",
+    "Grid plan replaces the village layout",
+    "Destruction in the Battle of Tampere",
+    "The present station building is completed",
+    "Winter War air raids"
+   ],
+   "caps": [
+    "A Kyttälä wooden house courtyard around 1900",
+    "Kyttälä 2022"
    ]
   }
  },
@@ -892,6 +1017,20 @@
    "q3": [
     "Sponda: Ratina opens",
     "https://sponda.fi/?p=5084"
+   ]
+  },
+  "en": {
+   "lede": "For a long time the headland at the mouth of the rapids was sandy wasteland flooded by Lake Pyhäjärvi. In the 1930s transport blocks were built there: the functionalist bus station (1938) was the largest in the Nordic countries when it opened. Ratina Stadium was completed in 1966. The latest transformation is the Ratina shopping centre. Building began in 2015, and it opened on 19 April 2018. At the same time the 1930s functionalist buildings Ranta-Ratina and Ratinan Kulma were renovated as part of the shopping centre.",
+   "kkt": [
+    "Town plan for the bus station area",
+    "The bus station is completed",
+    "Ratina Stadium is completed",
+    "Building of the shopping centre begins",
+    "Ratina shopping centre opens"
+   ],
+   "caps": [
+    "Ratina in winter 1910",
+    "Ratina 2023"
    ]
   }
  },
@@ -1188,6 +1327,23 @@
    "l3": [
     "Tampereen Ratikka: liikenne Lentävänniemeen 7.1.2025",
     "https://www.tampereenratikka.fi/en/traffic-to-lentavanniemi-on-tampere-tramway-will-begin-as-scheduled-on-7-january-construction-work-was-completed-well-under-budget/"
+   ]
+  },
+  "en": {
+   "lede": "Lielahti's medieval village became a cavalry estate and, in 1872, the manor of Finlayson's owner Wilhelm von Nottbeck. In the 1910s a pulp mill was built on the manor's land, and Lielahti became an industrial village between the railway and Lake Näsijärvi. The area was transferred to Tampere from Ylöjärvi in 1950. In the 1970s the Lielahti shopping centre was built and the industrial area grew. After the mill closed in 2008, Hiedanranta is taking shape on its site, and since 2025 the tram has run through Lielahti.",
+   "kkt": [
+    "Lielahti village, 7 farms",
+    "Wilhelm von Nottbeck buys the estate",
+    "The pulp mill is founded",
+    "Lielahti station building",
+    "Annexed to Tampere from Ylöjärvi",
+    "Building of the shopping centre begins",
+    "The mill closes",
+    "The tram reaches Lielahti"
+   ],
+   "caps": [
+    "Lielahti pulp mill 1970",
+    "Lielahti 2021"
    ]
   }
  },
@@ -1521,6 +1677,23 @@
    "s2": [
     "Visit Tampere: Pyynikin harju",
     "https://visittampere.fi/en/?p=14593"
+   ]
+  },
+  "en": {
+   "lede": "For a long time Pyynikki was a common pasture for the townspeople's cows. In the 19th century the ridge became a place of leisure and recreation for the people of Tampere, with restaurants, pleasure halls and popular festivals. At the foot of the ridge, on the shore of Lake Pyhäjärvi, a knitwear factory grew up that at its peak employed thousands. After the factory closed, its old buildings were given new uses, and the ridge itself is protected as a nature reserve.",
+   "kkt": [
+    "The Pyynikki estate becomes part of the new town",
+    "Joselin's and Rosendahl's restaurants open",
+    "The first national song and music festival",
+    "Knitwear production begins on the Pyhäjärvi shore",
+    "The western front of the Civil War runs along the ridge",
+    "Pyynikki motorcycle races",
+    "The ridge is named a nationally valuable landscape",
+    "Suomen Trikoo leaves Pyynikki"
+   ],
+   "caps": [
+    "The Suomen Trikoo factory from Lake Pyhäjärvi 1928",
+    "The former knitwear factory 2023"
    ]
   }
  },
@@ -1886,6 +2059,23 @@
    "s2": [
     "Tampereen kaupunki: Santalahden paperitehtaan kuntotutkimusten yhteenveto 2023",
     "https://www.tampere.fi/sites/default/files/2025-05/9030_yhteenveto_kuntotutkimuksista_20231024.pdf"
+   ]
+  },
+  "en": {
+   "lede": "Santalahti's sandy shore was no good for fields, so the area stayed unbuilt until the 19th century. When steam power freed factories from the rapids and the Pori railway was completed in 1895, a paper mill, a sawmill, a roofing-felt and bone-meal factory and a match factory rose on the shore of Lake Näsijärvi. Industry declined from the 1950s onwards, and the buildings fell empty. In the 2010s most of the old factories were demolished, and homes for more than 2,000 residents are being built in their place. Since 2023 the tram has run through the area.",
+   "kkt": [
+    "The Tampere–Pori railway is completed",
+    "A paper mill and other factories are built",
+    "Santalahti halt building is completed",
+    "The industrial area at its largest",
+    "Industry begins to decline; the shore is filled in",
+    "Building of new apartment blocks begins",
+    "The shore park event area is completed",
+    "The tram starts running to Santalahti"
+   ],
+   "caps": [
+    "Santalahti paper mill 1940",
+    "New Santalahti and the old factory 2021"
    ]
   }
  },
