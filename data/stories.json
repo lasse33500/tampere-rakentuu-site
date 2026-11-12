@@ -537,7 +537,7 @@
   ]
  },
  "Osmonmäki (XIV)": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Tammelan pohjoisosa, joka rakentui 1890-luvulla, kun Kyttälän saneeraus ajoi asukkaita uusille tonteille.",
   "sections": [
    {
@@ -776,12 +776,12 @@
   ]
  },
  "Jussinkylä (X)": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Entisen Erkkilän kylän paikalle rakentunut kaupunginosa, jonka maamerkki on Lars Sonckin graniittinen tuomiokirkko.",
   "sections": [
    {
     "h": "Kansallisromantiikan kirkko",
-    "p": "Erkkilän vanha kylätontti oli nykyisen keskuspaloaseman etupihan kohdalla. Jussinkylän tunnetuin rakennus on Tampereen tuomiokirkko, alkuperäiseltä nimeltään Johanneksen kirkko. Lars Sonck voitti suunnittelukilpailun 1899, ja kirkko rakennettiin 1902–1907. Se tunnetaan Hugo Simbergin freskoista ja Magnus Enckellin alttaritaulusta Ylösnousemus."
+    "p": "Erkkilän vanha kylätontti oli nykyisen keskuspaloaseman etupihan kohdalla. Jussinkylän tunnetuin rakennus on Tampereen tuomiokirkko, alkuperäiseltä nimeltään Johanneksen kirkko. Lars Sonck voitti kirkon suunnittelukilpailun 1899, ja kirkko rakennettiin 1902–1907. Se tunnetaan Hugo Simbergin vuosina 1905–1906 maalaamista freskoista ja Magnus Enckellin alttaritaulusta, joka kuvaa kaikkien kansojen ylösnousemusta."
    }
   ],
   "tl": [
@@ -808,7 +808,7 @@
    [
     "Magnus Enckell",
     "",
-    "Alttaritaulu Ylösnousemus"
+    "Kirkon alttaritaulu"
    ]
   ],
   "places": [
@@ -1808,12 +1808,12 @@
   ]
  },
  "Tesoma": {
-  "status": "luonnos",
-  "lede": "Tampereen ensimmäinen varsinainen lähiö, joka rakennettiin elementeistä nosturien ehdoilla.",
+  "status": "tarkistettu",
+  "lede": "Länsi-Tampereen lähiö, jonka Ristimäeltä alkoi 1960-luvulla kaupungin varsinainen lähiörakentaminen.",
   "sections": [
    {
     "h": "Torpasta lähiöksi",
-    "p": "Alueen eteläosa kuului Raholan ja pohjoisosa Kaarilan kartanolle, ja molempien historia tunnetaan 1500-luvulta. Ristimäen torpan maat palstoitettiin pientaloalueeksi 1928. Rahola, Kaarila ja Hyhky kuuluivat Pohjois-Pirkkalaan vuoteen 1937. Tesomasta tuli Tampereen ensimmäinen varsinainen lähiö. Talot rakennettiin elementeistä ja sijoiteltiin työmaakoneiden mukaan, ja alueelle tuli koulu, päiväkoti, kirjasto, kaukolämpökeskus ja liiketiloja. Kohmankaaren vanhimmat kerrostalot rakennutti Suomen ensimmäinen asunto-osuuskunta, ja asumistukea saavat perheet olivat niihin etuoikeutettuja."
+    "p": "Alueen eteläosa kuului Raholan ja pohjoisosa Kaarilan kartanolle, ja molempien historia tunnetaan 1500-luvulta. Ristimäen torpan maat palstoitettiin pientaloalueeksi 1928, ja alue alkoi rakentua parin vuoden kuluttua. Rahola, Kaarila ja Hyhky kuuluivat Pohjois-Pirkkalaan vuoteen 1937. Ensimmäinen uusien periaatteiden mukaan rakennettu asuinalue Tampereella oli Ruotula 1963–1966, ja pian sen jälkeen varsinainen lähiörakentaminen alkoi Tesoman Ristimäellä ja Kaukajärvellä. Kohmankaaren varteen nousi 1960-luvulla kerrostalokortteleita, ja Tesomasta tuli Länsi-Tampereen aluekeskus."
    }
   ],
   "tl": [
@@ -1826,8 +1826,8 @@
     "Alue liitetään Tampereeseen"
    ],
    [
-    1960,
-    "Lähiörakentaminen alkaa 1960-luvulla"
+    "1960-l.",
+    "Lähiörakentaminen alkaa Ristimäellä"
    ]
   ],
   "people": [],
@@ -1844,8 +1844,8 @@
     "https://www.tampere.fi/sites/default/files/2024-03/yk051_Arkeologia_Tesoma_20230620_saavutettava.pdf"
    ],
    [
-    "Yle: Tesoma on Tampereen ensimmäinen lähiö",
-    "https://yle.fi/a/3-7496926"
+    "Tampereen kaupunki: Keskustan ulkopuolisten 1960–70-luvun asuinalueiden inventointi 2010",
+    "https://tampere.fi/sites/default/files/2024-02/8987_keskustan_ulkop_asuinalueet_selvitys_2010.pdf"
    ]
   ]
  },
@@ -2359,16 +2359,16 @@
   ]
  },
  "Terälahti": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Entinen Teiskon kunta: maaseutua, järviä ja Euroopan pienin museo. Tampereeseen se liitettiin viimeisenä, 1972.",
   "sections": [
    {
     "h": "Teiskon pitäjä",
-    "p": "Teisko kuului aikoinaan Suur-Pirkkalan hallintopitäjään ja kirkollisesti Messukylään. Kunta itsenäistyi lokakuussa 1865 ja seurakunta 1904. Teiskon kirkko valmistui 1788, mutta se otettiin käyttöön jo elokuussa 1787, koska edellinen kirkko oli huonossa kunnossa. Kirkko on Tampereen kirkoista toiseksi vanhin. Teiskoon kuului alun perin alueita myös Näsijärven länsipuolelta, mutta ne liitettiin Ylöjärveen ja Kuruun 1954."
+    "p": "Teiskon kunta itsenäistyi 1865. Teiskon kirkko valmistui 1788, mutta se otettiin käyttöön jo elokuussa 1787, koska edellinen kirkko oli huonossa kunnossa. Kirkko on nykyisen Tampereen kirkoista toiseksi vanhin Messukylän vanhan kirkon jälkeen. Teiskoon kuului alun perin alueita myös Näsijärven länsipuolelta, mutta ne liitettiin Ylöjärveen ja Kuruun 1954."
    },
    {
     "h": "Kaupunkiin",
-    "p": "Teisko liitettiin Tampereeseen vuoden 1972 alussa. Liitos toi kaupunkiin 431 neliökilometriä ja noin 2 800 asukasta, ja uusiksi kaupunginosiksi tulivat Kämmenniemi, Polso, Terälahti ja Velaatta. Teiskossa ovat myös Teiskon radio- ja tv-asema, Murikka-opisto ja Velaatan maitolaiturimuseo, jota kutsutaan Euroopan pienimmäksi museoksi."
+    "p": "Teisko liitettiin Tampereeseen 1972. Liitos toi kaupunkiin 431 neliökilometriä ja noin 2 800 asukasta, ja uusiksi kaupunginosiksi tulivat Kämmenniemi, Polso, Terälahti ja Velaatta. Teiskossa ovat myös 325-metrinen Teiskon tv-masto, Murikka-opisto ja Velaatan maitolaiturimuseo, jota kutsutaan Euroopan pienimmäksi museoksi."
    }
   ],
   "tl": [
@@ -2379,10 +2379,6 @@
    [
     1865,
     "Teiskon kunta itsenäistyy"
-   ],
-   [
-    1904,
-    "Oma seurakunta"
    ],
    [
     1954,
@@ -2404,7 +2400,7 @@
    ],
    [
     "Wikipedia: Teisko",
-    "https://EN.wikipedia.com/wiki/Teisko"
+    "https://en.wikipedia.org/wiki/Teisko"
    ],
    [
     "Tampereen kaupunki: Kämmenniemen taajaman kehityshistoria 2020",
@@ -2456,12 +2452,12 @@
   ]
  },
  "Sorila": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Entisen Aitolahden kunnan keskus, josta tuli Tampereen pohjoisin maaseutu 1966.",
   "sections": [
    {
     "h": "Aitolahti",
-    "p": "Vuonna 1566 Aitolahden alueella oli 29 taloa: Aitoniemessä 2, Hirviniemessä 6, Laalahdessa 2, Sorilassa 6, Palossa 4, Partolassa 2 ja Nurmessa 7. Aitolahti kuului Messukylään vuoteen 1924, jolloin siitä tuli oma kunta ja seurakunta. Hautausmaa vihittiin samana vuonna, ja Birger Federleyn suunnittelema kivikirkko valmistui 1928. Kunnan keskus oli Sorila. Aitolahti liitettiin Tampereeseen 1966, ja liitos toi kaupunkiin 2 117 asukasta. Uusiksi kaupunginosiksi tulivat Sorila, Nurmi ja Aitoniemi."
+    "p": "Vuonna 1566 Aitolahden alueella oli 29 taloa: Aitoniemessä 2, Hirviniemessä 6, Laalahdessa 2, Sorilassa 6, Palossa 4, Partolassa 2 ja Nurmessa 7. Aitolahti kuului kirkollisesti Messukylään. Siitä tuli itsenäinen kunta 1923 ja oma seurakunta vuoden 1924 alussa. Hautausmaa vihittiin 1924, ja Birger Federleyn suunnittelema keskiaikaisia kirkkoja muistuttava kivikirkko vihittiin juhannuksena 1928. Kunnan keskus oli Sorila. Aitolahti liitettiin Tampereeseen 1966, ja liitos toi kaupunkiin 2 117 asukasta. Uusiksi kaupunginosiksi tulivat Sorila, Nurmi ja Aitoniemi."
    }
   ],
   "tl": [
@@ -2470,8 +2466,12 @@
     "Aitolahdella 29 taloa"
    ],
    [
+    1923,
+    "Aitolahden kunta"
+   ],
+   [
     1924,
-    "Aitolahden kunta ja seurakunta"
+    "Oma seurakunta ja hautausmaa"
    ],
    [
     1928,
@@ -2502,6 +2502,10 @@
    [
     "Wikipedia: Aitolahti",
     "https://en.wikipedia.org/wiki/Aitolahti"
+   ],
+   [
+    "Tampereen seurakunnat: Aitolahden vanha kirkko",
+    "https://tampereenseurakunnat.fi/en/lutheran-church-in-tampere/churches/aitolahti-old-church/"
    ]
   ]
  },
