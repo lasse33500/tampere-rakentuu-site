@@ -189,7 +189,7 @@ aside .hgrid{grid-template-columns:1fr;gap:10px}aside .hcard{flex-direction:row}
   #sgrab{display:block;position:fixed;left:0;right:0;bottom:calc(var(--fh,56px) + var(--sh,92px) - 1px);height:24px;z-index:31;background:var(--panel);border-radius:16px 16px 0 0;box-shadow:0 -4px 14px rgba(0,0,0,.12);touch-action:none;cursor:grab;transition:bottom .25s ease}
   #sgrab::after{content:"";position:absolute;left:50%;top:9px;width:40px;height:5px;margin-left:-20px;border-radius:3px;background:#cfcbc4}
   .sdrag aside,.sdrag #sgrab{transition:none}
-  .legend,#mhero{bottom:calc(var(--sh,92px) + 34px)!important;transition:bottom .25s ease}
+  .legend{bottom:calc(var(--sh,92px) + 34px)!important;transition:bottom .25s ease}#mhero{bottom:calc(var(--sh,92px) + 82px)!important;transition:bottom .25s ease}
   header{grid-column:1;padding:6px 10px;gap:8px} .brand .k{display:none} .brand h1{font-size:18px} .brand .mk{height:34px} .nav{margin-left:0} .nav a{padding:8px 8px;font-size:13px} .search{flex:0 1 150px}
 }
 @media (max-width:560px){
@@ -237,7 +237,7 @@ aside a{color:var(--brick)}
   <input type="range" id="year" min="1850" max="2026" value="2026" aria-label="Vuosi">
   <div id="yrnote"></div>
 </footer>
-<div class="src">Aineistot: Tampereen kaupunki, avoin data (CC BY 4.0; mm. maanpeite 2022 ja metsävaratieto), Tilastokeskus Paavo, Vapriikki ym., haettu 11/2026. <a href="#lahteet" id="srclink">Kaikki lähteet →</a></div>
+<div class="src">Aineistot: Tampereen kaupunki, avoin data (CC BY 4.0; mm. maanpeite 2022 ja metsävaratieto), Tilastokeskus (Paavo, kuntarajat), Natural Earth, Vapriikki ym., haettu 11/2026. <a href="#lahteet" id="srclink">Kaikki lähteet →</a></div>
 </div>
 
 <script>
@@ -259,7 +259,8 @@ const fmt=(v,d=0)=>v==null?'–':Number(v).toLocaleString('fi',{maximumFractionD
 const GREEN={f:'#b1c68c',p:'#cfdca8'};
 // Maanpeite 2022 (Tampereen kaupunki): puusto, matala kasvillisuus ja pellot rasterina, 4 m/px. Kattaa kantakaupungin.
 const LC={src:'img/maanpeite.png',x0:-600,y0:-100,x1:24400,y1:14700};let LCIMG=null;
-const C={land:'#efe6d4',outside:'#e2d9c6',water:'#a7c0c6',shore:'#7f9ea6',dist:'rgba(90,72,55,.55)',unk:'#cfc5b3'};
+const SEUTU_C=[12500,9000];
+const C={region:'#e8e0cd',land:'#efe6d4',outside:'#e2d9c6',water:'#a7c0c6',shore:'#7f9ea6',dist:'rgba(90,72,55,.55)',unk:'#cfc5b3'};
 
 // ---------- state ----------
 const cv=document.getElementById('cv'),ctx=cv.getContext('2d');
@@ -319,6 +320,7 @@ Promise.all(['base','streets','buildings'].map(n=>fetch('data/'+n+'.json').then(
   DATA={base,streets,blds};
   P.water=ringsToPath(base.water);
   P.border=ringsToPath(base.border);
+  if(base.seutu){P.seutu={land:new Path2D(),lakes:ringsToPath(base.seutu.l),names:base.seutu.k.map(([n,x,y])=>({n,x,y,d:Math.hypot(x-SEUTU_C[0],y-SEUTU_C[1])}))};for(const k of base.seutu.k)ringsToPath(k[3],P.seutu.land);}
   P.dist=base.districts.map(d=>ringsToPath(d.r));
   base.districts.forEach(d=>d.bb=bbox(d.r));
   P.annex=base.annex.map(a=>({y:a.y,p:ringsToPath(a.r),k:a.k,t:a.t})).sort((a,b)=>a.y-b.y);
@@ -346,6 +348,12 @@ function render(){
   const k=T.k; ctx.setTransform(1,0,0,1,0,0); ctx.fillStyle=C.outside; ctx.fillRect(0,0,cv.width,cv.height);
   ctx.setTransform(k*DPR,0,0,k*DPR,T.x*DPR,T.y*DPR);
   const px=1/k; // one CSS pixel in world units
+  if(P.seutu&&!POP){ // seutu: naapurikunnat ja suuret järvet, sitä haaleampina mitä kauempana
+    ctx.fillStyle=C.region;ctx.fill(P.seutu.land,'nonzero');
+    ctx.save();const cl=new Path2D();cl.rect(-4e5,-4e5,8e5,8e5);cl.rect(748,-45999,31105,46145);ctx.clip(cl,'evenodd');ctx.fillStyle=C.water;ctx.fill(P.seutu.lakes,'evenodd');ctx.restore();
+    ctx.strokeStyle='rgba(90,72,55,.38)';ctx.lineWidth=1*px;ctx.setLineDash([5*px,4*px]);ctx.stroke(P.seutu.land);ctx.setLineDash([]);
+    ctx.save();ctx.setTransform(DPR,0,0,DPR,0,0);const [gx,gy]=toScreen(SEUTU_C[0],SEUTU_C[1]);const g=ctx.createRadialGradient(gx,gy,26000*k,gx,gy,130000*k);
+    g.addColorStop(0,'rgba(226,217,198,0)');g.addColorStop(.45,'rgba(226,217,198,.45)');g.addColorStop(1,'rgba(226,217,198,.88)');ctx.fillStyle=g;ctx.fillRect(0,0,cv.width,cv.height);ctx.restore();}
   ctx.fillStyle=C.land; ctx.fill(P.border);
   // land outside the city in the selected year is greyed
   if(P.green&&!POP){ctx.fillStyle=GREEN.f;ctx.fill(P.green.f);ctx.fillStyle=GREEN.p;ctx.fill(P.green.p);}
@@ -400,11 +408,18 @@ function render(){
   drawStreetNames();
   const nb=drawNames();
   labels(nb);
+  drawSeutuNames(nb);
   drawBorderLabels();
   drawTPL();
   drawLM();
   drawArk();
 }
+function drawSeutuNames(nb){if(!P.seutu||POP)return;const W2=cv.width/DPR,H2=cv.height/DPR,boxes=nb||[];ctx.textAlign='center';ctx.textBaseline='middle';
+  for(const o of [...P.seutu.names].sort((a,b)=>a.d-b.d)){const far=o.d>45000;if(far&&T.k>.02)continue;if(o.d>140000)continue;
+    const [sx,sy]=toScreen(o.x,o.y);if(sx<-60||sy<-20||sx>W2+60||sy>H2+20)continue;
+    const fs=far?11:13,a=Math.max(.3,1-o.d/150000);ctx.font=`600 ${fs}px 'IBM Plex Sans',system-ui,sans-serif`;const t=o.n.toUpperCase();
+    const w=ctx.measureText(t).width+t.length*1.2+8,b=[sx-w/2,sy-fs,sx+w/2,sy+fs];if(boxes.some(q=>b[0]<q[2]&&b[2]>q[0]&&b[1]<q[3]&&b[3]>q[1]))continue;boxes.push(b);
+    ctx.letterSpacing='1.2px';ctx.lineWidth=3;ctx.strokeStyle=`rgba(232,224,205,${a})`;ctx.strokeText(t,sx,sy);ctx.fillStyle=`rgba(110,98,84,${a})`;ctx.fillText(t,sx,sy);ctx.letterSpacing='0px';}}
 function drawBorderLabels(){if(!document.getElementById('lBorder').checked||POP)return;const W2=cv.width/DPR;
   ctx.textAlign='center';ctx.textBaseline='middle';
   const bb=[];const badge=(t,x,y,bg,fg,f,chk)=>{ctx.font=f;const w=ctx.measureText(t).width+20;const b=[x-w/2-4,y-17,x+w/2+4,y+17];if(chk&&bb.some(o=>b[0]<o[2]&&b[2]>o[0]&&b[1]<o[3]&&b[3]>o[1]))return;bb.push(b);ctx.fillStyle=bg;ctx.beginPath();ctx.roundRect(x-w/2,y-13,w,26,13);ctx.fill();ctx.fillStyle=fg;ctx.fillText(t,x,y+.5);};
@@ -1187,6 +1202,7 @@ const SOURCES=[
  ['Paikkatieto ja tilastot (haetaan automaattisesti)',[
   ['Tampereen kaupungin avoin paikkatieto (GeoServer WFS)','https://geodata.tampere.fi/','auto','Rakennukset ja niiden valmistumisvuodet, puretut rakennukset, kaupunginosat, kadut, vesistöt, alueliitokset ja osoitteet. CC BY 4.0.'],
   ['Tampereen historiallinen nimistö','https://geodata.tampere.fi/','auto','Noin 10 600 vanhaa paikannimeä selityksineen.'],
+  ['Tilastokeskus: kuntajako 1:1 000 000 (2026) ja Natural Earth: järvet 1:10 milj.','https://www.stat.fi/org/avoindata/paikkatietoaineistot.html','auto','Tampereen ulkopuolinen seutukartta: naapurikuntien rajat ja nimet sekä suurimmat järvet karkeina muotoina. Kuntarajat CC BY 4.0, Natural Earth public domain. Mitä kauempana Tampereesta, sitä haaleampana seutu näytetään.'],
   ['Tampereen maanpeiteaineisto 2022, metsävaratieto ja asemakaavoitetut viheralueet','https://geodata.tampere.fi/','auto','Kartan puusto, niityt, nurmet ja pellot. Maanpeite kattaa kantakaupungin (rasteroitu 4 m:n tarkkuuteen); sen ulkopuolella metsät kaupungin metsävaratiedosta. Kuvaa nykytilaa, ei menneitä vuosia. CC BY 4.0.'],
   ['Tilastokeskus, Paavo-postinumeroaluetilastot','https://www.stat.fi/tup/paavo/','auto','Väestö, ikä, tulot, koulutus ja asuminen 2013–2024. CC BY 4.0.'],
   ['Finna (api.finna.fi) – museoiden valokuvat','https://www.finna.fi/','auto','Avoimesti lisensoidut kuvat (CC BY 4.0, CC0, PDM), enimmäkseen Vapriikin kuva-arkistosta ja Museoviraston Historian kuvakokoelmasta. Kuvat tallennetaan sivuston mukaan, ja kuvaaja, arkisto ja linkki Finnan tietueeseen näytetään kuvatekstissä.'],
