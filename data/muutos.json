@@ -725,6 +725,19 @@
     "Yle: Tampereen asuntomessuilla yli 145 000 kävijää",
     "https://yle.fi/t/18-44373/fi"
    ]
+  },
+  "en": {
+   "lede": "As late as the end of the 20th century the surroundings of Lake Särkijärvi were forest and lakeland on the border of Tampere and Lempäälä. In the 2000s a new district began to be built in the middle of the forest, and in 2012 it hosted the housing fair. In 2022 about 7,000 people lived in Vuores. In 2025 part of the area on the Lempäälä side was transferred to Tampere.",
+   "kkt": [
+    "Building begins in the forest",
+    "Housing fair",
+    "About 7,000 residents",
+    "Area transferred from Lempäälä to Tampere"
+   ],
+   "caps": [
+    "Lake Särkijärvi and Vuores 1980",
+    "Vuores under construction 2011"
+   ]
   }
  },
  "Kyttälä": {
@@ -880,6 +893,20 @@
     "Tampereen kaupunki: asemakaava 9062 (OAS)",
     "https://www.tampere.fi/sites/default/files/2025-12/9062_OAS_20251204.pdf"
    ]
+  },
+  "en": {
+   "lede": "The State Aircraft Factory moved from Helsinki to Härmälä in 1936, and Tampere airport opened next to it. Between 1936 and 1979, 1.5 million passengers passed through the airfield until traffic moved to Pirkkala. The runway became a street and the parking area of the exhibition centre. The aircraft factory area on the shore of Lake Pyhäjärvi has been rebuilt as Härmälänranta: the town plan was approved in 2014, building began in 2016, and the area will have about 3,000 residents. The factory's 1936 administration building was preserved.",
+   "kkt": [
+    "Building of the aircraft factory begins",
+    "The aircraft factory moves to Härmälä; the airport opens",
+    "Air traffic moves to Pirkkala",
+    "Town plan for Härmälänranta",
+    "Housing construction begins"
+   ],
+   "caps": [
+    "Härmälä airport in the late 1940s",
+    "Härmälänranta 2022"
+   ]
   }
  },
  "Tesoma": {
@@ -944,6 +971,19 @@
    "e2": [
     "Yle: Tamperelainen lähiöelämä",
     "https://yle.fi/a/3-7496926"
+   ]
+  },
+  "en": {
+   "lede": "The Tesoma and Ristimäki area was land of crofts and smallholdings, and it was annexed to Tampere in 1937. In the 1960s Tampere's first true suburban building began at Ristimäki. The prefabricated concrete apartment blocks were built under area construction agreements: the city did the zoning, and a construction company built the houses and the municipal infrastructure. About 8,000 residents moved to the suburb. In the 2000s Tesoma has been renewed through suburban regeneration programmes and a new centre.",
+   "kkt": [
+    "The Ristimäki croft is divided into plots",
+    "Annexed to Tampere",
+    "Suburban building begins at Ristimäki",
+    "Suburban renewal and a new centre"
+   ],
+   "caps": [
+    "Ristimäki residential area 1967",
+    "Tesoma from the air 2010"
    ]
   }
  },
@@ -1093,6 +1133,19 @@
     "Wikipedia: Kaukajärvi",
     "https://en.wikipedia.org/wiki/Kaukaj%C3%A4rvi"
    ]
+  },
+  "en": {
+   "lede": "The surroundings of Lake Kaukajärvi belonged to Messukylä, and for a long time the land was fields and forests of the Haihara manor. The area was annexed to Tampere in 1947. In the early 1960s area construction began at Kaukajärvi and Haihara, and alongside Ristimäki in Tesoma, Kaukajärvi became one of Tampere's first true suburbs. The apartment-block area, built of white prefabricated concrete panels, was mostly completed by the mid-1960s and is regarded as a successful example of the prefabricated building of its time. Later, terraced and small houses were built around the apartment blocks.",
+   "kkt": [
+    "Annexed to Tampere along with Messukylä",
+    "Area construction begins; planner Heikki Aitola",
+    "The apartment-block area is completed",
+    "World Rowing Championships on Lake Kaukajärvi"
+   ],
+   "caps": [
+    "View from the Haihara manor towards Lake Kaukajärvi 1898",
+    "Kaukajärvi suburb 2021"
+   ]
   }
  },
  "Lentävänniemi": {
@@ -1166,6 +1219,22 @@
     "Tampereen Ratikka: liikenne Lentävänniemeen 7.1.2025",
     "https://www.tampereenratikka.fi/en/traffic-to-lentavanniemi-on-tampere-tramway-will-begin-as-scheduled-on-7-january-construction-work-was-completed-well-under-budget/"
    ]
+  },
+  "en": {
+   "lede": "The headland in Lake Näsijärvi belonged to Ylöjärvi and passed to Tampere in 1950. As late as 1970 only two people lived there. The first town plan was completed in 1966, and the whole area had been zoned by 1974. The suburb was built quickly in the middle of the forest: the first houses were completed on Vähäniemenkatu in 1967, and building of slab blocks near the shop began in 1971. Now the area is being densified again, and since January 2025 the tram has run all the way to Lentävänniemi.",
+   "kkt": [
+    "Passes to Tampere from Ylöjärvi",
+    "First town plan",
+    "The first houses on Vähäniemenkatu",
+    "Two residents",
+    "Building of slab blocks begins",
+    "The whole area is zoned",
+    "The tram reaches Lentävänniemi, 7 January"
+   ],
+   "caps": [
+    "Lentävänniemi forest 1960",
+    "Lake Näsijärvi with Lentävänniemi behind 1989"
+   ]
   }
  },
  "Hatanpää (XXII)": {
@@ -1234,6 +1303,20 @@
    "h1": [
     "Yle: Tampereen kerrostalojen värit vuosikymmenittäin",
     "https://yle.fi/a/3-10563271"
+   ]
+  },
+  "en": {
+   "lede": "The lands of the Hatanpää manor stretched from Härmälä to Nekala. The town first bought the land of Kyttälä and Tammela from the manor in 1876 and finally the whole manor in 1913. The area was annexed to Tampere in 1920, bringing 18.5 square kilometres of land to the city. In the 1920s and 30s unified brick buildings rose along Hatanpään valtatie, and in the 1970s an arboretum was founded next to the manor park. Viinikka, Nekala and Härmälä later also grew up on the manor's lands.",
+   "kkt": [
+    "The land of Kyttälä and Tammela passes to the town",
+    "The city buys the manor",
+    "Annexed to Tampere",
+    "The stone buildings of Hatanpään valtatie",
+    "Arboretum and rose garden"
+   ],
+   "caps": [
+    "Hatanpään valtatie 1935",
+    "Hatanpää 2022"
    ]
   }
  },
@@ -1418,6 +1501,21 @@
     "Yle: Viinikanlahti saa uuden elämän",
     "https://yle.fi/a/74-20147809"
    ]
+  },
+  "en": {
+   "lede": "Viinikka was a farm of Otavala village in Messukylä, and the land to its west belonged to the Hatanpää manor. Once the city had bought Hatanpää in 1913, the very next year it allocated the first leased plots in Viinikka to workers, who built their houses themselves. The wooden district was built mainly in 1914–1924, and Viinikka Church was completed in 1932. The Viinikka–Nekala area of small houses is now a nationally valuable cultural environment. A new residential area of about 4,000 residents is being planned on the site of the Viinikanlahti wastewater treatment plant.",
+   "kkt": [
+    "The Otava, Nekala and Viinikka farms",
+    "The city buys Hatanpää",
+    "The first leased plots",
+    "The wooden district is built",
+    "Viinikka Church",
+    "Planning of the Viinikanlahti residential area"
+   ],
+   "caps": [
+    "A courtyard near Viinikanoja 1890",
+    "Viinikka Church 2015"
+   ]
   }
  },
  "Nekala (XXIV)": {
@@ -1495,6 +1593,21 @@
     "Tampereen kaupunki: Nekalan koulu, asemakaava 8861",
     "https://tampere.fi/sites/default/files/2024-05/8861_selostus_20240520.pdf"
    ]
+  },
+  "en": {
+   "lede": "Nekala was a farm of Otavala village in Messukylä, and its land passed to the city along with the Hatanpää manor. Building in Nekala began in 1923, and by 1939 a district of self-built wooden houses had risen on the fields. Nekala school was completed in 1931 and the children's centre in 1951. At the same time the Nekala industrial area grew up along the railway. Today the Viinikka–Nekala area of small houses is a nationally valuable cultural environment, and old public buildings such as the children's centre are being converted into homes.",
+   "kkt": [
+    "The land passes to the city with Hatanpää",
+    "Building in Nekala begins",
+    "Nekala school",
+    "The wooden-house area is largely complete",
+    "Nekala children's centre",
+    "Conversion of the children's centre into homes is zoned"
+   ],
+   "caps": [
+    "Nekala 1946",
+    "Nekala from Veisu 2000"
+   ]
   }
  },
  "Kauppi": {
@@ -1560,6 +1673,19 @@
     "Tampereen kaupunki: Kauppi Medi-Park",
     "https://tampere.fi/en/current/2023/04/28/jobs-and-housing-green-areas-kauppi-medi-park"
    ]
+  },
+  "en": {
+   "lede": "The Kauppi forest was the recreation area, a people's park, for the workers of the industrial city. A tuberculosis sanatorium was completed on its edge in 1939, and in 1962 a central hospital, later the university hospital, opened by Teiskontie. Around the hospital have grown the university's Kauppi campus, research companies and the UKK Institute. Since 2021 the tram has run to the hospital. East of the campus, Medi-Park is being planned for about 2,500 residents, and the old forests are to be protected.",
+   "kkt": [
+    "The tuberculosis sanatorium is completed",
+    "The central hospital opens",
+    "The tram reaches Tays",
+    "Draft town plan for Medi-Park: about 2,500 residents"
+   ],
+   "caps": [
+    "Kauppi hospital 1940",
+    "Kauppi 2025"
+   ]
   }
  },
  "Lamminpää": {
@@ -1604,6 +1730,18 @@
    "s0": [
     "Tampereen kaupunki: Pyöräilyraitti Länsi-Tampereen kulttuuriympäristöön",
     "https://www.tampere.fi/sites/default/files/2023-07/pyorailyraitti_lamminpaahan.pdf"
+   ]
+  },
+  "en": {
+   "lede": "The northern part of Lamminpää was built in the 1920s by workers of the western Tampere factories who had moved in from the countryside. The land belonged to the Kaarila manor, whose master sold plots cheaply. The area belonged to Pohjois-Pirkkala until it was annexed to Tampere in 1937. After the annexation a town plan was drawn up, and building under it took place in the 1940s and 1950s. The self-built area of small houses has kept its character.",
+   "kkt": [
+    "Workers build their own houses",
+    "Annexed to Tampere",
+    "Building under the town plan"
+   ],
+   "caps": [
+    "Lamminpää elementary school 1940",
+    "Lamminpää church 2005"
    ]
   }
  },
@@ -1768,6 +1906,23 @@
     "Pentti W. Jokinen: Pellavanpetsamo (2004)",
     "https://fi.wikipedia.org/wiki/Petsamo_(Tampere)#Lähteet"
    ]
+  },
+  "en": {
+   "lede": "Petsamo was born as an answer to the housing shortage after the Civil War. In 1920 the city leased land to Tampella, and an area of wooden houses for the factory's workers rose on Saukonmäki; it came to be called Pellavanpetsamo ('Linen Petsamo'). The name came from Petsamo, gained by Finland that same year, because the area seemed just as far away. In the 1960s Tampella bought the land, the wooden houses were demolished and apartment and tower blocks were built in their place. Kekkosentie, completed in 1989, cuts through the district.",
+   "kkt": [
+    "Tampella leases land on Saukonmäki for workers' housing",
+    "Town plan approved; the first houses are completed",
+    "The Litukka allotment garden is founded",
+    "The wooden houses of Pellavanpetsamo are built",
+    "Alvar Aalto's Pekola apartment blocks on Ilmarinkatu",
+    "Tampella buys Saukonmäki from the city",
+    "The first new apartment blocks; the old wooden houses are demolished",
+    "Kekkosentie cuts through the area"
+   ],
+   "caps": [
+    "Tampella workers' wooden houses under construction on Saukonmäki 1927",
+    "The Saukonmäki tower blocks 1967"
+   ]
   }
  },
  "Messukylä": {
@@ -1845,6 +2000,23 @@
     "Tampereen seurakunnat: Vanha kirkko (Messukylän vanhan kirkon ajoitus)",
     "https://tampereenseurakunnat.fi/wp-content/uploads/sites/2/2026/06/Vanha-kirkko_suomi-2026.pdf"
    ]
+  },
+  "en": {
+   "lede": "Messukylä is the oldest settled area of Tampere. A wooden church was built here in the 1430s, and the whole parish took its name from it ('mass village'). The present stone church is the oldest building in Tampere. Tampere itself was founded on land of the Messukylä parish, and in 1947 the whole municipality of Messukylä was annexed to the city, more than doubling its area. The church village became a district of its own, and residential areas grew up where the fields had been.",
+   "kkt": [
+    "The first wooden church is completed",
+    "The stone church is built",
+    "Messukylä becomes a parish of its own",
+    "The new brick church is taken into use",
+    "Messukylä railway station near the church",
+    "Fighting on the church hill in the Civil War",
+    "The municipality of Messukylä is annexed to Tampere",
+    "The railway stops are closed"
+   ],
+   "caps": [
+    "The new Messukylä church and Takahuhti village c. 1910",
+    "Messukylä church and surroundings 2022"
+   ]
   }
  },
  "Linnainmaa": {
@@ -1913,6 +2085,22 @@
    "s2": [
     "Vapriikin kuva-arkisto: Hannulan tilan alue ja 1950-luvun omakotitalot (2010)",
     "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fmuseosiiri.tampere.fi%253A8080%252FVALOKUVA%252Fcontent%252FSIR_EXEC%252Fimages%252Fprimary%252F20100820%252F12822909708000.JPG"
+   ]
+  },
+  "en": {
+   "lede": "Linnainmaa was fields and farms of the Messukylä parish, such as the Jussila and Hannula farms. The area passed to Tampere with the annexation of Messukylä in 1947, and the first town plan was approved in 1955. Detached houses were built in the 1950s and 60s, and terraced houses and apartment blocks from the 1970s onwards. A retail cluster grew up at the junction of the eastern bypass and Lahdentie, and it is being developed into Koilliskeskus, Tampere's third regional centre.",
+   "kkt": [
+    "A field called Linnama is mentioned in the great partition",
+    "Annexed to Tampere along with Messukylä",
+    "First town plan",
+    "Building of detached houses",
+    "Terraced houses and apartment blocks",
+    "Shops cluster at the bypass junction",
+    "Koilliskeskus is developed into a regional centre"
+   ],
+   "caps": [
+    "View from the footbridge towards Linnainmaa 1992",
+    "Linnainmaa from the air 2009"
    ]
   }
  },
@@ -1986,6 +2174,23 @@
    "s2": [
     "Tampereen kaupunki: 1960- ja 1970-luvun asuinalueiden inventointi 2010",
     "https://tampere.fi/sites/default/files/2024-02/8987_keskustan_ulkop_asuinalueet_selvitys_2010.pdf"
+   ]
+  },
+  "en": {
+   "lede": "For centuries Peltolammi was forest and croft land on the lands of the Hatanpää manor. The city bought the manor in 1913, but the area remained countryside. The first plan, in 1948, was made for detached houses, but few were built. In 1965 the area was zoned for apartment blocks, and from 1966 about a thousand homes rose in the forest in five years. The building was financed by savings banks, which gave Säästäjänkatu and Säästäjäntori ('saver's street' and 'saver's square') their names.",
+   "kkt": [
+    "Peltolamminsara is mentioned in a wilderness register",
+    "The city buys the lands of the Hatanpää manor",
+    "First town plan, for detached houses",
+    "New plan for apartment blocks",
+    "The first apartment block is completed",
+    "About 1,000 homes",
+    "Peltolammi–Pärrinkoski nature reserve",
+    "The Palokallio area is built"
+   ],
+   "caps": [
+    "Landscape at Peltolammi 1938",
+    "The new Peltolammi suburb 1967"
    ]
   }
  },
@@ -2154,6 +2359,23 @@
     "Yle: Vuoden 1990 asuntomessut",
     "https://yle.fi/a/3-10308795"
    ]
+  },
+  "en": {
+   "lede": "In 1899 the Tampereen Puuvillateollisuus cotton mill was completed at Lapinniemi on the shore of Lake Näsijärvi; it became part of Tampella in 1934. At the same time a workers' area of small houses grew up on the neighbouring Lapin mäki hill. The mill stopped in the mid-1980s. The 1990 housing fair showed how the old spinning mill had been turned into a spa and flats, an early example in Tampere of reusing a factory.",
+   "kkt": [
+    "The city buys the Naistenlahti area",
+    "The cotton mill is completed (architect Bernt Blom)",
+    "The first resident moves to Lapin mäki",
+    "Office designed by Birger Federley",
+    "Town plan for Lappi",
+    "The mill becomes part of Tampella",
+    "Production ends",
+    "Housing fair: the spinning mill becomes a spa and flats"
+   ],
+   "caps": [
+    "Lapinniemi cotton mill 1899",
+    "Lapinniemi and Naistenlahti harbour 2000"
+   ]
   }
  },
  "Kissanmaa": {
@@ -2231,6 +2453,23 @@
     "Tampereen kaupunki: Hakametsän urheilualueen rakentamistapaohje",
     "https://tampere.fi/sites/default/files/2025-01/8792_rakentamistapaohje_20241216.pdf"
    ]
+  },
+  "en": {
+   "lede": "Kissanmaa was a narrow wooded strip on the lands of the Hatanpää manor, and the name first appears in 1913, when the city bought the manor's lands. After the wars detached houses were built in the fields and forest, and the area's town plan was approved in 1958. Kissanmaa is best known, however, for its ice rink: Finland's first indoor ice rink was completed here for the 1965 World Championships. A sports campus and new homes are now being planned around the rink.",
+   "kkt": [
+    "Kissankorpi on a map of the Hatanpää manor",
+    "The name Kissanmaa for the first time",
+    "Building of detached houses begins",
+    "The town plan is approved",
+    "Hakametsä ice rink is completed, Finland's first",
+    "Ice Hockey World Championships",
+    "Top-league games move to Nokia Arena",
+    "New plan for the Hakametsä sports area; the rink is protected"
+   ],
+   "caps": [
+    "Detached houses under construction in Kissanmaa 1950",
+    "Kissanmaa 2022"
+   ]
   }
  },
  "Tulli (XVII)": {
@@ -2295,6 +2534,21 @@
    "s2": [
     "Tampereen kaupunki: rakennushistoriaselvitys rautatien rakennuksista",
     "https://ekstrat.tampere.fi/ytoteto/aka/nahtavillaolevat/8330/selvitykset/rakhistoriaselv_rt_rakennuksista.pdf"
+   ]
+  },
+  "en": {
+   "lede": "Tulli grew up beside the railway. From the late 19th century the nearby railway yard brought warehouses, offices and workshops, and the district took its name from the customs house completed in 1901. As industry and warehousing moved out, the university, the Tullintori shopping centre, the Tampere Hall and more and more homes moved in. Finland's tallest hotel building now rises beside the railway yard.",
+   "kkt": [
+    "The railway and the first station building",
+    "Town plan for the area",
+    "The customs house and packing house are completed",
+    "Warehouses, offices and workshops",
+    "The Tampere Hall on the edge of Sorsapuisto park",
+    "University premises, Tullintori and new homes"
+   ],
+   "caps": [
+    "View west from the Tulli area 1954",
+    "The Tulli area from the air 2010"
    ]
   }
  },
@@ -2373,6 +2627,24 @@
     "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
     "https://georaster.tampere.fi/"
    ]
+  },
+  "en": {
+   "lede": "In the 19th century Hakametsä was still forest. By the early 20th century the forest had been cleared for meadows and fields, and small settlements grew up around the nearby brickworks. The area passed to Tampere with the annexation of Messukylä in 1947, and the first town plan was drawn up in the early 1950s. Finland's first indoor ice rink opened on the edge of the fields in 1965 for the Ice Hockey World Championships (in the statistics the rink is now on the Kissanmaa side). The Hakametsä fields themselves were built only in the 1980s, mostly with terraced and detached houses.",
+   "kkt": [
+    "On the map the area is still forest",
+    "The forest has been cleared for meadows and fields",
+    "Four brickworks operate nearby",
+    "Annexed to Tampere along with Messukylä",
+    "Hakametsä's first town plan",
+    "The ice rink opens for the World Championships",
+    "The Hervanta thoroughfare opens",
+    "Terraced and detached houses built on the fields",
+    "The Hakametsä 3 practice rink is completed"
+   ],
+   "caps": [
+    "Fields between Uusikylä and Hakametsä 1967, the ice rink behind",
+    "Hakametsä residential area 2022"
+   ]
   }
  },
  "Turtola": {
@@ -2450,6 +2722,23 @@
     "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
     "https://georaster.tampere.fi/"
    ]
+  },
+  "en": {
+   "lede": "Turtola is an old Messukylä farm mentioned in the land register of 1540. In the 18th century it became a cavalry farm, and in 1773 the estate was split in two, Turtola and Turtonen. The fields were still farmed in the mid-20th century, when Messukylä was annexed to Tampere in 1947. The first town plan was approved in 1963. In 1970 the Hervanta thoroughfare was zoned across the fields, and plots along it were reserved for commercial and warehouse buildings. These grew into one of Tampere's large retail areas, around which homes have also been built since the 1990s.",
+   "kkt": [
+    "Turtola is listed as a Messukylä farm in the land register",
+    "The estate is split into Turtola and Turtonen",
+    "Annexed to Tampere along with Messukylä",
+    "First town plan",
+    "The route of the Hervanta thoroughfare is zoned",
+    "The Hervanta thoroughfare opens",
+    "A new residential area is zoned next to the retail area",
+    "The Citymarket extension is zoned"
+   ],
+   "caps": [
+    "Sowing the Turtonen fields 1949",
+    "Turtola retail area 2022"
+   ]
   }
  },
  "Takahuhti": {
@@ -2523,6 +2812,22 @@
     "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
     "https://georaster.tampere.fi/"
    ]
+  },
+  "en": {
+   "lede": "Takahuhti appears in written sources as early as 1390, and from the Middle Ages to the 20th century it was the largest village in Messukylä. The land register of 1540 lists more than twenty farms. The village lay on the sandy land north of the Aakkulanharju ridge, and its fields were still farmed in the 1950s. Messukylä was annexed to Tampere in 1947, and Takahuhti's first town plan was approved in 1952. In the aerial photos the fields fill with reconstruction-era detached houses in the 1950s, and in the early 1960s residential and commercial buildings rose around Irjalan aukio square. The Mänty-Jukola terraced houses were completed in the early 1970s.",
+   "kkt": [
+    "The village is mentioned in written sources",
+    "More than twenty farms in the land register",
+    "Annexed to Tampere along with Messukylä",
+    "First town plan",
+    "Reconstruction-era detached houses on the fields",
+    "Residential and commercial buildings on Irjalan aukio",
+    "The Mänty-Jukola terraced houses are completed"
+   ],
+   "caps": [
+    "Haymaking in the Takahuhti fields 1955",
+    "Reconstruction-era detached houses by Irjalan aukio 2010"
+   ]
   }
  },
  "Atala": {
@@ -2584,6 +2889,19 @@
     "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
     "https://georaster.tampere.fi/"
    ]
+  },
+  "en": {
+   "lede": "Until the 1980s Atala was mostly forest, with a few fields and houses in the middle. The area belonged to Messukylä and passed to Tampere in 1947. The district is named after Ata Oy, founded in 1937, which makes bevel gears. The aerial photos show how from the 1980s onwards areas of terraced and detached houses were cleared in the forest. A few older houses survive among the new ones.",
+   "kkt": [
+    "Ata Oy is founded",
+    "Annexed to Tampere along with Messukylä",
+    "Terraced and detached-house areas built in the forest",
+    "The residential areas are complete in the aerial photo"
+   ],
+   "caps": [
+    "The Ata Oy factory in the middle of the forest 1964",
+    "Detached houses in Atala 2009"
+   ]
   }
  },
  "Ruotula": {
@@ -2644,6 +2962,21 @@
    "s1": [
     "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
     "https://georaster.tampere.fi/"
+   ]
+  },
+  "en": {
+   "lede": "The Ruotula slope belonged to Messukylä, and its clay soil was farmed as fields. A cart track across the area appears on a map as early as the 1780s. Ruotula was annexed to Tampere along with Messukylä in 1947. In 1950 a plan for about a hundred detached-house plots was approved but not built, because the city needed denser housing. A new plan was drawn up in the city planning department under Aaro Alapeuso and approved in 1961. The houses were designed by the architect Aarne Heino. The first were completed in 1963, and most were built in 1963–66. Ruotula was the first residential area in Tampere to be planned and built in one go. Its detached houses were among the first small houses in Finland made entirely of sandwich panels. The central park was made on an old open field, and the area's appearance has stayed almost original.",
+   "kkt": [
+    "Annexed to Tampere along with Messukylä",
+    "Detached-house plan approved, never carried out",
+    "The new town plan is approved",
+    "The first houses are completed",
+    "The area is largely complete",
+    "Lahdensivu home is completed"
+   ],
+   "caps": [
+    "Sewer works in the Ruotula forest near the Irjala house",
+    "Prefabricated detached houses on Silmäkkeenkatu"
    ]
   }
  },
@@ -2730,6 +3063,22 @@
     "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
     "https://georaster.tampere.fi/"
    ]
+  },
+  "en": {
+   "lede": "The Kaupinlaakso area along Teiskontie was mostly fields. Teiskontie was built through the forest past Ruotula in 1964. Tammer-Golf opened a nine-hole golf course on the fields in 1969 and extended it to 18 holes in 1987, and a tennis centre rose next to it in the 1970s. Kaupinlaakso was named as a new district in 2024, while the tram extension from the Kauppi campus to Linnainmaa was being planned. The plan for Kaupinlaakso I, for about 2,500 residents, was approved in 2024, and tram works began in December that year. The second-phase plan extends over the golf course, and a new site for golf is being planned in Nurmi. Homes for about 9,000 residents are planned for the whole district by 2040.",
+   "kkt": [
+    "Teiskontie is built past Ruotula",
+    "Tammer-Golf's 9-hole course opens",
+    "The golf course is extended to 18 holes",
+    "Kaupinlaakso is named, the first plan is approved and tram works begin",
+    "Draft plan for Kaupinlaakso II on display",
+    "The tram to Ruotula (target August 2028)",
+    "The tram to Linnainmaa (target)"
+   ],
+   "caps": [
+    "Teiskontie being built through the forest past Ruotula",
+    "The golf course at Niihama"
+   ]
   }
  },
  "Leinola": {
@@ -2798,6 +3147,20 @@
    "s4": [
     "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
     "https://georaster.tampere.fi/"
+   ]
+  },
+  "en": {
+   "lede": "Leinola is an old village of Messukylä: the land register of 1540 lists five farms, and the village formed a land-division unit of its own. The area was annexed to Tampere along with Messukylä in 1947. The first town plan was approved in 1952, and the Vehmainen plan approved in 1957 also extended to Leinola. A statue of Field Marshal Mannerheim was unveiled on Mannerheiminkallio in 1956. Leinola's wooded area of small houses was built mainly in the 1960s and 1970s. The aerial photos show detached houses gradually spreading over the forest and fields.",
+   "kkt": [
+    "Five farms in the land register",
+    "Annexed to Tampere along with Messukylä",
+    "First town plan",
+    "The Mannerheim statue is unveiled",
+    "The Vehmainen plan also covers Leinola"
+   ],
+   "caps": [
+    "View over the forest from Mannerheiminkukkula",
+    "Detached houses in Leinola"
    ]
   }
  },
@@ -2872,6 +3235,23 @@
     "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
     "https://georaster.tampere.fi/"
    ]
+  },
+  "en": {
+   "lede": "In 1543 Rahola village in Pirkkala had four farms, and their names still live on in the street names. In 1650 the farms were combined into a manor, which was granted to Field Marshal Wrangel. The present main building was completed in 1796. The City of Tampere bought the estate in 1935, and until the 1950s it produced food for the city's institutions. Rahola was annexed to Tampere from Pohjois-Pirkkala in 1937, and in the 1940s an allotment garden was founded east of the estate. The architect Katri Kää's town plan was approved in 1955. The detached houses were built in 1955–57, the apartment blocks on the square in 1961–65 and Puutalo Oy's low detached houses in 1962–63. The motorway completed in the late 1960s cut Rahola's old link to the shore of Lake Pyhäjärvi.",
+   "kkt": [
+    "Four farms in Rahola village",
+    "The farms are combined into a manor",
+    "The manor's main building is completed",
+    "The city buys the Rahola estate",
+    "Annexed to Tampere",
+    "Katri Kää's town plan; detached houses 1955–57",
+    "Apartment blocks 1961–65",
+    "Puutalo Oy's detached houses 1962–63"
+   ],
+   "caps": [
+    "The new Rahola residential area under construction",
+    "Aerial photo: Rahola, Kaarila and Lake Pyhäjärvi behind"
+   ]
   }
  },
  "Järvensivu": {
@@ -2940,6 +3320,22 @@
    "s2": [
     "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
     "https://georaster.tampere.fi/"
+   ]
+  },
+  "en": {
+   "lede": "Järvensivu was a suburb of Messukylä on the northern shore of Lake Iidesjärvi. The children's walk to school in Messukylä church village was long, so a school district of its own was set up in 1907 and a wooden school was inaugurated in 1909. Järvensivu was annexed to Tampere in 1922. A town plan was drawn up in 1936 but never carried out. In the Winter War, on 2 March 1940, an air raid damaged the school. As late as the 1940s the land south of the railway was almost entirely allotment fields. Following the 1953 town plan, a unified area of one-and-a-half-storey detached houses was built there during the reconstruction era. The school's red-brick building was completed in the mid-1950s, and teaching at the school ended in 2017.",
+   "kkt": [
+    "A school district of its own",
+    "The wooden school is inaugurated",
+    "Annexed to Tampere",
+    "Town plan, never carried out",
+    "An air raid damages the school in the Winter War",
+    "Town plan; the southern area of detached houses is built",
+    "Teaching at Järvensivu school ends"
+   ],
+   "caps": [
+    "Detached houses under construction in Ala-Järvensivu",
+    "Detached houses in Järvensivu"
    ]
   }
  },
@@ -3010,6 +3406,21 @@
     "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
     "https://georaster.tampere.fi/"
    ]
+  },
+  "en": {
+   "lede": "In 1759–1836 Epilä was the official farm of the chaplain of the Harju chapel parish, surrounded by pastures of the Kaarila manor. The Pori railway was completed in 1895, and industry began to grow around the station. In the early 20th century the slopes of the ridge were divided into plots for small houses, workers' homes and gardens. The Epilä tannery processed leather in 1916–1971 and was known for its patent leather. In the 1920s Lielahti station replaced Epilä station. Epilä was annexed to Tampere from Pohjois-Pirkkala in 1937, and a joint town plan for Epilä, Kaarila and Hyhky was approved in 1953. The aerial photos show the area of small houses growing denser and the fields disappearing under buildings.",
+   "kkt": [
+    "Chaplain's official farm (1759–1836)",
+    "The Pori railway is completed",
+    "The tannery starts up",
+    "Annexed to Tampere",
+    "Joint town plan with Kaarila and Hyhky",
+    "The tannery closes"
+   ],
+   "caps": [
+    "A bus between Epilä and Rahola on a forest road",
+    "Aerial photo over Kaarila: Vaakkolammi, Epilä and Lake Näsijärvi behind"
+   ]
   }
  },
  "Kaarila": {
@@ -3079,6 +3490,22 @@
     "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
     "https://georaster.tampere.fi/"
    ]
+  },
+  "en": {
+   "lede": "The Kaarila estate already appears on the great partition map of 1767–68. In the 18th century the manor belonged to the Gadd family. It was the birthplace of Pehr Adrian Gadd, later a professor at the Academy of Turku, who planted a garden around his home; some of its maples and limes still remain. The manor's yellow main building was completed in 1887 and its white classicist main building in 1928. In the early 20th century the manor sold its land as building plots. Kaarila was annexed to Tampere in 1937. In 1962 the city handed over about ten hectares of manor land for a new residential area. A competition between five architects was won by Pentti Ahola in 1963, the plan was approved in 1965, and the 71 atrium houses of Puisto-Kaarila were completed in 1966–67. The buildings around Kaarilan aukio square rose in 1966–1980.",
+   "kkt": [
+    "Kaarila on the great partition map (1767–68)",
+    "The manor's yellow main building",
+    "The manor's white main building",
+    "Annexed to Tampere",
+    "Puisto-Kaarila competition, won by Pentti Ahola",
+    "Town plan for Puisto-Kaarila",
+    "Puisto-Kaarila is complete"
+   ],
+   "caps": [
+    "The Kaarila area of small houses under construction",
+    "Aerial photo over Ristimäki and Kaarila, with Lake Näsijärvi and the centre behind"
+   ]
   }
  },
  "Hankkio": {
@@ -3123,6 +3550,17 @@
    "s1": [
     "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
     "https://georaster.tampere.fi/"
+   ]
+  },
+  "en": {
+   "lede": "The district takes its name from the Hankkio farm, originally a croft of the Messukylä vicarage. The farm once had a market garden. Hankkio passed to Tampere with the annexation of Messukylä at the beginning of 1947, and in 1960 it was zoned as an industrial and residential area. In the aerial photos industrial halls rise on the fields from the 1960s onwards. The eastern ring road, completed in the 1990s, cut through the district and severed Hankkionkatu.",
+   "kkt": [
+    "Passes to Tampere with the annexation of Messukylä",
+    "Zoned as an industrial and residential area"
+   ],
+   "caps": [
+    "The new Kaukajärvi residential area, with the Hankkio fields behind",
+    "The Hankkio industrial and residential area from above"
    ]
   }
  },
@@ -3189,6 +3627,21 @@
     "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
     "https://georaster.tampere.fi/"
    ]
+  },
+  "en": {
+   "lede": "From the 18th century Niihama was meadow belonging to the farms of Messukylä, and the fields were still farmed during the Second World War. Soon after Messukylä was annexed to Tampere in 1947, farming ended, and in the aerial photos the fields turn to forest. After the Continuation War the Olkinuora family, who had moved from the Karelian Isthmus, built a resettlement farm that the city bought in the 1960s; its main building is today's Niihama lodge. Tammer-Golf was founded in 1965, and its course opened in 1969. In 1977 part of the Hatanpää allotment garden was moved to Niihama, onto the former land of the Messukylä vicarage, and three old cottages were brought there as museums. The Soukonvuori nature reserve was established in 2011.",
+   "kkt": [
+    "Annexed to Tampere along with Messukylä",
+    "Tammer-Golf is founded",
+    "The golf course opens",
+    "The allotment garden is moved from Hatanpää",
+    "The golf course is extended to 18 holes",
+    "Soukonvuori nature reserve"
+   ],
+   "caps": [
+    "Niihama ski lodge in winter",
+    "Niihama outdoor lodge in summer"
+   ]
   }
  },
  "Tasanne": {
@@ -3241,6 +3694,19 @@
    "s1": [
     "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
     "https://georaster.tampere.fi/"
+   ]
+  },
+  "en": {
+   "lede": "Tasanne belonged to Messukylä, and the area was mostly forest and fields; at the head of Olkahistenlahti bay lay the small village of Juvela. When Aitolahti became a municipality of its own in 1923–1924, Tasanne went with it. In 1956 2.8 hectares of the Tasanne estate were bought for a restaurant, later called Rustholli. In the 1960s old barges were brought to the shore to serve as a dance pavilion and café. Aitolahti was annexed to Tampere on 1 January 1966. In the aerial photos of the late 1980s the surroundings of Olkahistenlahti are already densely built, and the houses on the southern shore date from the 1980s. In 2019 three quarters of Tasanne's residential buildings were detached houses.",
+   "kkt": [
+    "Passes to the municipality of Aitolahti (1923–24)",
+    "The site of the Rustholli restaurant is bought",
+    "Aitolahti is annexed to Tampere",
+    "The surroundings of Olkahistenlahti are built up"
+   ],
+   "caps": [
+    "The Rustholli banquet restaurant on the shore of Lake Näsijärvi",
+    "Olkahistenlahti in autumn"
    ]
   }
  }
