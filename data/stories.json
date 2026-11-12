@@ -1147,7 +1147,11 @@
   "sections": [
    {
     "h": "Messukylästä kaupunkiin",
-    "p": "Järvensivu liitettiin Tampereeseen 1922, 25 vuotta ennen muuta Messukylää. Järvensivun lapsilla oli ollut 2–3 kilometrin koulumatka Messukylän kirkonkylään, joten alueelle perustettiin oma koulupiiri 1907, ja koulu vihittiin 1909."
+    "p": "Järvensivu oli Messukylän esikaupunki Iidesjärven pohjoisrannalla. Lapsilla oli 2–3 kilometrin koulumatka Messukylän kirkonkylään, joten alueelle perustettiin oma koulupiiri 1907, ja puukoulu vihittiin 1909. Järvensivu liitettiin Tampereeseen 1922, 25 vuotta ennen muuta Messukylää."
+   },
+   {
+    "h": "Jälleenrakennuskauden omakotialue",
+    "p": "Vuonna 1936 alueelle laadittiin asemakaava, joka ei toteutunut. Talvisodassa 2.3.1940 pommitus vaurioitti koulua. Radan eteläpuoli oli vielä 1940-luvulla lähes kokonaan palstoitettua peltoa. Vuoden 1953 asemakaavan mukaan sinne rakennettiin jälleenrakennuskaudella yhtenäinen puolitoistakerroksisten omakotitalojen alue. Koulun punatiilinen rakennus valmistui 1950-luvun puolivälissä, ja opetus koululla päättyi 2017."
    }
   ],
   "tl": [
@@ -1162,6 +1166,22 @@
    [
     1922,
     "Liitetään Tampereeseen"
+   ],
+   [
+    1936,
+    "Asemakaava, jää toteutumatta"
+   ],
+   [
+    1940,
+    "Pommitus vaurioittaa koulua"
+   ],
+   [
+    1953,
+    "Asemakaava, eteläosan omakotialue"
+   ],
+   [
+    2017,
+    "Opetus koululla päättyy"
    ]
   ],
   "people": [],
@@ -1174,6 +1194,10 @@
    [
     "Tampereen kaupunki: arkeologinen selvitys 8725",
     "https://tampere.fi/sites/default/files/2024-10/8725_Arkeologinen_selvitys_20220823.pdf"
+   ],
+   [
+    "Tampereen kaupunki: Järvensivun koulun tontti, kaavaluonnoksen kuvaus 9005 (kaavat 1936 ja 1953)",
+    "https://www.tampere.fi/sites/default/files/2026-03/9005_luonnos_kaavakuvaus_20260323.pdf"
    ]
   ]
  },
@@ -1418,17 +1442,55 @@
   "lede": "Tampereen ensimmäinen uusien periaatteiden mukaan rakennettu asuinalue, metsäinen puutarhakaupunki.",
   "sections": [
    {
+    "h": "Pelloilta puutarhakaupungiksi",
+    "p": "Ruotulan rinne kuului Messukylään, ja sen savimaata viljeltiin pelloksi. Alueen halki kulkenut kärrytie näkyy jo 1780-luvun kartassa, ja Jaakonmäentie seuraa yhä sen linjaa. Ruotula liitettiin Tampereeseen Messukylän mukana 1947. Vuonna 1950 vahvistettiin noin sadan omakotitontin kaava, mutta sitä ei toteutettu, koska kaupunki tarvitsi tiiviimpää asumista."
+   },
+   {
     "h": "Pieni Tapiola",
-    "p": "Ruotula rakennettiin vuosina 1963–1966. Se oli Tampereen ensimmäinen uusien suunnitteluperiaatteiden mukaan toteutettu asuinalue, ja siinä on yhtäläisyyksiä Espoon Tapiolan kanssa. Alue edustaa Otto-Iivari Meurmanin opetusten mukaista intiimiä puutarhakaupunkiajattelua."
+    "p": "Uusi kaava laadittiin kaupungin kaavoitusosastolla Aaro Alapeuson johdolla, ja se vahvistettiin 1961. Talot suunnitteli arkkitehti Aarne Heino, ja ensimmäiset valmistuivat 1963. Suurin osa rakennettiin 1963–1966. Ruotula oli Tampereen ensimmäinen kerralla suunniteltu ja rakennettu asuntoalue, ja siinä on yhtäläisyyksiä Espoon Tapiolan kanssa. Alue edustaa Otto-Iivari Meurmanin opetusten mukaista puutarhakaupunkiajattelua."
+   },
+   {
+    "h": "Elementtitalojen edelläkävijä",
+    "p": "Ruotulan omakotitalot olivat Suomen ensimmäisiä kokonaan sandwich-elementeistä tehtyjä pientaloja. Matalien omakotitalojen lisäksi alueella on rivitaloja, pistetaloja ja lamellitaloja. Keskuspuisto tehtiin vanhalle peltoaukealle, ja alusta asti suunniteltuihin palveluihin kuuluivat pieni ostoskeskus ja pesula. Julkisivuja on korjattu, mutta talot näyttävät yhä lähes alkuperäisiltä."
    }
   ],
   "tl": [
    [
+    1947,
+    "Liitetään Tampereeseen"
+   ],
+   [
+    1950,
+    "Omakotikaava, jää toteutumatta"
+   ],
+   [
+    1961,
+    "Uusi asemakaava vahvistetaan"
+   ],
+   [
     1963,
     "Rakentaminen 1963–66"
+   ],
+   [
+    1966,
+    "Alue pääosin valmis"
+   ],
+   [
+    1984,
+    "Lahdensivun koti valmistuu"
    ]
   ],
   "people": [
+   [
+    "Aarne Heino",
+    "",
+    "Arkkitehti, joka suunnitteli Ruotulan talot"
+   ],
+   [
+    "Aaro Alapeuso",
+    "",
+    "Kaupungin kaavoittaja, jonka johdolla vuoden 1961 kaava laadittiin"
+   ],
    [
     "Otto-Iivari Meurman",
     "",
@@ -1449,7 +1511,11 @@
   "sections": [
    {
     "h": "Leinoij",
-    "p": "Leinola mainitaan vuoden 1540 maakirjassa Messukylän kylänä, jossa oli viisi taloa. Vuoden 1553 maakirjassa kolmen talon isännillä oli sama lisänimi Leinoij. Alue liitettiin Tampereeseen Messukylän mukana 1947, ja ensimmäinen asemakaava vahvistettiin 1952. Leinolassa on marsalkka Mannerheimin patsas."
+    "p": "Leinola mainitaan vuoden 1540 maakirjassa Messukylän kylänä, jossa oli viisi taloa. Vuoden 1553 maakirjassa kolmen talon isännillä oli sama lisänimi Leinoij. Kylä muodosti Messukylässä oman jakokuntansa."
+   },
+   {
+    "h": "Metsäinen pientaloalue",
+    "p": "Leinola liitettiin Tampereeseen Messukylän mukana 1947, ja ensimmäinen asemakaava vahvistettiin 1952. Myös vuonna 1957 vahvistettu Vehmaisten kaava ulottui Leinolan alueelle. Mannerheiminkalliolle paljastettiin sotamarsalkka Mannerheimin patsas 1956. Leinolan metsäinen pientaloalue rakentui pääosin 1960- ja 1970-luvuilla."
    }
   ],
   "tl": [
@@ -1468,6 +1534,14 @@
    [
     1952,
     "Ensimmäinen asemakaava"
+   ],
+   [
+    1956,
+    "Mannerheimin patsas paljastetaan"
+   ],
+   [
+    1957,
+    "Vehmaisten kaava kattaa myös Leinolan"
    ]
   ],
   "people": [],
@@ -1476,6 +1550,18 @@
    [
     "Wikipedia: Leinola",
     "https://en.wikipedia.org/wiki/Leinola"
+   ],
+   [
+    "Tampereen kaupunki: Vehmaisten ja Kaukaniemen kulttuurihistoria (jakokunnat, kaava 1957)",
+    "https://ekstrat.tampere.fi/ytoteto/aka/nahtavillaolevat/8455/selvitykset/8455_vehmainen_kaukaniemi_kulttuurihistoria.pdf"
+   ],
+   [
+    "Tampereen kaupunki: asemakaava 7882, selostus (pientaloalue 1960–70-luvuilta)",
+    "https://www.tampere.fi/ytoteto/aka/nahtavillaolevat/7882/selostus.html"
+   ],
+   [
+    "Finna: Sotamarsalkka Mannerheimin patsaan paljastustilaisuus 1956 (Vapriikin kuva-arkisto)",
+    "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fmuseosiiri.tampere.fi%253A8080%252FVALOKUVA%252Fcontent%252FSIR_EXEC%252Fimages%252Fprimary%252F2003092910%252F10648207236390.jpg"
    ]
   ]
  },
@@ -1567,14 +1653,34 @@
   "lede": "Uusin kaupunginosa: ratikan varteen suunniteltu alue, joka nimettiin vuonna 2024.",
   "sections": [
    {
+    "h": "Pelloista golfkentäksi",
+    "p": "Kaupinlaakson alue Teiskontien varressa oli enimmäkseen peltoa. Teiskontietä rakennettiin Ruotulan kohdalla 1964. Tammer-Golf avasi pelloille yhdeksän reiän golfkentän 1969 ja laajensi sen 18-reikäiseksi 1987. 1970-luvulla viereen rakennettiin tenniskeskus."
+   },
+   {
     "h": "Ratikan varrelle",
-    "p": "Kaupinlaakso nimettiin 2024 kaavoituksen aikana. Alue rakentuu Teiskontien varteen, kun ratikkaverkko laajenee TAYS:n alueelta kohti Linnainmaata, ja sinne suunnitellaan asuntoja noin 9 000 asukkaalle. Luonnosvaiheessa Kaupinlaakso I -alue kulki nimellä Medi-Park."
+    "p": "Kaupinlaakso nimettiin 2024 kaavoituksen aikana. Luonnosvaiheessa Kaupinlaakso I kulki nimellä Medi-Park, ja Kaupinlaakso II nimellä Alasjärven länsipuoli. Kaupinlaakso I:n kaava noin 2 500 asukkaalle hyväksyttiin 2024, ja ratikkatyöt Kaupin kampukselta Ruotulaan alkoivat saman vuoden joulukuussa. Koko kaupunginosaan suunnitellaan asuntoja noin 9 000 asukkaalle vuoteen 2040 mennessä. Golfkentän alue kaavoitetaan asumiselle, ja golfille suunnitellaan uutta paikkaa Nurmesta."
    }
   ],
   "tl": [
    [
+    1964,
+    "Teiskontie rakennetaan"
+   ],
+   [
+    1969,
+    "Golfkenttä avataan"
+   ],
+   [
     2024,
     "Kaupunginosa nimetään"
+   ],
+   [
+    2028,
+    "Ratikka Ruotulaan (tavoite)"
+   ],
+   [
+    2032,
+    "Ratikka Linnainmaalle (tavoite)"
    ]
   ],
   "people": [],
@@ -1583,6 +1689,26 @@
    [
     "Tampereen kaupunki: Kaupinlaakso",
     "https://www.tampere.fi/en/urban-design/renewing-city/kaupinlaakso"
+   ],
+   [
+    "Tampereen kaupunki: Kaupinlaakso II, asemakaavaselostus 8931 (golfkenttä 1969/1987, tenniskeskus)",
+    "https://www.tampere.fi/sites/default/files/2026-02/8931_Asemakaavaselostus_20260202.pdf"
+   ],
+   [
+    "Tampereen kaupunki: Kaupinlaakso I, asemakaavaselostus 8618",
+    "https://www.tampere.fi/sites/default/files/2024-04/8618_ehdotus_selostus_20240403.pdf"
+   ],
+   [
+    "Tampereen kaupunki: Kaupinlaakson laajan asuinalueen kaava nähtäville 2026",
+    "https://www.tampere.fi/en/current/2026/02/16/local-detailed-plan-large-residential-area-kaupinlaakso-will-be"
+   ],
+   [
+    "Tampereen ratikka: reitit ja rakentamisvaiheet",
+    "https://www.tampereenratikka.fi/en/tram-routes/"
+   ],
+   [
+    "Tampereen kaupunki: Pirkkala–Linnainmaa-allianssin rakentaminen alkaa (12/2024)",
+    "https://tampere.fi/en/current/2024/12/13/tampere-tramway-pirkkala-linnainmaa-alliance-starts-first-phase"
    ]
   ]
  },
@@ -1893,14 +2019,34 @@
   "lede": "Pyhäjärven rannan vanha kylä, jonka pelloille nousi 1950–60-luvuilla omakoti- ja kerrostaloja.",
   "sections": [
    {
-    "h": "Rahola",
-    "p": "Pirkkalan Raholan kylässä oli vuonna 1543 neljä taloa. Harjun juurelle syntyi varhain kartanoita ja suurtiloja, ja 1900-luvun alussa harjulle tuli teollisuutta ja pienasutusta. Rahola kuului Pohjois-Pirkkalaan vuoteen 1937, jolloin se liitettiin Tampereeseen. Raholan asemakaava vahvistettiin 1955. Alueen eteläreunan puolitoistakerroksiset omakotitalot valmistuivat pääosin 1955–1957, keskusta-alueen kerrostalot 1961–1965 ja Puutalo Oy:n matalat omakotitalot 1962–1963."
+    "h": "Kylästä kartanoksi",
+    "p": "Pirkkalan Raholan kylässä oli vuonna 1543 neljä taloa, ja niiden nimet elävät yhä kaduissa. Vuonna 1650 talot yhdistettiin kartanoksi, joka lahjoitettiin sotamarsalkka Wrangelille. 1700-luvulla Raholan omisti Gaddin suku, ja tilalla toimi kestikievari. Pihapiirin nykyinen päärakennus valmistui 1796."
+   },
+   {
+    "h": "Kaupungin tila",
+    "p": "Tampereen kaupunki osti Raholan tilan 1935, ja se tuotti ruokaa kaupungin laitoksille 1950-luvulle asti. Rahola kuului Pohjois-Pirkkalaan vuoteen 1937, jolloin se liitettiin Tampereeseen yhdessä Pispalan ja Epilän kanssa. 1940-luvulla tilan itäpuolelle perustettiin siirtolapuutarha."
+   },
+   {
+    "h": "Uusi kaupunginosa",
+    "p": "Arkkitehti Katri Käen laatima asemakaava vahvistettiin 1955. Eteläreunan puolitoistakerroksiset omakotitalot valmistuivat pääosin 1955–1957, sisääntuloa ja aukiota rajaavat kerrostalot 1961–1965 ja Puutalo Oy:n matalat omakotitalot 1962–1963. 1960-luvun jälkipuoliskolla valmistunut moottoritie katkaisi Raholan vanhan yhteyden Pyhäjärven rantaan."
    }
   ],
   "tl": [
    [
     1543,
     "Raholan kylässä neljä taloa"
+   ],
+   [
+    1650,
+    "Talot yhdistetään kartanoksi"
+   ],
+   [
+    1796,
+    "Kartanon päärakennus valmistuu"
+   ],
+   [
+    1935,
+    "Kaupunki ostaa tilan"
    ],
    [
     1937,
@@ -1915,7 +2061,13 @@
     "Keskustan kerrostalot (1961–65)"
    ]
   ],
-  "people": [],
+  "people": [
+   [
+    "Katri Käki",
+    "",
+    "Arkkitehti, joka laati Raholan asemakaavan 1955"
+   ]
+  ],
   "places": [
    "Rahola"
   ],

@@ -2752,5 +2752,306 @@
     "https://georaster.tampere.fi/"
    ]
   }
+ },
+ "Epilä": {
+  "lede": "Epilä oli vuosina 1759–1836 Harjun kappeliseurakunnan kappalaisen virkatila, ja sen ympärillä oli Kaarilan kartanon laitumia. Porin rata valmistui 1895, ja aseman ympärille alkoi kasvaa teollisuutta. 1900-luvun alussa harjun rinteet palstoitettiin pientaloille, työläiskodeille ja puutarhoille. Epilän nahkatehdas muokkasi nahkaa 1916–1971 ja tunnettiin kiiltonahastaan. 1920-luvulla Lielahden asema korvasi Epilän aseman. Epilä liitettiin Tampereeseen Pohjois-Pirkkalasta 1937, ja Epilän, Kaarilan ja Hyhkyn yhteinen asemakaava vahvistettiin 1953. Ilmakuvissa näkyy, miten pientaloalue tihenee ja pellot jäävät rakennusten alle.",
+  "kk": [
+   [
+    1759,
+    "Kappalaisen virkatila (1759–1836)"
+   ],
+   [
+    1895,
+    "Porin rata valmistuu"
+   ],
+   [
+    1916,
+    "Nahkatehdas aloittaa"
+   ],
+   [
+    1937,
+    "Liitetään Tampereeseen"
+   ],
+   [
+    1953,
+    "Yhteinen asemakaava Kaarilan ja Hyhkyn kanssa"
+   ],
+   [
+    1971,
+    "Nahkatehdas lopettaa"
+   ]
+  ],
+  "pair": [
+   {
+    "f": "img/862fc635ee.jpg",
+    "t": "Epilä-Rahola-linjan linja-auto tien laidassa",
+    "y": "1929",
+    "a": "",
+    "org": "Vapriikin kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fwww.profium.com%252Farchive%252FArchivedObject-9FCB068D-6AB6-B23D-381C-85AF673B4CA0",
+    "cap": "Epilän ja Raholan välistä linja-autoa metsätien varressa"
+   },
+   {
+    "f": "img/18c868d3f1.jpg",
+    "t": "Ilmakuva Kaarilasta. Taustalla Vaakkolammi, Epilä ja Näsijärvi",
+    "y": "2010",
+    "a": "SkyFoto Group",
+    "org": "Vapriikin kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fwww.profium.com%252Farchive%252FArchivedObject-C2B5CC31-947F-A08C-5AD7-C0DF90F3364B",
+    "cap": "Ilmakuva Kaarilan yli: taustalla Vaakkolammi, Epilä ja Näsijärvi"
+   }
+  ],
+  "src": {
+   "s0": [
+    "Wikipedia (englanti): Epilä",
+    "https://en.wikipedia.org/wiki/Epil%C3%A4"
+   ],
+   "s1": [
+    "Tampereen kaupunki: Pyöräilyraitti Länsi-Tampereen kulttuuriympäristöön",
+    "https://www.tampere.fi/sites/default/files/2023-07/pyorailyraitti_lamminpaahan.pdf"
+   ],
+   "s2": [
+    "Tampereen kaupunki: Kaarilan aukion ympäristöselvitys 2022",
+    "https://tampere.fi/sites/default/files/2025-02/8868_Kaarilan_aukion_ymparisto_selvitys_2022.pdf"
+   ],
+   "s3": [
+    "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
+    "https://georaster.tampere.fi/"
+   ]
+  }
+ },
+ "Kaarila": {
+  "lede": "Kaarilan tila näkyy jo vuosien 1767–68 isojakokartassa. 1700-luvulla kartano kuului Gaddin suvulle. Siellä syntyi myöhemmin Turun yliopiston professoriksi noussut Pehr Adrian Gadd, joka istutti kotinsa ympärille kasvitarhan; sen vaahteroita ja lehmuksia on yhä jäljellä. Kartanon keltainen päärakennus valmistui 1887 ja valkoinen klassistinen päärakennus 1928. 1900-luvun alussa kartano myi maitaan tonteiksi. Kaarila liitettiin Tampereeseen 1937. Vuonna 1962 kaupunki luovutti noin kymmenen hehtaaria kartanon maata uudelle asuinalueelle. Viiden arkkitehdin kilpailun voitti 1963 Pentti Ahola, kaava vahvistettiin 1965, ja Puisto-Kaarilan 71 atriumtaloa valmistuivat 1966–67. Kaarilan aukion rakennukset nousivat 1966–1980.",
+  "kk": [
+   [
+    1767,
+    "Kaarila isojakokartassa (1767–68)"
+   ],
+   [
+    1887,
+    "Kartanon keltainen päärakennus"
+   ],
+   [
+    1928,
+    "Kartanon valkoinen päärakennus"
+   ],
+   [
+    1937,
+    "Liitetään Tampereeseen"
+   ],
+   [
+    1963,
+    "Puisto-Kaarilan kilpailu, voittaja Pentti Ahola"
+   ],
+   [
+    1965,
+    "Puisto-Kaarilan asemakaava"
+   ],
+   [
+    1967,
+    "Puisto-Kaarila valmis"
+   ]
+  ],
+  "pair": [
+   {
+    "f": "img/ea801daa0d.jpg",
+    "t": "Kaarilan pientaloaluetta rakennetaan.",
+    "y": "1966",
+    "a": "",
+    "org": "Lusto - Suomen Metsämuseo",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/lusto.knp-93035",
+    "cap": "Kaarilan pientaloaluetta rakennetaan"
+   },
+   {
+    "f": "img/c8b09d1a77.jpg",
+    "t": "Ilmakuva Ristimäestä ja Kaarilasta. Taustalla Näsijärvi, keskusta ja Pyhäjärvi",
+    "y": "2010",
+    "a": "SkyFoto Group",
+    "org": "Vapriikin kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fwww.profium.com%252Farchive%252FArchivedObject-56846594-FFB0-CE93-211B-04812666574C",
+    "cap": "Ilmakuva Ristimäen ja Kaarilan yli, taustalla Näsijärvi ja keskusta"
+   }
+  ],
+  "src": {
+   "s0": [
+    "Tampereen kaupunki: Kaarilan aukion ympäristöselvitys 2022",
+    "https://tampere.fi/sites/default/files/2025-02/8868_Kaarilan_aukion_ymparisto_selvitys_2022.pdf"
+   ],
+   "s1": [
+    "Tampereen kaupunki: Pyöräilyraitti Länsi-Tampereen kulttuuriympäristöön",
+    "https://www.tampere.fi/sites/default/files/2023-07/pyorailyraitti_lamminpaahan.pdf"
+   ],
+   "s2": [
+    "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
+    "https://georaster.tampere.fi/"
+   ]
+  }
+ },
+ "Hankkio": {
+  "lede": "Kaupunginosa on saanut nimensä Hankkion tilasta, joka oli alun perin Messukylän pappilan torppa. Tilalla toimi aikanaan kauppapuutarha. Hankkio siirtyi Tampereelle Messukylän liitoksessa vuoden 1947 alussa, ja se kaavoitettiin 1960 teollisuus- ja asuinalueeksi. Ilmakuvissa peltojen paikalle nousee 1960-luvulta alkaen teollisuushalleja. 1990-luvulla valmistunut itäinen kehätie halkaisi kaupunginosan ja katkaisi Hankkionkadun.",
+  "kk": [
+   [
+    1947,
+    "Siirtyy Tampereelle Messukylän liitoksessa"
+   ],
+   [
+    1960,
+    "Kaavoitetaan teollisuus- ja asuinalueeksi"
+   ]
+  ],
+  "pair": [
+   {
+    "f": "img/f81ac06c85.jpg",
+    "t": "Kaukajärven uusi autusalue, taustalla Hankkiota",
+    "y": "1970",
+    "a": "Ensio Kauppila",
+    "org": "Vapriikin kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fmuseosiiri.tampere.fi%253A8080%252FVALOKUVA%252Fcontent%252FSIR_EXEC%252Fimages%252Fprimary%252F20090930%252F12543116838730.jpg",
+    "cap": "Kaukajärven uusi asuinalue, taustalla Hankkion peltoja"
+   },
+   {
+    "f": "img/03a3611c00.jpg",
+    "t": "Hankkio",
+    "y": "2022",
+    "a": "Saarni Säilynoja",
+    "org": "Vapriikin kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fwww.profium.com%252Farchive%252FArchivedObject-948C5570-BFFB-B855-BA83-EC9EBBD1D370",
+    "cap": "Hankkion teollisuus- ja asuinaluetta ylhäältä"
+   }
+  ],
+  "src": {
+   "s0": [
+    "Wikipedia (englanti): Hankkio",
+    "https://en.wikipedia.org/wiki/Hankkio"
+   ],
+   "s1": [
+    "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
+    "https://georaster.tampere.fi/"
+   ]
+  }
+ },
+ "Niihama": {
+  "lede": "Niihama oli 1700-luvulta lähtien Messukylän talojen niittyä, ja peltoja viljeltiin vielä toisen maailmansodan aikaan. Pian sen jälkeen, kun Messukylä liitettiin Tampereeseen 1947, maanviljely loppui, ja ilmakuvissa pellot metsittyvät. Karjalankannakselta muuttanut Olkinuoran perhe rakensi jatkosodan jälkeen siirtolaistilan, jonka kaupunki osti 1960-luvulla; sen päärakennus on nykyinen Niihaman maja. Tammer-Golf perustettiin 1965, ja sen kenttä avattiin 1969. Vuonna 1977 osa Hatanpään siirtolapuutarhasta siirrettiin Niihamaan Messukylän pappilan entiselle maalle, ja kolme vanhaa mökkiä tuotiin museoiksi. Soukonvuoren luonnonsuojelualue perustettiin 2011.",
+  "kk": [
+   [
+    1947,
+    "Liitetään Tampereeseen Messukylän mukana"
+   ],
+   [
+    1965,
+    "Tammer-Golf perustetaan"
+   ],
+   [
+    1969,
+    "Golfkenttä avataan"
+   ],
+   [
+    1977,
+    "Siirtolapuutarha siirretään Hatanpäästä"
+   ],
+   [
+    1987,
+    "Golfkenttä laajennetaan 18 reikään"
+   ],
+   [
+    2011,
+    "Soukonvuoren luonnonsuojelualue"
+   ]
+  ],
+  "pair": [
+   {
+    "f": "img/ef3a234caa.jpg",
+    "t": "Niihaman hiihtomaja Tampereella",
+    "y": "1965",
+    "a": "Matti Selänne",
+    "org": "Vapriikin kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fwww.profium.com%252Farchive%252FArchivedObject-EBF166F1-EE4A-B600-1A43-B610EB7A74EB",
+    "cap": "Niihaman hiihtomaja talvella"
+   },
+   {
+    "f": "img/a0c43e6430.jpg",
+    "t": "Niihaman ulkoilumaja",
+    "y": "2018",
+    "a": "Saarni Säilynoja",
+    "org": "Vapriikin kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fwww.profium.com%252Farchive%252FArchivedObject-BAA858AD-0693-2CAE-5D85-5846DEA81DE3",
+    "cap": "Niihaman ulkoilumaja kesällä"
+   }
+  ],
+  "src": {
+   "s0": [
+    "Saida Lindroos: Tampereen vihreät keuhkot – Kauppi-Niihaman maankäytön ja virkistyksen historia (pro gradu, Turun yliopisto 2018)",
+    "https://www.utupub.fi/bitstreams/ddeafd8d-5f50-4e07-8cbb-733e6eee3aca/download"
+   ],
+   "s1": [
+    "Wikipedia (englanti): Niihama",
+    "https://en.wikipedia.org/wiki/Niihama_(district)"
+   ],
+   "s2": [
+    "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
+    "https://georaster.tampere.fi/"
+   ]
+  }
+ },
+ "Tasanne": {
+  "lede": "Tasanne kuului Messukylään, ja alue oli enimmäkseen metsää ja peltoa; Olkahistenlahden pohjukassa oli muutaman talon Juvelan kylä. Kun Aitolahti erotettiin omaksi kunnakseen 1923–1924, Tasanne siirtyi sinne. Vuonna 1956 Tasanteen tilasta ostettiin 2,8 hehtaaria, jolle rakennettiin ravintola, myöhemmin Rustholli. 1960-luvulla rantaan tuotiin vanhoja proomuja tanssilavaksi ja kahvilaksi. Aitolahti liitettiin Tampereeseen 1.1.1966. 1980-luvun lopun ilmakuvissa Olkahistenlahden ympäristö on jo tiiviisti rakennettu, ja etelärannan talot ovat 1980-luvulta. Vuonna 2019 kolme neljäsosaa Tasanteen asuinrakennuksista oli erillispientaloja.",
+  "kk": [
+   [
+    1924,
+    "Siirtyy Aitolahden kuntaan (1923–24)"
+   ],
+   [
+    1956,
+    "Ravintola Rusthollin tontti ostetaan"
+   ],
+   [
+    1966,
+    "Aitolahti liitetään Tampereeseen"
+   ],
+   [
+    1987,
+    "Olkahistenlahden ympäristö rakentunut"
+   ]
+  ],
+  "pair": [
+   {
+    "f": "img/2245178857.jpg",
+    "t": "ravintola Rustholli",
+    "y": "1982",
+    "a": "Kanerva, Teuvo",
+    "org": "Historian kuvakokoelma",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/museovirasto.E98045721293694AC7EF5FDD316750A0",
+    "cap": "Juhlaravintola Rustholli Näsijärven rannalla"
+   },
+   {
+    "f": "img/07feda8be0.jpg",
+    "t": "Olkahistenlahti syksyllä",
+    "y": "2022",
+    "a": "Antti Liuttunen",
+    "org": "Vapriikin kuva-arkisto",
+    "lic": "CC BY 4.0",
+    "url": "https://www.finna.fi/Record/siiri.urn%3Anbn%3Afi-vapriikkihttp%253A%252F%252Fwww.profium.com%252Farchive%252FArchivedObject-44A9D2D4-95F6-086B-348F-B41A363511C8",
+    "cap": "Olkahistenlahti syksyllä"
+   }
+  ],
+  "src": {
+   "s0": [
+    "Tampereen kaupunki: Tasanteen rakennetun kulttuuriympäristön inventointi 2020",
+    "https://tampere.fi/sites/default/files/2023-11/8797_rakennetun_kulttuuriympariston_inventointi_20201214.pdf"
+   ],
+   "s1": [
+    "Ilmakuvat 1946–2022: Tampereen kaupunki, CC BY 4.0",
+    "https://georaster.tampere.fi/"
+   ]
+  }
  }
 }
