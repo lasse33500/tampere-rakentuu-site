@@ -199,6 +199,7 @@ aside a{color:var(--brick)}
     <label><input type="checkbox" id="lDem"> Puretut rakennukset</label>
     <label><input type="checkbox" id="lUnk"> Rakennukset, joiden vuosi puuttuu</label>
     <label><input type="checkbox" id="lLM"> Maamerkit (★)</label>
+    <label><input type="checkbox" id="lKadut" checked> Kadunnimet</label>
     <label style="margin-bottom:4px">Väritys <select id="pop" style="font:inherit;font-size:12px"><optgroup label="Rakennukset"><option value="year" selected>Rakennusvuosi</option><option value="type">Käyttötarkoitus</option></optgroup><optgroup label="Väestö (postinumeroalueittain)"><option value="tih">Asukastiheys</option><option value="kika">Keski-ikä</option><option value="mtu">Mediaanitulot</option><option value="korkea">Korkeakoulutetut</option><option value="vuokra">Vuokralla asuvat taloudet</option><option value="yksin">Yhden hengen taloudet</option><option value="lapset">Lapset 0–15 v</option><option value="yli65">Yli 65-vuotiaat</option><option value="tyott">Työttömyysaste</option><option value="kasvu">Väestönmuutos 2013–2024</option></optgroup></select></label>
     <label><input type="checkbox" id="lNames"> Vanhat paikannimet</label>
     <div class="ngrp" id="ngrp"></div>
@@ -371,12 +372,27 @@ function render(){
   // labels
   ctx.setTransform(DPR,0,0,DPR,0,0);
   if(AEY){const t=cv.width/DPR<600?`Ilmakuva ${AEY} · Tre CC BY 4.0`:`Ilmakuva ${AEY} · Tampereen kaupunki, CC BY 4.0`;ctx.font='600 12px system-ui,sans-serif';ctx.textAlign='left';ctx.textBaseline='alphabetic';const w=ctx.measureText(t).width+16;const W2=cv.width/DPR;const nx=W2<600?12:W2-w-60,ny=W2<600?52:12;ctx.fillStyle='rgba(31,26,20,.82)';ctx.fillRect(nx,ny,w,24);ctx.fillStyle='#fffaf0';ctx.fillText(t,nx+8,ny+16);}
+  drawStreetNames();
   const nb=drawNames();
   labels(nb);
   drawTPL();
   drawLM();
   drawArk();
 }
+// Kadunnimet (Tampereen kaupungin katuosat, nimet nimistörekisteristä). Luokka 0 = pääväylä … 4 = tonttikatu.
+let KADUT=null;fetch('data/katunimet.json').then(r=>r.ok?r.json():null).then(d=>{if(!d)return;KADUT=d.map(([n,r,ls])=>({n,r,ls:ls.map(l=>{const o=[];let x=l[0],y=l[1];o.push(x,y);for(let i=2;i<l.length;i+=2){x+=l[i];y+=l[i+1];o.push(x,y);}return o;})}));draw();}).catch(()=>{});
+const KMIN=[.12,.16,.3,.45,.7];
+function drawStreetNames(){if(!KADUT||POP||!document.getElementById('lKadut').checked)return;const k=T.k;if(k<KMIN[0])return;
+  const W2=cv.width/DPR,H2=cv.height/DPR,boxes=[];ctx.font="500 11px 'IBM Plex Sans',system-ui,sans-serif";ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';
+  const hit=(b)=>boxes.some(o=>b[0]<o[2]&&b[2]>o[0]&&b[1]<o[3]&&b[3]>o[1]);
+  for(const st of KADUT){if(k<KMIN[st.r])continue;const tw=ctx.measureText(st.n).width+10;let placed=0;
+    for(const L of st.ls){let best=null,bl=0;
+      for(let i=0;i<L.length-2;i+=2){const [ax,ay]=toScreen(L[i],L[i+1]),[bx,by]=toScreen(L[i+2],L[i+3]);const len=Math.hypot(bx-ax,by-ay);if(len>bl){bl=len;best=[ax,ay,bx,by];}}
+      if(!best||bl<tw)continue;const cx=(best[0]+best[2])/2,cy=(best[1]+best[3])/2;if(cx<0||cy<0||cx>W2||cy>H2)continue;
+      let a=Math.atan2(best[3]-best[1],best[2]-best[0]);if(a>Math.PI/2)a-=Math.PI;if(a<-Math.PI/2)a+=Math.PI;
+      const hx=Math.abs(Math.cos(a))*tw/2+Math.abs(Math.sin(a))*7,hy=Math.abs(Math.sin(a))*tw/2+Math.abs(Math.cos(a))*7,b=[cx-hx,cy-hy,cx+hx,cy+hy];if(hit(b))continue;boxes.push(b);
+      ctx.save();ctx.translate(cx,cy);ctx.rotate(a);ctx.lineWidth=3;ctx.strokeStyle='rgba(255,255,255,.9)';ctx.strokeText(st.n,0,0);ctx.fillStyle='#4f4b45';ctx.fillText(st.n,0,0);ctx.restore();
+      if(++placed>=3)break;}}}
 function drawTPL(){if(!TPL||(VIEW!=='teema'&&VIEW!=='henk'))return;
   TPL.forEach((o,k)=>{const [sx,sy]=toScreen(o[1],o[2]);const on=k===TPSEL,r=on?13:10;ctx.beginPath();ctx.arc(sx,sy,r,0,7);ctx.fillStyle=on?'#1f1a14':'#a4472f';ctx.fill();ctx.lineWidth=2;ctx.strokeStyle='#fffaf0';ctx.stroke();ctx.fillStyle='#fffaf0';ctx.font='600 11px Inter,system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(k+1,sx,sy+.5);
     if(on){ctx.font='600 13px Inter,system-ui,sans-serif';ctx.textAlign='left';const w=ctx.measureText(o[0]).width;ctx.fillStyle='rgba(255,250,240,.95)';ctx.fillRect(sx+16,sy-11,w+12,22);ctx.strokeStyle='#1f1a14';ctx.lineWidth=1;ctx.strokeRect(sx+16,sy-11,w+12,22);ctx.fillStyle='#1f1a14';ctx.fillText(o[0],sx+22,sy+.5);}});
@@ -478,7 +494,7 @@ function pick(sx,sy){if(!DATA)return -1;const [wx,wy]=toWorld(sx,sy);const ds=DA
   for(let i=0;i<ds.length;i++){const b=ds[i].bb;if(wx<b[0]||wx>b[2]||wy<b[1]||wy>b[3])continue;if(hit.isPointInPath(P.dist[i],wx,-wy))return i;}return -1;}
 
 // ---------- controls ----------
-['lBorder','lDem','lUnk','lLM'].forEach(id=>document.getElementById(id).onchange=draw);
+['lBorder','lDem','lUnk','lLM','lKadut'].forEach(id=>document.getElementById(id).onchange=draw);
 const yr=document.getElementById('year');
 function setYear(y){YEAR=+y;yr.value=YEAR;document.getElementById('yr').textContent=YEAR;
   const a=P.annex?P.annex.filter(x=>x.y<=YEAR).pop():null;
