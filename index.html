@@ -214,7 +214,7 @@ aside a{color:var(--brick)}
   <input type="range" id="year" min="1850" max="2026" value="2026" aria-label="Vuosi">
   <div id="yrnote"></div>
 </footer>
-<div class="src">Aineistot: Tampereen kaupunki, avoin data (CC BY 4.0), Tilastokeskus Paavo, Vapriikki ym., haettu 11/2026. <a href="#lahteet" id="srclink">Kaikki lähteet →</a></div>
+<div class="src">Aineistot: Tampereen kaupunki, avoin data (CC BY 4.0; mm. maanpeite 2022 ja metsävaratieto), Tilastokeskus Paavo, Vapriikki ym., haettu 11/2026. <a href="#lahteet" id="srclink">Kaikki lähteet →</a></div>
 </div>
 
 <script>
@@ -233,6 +233,9 @@ let NAMES=null, NOFF=new Set(), nsel=-1, PAAVO=null, POP='', popBins=null;
 const PM={tih:['Asukastiheys','as/km²',0],kika:['Keski-ikä','v',0],mtu:['Asukkaiden mediaanitulot','€/v',0],korkea:['Korkeakoulutetut (18+)','%',1],vuokra:['Vuokralla asuvat taloudet','%',1],yksin:['Yhden hengen taloudet','%',1],lapset:['Lapset 0–15 v','%',1],yli65:['Yli 65-vuotiaat','%',1],tyott:['Työttömyysaste','%',1],kasvu:['Väestönmuutos 2013–2024','%',1]};
 const POPC=['#f2dcef','#d3a6cd','#a8729f','#7a4673','#4b1f48'];
 const fmt=(v,d=0)=>v==null?'–':Number(v).toLocaleString('fi',{maximumFractionDigits:d});
+const GREEN={f:'#b1c68c',p:'#cfdca8'};
+// Maanpeite 2022 (Tampereen kaupunki): puusto, matala kasvillisuus ja pellot rasterina, 4 m/px. Kattaa kantakaupungin.
+const LC={src:'img/maanpeite.png',x0:-600,y0:-100,x1:24400,y1:14700};let LCIMG=null;
 const C={land:'#efe6d4',outside:'#e2d9c6',water:'#a7c0c6',shore:'#7f9ea6',dist:'rgba(90,72,55,.55)',unk:'#cfc5b3'};
 
 // ---------- state ----------
@@ -302,6 +305,8 @@ Promise.all(['base','streets','buildings'].map(n=>fetch('data/'+n+'.json').then(
   P.dem=blds.dem; BCODE=blds.codes||[]; BLAB=blds.lab||[]; BADDR=blds.addr||[]; BSR=blds.sr||[];
   BL=blds.b.map(([y,c,di,rings,ci,ka,kr,ai,si])=>({y,y0:y,c,di,r:rings,bb:bbox(rings),ci,ka,kr,ai,si}));
   buildBld();
+  LCIMG=new Image();LCIMG.onload=()=>{draw();m3LC();};LCIMG.src=LC.src;
+  fetch('data/green.json').then(r=>r.ok?r.json():null).then(g=>{if(!g)return;DATA.green=g;P.green={f:new Path2D(),p:new Path2D()};for(const k of ['f','p'])for(const pg of g[k])ringsToPath(pg,P.green[k]);draw();if(M3&&M3.getSource&&!M3.getSource('green'))m3Green();}).catch(()=>{});
   for(let k=0;k<BL.length;k++){const b=BL[k].bb;for(let gx=Math.floor(b[0]/GS);gx<=Math.floor(b[2]/GS);gx++)for(let gy=Math.floor(b[1]/GS);gy<=Math.floor(b[3]/GS);gy++){const key=gx+','+gy;(BG[key]=BG[key]||[]).push(k);}}
   document.getElementById('loading').remove();
   initSearch(); home(false); resize(); legend();
@@ -324,6 +329,8 @@ function render(){
     ctx.fillStyle='rgba(110,95,80,.22)'; ctx.fill(P.border);
     ctx.fillStyle=C.land; for(const a of P.annex) if(a.y<=YEAR) ctx.fill(a.p);
   }
+  if(P.green&&!POP){ctx.fillStyle=GREEN.f;ctx.fill(P.green.f);ctx.fillStyle=GREEN.p;ctx.fill(P.green.p);}
+  if(LCIMG&&LCIMG.complete&&!POP){ctx.imageSmoothingEnabled=true;ctx.drawImage(LCIMG,LC.x0,-LC.y1,LC.x1-LC.x0,LC.y1-LC.y0);}
   if(POP&&PAAVO){ for(const a of PAAVO.areas){const v=a.m[POP];ctx.fillStyle=v==null?'rgba(150,140,130,.25)':POPC[binOf(v)];ctx.globalAlpha=.92;ctx.fill(a.p);ctx.globalAlpha=1;}
     ctx.strokeStyle='rgba(255,250,240,.9)';ctx.lineWidth=1.4*px;for(const a of PAAVO.areas)ctx.stroke(a.p);}
   // district lines under water
@@ -512,6 +519,18 @@ function tm35toLL(x,y){const E=x+316000,N=y+6814000,a=6378137,f=1/298.257222101,
   const b=Math.asin(Math.sin(xp)/Math.cosh(ep)),l=Math.asin(Math.tanh(ep)/Math.cos(b));const Q=Math.asinh(Math.tan(b));let q=Q;for(let i=0;i<6;i++)q=Q+e*Math.atanh(e*Math.tanh(q));
   return [27+l*180/Math.PI,Math.atan(Math.sinh(q))*180/Math.PI];}
 function ringsLL(rings){return rings.map(r=>{let x=r[0],y=r[1];const o=[tm35toLL(x,y)];for(let i=2;i<r.length;i+=2){x+=r[i];y+=r[i+1];o.push(tm35toLL(x,y));}o.push(o[0]);return o;});}
+function m3Holes(rings){const R=rings.map(r=>{let x=r[0],y=r[1];const o=[[x,y]];for(let i=2;i<r.length;i+=2){x+=r[i];y+=r[i+1];o.push([x,y]);}return o;});
+  const area=o=>{let a=0;for(let i=0,j=o.length-1;i<o.length;j=i++)a+=(o[j][0]-o[i][0])*(o[j][1]+o[i][1]);return Math.abs(a/2);};
+  const inside=(p,o)=>{let c=false;for(let i=0,j=o.length-1;i<o.length;j=i++){const [xi,yi]=o[i],[xj,yj]=o[j];if(((yi>p[1])!==(yj>p[1]))&&(p[0]<(xj-xi)*(p[1]-yi)/(yj-yi)+xi))c=!c;}return c;};
+  const A=R.map(area),par=R.map((r,i)=>{let best=-1;for(let j=0;j<R.length;j++)if(j!==i&&A[j]>A[i]&&inside(r[0],R[j])&&(best<0||A[j]<A[best]))best=j;return best;});
+  const depth=i=>{let d=0;while(par[i]>=0){i=par[i];d++;}return d;};const LL=o=>{const c=o.map(([x,y])=>tm35toLL(x,y));c.push(c[0]);return c;};
+  const out=new Map();R.forEach((r,i)=>{if(depth(i)%2===0)out.set(i,[LL(r)]);});R.forEach((r,i)=>{if(depth(i)%2===1&&out.has(par[i]))out.get(par[i]).push(LL(r));});return [...out.values()];}
+function m3LC(){if(!M3||!LCIMG||!LCIMG.complete||!M3.getStyle()||M3.getSource('lc'))return;const c=[[LC.x0,LC.y1],[LC.x1,LC.y1],[LC.x1,LC.y0],[LC.x0,LC.y0]].map(([x,y])=>tm35toLL(x,y));
+  M3.addSource('lc',{type:'image',url:LC.src,coordinates:c});M3.addLayer({id:'lc',type:'raster',source:'lc',paint:{'raster-opacity':1,'raster-resampling':'linear','raster-fade-duration':0}},M3.getLayer('water')?'water':undefined);}
+function m3Green(){if(!M3||!DATA.green||M3.getSource('green'))return;const g=DATA.green,F=[];
+  for(const k of ['f','p'])for(const pg of g[k])F.push({type:'Feature',properties:{t:k},geometry:{type:'Polygon',coordinates:ringsLL(pg)}});
+  M3.addSource('green',{type:'geojson',data:{type:'FeatureCollection',features:F}});
+  M3.addLayer({id:'green',type:'fill',source:'green',paint:{'fill-color':['match',['get','t'],'f',GREEN.f,GREEN.p]}},M3.getLayer('water')?'water':undefined);}
 function m3Col(o){return mode==='type'?TYPES[o.c][1]:(o.y?decColor(o.y):C.unk);}
 function m3Buildings(){const F=[];BL.forEach((o,k)=>{if(mode==='type'&&TOFF.has(o.c))return;if(!o.ll)o.ll=ringsLL(o.r);F.push({type:'Feature',id:k,properties:{k,y:o.y||0,h:Math.max(1,o.kr||1)*3.2,c:m3Col(o)},geometry:{type:'Polygon',coordinates:o.ll}});});return {type:'FeatureCollection',features:F};}
 function m3Sync(){if(!M3||!M3.getLayer('bld'))return;const key=mode+'|'+[...TOFF].join(',');
@@ -530,8 +549,10 @@ async function m3Open(){M3ON=true;document.getElementById('z3d').classList.add('
   M3.addControl(new maplibregl.NavigationControl({visualizePitch:true}),'bottom-right');
   M3.on('load',()=>{
     const D=DATA.base;
-    M3.addSource('water',{type:'geojson',data:{type:'Feature',properties:{},geometry:{type:'MultiPolygon',coordinates:ringsLL(D.water).map(r=>[r])}}});
+    M3.addSource('water',{type:'geojson',data:{type:'Feature',properties:{},geometry:{type:'MultiPolygon',coordinates:m3Holes(D.water)}}});
+    m3Green();m3LC();
     M3.addLayer({id:'water',type:'fill',source:'water',paint:{'fill-color':'#a7c0c6'}});
+
     M3.addSource('streets',{type:'geojson',data:{type:'FeatureCollection',features:DATA.streets.s.map((ls,i)=>({type:'Feature',properties:{w:i},geometry:{type:'MultiLineString',coordinates:ls.map(r=>{let x=r[0],y=r[1];const o=[tm35toLL(x,y)];for(let j=2;j<r.length;j+=2){x+=r[j];y+=r[j+1];o.push(tm35toLL(x,y));}return o;})}}))}});
     M3.addLayer({id:'streets',type:'line',source:'streets',paint:{'line-color':'#fffaf0','line-width':['interpolate',['linear'],['zoom'],12,['+',0.5,['get','w']],17,['+',3,['*',2,['get','w']]]]}});
     M3.addSource('dist',{type:'geojson',data:{type:'FeatureCollection',features:D.districts.map(d=>({type:'Feature',properties:{n:dname(d)},geometry:{type:'MultiLineString',coordinates:ringsLL(d.r)}}))}});
@@ -1075,6 +1096,7 @@ const SOURCES=[
  ['Paikkatieto ja tilastot (haetaan automaattisesti)',[
   ['Tampereen kaupungin avoin paikkatieto (GeoServer WFS)','https://geodata.tampere.fi/','auto','Rakennukset ja niiden valmistumisvuodet, puretut rakennukset, kaupunginosat, kadut, vesistöt, alueliitokset ja osoitteet. CC BY 4.0.'],
   ['Tampereen historiallinen nimistö','https://geodata.tampere.fi/','auto','Noin 10 600 vanhaa paikannimeä selityksineen.'],
+  ['Tampereen maanpeiteaineisto 2022, metsävaratieto ja asemakaavoitetut viheralueet','https://geodata.tampere.fi/','auto','Kartan puusto, niityt, nurmet ja pellot. Maanpeite kattaa kantakaupungin (rasteroitu 4 m:n tarkkuuteen); sen ulkopuolella metsät kaupungin metsävaratiedosta. Kuvaa nykytilaa, ei menneitä vuosia. CC BY 4.0.'],
   ['Tilastokeskus, Paavo-postinumeroaluetilastot','https://www.stat.fi/tup/paavo/','auto','Väestö, ikä, tulot, koulutus ja asuminen 2013–2024. CC BY 4.0.'],
   ['Finna (api.finna.fi) – museoiden valokuvat','https://www.finna.fi/','auto','Avoimesti lisensoidut kuvat (CC BY 4.0, CC0, PDM), enimmäkseen Vapriikin kuva-arkistosta ja Museoviraston Historian kuvakokoelmasta. Kuvat tallennetaan sivuston mukaan, ja kuvaaja, arkisto ja linkki Finnan tietueeseen näytetään kuvatekstissä.'],
   ['Wikidata – arkkitehdit','https://www.wikidata.org/','auto','Tampereen rakennukset, joille on merkitty arkkitehti (P84) ja sijainti. CC0.'],
