@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lasse33500.github.io/tampere-rakentuu-site/sitemap.xml
