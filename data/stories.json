@@ -1032,12 +1032,12 @@
   ]
  },
  "Kaakinmaa (VI)": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Kaupungin häpeäpaalun paikka, josta tuli asuinkortteleita.",
   "sections": [
    {
     "h": "Kaakinmaa",
-    "p": "Alue sai nimensä kaakista eli häpeäpaalusta, joka seisoi täällä 1800-luvun jälkipuoliskolle asti. Alueella toimi myös Frenckellin kalkkiruukki."
+    "p": "Kaakinmaalla seisoi kaupungin häpeäpaalu eli kaakki 1800-luvun jälkipuoliskolle asti, ja nimi viittaa siihen. Alueella toimi myös Frenckellin kalkkiruukki."
    }
   ],
   "tl": [],
@@ -1055,7 +1055,7 @@
   ]
  },
  "Nalkala (III)": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Laukontorin ja Ratinan suvannon rannan vanha kaupunginosa.",
   "sections": [
    {
@@ -1145,15 +1145,23 @@
   ]
  },
  "Järvensivu": {
-  "status": "lyhyt",
-  "lede": "Iidesjärven rannan vanha asuinpaikka, joka liitettiin kaupunkiin jo 1922.",
+  "status": "tarkistettu",
+  "lede": "Iidesjärven rannan asuinalue, joka liitettiin kaupunkiin jo 1922.",
   "sections": [
    {
     "h": "Messukylästä kaupunkiin",
-    "p": "Järvensivu liitettiin Tampereeseen 1922, ennen muuta Messukylää. Järvensivun lapsilla oli ollut 2–3 kilometrin koulumatka Messukylän kirkonkylään, joten alueelle perustettiin oma koulu. Alueella on tunnettu historiallisen ajan asuinpaikka, ja jälleenrakennuskauden pientalot on inventoitu yhtenäisenä alueena."
+    "p": "Järvensivu liitettiin Tampereeseen 1922, 25 vuotta ennen muuta Messukylää. Järvensivun lapsilla oli ollut 2–3 kilometrin koulumatka Messukylän kirkonkylään, joten alueelle perustettiin oma koulupiiri 1907, ja koulu vihittiin 1909."
    }
   ],
   "tl": [
+   [
+    1907,
+    "Oma koulupiiri"
+   ],
+   [
+    1909,
+    "Koulu vihitään"
+   ],
    [
     1922,
     "Liitetään Tampereeseen"
@@ -1239,12 +1247,12 @@
   ]
  },
  "Kauppi": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Kaupunkilaisten virkistysmetsä, jonka laidalle nousi keskussairaala.",
   "sections": [
    {
     "h": "Kansanpuistosta kampukseksi",
-    "p": "Kaupin kansanpuisto syntyi teollisuuskaupungin työläisten virkistysalueeksi, ja nykyään se on tamperelaisten tärkein ulkoilualue. Tampereen yliopistollinen keskussairaala avattiin Teiskontien varteen 1962, ja alueella toimii myös Urho Kekkosen mukaan nimetty UKK-instituutti."
+    "p": "Kaupin metsäinen alue on tamperelaisten suosittu ulkoilu- ja urheilualue. Tampereen yliopistollinen keskussairaala avattiin alueelle 1962, ja siellä toimii myös presidentti Urho Kekkosen mukaan nimetty UKK-instituutti."
    }
   ],
   "tl": [
@@ -1369,7 +1377,7 @@
   ]
  },
  "Takahuhti": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Messukylän vanha kantakylä Aakkulanharjun pohjoispuolella.",
   "sections": [
    {
@@ -1404,12 +1412,12 @@
    ],
    [
     "Wikipedia: Takahuhti",
-    "https://en.wikipedia.com/wiki/Takahuhti"
+    "https://en.wikipedia.org/wiki/Takahuhti"
    ]
   ]
  },
  "Ruotula": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Tampereen ensimmäinen uusien periaatteiden mukaan rakennettu asuinalue, metsäinen puutarhakaupunki.",
   "sections": [
    {
@@ -1439,15 +1447,19 @@
   ]
  },
  "Leinola": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Vanha kylä, joka mainitaan jo 1540-luvun asiakirjoissa.",
   "sections": [
    {
     "h": "Leinoij",
-    "p": "Leinola mainitaan 1540-luvulla, ja vuoden 1553 maakirjassa kolmen talon isännällä oli sama lisänimi Leinoij. Alue liitettiin Tampereeseen Messukylän mukana 1947, ja ensimmäinen asemakaava vahvistettiin 1952. Leinolassa on marsalkka Mannerheimin patsas."
+    "p": "Leinola mainitaan vuoden 1540 maakirjassa Messukylän kylänä, jossa oli viisi taloa. Vuoden 1553 maakirjassa kolmen talon isännillä oli sama lisänimi Leinoij. Alue liitettiin Tampereeseen Messukylän mukana 1947, ja ensimmäinen asemakaava vahvistettiin 1952. Leinolassa on marsalkka Mannerheimin patsas."
    }
   ],
   "tl": [
+   [
+    1540,
+    "Leinola maakirjassa, viisi taloa"
+   ],
    [
     1553,
     "Leinoij maakirjassa"
@@ -1471,7 +1483,7 @@
   ]
  },
  "Atala": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Hammaspyörätehtaan mukaan nimetty pientaloalue.",
   "sections": [
    {
@@ -1507,18 +1519,18 @@
   ]
  },
  "Tasanne": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Näsijärven rannan pientaloalue, joka kuului ensin Messukylään ja sitten Aitolahteen.",
   "sections": [
    {
     "h": "Kolme kuntaa",
-    "p": "Tasanne kuului Messukylään vuoteen 1924, jolloin Aitolahti erotettiin omaksi kunnakseen. Aitolahti liitettiin Tampereeseen 1966. Tasanne on hyvin pientalovaltainen: noin kolme neljäsosaa asunnoista on erillispientaloissa."
+    "p": "Tasanne kuului Messukylään, kunnes Aitolahti erotettiin 1920-luvun alussa omaksi kunnakseen. Aitolahti liitettiin Tampereeseen 1.1.1966. Tasanne on hyvin pientalovaltainen: vuonna 2019 kolme neljäsosaa sen asuinrakennuksista oli erillispientaloja ja lähes neljäsosa rivi- tai ketjutaloja."
    }
   ],
   "tl": [
    [
-    1924,
-    "Aitolahden kunta perustetaan"
+    "1923–24",
+    "Aitolahden kunta ja seurakunta"
    ],
    [
     1966,
@@ -1535,12 +1547,12 @@
   ]
  },
  "Niihama": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Ulkoilumetsää, jonka kahvila on karjalaisen siirtolaisperheen entinen tila.",
   "sections": [
    {
     "h": "Niihaman maja",
-    "p": "Niihama on enimmäkseen metsää ja ulkoilukäytössä. Niihaman maja, nykyinen kahvila, oli alun perin Karjalankannakselta muuttaneen Olkinuoran perheen jatkosodan jälkeen rakentama siirtolaistila."
+    "p": "Niihama on enimmäkseen metsää ja ulkoilukäytössä: siellä on talviladut, vesiurheilukeskus ja siirtolapuutarha. Niihaman maja, nykyinen kahvila, oli alun perin Karjalankannakselta muuttaneen Olkinuoran perheen jatkosodan jälkeen rakentama siirtolaistila. Kaupunki osti tilan 1960-luvulla."
    }
   ],
   "tl": [],
@@ -1554,12 +1566,12 @@
   ]
  },
  "Kaupinlaakso": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Uusin kaupunginosa: ratikan varteen suunniteltu alue, joka nimettiin vuonna 2024.",
   "sections": [
    {
     "h": "Ratikan varrelle",
-    "p": "Kaupinlaakso nimettiin 2024 kaavoituksen aikana. Alue rakentuu Teiskontien varteen, kun ratikkaverkko laajenee TAYS:ltä Linnainmaalle, ja sinne suunnitellaan noin 9 000 asukkaan kaupunginosaa. Luonnosvaiheessa osa alueesta kulki nimellä Medi-Park."
+    "p": "Kaupinlaakso nimettiin 2024 kaavoituksen aikana. Alue rakentuu Teiskontien varteen, kun ratikkaverkko laajenee TAYS:n alueelta kohti Linnainmaata, ja sinne suunnitellaan asuntoja noin 9 000 asukkaalle. Luonnosvaiheessa Kaupinlaakso I -alue kulki nimellä Medi-Park."
    }
   ],
   "tl": [
@@ -1578,12 +1590,12 @@
   ]
  },
  "Hankkio": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Entinen tila, josta tuli teollisuus- ja asuinalue.",
   "sections": [
    {
     "h": "Hankkio",
-    "p": "Hankkion tilalla oli aikoinaan kauppapuutarha. Alue siirtyi Tampereelle Messukylän liitoksessa 1947, ja se kaavoitettiin 1960 teollisuus- ja asuinalueeksi."
+    "p": "Kaupunginosa on saanut nimensä Hankkion tilasta, joka oli alun perin Messukylän pappilan torppa. Tilalla oli aikoinaan kauppapuutarha. Alue siirtyi Tampereelle Messukylän liitoksessa 1947, ja se kaavoitettiin 1960 teollisuus- ja asuinalueeksi."
    }
   ],
   "tl": [
@@ -1600,8 +1612,8 @@
   "places": [],
   "src": [
    [
-    "Wikipedia: Hankkio",
-    "https://kiwix.lema.org/wikipedia_en_all_mini_2024-02/A/Hankkio"
+    "Wikipedia (englanti): Hankkio",
+    "https://en.wikipedia.org/wiki/Hankkio"
    ]
   ]
  },
@@ -1840,12 +1852,12 @@
   ]
  },
  "Epilä": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Kappalaisen virkatalosta nahkatehtaan ja rautatieaseman kylään.",
   "sections": [
    {
     "h": "Epilä",
-    "p": "Nimi saattaa perustua ruotsalaiseen miehennimeen Ebbe. Vuosina 1759–1836 Epilä oli Harjun kappeliseurakunnan kappalaisen virkatalo, ja alueella oli Kaarilan kartanon laitumia. Epilän nahkatehtaalla muokattiin nahkaa 1916–1971, ja se tunnettiin kiiltonahastaan. Epilä liitettiin Tampereeseen 1937, ja Epilän, Kaarilan ja Hyhkyn yhteinen asemakaava vahvistettiin 1953."
+    "p": "Nimi saattaa perustua ruotsalaiseen miehennimeen Ebbe. Vuosina 1759–1836 Epilä oli Harjun kappeliseurakunnan kappalaisen virkatila, ja alueella oli Kaarilan kartanon laitumia. Epilän nahkatehtaalla muokattiin nahkaa 1916–1971, ja se tunnettiin kiiltonahastaan. 1920-luvulla Lielahden asema korvasi Epilän aseman. Epilä liitettiin Tampereeseen Pohjois-Pirkkalasta 1937, ja Epilän, Kaarilan ja Hyhkyn yhteinen asemakaava vahvistettiin 1953."
    }
   ],
   "tl": [
@@ -1870,8 +1882,8 @@
   "places": [],
   "src": [
    [
-    "Wikipedia: Epilä",
-    "https://kiwix.lema.org/wikipedia_en_all_mini_2024-02/A/Epil%C3%A4"
+    "Wikipedia (englanti): Epilä",
+    "https://en.wikipedia.org/wiki/Epil%C3%A4"
    ],
    [
     "Tampereen kaupunki: Pyöräilyraitti Länsi-Tampereen kulttuuriympäristöön",
@@ -1880,18 +1892,26 @@
   ]
  },
  "Rahola": {
-  "status": "lyhyt",
-  "lede": "Pyhäjärven rannan vanha kartano, jonka pelloille nousi sodan jälkeen omakotitaloja.",
+  "status": "tarkistettu",
+  "lede": "Pyhäjärven rannan vanha kylä, jonka pelloille nousi 1950–60-luvuilla omakoti- ja kerrostaloja.",
   "sections": [
    {
     "h": "Rahola",
-    "p": "Harjun alueella oli 1500-luvulla 21 tilaa, joista merkittävimmiksi nousivat Rahola ja Kaarila. Nimi saattaa pohjautua raha-sanaan. Harvaan asuttua Raholaa kaavoitettiin ja rakennettiin voimakkaasti sodan jälkeen, enimmäkseen puolitoistakerroksisilla omakotitaloilla. Keskusta-alueen kerrostalot valmistuivat pääosin 1961–1965, ja Puutalo Oy:n omakotitalot pääosin 1962–1963."
+    "p": "Pirkkalan Raholan kylässä oli vuonna 1543 neljä taloa. Harjun juurelle syntyi varhain kartanoita ja suurtiloja, ja 1900-luvun alussa harjulle tuli teollisuutta ja pienasutusta. Rahola kuului Pohjois-Pirkkalaan vuoteen 1937, jolloin se liitettiin Tampereeseen. Raholan asemakaava vahvistettiin 1955. Alueen eteläreunan puolitoistakerroksiset omakotitalot valmistuivat pääosin 1955–1957, keskusta-alueen kerrostalot 1961–1965 ja Puutalo Oy:n matalat omakotitalot 1962–1963."
    }
   ],
   "tl": [
    [
+    1543,
+    "Raholan kylässä neljä taloa"
+   ],
+   [
     1937,
     "Liitetään Tampereeseen"
+   ],
+   [
+    1955,
+    "Asemakaava"
    ],
    [
     1961,
@@ -1914,7 +1934,7 @@
   ]
  },
  "Kaarila": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Gaddin suvun kartano, jonka puutarhan kasvit kasvavat yhä alueella.",
   "sections": [
    {
@@ -1948,7 +1968,7 @@
   ]
  },
  "Lamminpää": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Tehtaiden työmiesten 1920-luvulla rakentama kylä, jossa tontin neliö maksoi neljä munkkia.",
   "sections": [
    {
@@ -2022,18 +2042,22 @@
   ]
  },
  "Santalahti": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Pispalan juuren teollisuusranta.",
   "sections": [
    {
     "h": "Santalahti",
-    "p": "Vuonna 1875 perustettu Santalahden höyrysaha oli Pispalan alueen ensimmäinen teollisuuslaitos. Rannassa toimi myöhemmin myös Santalahden panimo. Alue liitettiin Tampereeseen 1937."
+    "p": "Vuonna 1875 perustettu Santalahden höyrysaha oli Pispalan alueen ensimmäinen suuri teollisuuslaitos. Rannalle tuli myöhemmin muutakin teollisuutta, kuten paperitehdas ja vuonna 1926 rakennettu OTK:n tulitikkutehdas, jonka tiilipiippu on yhä pystyssä. Alue liitettiin Tampereeseen 1937."
    }
   ],
   "tl": [
    [
     1875,
     "Santalahden höyrysaha"
+   ],
+   [
+    1926,
+    "OTK:n tulitikkutehdas"
    ],
    [
     1937,
@@ -2054,7 +2078,7 @@
   ]
  },
  "Ikuri": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Kalliometsien ja soisten peltojen kylä Nokian rajalla.",
   "sections": [
    {
@@ -2073,7 +2097,7 @@
   "src": [
    [
     "Wikipedia: Ikuri",
-    "https://Www.Wikipedia.org/wiki/Ikuri"
+    "https://en.wikipedia.org/wiki/Ikuri"
    ]
   ]
  },
@@ -2277,12 +2301,12 @@
   ]
  },
  "Vuores": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Metsän keskelle rakennettu taidekaupunginosa Tampereen ja Lempäälän rajalla.",
   "sections": [
    {
     "h": "Vuores",
-    "p": "Vuores on Tampereen kaupungin mukaan yksi Suomen suurimmista aluerakennushankkeista. Vuonna 2012 siellä järjestettiin valtakunnalliset asuntomessut, joilla kävi yli 145 000 vierasta. Asukasmäärä nousi 7 000:een vuoden 2022 alussa, ja Ruskonkehän pohjoispuolinen alue siirtyi Lempäälästä Tampereelle vuoden 2025 alussa."
+    "p": "Vuores rakennetaan Tampereen ja Lempäälän rajalle yhteisen osayleiskaavan pohjalta, mutta rakentaminen on toistaiseksi keskittynyt Tampereen puolelle. Vuonna 2012 siellä järjestettiin valtakunnalliset asuntomessut, joilla kävi yli 145 000 vierasta. Vuoden 2025 alussa Vuoreksessa asui noin 7 750 ihmistä, ja valmiina siellä on tarkoitus asua 11 000–14 000 ihmistä."
    }
   ],
   "tl": [
@@ -2291,33 +2315,29 @@
     "Asuntomessut"
    ],
    [
-    2022,
-    "7 000 asukasta"
-   ],
-   [
     2025,
-    "Alue Lempäälästä Tampereelle"
+    "Noin 7 750 asukasta"
    ]
   ],
   "people": [],
   "places": [],
   "src": [
    [
-    "Yle: Asuntomessut alkavat Tampereella",
-    "https://yle.fi/a/3-6215783"
-   ],
-   [
-    "Vuores.fi: Construction",
-    "https://vuores.fi/in-english/construction/"
-   ],
-   [
-    "Yle: Tampereen asuntomessuilla yli 145 000 kävijää",
+    "Yle: Tampereen asuntomessuilla yli 145 000 kävijää (2012)",
     "https://yle.fi/t/18-44373/fi"
+   ],
+   [
+    "Vuores: In English",
+    "https://vuores.fi/in-english"
+   ],
+   [
+    "Tampereen kaupunki: Vuoreksen keskuskorttelien kilpailu 2025",
+    "https://www.tampere.fi/en/current/2025/04/04/competition-vuores-central-blocks-won-entry-vihrea-vuo"
    ]
   ]
  },
  "Turtola": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Turtosen tilan maat, joille kaavoitettiin kauppakeskus.",
   "sections": [
    {
@@ -2344,7 +2364,7 @@
    ],
    [
     "Wikipedia: Turtola",
-    "https://en.wikipedia.com/wiki/Turtola,_Tampere"
+    "https://en.wikipedia.org/wiki/Turtola,_Tampere"
    ]
   ]
  },
@@ -2403,15 +2423,19 @@
   ]
  },
  "Kämmenniemi": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Teiskon entinen kuntakeskus ja Suomen ”ainoan vuonon” ranta.",
   "sections": [
    {
     "h": "Kämmenniemi",
-    "p": "Kämmenniemen kylässä oli maakirjan mukaan muun muassa Perttulan, Mikkolan, Tonin ja Kahnan tilat, ja vuonna 1557 myös Iso-Kahna. Kylä oli autiona 1647–1655. Kämmenniemi oli Teiskon kunnan keskus. Kun Teisko liitettiin Tampereeseen 1972, Kämmenniemeen vahvistettiin pian ensimmäinen asemakaava, ja suurin osa sen kaduista nimettiin vanhojen paikannimien mukaan. Paarlahtea kutsutaan Suomen ainoaksi vuonoksi, vaikka se ei aivan täytä vuonon virallisia tuntomerkkejä."
+    "p": "Kämmenniemi mainitaan vuoden 1540 maakirjassa viiden talon kylänä. Kylässä olivat muun muassa Perttulan, Mikkolan, Tonin, Vähä-Kahnan ja Nikkilän tilat, ja vuonna 1557 myös Iso-Kahna. Kämmenniemi oli autiona 1647–1655. Itsenäisen Teiskon viimeisinä vuosina Kämmenniemessä oli kunnantalo. Teisko liitettiin Tampereeseen 1972, ja Kämmenniemeen vahvistettiin pian asemakaava, jonka kadut nimettiin suurimmaksi osaksi vanhojen paikannimien mukaan. Paarlahtea kutsutaan joskus Suomen ainoaksi vuonoksi, vaikka se ei aivan täytä vuonon virallisia tuntomerkkejä."
    }
   ],
   "tl": [
+   [
+    1540,
+    "Viiden talon kylä maakirjassa"
+   ],
    [
     1557,
     "Iso-Kahna mainitaan"
@@ -2423,6 +2447,10 @@
    [
     1972,
     "Teisko liitetään Tampereeseen"
+   ],
+   [
+    1973,
+    "Asemakaava"
    ]
   ],
   "people": [],
@@ -2437,7 +2465,7 @@
    ],
    [
     "Wikipedia: Kämmenniemi",
-    "https://Www.Wikipedia.org/wiki/K%C3%A4mmenniemi"
+    "https://en.wikipedia.org/wiki/K%C3%A4mmenniemi"
    ]
   ]
  },
@@ -2447,7 +2475,7 @@
   "sections": [
    {
     "h": "Aitolahti",
-    "p": "Vuonna 1566 Aitolahden alueella oli 29 taloa: Aitoniemessä 2, Hirviniemessä 6, Laalahdessa 2, Sorilassa 6, Palossa 4, Partolassa 2 ja Nurmessa 7. Aitolahti kuului kirkollisesti Messukylään. Siitä tuli itsenäinen kunta 1923 ja oma seurakunta vuoden 1924 alussa. Hautausmaa vihittiin 1924, ja Birger Federleyn suunnittelema keskiaikaisia kirkkoja muistuttava kivikirkko vihittiin juhannuksena 1928. Kunnan keskus oli Sorila. Aitolahti liitettiin Tampereeseen 1966, ja liitos toi kaupunkiin 2 117 asukasta. Uusiksi kaupunginosiksi tulivat Sorila, Nurmi ja Aitoniemi."
+    "p": "Vuonna 1566 Aitolahden alueella oli 29 taloa: Aitoniemessä 2, Hirviniemessä 6, Laalahdessa 2, Sorilassa 6, Palossa 4, Partolassa 2 ja Nurmessa 7. Aitolahti kuului kirkollisesti Messukylään. Siitä tuli itsenäinen kunta ja oma seurakunta 1923–1924. Hautausmaa vihittiin 1924, ja Birger Federleyn suunnittelema keskiaikaisia kirkkoja muistuttava kivikirkko vihittiin juhannuksena 1928. Kunnan keskus oli Sorila. Aitolahti liitettiin Tampereeseen 1966, ja liitos toi kaupunkiin 2 117 asukasta. Uusiksi kaupunginosiksi tulivat Sorila, Nurmi ja Aitoniemi."
    }
   ],
   "tl": [
@@ -2456,12 +2484,12 @@
     "Aitolahdella 29 taloa"
    ],
    [
-    1923,
-    "Aitolahden kunta"
+    "1923–24",
+    "Aitolahden kunta ja seurakunta"
    ],
    [
     1924,
-    "Oma seurakunta ja hautausmaa"
+    "Hautausmaa vihitään"
    ],
    [
     1928,
@@ -2500,15 +2528,19 @@
   ]
  },
  "Niemi": {
-  "status": "lyhyt",
-  "lede": "Harjuntaustan viidestä vanhasta kylästä yksi, ja yli 500 vuotta vanha kartano.",
+  "status": "tarkistettu",
+  "lede": "Yksi Harjuntaustan viidestä vanhasta kylästä, mainittu asiakirjoissa jo 1442.",
   "sections": [
    {
     "h": "Niemen kylä",
-    "p": "Harjuntaustassa oli jo 1500-luvulla viisi kylää: Niemi, Pohtola, Possila, Lielahti ja Siivikkala. Vuonna 1540 Niemen kylässä oli neljä taloa. Vuonna 1630 sekä Vähäniemestä että Piikkilästä lähti ratsumies kolmikymmenvuotiseen sotaan. Alue siirtyi Ylöjärveltä Tampereelle Lielahden mukana 1950."
+    "p": "Niemen kylä mainitaan asiakirjoissa jo 1442. Harjuntaustassa oli 1500-luvulla viisi kylää: Niemi, Pohtola, Possila, Lielahti ja Siivikkala. Vuonna 1540 Niemen kylässä oli neljä taloa. Vuonna 1630 sekä Vähäniemestä että Piikkilästä lähti ratsumies kolmikymmenvuotiseen sotaan. Alue siirtyi Ylöjärveltä Tampereelle Lielahden mukana 1950."
    }
   ],
   "tl": [
+   [
+    1442,
+    "Niemen kylä mainitaan"
+   ],
    [
     1540,
     "Neljä taloa"
@@ -2532,7 +2564,7 @@
   ]
  },
  "Pohtola": {
-  "status": "lyhyt",
+  "status": "tarkistettu",
   "lede": "Niisius Pohtolan yksinäistalosta nimensä saanut kaupunginosa.",
   "sections": [
    {
@@ -2555,7 +2587,7 @@
   "src": [
    [
     "Wikipedia: Pohtola",
-    "https://kiwix.lema.org/wikipedia_en_all_mini_2024-02/A/Pohtola"
+    "https://en.wikipedia.org/wiki/Pohtola"
    ]
   ]
  }
