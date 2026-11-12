@@ -563,12 +563,12 @@
   ]
  },
  "Tulli (XVII)": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Ratapihan laidan varasto- ja pienteollisuusalue, jonka keskelle on noussut yliopisto, Tampere-talo ja Suomen korkein hotelli.",
   "sections": [
    {
     "h": "Tullikamari ja makasiinit",
-    "p": "Tullin ja Tammelan ruutukaava-alueet suunniteltiin 1800-luvun lopulla vanhan keskustan itäiseksi jatkeeksi. Tulli sai asemakaavan 1900. Nimi tulee Georg Schreckin suunnittelemasta tullikamarista ja pakkahuoneesta, jotka valmistuivat 1901 radan viereen. Varasto- ja pienteollisuusalueesta tuli jälkiteollisella ajalla toimisto- ja kulttuurialue, jossa toimivat Tampere-talo, Tullikamari ja yliopisto. Ratapihan laidalla on Torni-hotelli, Suomen korkein hotellirakennus."
+    "p": "Tullin ja Tammelan ruutukaava-alueet suunniteltiin 1800-luvun lopulla vanhan keskustan itäiseksi jatkeeksi. Tulli sai asemakaavan 1900. Nimi tulee Georg Schreckin suunnittelemasta punatiilisestä tullikamarista ja pakkahuoneesta, jotka valmistuivat 1901 ratapihan itäpuolelle. Varasto- ja pienteollisuusalueesta tuli jälkiteollisella ajalla toimisto- ja kulttuurialue. Siellä ovat vuonna 1990 valmistunut Tampere-talo, Tullikamarin kulttuurikeskus ja yliopiston tiloja. Ratapihan laidalla on Torni-hotelli, Suomen korkein hotellirakennus."
    }
   ],
   "tl": [
@@ -579,6 +579,10 @@
    [
     1901,
     "Tullikamari ja pakkahuone valmistuvat"
+   ],
+   [
+    1990,
+    "Tampere-talo valmistuu"
    ]
   ],
   "people": [
@@ -597,6 +601,10 @@
    [
     "Tampereen kaupunki: Tullin rakennetun kulttuuriympäristön selvitys",
     "https://www.tampere.fi/sites/default/files/2023-06/8662_rakennetun_kulttuuriympariston_selvitys.pdf"
+   ],
+   [
+    "Tampereen kaupunki: asemakaavaselostus 6965 (tullikamari, Georg Schreck)",
+    "https://kartat.tampere.fi/www/arkisto/kaava_seloste/006965.pdf"
    ]
   ]
  },
@@ -668,12 +676,12 @@
   ]
  },
  "Särkänniemi (VIII)": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Näsijärven niemi, josta 1970-luvulla tuli kaupungin huvittelukeskus: Näsinneula, huvipuisto, akvaario ja taidemuseo.",
   "sections": [
    {
     "h": "Neulan juurelle huvipuisto",
-    "p": "Särkänniemen lasten eläintarha avattiin 1970. Vuonna 1971 valmistui arkkitehti Pekka Ilveskosken suunnittelema 168-metrinen Näsinneula, jonka huipulla on pyörivä ravintola. Neulan huvipuisto toimi samalla paikalla 1973–74, ja 1.5.1975 avautui Särkänniemen huvipuisto. Sara Hildénin taidemuseo avattiin 1979, ja delfinaario toimi 1985–2015."
+    "p": "Särkänniemen lasten eläintarha avattiin 1970. Vuonna 1971 avattiin arkkitehti Pekka Ilveskosken suunnittelema 168-metrinen Näsinneula, jonka huipulla on pyörivä ravintola. Neulan huvipuisto aloitti samalla paikalla 1973, ja 1.5.1975 avautui Särkänniemen huvipuisto, kun kaupunki otti toiminnan hoitaakseen. Sara Hildénin taidemuseo avattiin 1979. Delfinaario avattiin 1985, ja puisto luopui siitä 2016."
    }
   ],
   "tl": [
@@ -683,7 +691,11 @@
    ],
    [
     1971,
-    "Näsinneula valmistuu"
+    "Näsinneula avataan"
+   ],
+   [
+    1973,
+    "Neulan huvipuisto"
    ],
    [
     1975,
@@ -695,7 +707,7 @@
    ],
    [
     1985,
-    "Delfinaario avataan (suljettu 2015)"
+    "Delfinaario avataan (luovuttiin 2016)"
    ]
   ],
   "people": [
@@ -1065,7 +1077,7 @@
   ]
  },
  "Kalevanharju (XVIII)": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Harju, jolla käytiin Tampereen taistelun kiivaimpia kamppailuja. Nykyään siellä ovat hautausmaa ja yliopiston keskustakampus.",
   "sections": [
    {
@@ -1124,7 +1136,7 @@
    ],
    [
     "Wikipedia: Kalevanharju",
-    "https://en.wikipedia.com/wiki/Kalevanharju"
+    "https://en.wikipedia.org/wiki/Kalevanharju"
    ]
   ]
  },
@@ -1307,30 +1319,42 @@
   ]
  },
  "Messukylä": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Entinen pitäjä, jonka liittäminen 1947 kaksinkertaisti kaupungin maa-alan. Täällä seisoo Tampereen vanhin rakennus.",
   "sections": [
    {
     "h": "Keskiaikainen kirkko",
-    "p": "Messukylän vanha kivikirkko rakennettiin noin 1510–1530, ja se on nykyisen Tampereen vanhin rakennus. Messukylä itsenäistyi Pirkkalan emäseurakunnasta 1630-luvulla, jolloin perustettiin myös pappila. Kirkon vieressä on vuonna 1846 rakennettu hirsinen pitäjänmakasiini."
+    "p": "Messukylän vanha kivikirkko rakennettiin 1500-luvun alkupuolella, ja se on nykyisen Tampereen vanhin rakennus. Messukylä mainitaan ensimmäisen kerran 1439 Pirkkalan osana. Se itsenäistyi Pirkkalan emäseurakunnasta omaksi seurakunnaksi 1636, ja samoihin aikoihin perustettiin pappila. Kirkon vieressä on vuonna 1846 rakennettu hirsinen pitäjänmakasiini."
    },
    {
     "h": "Pitäjästä kaupunginosiksi",
-    "p": "Messukylä oli vanha ja varsin vauras maatalouspitäjä. Kaupunki sai siitä paloja jo aiemmin: Kyttälän 1877, Hatanpään 1920 ja Järvensivun 1922. Koko kunta liitettiin Tampereeseen vuoden 1947 alussa, ja siinä yhteydessä kaupunkiin tuli 82,5 neliökilometriä ja 7 340 asukasta. Liitoksen jälkeen alkoi itäisten kaupunginosien rakentaminen."
+    "p": "Messukylä oli vanha ja varsin vauras maatalouspitäjä. Kaupunki sai siitä paloja jo aiemmin: Kyttälän 1877 ja Hatanpään alueet 1920. Loput kunnasta liitettiin Tampereeseen 1947, ja liitos toi kaupunkiin 82,5 neliökilometriä ja 7 340 asukasta. Liitoksen jälkeen alkoi itäisten kaupunginosien rakentaminen."
    }
   ],
   "tl": [
    [
-    1510,
-    "Kivikirkko rakennetaan (n. 1510–30)"
+    1439,
+    "Ensimmäinen maininta Pirkkalan osana"
    ],
    [
-    1630,
-    "Oma seurakunta ja pappila"
+    "1500-l. alku",
+    "Kivikirkko rakennetaan"
+   ],
+   [
+    1636,
+    "Oma seurakunta, pappila perustetaan"
    ],
    [
     1846,
     "Pitäjänmakasiini"
+   ],
+   [
+    1877,
+    "Kyttälä siirtyy kaupungille"
+   ],
+   [
+    1920,
+    "Hatanpään alueet kaupungille"
    ],
    [
     1947,
@@ -1340,10 +1364,6 @@
   "people": [],
   "places": [],
   "src": [
-   [
-    "Tampereen seurakunnat: Vanha kirkko (vertailu vanhimpiin kirkkoihin)",
-    "https://tampereenseurakunnat.fi/wp-content/uploads/sites/2/2026/06/Vanha-kirkko_suomi-2026.pdf"
-   ],
    [
     "Tampereen kaupunki: arkeologinen selvitys 8764",
     "https://www.tampere.fi/sites/default/files/2023-05/8764_arkeologinen_selvitys_20220603.pdf"
@@ -2068,7 +2088,7 @@
   ]
  },
  "Hervanta": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Metsään suunniteltu tytärkaupunki ja kompaktikaupunki, jonka sydän on teknillinen yliopisto.",
   "sections": [
    {
@@ -2077,7 +2097,7 @@
    },
    {
     "h": "Kompaktikaupunki on kontaktikaupunki",
-    "p": "Kaupunki järjesti Hervannasta pohjoismaisen aatekilpailun, jonka voitti Aarno Ruusuvuori. Hänen ehdotuksensa rakenne näkyy yhä: valtaväylä halkaisee kaupunginosan, ja sen varrella on keskusta. Ajan iskulause oli Pentti Murolen ”kompaktikaupunki on kontaktikaupunki” vuodelta 1967. Ensimmäinen asemakaava, kampusalueen kaava, valmistui 1970 ja yleiskaava 1975. Alue suunniteltiin kahden yliopiston kampukseksi, mutta Tampereen yliopisto päätti jäädä keskustaan. Teknillisen korkeakoulun konetalo valmistui 1973, ja suuret kerrostalokorttelit nousivat 1970-luvulla."
+    "p": "Kaupunki järjesti Hervannasta aatekilpailun 1967, ja sen voitti Aarno Ruusuvuoren ehdotus. Sen perusrakenne näkyy yhä: valtaväylä halkaisee kaupunginosan, ja sen varrella on keskusta. Ajan henkeä kuvasi Pentti Murolen iskulause ”kompaktikaupunki on kontaktikaupunki” vuodelta 1967. Ensimmäinen asemakaava, kampusalueen kaava, valmistui 1970 ja lopullinen yleiskaava 1975. Aluksi kaavailtiin, että Hervantaan sijoittuisi teknillisen korkeakoulun lisäksi myös Tampereen yliopisto, mutta niin ei käynyt. Teknillisen korkeakoulun konetalo valmistui 1973, ja suuret kerrostalokorttelit nousivat 1970-luvulla."
    },
    {
     "h": "Ratikka",
@@ -2091,11 +2111,11 @@
    ],
    [
     1967,
-    "”Kompaktikaupunki on kontaktikaupunki”"
+    "Aatekilpailu, Ruusuvuoren voitto; ”kompaktikaupunki on kontaktikaupunki”"
    ],
    [
     1970,
-    "Kampuksen asemakaava, Ruusuvuoren voittotyö julkaistaan"
+    "Kampusalueen asemakaava"
    ],
    [
     1973,
