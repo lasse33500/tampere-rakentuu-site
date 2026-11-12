@@ -730,12 +730,12 @@
   ]
  },
  "Ratina (XIII)": {
-  "status": "luonnos",
+  "status": "tarkistettu",
   "lede": "Tammerkosken suulle rakentunut niemi, jolla ovat stadion, linja-autoasema ja kaupungin suurin kauppakeskus.",
   "sections": [
    {
     "h": "Betonistadion suvannon rannalla",
-    "p": "Ratinan itäosan asemakaava, jossa uudelle linja-autoasemalle varattiin paikka, vahvistettiin 1935. Stadionille Aulis Blomstedt laati piirustukset 1955, mutta suunnitelmaa ei voitu toteuttaa huonon maapohjan vuoksi. Stadion rakennettiin 1963–1966 Timo Penttilän suunnitelmien mukaan, ja se on Helsingin Olympiastadionin jälkeen merkittävin suomalainen suuren mittakaavan betonistadion. Laukonsilta yhdistää Ratinan Laukontoriin."
+    "p": "Ratinan itäosan asemakaava, jossa uudelle linja-autoasemalle varattiin paikka, vahvistettiin 1935. Stadionin suunnittelu viivästyi monesta syystä: arkkitehtikilpailun voitti Yrjö Lindegrenin ehdotus, ja paikan siirtämisestä Kaupin urheilupuistoon riideltiin. Pääkatsomon maapohjaa ei ollut tutkittu kunnolla, ja kantava maa löytyi vasta 30 metrin syvyydestä, joten uudet suunnitelmat tilattiin arkkitehti Timo Penttilältä. Stadion rakennettiin 1963–1966 Penttilän ja insinööri Bertel Ekengrenin suunnitelmien mukaan. Laukonsilta yhdistää Ratinanniemen Laukontoriin."
    }
   ],
   "tl": [
@@ -744,12 +744,8 @@
     "Linja-autoaseman alueen asemakaava"
    ],
    [
-    1955,
-    "Blomstedtin stadionsuunnitelma"
-   ],
-   [
     1966,
-    "Ratinan stadion valmistuu"
+    "Ratinan stadion valmistuu (rakennettiin 1963–66)"
    ]
   ],
   "people": [
@@ -757,17 +753,18 @@
     "Timo Penttilä",
     "",
     "Ratinan stadionin arkkitehti"
+   ],
+   [
+    "Yrjö Lindegren",
+    "",
+    "Voitti stadionin arkkitehtikilpailun"
    ]
   ],
   "places": [],
   "src": [
    [
-    "Wikipedia: Ratina (district)",
+    "Wikipedia (englanti): Ratina (district)",
     "https://en.wikipedia.org/wiki/Ratina_(district)"
-   ],
-   [
-    "Museovirasto via Waymarking: Ratinan stadion",
-    "https://www.waymarking.com/waymarks/wm1C9CR_Ratinan_stadion_Tampere_Finland"
    ],
    [
     "Yle: Ratinan stadion",
