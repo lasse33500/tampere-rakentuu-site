@@ -354,7 +354,7 @@ let mode='year', YEAR=2026, sel=-1, hov=-1;
 let DATA=null, P={};
 let THEMEDATA={}, TPL=null, TPSEL=-1, TLINES=null;
 let BSTORY={}, SB=-1, LOADED2=false, DKUVAT=null, HENK=null, MUUTOS={};
-let ARK=null, ASEL=new Set(), AHOV=-1, AQ='';
+let ARK=null, ASEL=new Set(), AHOV=-1, AQ='', AALL=false;
 let BL=[], BG={}, GS=150, HB=-1, BCODE=[], BLAB=[], BADDR=[], BSR=[];
 function pickB(sx,sy){const [wx,wy]=toWorld(sx,sy);const list=BG[Math.floor(wx/GS)+','+Math.floor(wy/GS)];if(!list)return -1;const unk=document.getElementById('lUnk').checked;
   for(let j=list.length-1;j>=0;j--){const k=list[j],o=BL[k],b=o.bb;if(wx<b[0]||wx>b[2]||wy<b[1]||wy>b[3])continue;if(o.y===0?!unk:o.y>YEAR)continue;if(mode==='type'&&!POP&&TOFF.has(o.c))continue;if(!o.p)o.p=ringsToPath(o.r);if(hit.isPointInPath(o.p,wx,-wy))return k;}return -1;}
@@ -1283,7 +1283,7 @@ function arkItems(){if(!ARK)return [];return ARK.items.map((o,i)=>[o,i]).filter(
 function arkHTML(){
   if(!ARK) return '<p class="note">Ladataan…</p>';
   const its=arkItems();const q=AQ.toLowerCase();
-  const list=ARK.arch.map((a,i)=>[a,i]).filter(([a])=>!q||a.n.toLowerCase().includes(q));
+  const nTop=ARK.arch.filter(a=>a.top).length;const list=ARK.arch.map((a,i)=>[a,i]).filter(([a,i])=>q?a.n.toLowerCase().includes(q):(AALL||a.top||ASEL.has(i)));
   const one=ASEL.size===1?ARK.arch[[...ASEL][0]]:null;
   const prof=one?`<div class="kick">Arkkitehti</div><h2>${one.n}</h2><p class="note" style="margin-top:2px">${one.b||'?'}–${one.d||''}${one.wiki?` · <a href="https://fi.wikipedia.org/wiki/${one.wiki}" target="_blank" rel="noopener">Wikipedia</a>`:''}</p>
     ${one.img?`<figure class="hero" data-alb="1" style="cursor:zoom-in"><img src="${one.img.f}" alt=""><figcaption><b>${one.img.cap||one.img.t}</b>${one.img.y&&!one.img.cap?' ('+one.img.y+')':''}<br>${credit(one.img)} · <a href="${one.img.url}" target="_blank" rel="noopener">Finna</a></figcaption></figure>`:''}
@@ -1294,9 +1294,12 @@ function arkHTML(){
   ${one?'':`<p>${ARK.items.length} rakennusta ja ${ARK.arch.length} arkkitehtia. Valitse yksi tai useampi arkkitehti, niin hänen kohteensa korostuvat kartalla.</p>`}
   ${ASEL.size?`<div class="sbox" style="background:#fffaf0"><b>${its.length} kohdetta valituilla suunnittelijoilla</b> · <a href="#" id="aclr">Tyhjennä</a><ul class="nlist" style="margin-top:6px">${(ARKORD=new Map(),its.sort((a,b)=>(a[0].v||9999)-(b[0].v||9999))).map(([o,i],n)=>(ARKORD.set(i,n+1),`<li data-ai="${i}"><i class="anum">${n+1}</i><b>${o.n}</b> <small>· ${o.v||'vuosi ?'}${o.ad?' · '+o.ad:''}</small></li>`)).join('')}</ul></div>`:''}
   <input id="aq" placeholder="Etsi arkkitehtia nimellä" value="${AQ}" style="width:100%;font:inherit;padding:8px 10px;border:1px solid var(--rule);margin:14px 0 6px;background:#fffaf0">
-  <div class="alist">${list.map(([a,i])=>`<label class="arow${ASEL.has(i)?' on':''}"><input type="checkbox" data-ak="${i}" ${ASEL.has(i)?'checked':''}> <span>${a.n}${a.b?` <small>${a.b}–${a.d||''}</small>`:''}${a.bio?' <small style="color:var(--muted,#777)">esittely</small>':''}${PEOPLE&&PEOPLE.some(p=>p.archs.includes(i))?' <small title="tarina Henkilöissä" style="color:var(--brick)">tarina</small>':''}</span><small>${a.c}</small></label>`).join('')}</div>
+  ${q||AALL?'':`<p class="note" style="margin:0 0 4px">${EN?`The ${nTop} key architects. The search finds all ${ARK.arch.length}.`:`${nTop} tärkeintä arkkitehtia. Haku löytää kaikki ${ARK.arch.length}.`}</p>`}
+  <div class="alist">${list.map(([a,i])=>`<label class="arow${ASEL.has(i)?' on':''}"><input type="checkbox" data-ak="${i}" ${ASEL.has(i)?'checked':''}> <span>${a.n}${a.b?` <small>${a.b}–${a.d||''}</small>`:''}${a.bio&&(AALL||q)?' <small style="color:var(--muted,#777)">esittely</small>':''}${PEOPLE&&PEOPLE.some(p=>p.archs.includes(i))?' <small title="tarina Henkilöissä" style="color:var(--brick)">tarina</small>':''}</span><small>${a.c}</small></label>`).join('')}</div>
+  ${q?'':`<p style="margin:10px 0 0"><a href="#" id="aall">${AALL?(EN?`Show only the ${nTop} key architects`:`Näytä vain ${nTop} tärkeintä`):(EN?`Show all ${ARK.arch.length} architects`:`Näytä kaikki ${ARK.arch.length} arkkitehtia`)}</a></p>`}
   <p class="note" style="margin-top:12px">Lähde: Wikidata (CC0). Mukana ovat rakennukset, joille on merkitty arkkitehti ja sijainti. Lista ei ole täydellinen, ja sitä voi täydentää Wikidatassa.</p>`;}
 function wireArk(){
+  const aal=document.getElementById('aall');if(aal)aal.onclick=e=>{e.preventDefault();AALL=!AALL;side.innerHTML=subTabs('ihmiset')+arkHTML();wire();wireArk();};
   const aq=document.getElementById('aq'); if(aq){aq.oninput=()=>{AQ=aq.value;const pos=aq.selectionStart;side.innerHTML=subTabs('ihmiset')+arkHTML();wire();wireArk();const n=document.getElementById('aq');n.focus();n.setSelectionRange(pos,pos);};}
   side.querySelectorAll('[data-ak]').forEach(c=>c.onchange=()=>{const i=+c.dataset.ak;c.checked?ASEL.add(i):ASEL.delete(i);showView('ark');});
   side.querySelectorAll('[data-ai]').forEach(li=>{li.onclick=()=>arkOpen(+li.dataset.ai);li.onmouseenter=()=>{AHOV=+li.dataset.ai;draw();};li.onmouseleave=()=>{AHOV=-1;draw();};});
