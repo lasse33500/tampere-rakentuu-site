@@ -327,7 +327,7 @@ function trI(t){
   if(m=t.match(/^(.*)· vuosi \?(.*)$/))return `${m[1]}· year ?${m[2]}`;
   if(m=t.match(/^(\d+) kohdetta? valituilla suunnittelijoilla$/))return `${m[1]} buildings by the selected designers`;
   if(m=t.match(/^Kuvassa: (.+)$/))return 'Pictured: '+m[1];
-  if(m=t.match(/^(\d+) kuvaa? Finnasta \((.+); (.+)\)\. Lisää:$/))return `${m[1]} photo${m[1]==='1'?'':'s'} from Finna (${m[2].split(', ').map(x=>I18N_A[x]||x).join(', ')}; ${m[3]}). More:`;
+  if(m=t.match(/^(\d+) kuvaa? (Finnasta|Wikimedia Commonsista|Finnasta ja Wikimedia Commonsista) \((.+); (.+)\)\. Lisää:$/))return `${m[1]} photo${m[1]==='1'?'':'s'} from ${{'Finnasta':'Finna','Wikimedia Commonsista':'Wikimedia Commons','Finnasta ja Wikimedia Commonsista':'Finna and Wikimedia Commons'}[m[2]]} (${m[3].split(', ').map(x=>I18N_A[x]||x).join(', ')}; ${m[4]}). More:`;
   if(m=t.match(/^Asemakaavamerkintä (.+)$/))return 'Town plan marking '+m[1].replace(/valtakunnallisesti merkittävä/,'of national significance').replace(/Suojelu: kirkkolaki/,'Protection: Church Act');
   if(m=t.match(/^(R[KM]+ [IV, ]+), valtakunnallisesti merkittävä$/))return m[1]+', of national significance';
   if(m=t.match(/^Asemakaava (\S+), vahvistettu ([\d.]+)(?: · kohde: (.+))?$/))return `Town plan ${m[1]}, approved ${m[2]}${m[3]?' · object: '+m[3]:''}`;
@@ -985,7 +985,7 @@ function renderTab(){
   const nx=side.querySelector('[data-next]');if(nx)nx.onclick=()=>{TAB=nx.dataset.next;renderTab();if(matchMedia('(max-width:900px)').matches){const t=side.querySelector('.tabs');if(t)t.scrollIntoView({block:'start',behavior:'smooth'});}};
   wire(); if(TAB==='kuvat'||TAB==='tarina') wireLB(distGal(d)); if(TAB==='muutos') wireMuutos(d); if(TAB==='rak') panelYear(); side.scrollTop=0; draw();
 }
-function distHero(d){const G=distGal(d);if(!G.length)return '';const p=G[0];return `<figure class="hero dhero" data-lb="0"><img src="${p.f}" alt="${p.t}"><figcaption><b>${p.t}</b>${p.y?` (${p.y})`:''}<br>${p.a?p.a+' / ':''}${p.org}, ${p.lic}${p.url?` · <a href="${p.url}" target="_blank" rel="noopener">Finna</a>`:''}</figcaption></figure>`;}
+function distHero(d){const G=distGal(d);if(!G.length)return '';const p=G[0];return `<figure class="hero dhero" data-lb="0"><img src="${p.f}" alt="${p.t}"><figcaption><b>${p.t}</b>${p.y?` (${p.y})`:''}<br>${p.a?p.a+' / ':''}${p.org}, ${p.lic}${p.url?` · <a href="${p.url}" target="_blank" rel="noopener">${/commons\.wikimedia/.test(p.url)?'Commons':'Finna'}</a>`:''}</figcaption></figure>`;}
 function distGal(d){if(!DKUVAT)return [];const k=DKUVAT.m[d.n];return k?DKUVAT.g[k]:[];}
 function tabKuvat(d){const G=distGal(d);const nm=dname(d);const q=encodeURIComponent(nm+' Tampere');
   if(!G.length)return `<h3>Kuvat</h3><p class="note">Tälle kaupunginosalle ei vielä löytynyt avoimesti lisensoituja kuvia. <a href="https://www.finna.fi/Search/Results?lookfor=${q}&type=AllFields" target="_blank" rel="noopener">Hae Finnasta →</a></p>`;
@@ -1204,7 +1204,7 @@ function openPerson(k,instant){
   if(p.pl.length){let a=1e9,b=1e9,c=-1e9,e=-1e9;p.pl.forEach(o=>{a=Math.min(a,o[1]);b=Math.min(b,o[2]);c=Math.max(c,o[1]);e=Math.max(e,o[2]);});lmk.forEach(i=>{const bb=BL[i].bb;a=Math.min(a,bb[0]);b=Math.min(b,bb[1]);c=Math.max(c,bb[2]);e=Math.max(e,bb[3]);});fit([a-500,b-500,c+500,e+500],!instant,20);}
   const ds=DATA.base.districts;
   side.innerHTML=`<div class="kick">Henkilöt</div><h2>${p.n}</h2><p class="note" style="margin-top:2px">${p.yrs||''}${p.wiki?`${p.yrs?' · ':''}<a href="https://fi.wikipedia.org/wiki/${p.wiki}" target="_blank" rel="noopener">Wikipedia</a>`:''}</p>
-  ${p.img?`<figure class="hero" data-plb="1"><img src="${p.img.f}" alt=""><figcaption><b>Kuvassa: ${p.img.cap||p.img.t}</b><br>${credit(p.img)} · <a href="${p.img.url}" target="_blank" rel="noopener">Finna</a></figcaption></figure>`:''}
+  ${p.img?`<figure class="hero" data-plb="1"><img src="${p.img.f}" alt=""><figcaption><b>Kuvassa: ${p.img.cap||p.img.t}</b><br>${credit(p.img)} · <a href="${p.img.url}" target="_blank" rel="noopener">${/commons\.wikimedia/.test(p.img.url)?'Commons':'Finna'}</a></figcaption></figure>`:''}
   ${p.bio?`<p style="margin-top:14px">${p.bio}</p>`:''}
   ${p.gal.length?`<div class="gal">${p.gal.map((g,j)=>`<img src="${g.f}" data-pg="${j}" alt="" title="${g.cap||g.t}">`).join('')}</div>`:''}
   <h3>Merkitys Tampereelle</h3><ul class="nlist" style="cursor:default">${p.roles.map(r=>`<li style="cursor:default">${r}</li>`).join('')}</ul>
@@ -1266,7 +1266,7 @@ function openRichTheme(id,instant){
 // ---------- Kuvat ----------
 let LB=null;
 function credit(p){return `${p.a?p.a:'Kuvaaja tuntematon'} / ${p.org}, ${p.lic}`;}
-function capHTML(p){return `<b>${p.t}</b>${p.y?' ('+p.y+')':''}<br>${credit(p)} · <a href="${p.url}" target="_blank" rel="noopener">Finna</a>`;}
+function capHTML(p){return `<b>${p.t}</b>${p.y?' ('+p.y+')':''}<br>${credit(p)} · <a href="${p.url}" target="_blank" rel="noopener">${/commons\.wikimedia/.test(p.url)?'Commons':'Finna'}</a>`;}
 function heroHTML(gal){if(!gal||!gal.length)return '';const p=gal[0];return `<figure class="hero" data-lb="0"><img src="${p.f}" alt="${p.t}"><figcaption>${capHTML(p)}</figcaption></figure>`;}
 function galHTML(gal,skip){if(!gal||gal.length<=(skip||0))return '';return `<div class="gal">${gal.map((p,i)=>i<(skip||0)?'':`<img src="${p.f}" data-lb="${i}" alt="${p.t}" title="${p.t}${p.y?' ('+p.y+')':''}" loading="lazy">`).join('')}</div>`;}
 function openLB(gal,i){LB={gal,i};let el=document.getElementById('lb');if(!el){el=document.createElement('div');el.id='lb';el.className='lb';document.body.appendChild(el);}
@@ -1299,7 +1299,7 @@ function openBuilding(k,instant){
   side.innerHTML=`<button class="wbtn" id="wbtn">${document.getElementById('app').classList.contains('wide')?'⤡ Pienennä':'⤢ Avaa isompana'}</button>
   <div class="kick">${o.virt?'Kohde':'Rakennus'}${dn?' · '+dn:''}</div><h2>${title}</h2>
   <p class="note" style="margin:4px 0 0">${st&&st.aka?st.aka+' · ':''}${addr&&(st||wdn)?addr+' · ':''}${lab}</p>
-  ${st&&st.gallery&&st.gallery.length?heroHTML(st.gallery)+galHTML(st.gallery,1)+`<p class="note" style="margin:4px 0 0">${st.gallery.length} kuvaa Finnasta (${[...new Set(st.gallery.map(p=>p.org))].join(', ')}; ${[...new Set(st.gallery.map(p=>p.lic))].join(', ')}). Lisää: ${photoQ.map(([l,q])=>`<a href="${finnaUrl(q)}" target="_blank" rel="noopener">${l}</a>`).join(' · ')}</p>`:`<div class="bhero"><b>Vanhat valokuvat</b><span style="font-size:13px">Tälle rakennukselle ei ole vielä poimittu kuvia sivustolle. Voit hakea niitä Finnasta:</span><div class="ph">${photoQ.map(([l,q])=>`<a class="chip" href="${finnaUrl(q)}" target="_blank" rel="noopener">🔍 ${l}</a>`).join('')}</div></div>`}
+  ${st&&st.gallery&&st.gallery.length?heroHTML(st.gallery)+galHTML(st.gallery,1)+`<p class="note" style="margin:4px 0 0">${st.gallery.length} kuvaa ${(()=>{const c=st.gallery.some(p=>/commons\.wikimedia/.test(p.url||'')),f=st.gallery.some(p=>!/commons\.wikimedia/.test(p.url||''));return c&&f?'Finnasta ja Wikimedia Commonsista':c?'Wikimedia Commonsista':'Finnasta';})()} (${[...new Set(st.gallery.map(p=>p.org))].join(', ')}; ${[...new Set(st.gallery.map(p=>p.lic))].join(', ')}). Lisää: ${photoQ.map(([l,q])=>`<a href="${finnaUrl(q)}" target="_blank" rel="noopener">${l}</a>`).join(' · ')}</p>`:`<div class="bhero"><b>Vanhat valokuvat</b><span style="font-size:13px">Tälle rakennukselle ei ole vielä poimittu kuvia sivustolle. Voit hakea niitä Finnasta:</span><div class="ph">${photoQ.map(([l,q])=>`<a class="chip" href="${finnaUrl(q)}" target="_blank" rel="noopener">🔍 ${l}</a>`).join('')}</div></div>`}
   <div class="bcols"><div>
   ${st?`<p style="font-size:15.5px;margin-top:16px">${st.lede}</p>`:''}
   <div class="facts">
@@ -1337,7 +1337,7 @@ function arkHTML(){
   const nTop=ARK.arch.filter(a=>a.top).length;const list=ARK.arch.map((a,i)=>[a,i]).filter(([a,i])=>q?a.n.toLowerCase().includes(q):(AALL||a.top||ASEL.has(i)));
   const one=ASEL.size===1?ARK.arch[[...ASEL][0]]:null;
   const prof=one?`<div class="kick">Arkkitehti</div><h2>${one.n}</h2><p class="note" style="margin-top:2px">${one.b||'?'}–${one.d||''}${one.wiki?` · <a href="https://fi.wikipedia.org/wiki/${one.wiki}" target="_blank" rel="noopener">Wikipedia</a>`:''}</p>
-    ${one.img?`<figure class="hero" data-alb="1" style="cursor:zoom-in"><img src="${one.img.f}" alt=""><figcaption><b>${one.img.cap||one.img.t}</b>${one.img.y&&!one.img.cap?' ('+one.img.y+')':''}<br>${credit(one.img)} · <a href="${one.img.url}" target="_blank" rel="noopener">Finna</a></figcaption></figure>`:''}
+    ${one.img?`<figure class="hero" data-alb="1" style="cursor:zoom-in"><img src="${one.img.f}" alt=""><figcaption><b>${one.img.cap||one.img.t}</b>${one.img.y&&!one.img.cap?' ('+one.img.y+')':''}<br>${credit(one.img)} · <a href="${one.img.url}" target="_blank" rel="noopener">${/commons\.wikimedia/.test(one.img.url)?'Commons':'Finna'}</a></figcaption></figure>`:''}
     ${one.bio?`<p style="margin-top:14px">${one.bio}</p><p class="note">Esittely on kirjoitettu suomenkielisen Wikipedian pohjalta. Teokset: Wikidata.</p>`:''}
     ${(()=>{const ai=[...ASEL][0];const pk=PEOPLE?PEOPLE.findIndex(p=>p.archs.includes(ai)):-1;return pk>=0?`<p><span class="chip has" data-pk="${pk}">Lue tarina: ${PEOPLE[pk].n} →</span></p>`:'';})()}
     ${one.img&&one.img.lm?`<p><span class="chip has" data-lmk="${one.img.lm}">${(loc(BSTORY[one.img.lm])||{}).title||''} →</span></p>`:''}`:'';
