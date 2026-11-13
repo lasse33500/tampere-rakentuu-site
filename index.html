@@ -238,7 +238,6 @@ aside a{color:var(--brick)}
   <div class="layers" id="layers"><button class="ltog" id="ltog" title="Näytä tai piilota kerrokset">Kerrokset <span>▾</span></button><div class="lbody">
     <label title="Näkyy, kun aikakone on ennen vuotta 2026"><input type="checkbox" id="lBorder"> Kaupungin raja valittuna vuonna <span class="note" style="font-size:11px">(kelaa aikaa taaksepäin)</span></label>
     <label title="Tampereen kaupungin ilmakuvat 1946–2022 vaihtuvat aikakoneen vuoden mukaan"><input type="checkbox" id="lAer"> Ilmakuva valittuna vuonna</label>
-    <label><input type="checkbox" id="lUnk"> Rakennukset, joiden vuosi puuttuu</label>
     <label><input type="checkbox" id="lLM"> Maamerkit (★)</label>
     <label><input type="checkbox" id="lKadut" checked> Kadunnimet</label>
     <label style="margin-bottom:4px">Väritys <select id="pop" style="font:inherit;font-size:12px"><optgroup label="Rakennukset"><option value="year" selected>Rakennusvuosi</option><option value="type">Käyttötarkoitus</option></optgroup><optgroup label="Ikärakenne (postinumeroalueittain)"><option value="kika">Keski-ikä</option><option value="ikmuut">Keski-iän muutos 2013–2024</option><option value="lapset">Lapset 0–15 v</option><option value="nuoret">Nuoret aikuiset 20–34 v</option><option value="yli65">Yli 65-vuotiaat</option></optgroup><optgroup label="Väestö (postinumeroalueittain)"><option value="tih">Asukastiheys</option><option value="mtu">Mediaanitulot</option><option value="korkea">Korkeakoulutetut</option><option value="vuokra">Vuokralla asuvat taloudet</option><option value="yksin">Yhden hengen taloudet</option><option value="tyott">Työttömyysaste</option><option value="kasvu">Väestönmuutos 2013–2024</option></optgroup></select></label>
@@ -370,7 +369,7 @@ let THEMEDATA={}, TPL=null, TPSEL=-1, TLINES=null;
 let BSTORY={}, SB=-1, LOADED2=false, DKUVAT=null, HENK=null, MUUTOS={};
 let ARK=null, ASEL=new Set(), AHOV=-1, AQ='', AALL=false;
 let BL=[], BG={}, GS=150, HB=-1, BCODE=[], BLAB=[], BADDR=[], BSR=[];
-function pickB(sx,sy){const [wx,wy]=toWorld(sx,sy);const list=BG[Math.floor(wx/GS)+','+Math.floor(wy/GS)];if(!list)return -1;const unk=document.getElementById('lUnk').checked;
+function pickB(sx,sy){const [wx,wy]=toWorld(sx,sy);const list=BG[Math.floor(wx/GS)+','+Math.floor(wy/GS)];if(!list)return -1;const unk=false;
   for(let j=list.length-1;j>=0;j--){const k=list[j],o=BL[k],b=o.bb;if(wx<b[0]||wx>b[2]||wy<b[1]||wy>b[3])continue;if(o.y===0?!unk:o.y>YEAR)continue;if(mode==='type'&&!POP&&TOFF.has(o.c))continue;if(!o.p)o.p=ringsToPath(o.r);if(hit.isPointInPath(o.p,wx,-wy))return k;}return -1;}
 function bAddr(o){return o.ai>=0?BADDR[o.ai]:'';}
 function bStory(o){const a=bAddr(o);return loc(BSTORY[a+'|'+o.y0]||null);}
@@ -482,7 +481,7 @@ function render(){
   for(let i=4;i>=0;i--){ if(i===4&&k<.12)continue; if(i===3&&k<.035)continue;
     ctx.strokeStyle='#fffaf0'; ctx.lineWidth=sw[i]*px*Math.max(1,Math.min(2.2,k*4)); ctx.stroke(P.streets[i]); }
   // buildings
-  const unk=document.getElementById('lUnk').checked;
+  const unk=false;
   const FO=focusOn();
   const AE=FO&&AERON?aerFor(sel):null; let AEY=null;
   const WY=AE?null:drawWMS(); if(typeof WY==='number')AEY=WY;
@@ -660,7 +659,7 @@ function pick(sx,sy){if(!DATA)return -1;const [wx,wy]=toWorld(sx,sy);const ds=DA
   for(let i=0;i<ds.length;i++){const b=ds[i].bb;if(wx<b[0]||wx>b[2]||wy<b[1]||wy>b[3])continue;if(hit.isPointInPath(P.dist[i],wx,-wy))return i;}return -1;}
 
 // ---------- controls ----------
-['lBorder','lUnk','lLM','lKadut','lAer'].forEach(id=>document.getElementById(id).onchange=draw);
+['lBorder','lLM','lKadut','lAer'].forEach(id=>document.getElementById(id).onchange=draw);
 document.getElementById('lKadut').addEventListener('change',e=>{if(M3&&M3.getLayer('knames'))M3.setLayoutProperty('knames','visibility',e.target.checked?'visible':'none');});
 const yr=document.getElementById('year');
 function setYear(y){YEAR=+y;yr.value=YEAR;yr.style.setProperty('--p',((YEAR-1850)/176*100)+'%');document.getElementById('yr').textContent=YEAR;
