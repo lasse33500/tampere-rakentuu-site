@@ -1,0 +1,24 @@
+name: Manse nyt – genret
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: genret
+jobs:
+  genret:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node genres/update.mjs
+      - name: Tallenna
+        run: |
+          git config user.name "mansessa-bot"
+          git config user.email "lasse33500@users.noreply.github.com"
+          git add nyt-data/genres.json
+          git diff --cached --quiet || (git commit -m "Manse nyt: genret päivitetty" && git push)

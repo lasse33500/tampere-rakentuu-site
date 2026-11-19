@@ -28,7 +28,7 @@ export const SOURCES = [
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19o';
+export const VERSION = '2026-11-19p';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -357,7 +357,10 @@ export async function refresh(env, ctx, budget = 10) { // Workers free: max 50 a
   const data = await collect(ctx);
   let gmap = {};
   if (env.NYT) { try { gmap = JSON.parse(await env.NYT.get('genres') || '{}'); } catch { gmap = {}; } }
-  const now = Date.now(); let used = 0, changed = false, mbDown = false; const log = [];
+  // GitHub Actionsin MusicBrainz-haun tulokset (nyt-data/genres.json) ovat ensisijaisia
+  let fromFile = 0;
+  if (env.ASSETS) { try { const r = await env.ASSETS.fetch('https://assets.local/nyt-data/genres.json'); if (r.ok) { const fm = await r.json(); for (const [k, v] of Object.entries(fm)) if (v && v.g && !(gmap[k] && gmap[k].g)) { gmap[k] = v; fromFile++; } } } catch {} }
+  const now = Date.now(); let used = 0, changed = false, mbDown = true; const log = ['tiedostosta ' + fromFile];
   const keys = [...new Set(data.events.map(artistKey).filter(Boolean))];
   for (const k of keys) {
     const hit = gmap[k];
