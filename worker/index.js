@@ -38,11 +38,13 @@ export const SOURCES = [
     venue: () => 'Maanalainen', addr: 'Itsenäisyydenkatu 2' },
   { id: 'tampere-talo', name: 'Tampere-talo', site: 'https://www.tampere-talo.fi', path: '/wp-json/events/v1/feed', mode: 'ttfeed',
     venue: () => 'Tampere-talo', addr: 'Yliopistonkatu 55' },
+  { id: 'komediateatteri', name: 'Tampereen Komediateatteri', site: 'https://www.komediateatteri.fi', path: '/24/ohjelmisto', mode: 'komedia',
+    addr: 'Lapintie 3a' },
   { id: 'bar-kotelo', name: 'Bar Kotelo', site: 'https://barkotelo.fi', path: '/keikat/', mode: 'text',
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19v';
+export const VERSION = '2026-11-19w';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -372,6 +374,34 @@ export function parseTTFeed(src, body) {
   });
 }
 
+// Tampereen Komediateatteri: ohjelmistokortit (div.show_serie_card), joissa esityssarjan seuraava näytös.
+// Täysi päivä vuosineen napin aria-labelista "Osta liput näytökseen X 21.11.2026 klo 14.00".
+export function parseKomedia(src, html) {
+  const today = todayHelsinki(), out = [];
+  for (const ch of String(html).split(/<div\s+class="show_serie_card/i).slice(1)) {
+    const a = /class="title"[^>]*>\s*<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i.exec(ch);
+    if (!a) continue;
+    const title = clean(decode(a[2]));
+    let date = null, start = null;
+    const al = /aria-label="[^"]*?(\d{1,2})\.(\d{1,2})\.(20\d\d)\s+klo\s+(\d{1,2})[.:](\d{2})"/i.exec(ch);
+    if (al) { date = `${al[3]}-${pad(al[2])}-${pad(al[1])}`; start = `${pad(al[4])}:${al[5]}`; }
+    else {
+      const d = /class="date"[^>]*>([^<]*)</i.exec(ch), t = /class="time"[^>]*>[^<\d]*(\d{1,2})[.:](\d{2})/i.exec(ch);
+      if (d) date = textDate(d[1], today); if (t) start = `${pad(t[1])}:${t[2]}`;
+    }
+    if (!date || date < today) continue;
+    const stage = clean(decode((/class="venue"[\s\S]*?<span>([^<]*)<\/span>/i.exec(ch) || [])[1] || ''));
+    const palatsi = /palatsi/i.test(stage);
+    const tix = (/class="proceed"[^>]*href="([^"]+)"|href="([^"]+)"[^>]*class="proceed"/i.exec(ch) || []);
+    const cat = /konsertti|big band|jazz|joulun hetki|festival|orkesteri|kuoro/i.test(title) && !/stand ?up|show k18/i.test(title) ? 'Konsertti' : 'Teatteri';
+    out.push({ id: src.id + ':' + a[1], title, sub: 'Seuraava näytös' + (stage && !palatsi ? ' · ' + stage : ''), date, start, doors: null,
+      venue: palatsi ? 'Komediateatterin Palatsi' : 'Tampereen Komediateatteri', place: src.name, addr: palatsi ? 'Hämeenkatu 30' : src.addr,
+      price: null, door: null, free: false, soldout: /loppuunmyyty|sold_out|soldout/i.test(ch.replace(/class="available"[\s\S]*$/i, '')) && !/class="available"/i.test(ch),
+      age: /\bK-?18\b/i.test(title) ? 'K18' : null, url: decode(a[1]), tickets: decode(tix[1] || tix[2] || '') || null, source: src.name, cat });
+  }
+  return out;
+}
+
 async function robotsAllows(src, ctx) {
   try {
     const r = await cachedFetch(src.site + '/robots.txt', ctx, 24 * 3600);
@@ -416,6 +446,11 @@ export async function collect(ctx, debug = false) {
   const lists = await Promise.all(SOURCES.map(async src => {
     try {
       if (!(await robotsAllows(src, ctx))) { status[src.id] = 'robots.txt kieltää'; return []; }
+      if (src.mode === 'komedia') {
+        const r = await cachedFetch(src.site + src.path, ctx);
+        if (!r.ok) { status[src.id] = 'HTTP ' + r.status; return []; }
+        const ev = parseKomedia(src, await r.text()); status[src.id] = ev.length; return ev;
+      }
       if (src.mode === 'ttfeed') {
         const r = await cachedFetch(src.site + src.path, ctx);
         if (!r.ok) { status[src.id] = 'HTTP ' + r.status; return []; }
