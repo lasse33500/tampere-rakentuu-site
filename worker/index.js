@@ -512,6 +512,7 @@ export function parseOC(src, html) {
     const m = /Starts at:\s*(\d{1,2})\/(\d{1,2})\/(\d{2})\s+(\d{1,2}):(\d{2})/i.exec(stripTags(ch)); if (!m) continue;
     const date = `20${m[3]}-${pad(m[1])}-${pad(m[2])}`; if (date < today) continue;
     const title = stripTags(h[1]);
+    if (/private event|yksityistilaisuus|suljettu tilaisuus/i.test(title)) continue;
     out.push(baseEv(src, { id: src.id + ':' + date + ':' + title.slice(0, 30), title, date, start: `${pad(m[4])}:${m[5]}`, venue: "O'Connell's",
       url: src.site + src.path, cat: /quiz|visa|discount|alennus|karaoke/i.test(title) ? 'Muu tapahtuma' : 'Pubikeikka' }));
   }
