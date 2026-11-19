@@ -71,6 +71,7 @@ export async function wdGenre(name, ua, dbg) {
   const lr = await fetch(api + 'action=wbgetentities&props=labels&languages=en&ids=' + [...new Set(gids)].slice(0, 20).join('|'), { headers: h });
   if (!lr.ok) throw new Error('WD ' + lr.status);
   const lj = await lr.json();
+  if (dbg) dbg.raw = JSON.stringify(lj).slice(0, 300);
   const tags = Object.values(lj.entities || {}).map(e => ({ name: ((e.labels || {}).en || {}).value || '', count: 1 }));
   if (dbg) dbg.tags = tags.map(t => t.name);
   return mapTags(tags);
