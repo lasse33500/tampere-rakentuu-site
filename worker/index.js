@@ -492,6 +492,13 @@ export default {
     if (p === '/nyt/api/tapahtumat.json') {
       const debug = url.searchParams.has('debug');
       if (debug) return new Response(JSON.stringify(await collect(ctx, true), null, 1), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
+      if (url.searchParams.has('raw')) { // kehitystyökalu: tapahtumapaikan sivun HTML-lähde (vain sallitut paikat), skriptit ja rajapintaosoitteet näkyviin
+        let u; try { u = new URL(url.searchParams.get('raw')); } catch { return new Response('bad url', { status: 400 }); }
+        if (!/(^|\.)komediateatteri\.fi$|(^|\.)ttt-teatteri\.fi$|(^|\.)tampereenteatteri\.fi$/.test(u.hostname)) return new Response('host not allowed', { status: 403 });
+        const r = await fetch(u.href, { headers: { 'User-Agent': UA } }); const t = await r.text();
+        const ref = [...new Set([...t.matchAll(/(?:src|href|data-[\w-]+|url)\s*[=:]\s*["']([^"']*(?:ajax|api|json|\.js|lippu|eventim|tiketti|ohjelmisto)[^"']*)["']/gi)].map(m => m[1]))];
+        return new Response('HTTP ' + r.status + '\n\nREFS:\n' + ref.join('\n') + '\n\nHTML:\n' + t.replace(/<svg[\s\S]*?<\/svg>/gi, '').slice(0, 60000), { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' } });
+      }
       if (url.searchParams.has('wd')) { const dbg = {}; let g = null, err = null; try { g = await wdGenre(url.searchParams.get('wd'), MB_UA, dbg); } catch (e) { err = e.message; } return new Response(JSON.stringify({ g, err, dbg }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
       if (url.searchParams.has('refresh') && env.NYT) { const d = await refresh(env, ctx, 5); return new Response(JSON.stringify({ v: d.v, status: d.status, genres: d.genres }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
       if (env.NYT) { const stored = await env.NYT.get('events'); if (stored) { const d = JSON.parse(stored); d.events = d.events.filter(e => e.date >= todayHelsinki()); return new Response(JSON.stringify(d), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=600', 'Access-Control-Allow-Origin': '*' } }); } }
