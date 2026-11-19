@@ -27,7 +27,7 @@ export const SOURCES = [
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19j';
+export const VERSION = '2026-11-19k';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -361,6 +361,7 @@ export default {
     if (p === '/nyt/api/tapahtumat.json') {
       const debug = url.searchParams.has('debug');
       if (debug) return new Response(JSON.stringify(await collect(ctx, true), null, 1), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
+      if (url.searchParams.has('wd')) { const dbg = {}; let g = null, err = null; try { g = await wdGenre(url.searchParams.get('wd'), MB_UA, dbg); } catch (e) { err = e.message; } return new Response(JSON.stringify({ g, err, dbg }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
       if (url.searchParams.has('refresh') && env.NYT) { const d = await refresh(env, ctx, 6); return new Response(JSON.stringify({ v: d.v, status: d.status, genres: d.genres }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
       if (env.NYT) { const stored = await env.NYT.get('events'); if (stored) { const d = JSON.parse(stored); d.events = d.events.filter(e => e.date >= todayHelsinki()); return new Response(JSON.stringify(d), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=600', 'Access-Control-Allow-Origin': '*' } }); } }
       const cache = caches.default, key = new Request(url.origin + p);
