@@ -35,7 +35,7 @@ export const SOURCES = [
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19q';
+export const VERSION = '2026-11-19r';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -303,7 +303,7 @@ export function parseListing(src, html, debug = false) {
   return out;
 }
 
-// Squarespace-tapahtumalista (Bar K): JSON (?format=json) tai HTML (article.eventlist-event)
+// Squarespace-tapahtumalista (Bar K): HTML (article.eventlist-event); JSON-haara vain testejä varten
 const hkiParts = ms => { const f = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Helsinki', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(ms)); return { date: f.slice(0, 10), time: f.slice(11, 16) }; };
 const sqTitle = t => clean(t).replace(/^(?:ma|ti|ke|to|pe|la|su)\.?\s+\d{1,2}\.\d{1,2}\.?(?:\s*[–-]\s*\d{1,2}\.\d{1,2}\.?)?\s*/i, '')
   .replace(/^(.*)$/, x => (x === x.toUpperCase() && /[A-ZÅÄÖ]{3}/.test(x)) ? x.toLowerCase().replace(/(^|[\s(\-/&+.'])([a-zåäöü])/g, (m, a, b) => a + b.toUpperCase()) : x);
@@ -345,7 +345,8 @@ async function robotsAllows(src, ctx) {
       if (/^user-agent$/i.test(k.trim())) applies = val === '*' || /mansessa/i.test(val);
       else if (applies && /^disallow$/i.test(k.trim()) && val) dis.push(val);
     }
-    return !dis.some(p => src.path.startsWith(p.replace(/\*.*$/, '')));
+    const rx = p => new RegExp('^' + p.replace(/[.+?^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*').replace(/\\\$$/, '$'));
+    return !dis.some(p => rx(p).test(src.path));
   } catch { return true; }
 }
 
@@ -387,8 +388,8 @@ export async function collect(ctx, debug = false) {
       if (!(await robotsAllows(src, ctx))) { status[src.id] = 'robots.txt kieltää'; return []; }
       if (src.mode === 'squarespace') {
         let ev = [];
-        try { const rj = await cachedFetch(src.site + src.path + '?format=json', ctx); if (rj.ok) ev = parseSquarespace(src, await rj.text(), debug); } catch {}
-        if (!ev.length) { const rh = await cachedFetch(src.site + src.path, ctx); if (!rh.ok) { status[src.id] = 'HTTP ' + rh.status; return []; } ev = parseSquarespace(src, await rh.text(), debug); }
+        // robots.txt kieltää ?format=json -osoitteet → luetaan tavallinen HTML-sivu
+        { const rh = await cachedFetch(src.site + src.path, ctx); if (!rh.ok) { status[src.id] = 'HTTP ' + rh.status; return []; } ev = parseSquarespace(src, await rh.text(), debug); }
         status[src.id] = ev.length;
         return ev;
       }
