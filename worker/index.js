@@ -216,6 +216,14 @@ export default {
     if (p === '/nyt/') {
       return new Response(PAGE, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=600' } });
     }
+    if (p === '/nyt/api/probe') { // kehitystyökalu: näyttää tunnetun lähdesivun rakenteen (ei avoin välityspalvelin)
+      const PROBE = { glivelab: 'https://glivelab.fi/tampere/', nokia: 'https://nokiaarena.fi/tapahtumat/', nokiaen: 'https://nokiaarena.fi/en/events/', tampteretalo: 'https://www.tampere-talo.fi/tapahtumakalenteri/' };
+      const u = PROBE[url.searchParams.get('src')]; if (!u) return new Response('?src=' + Object.keys(PROBE).join('|'), { status: 400 });
+      const r = await fetch(u, { headers: { 'User-Agent': UA } }); let h = await r.text();
+      h = h.replace(/<(script|style|svg|noscript)[\s\S]*?<\/\1>/gi, '').replace(/<(img|source|link|meta|path)\b[^>]*>/gi, '').replace(/\s(?!class=|href=)[\w:-]+=("[^"]*"|'[^']*')/g, '').replace(/\s+/g, ' ');
+      const from = +(url.searchParams.get('from') || 0);
+      return new Response(`HTTP ${r.status}, ${h.length} merkkiä\n` + h.slice(from, from + 30000), { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' } });
+    }
     if (p === '/nyt/api/tapahtumat.json') {
       const debug = url.searchParams.has('debug');
       if (debug) return new Response(JSON.stringify(await collect(ctx, true), null, 1), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
