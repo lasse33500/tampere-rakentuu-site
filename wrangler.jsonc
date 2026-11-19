@@ -8,5 +8,7 @@
     "binding": "ASSETS",
     "not_found_handling": "none"
   },
+  "kv_namespaces": [{ "binding": "NYT" }],
+  "triggers": { "crons": ["7,27,47 * * * *"] },
   "observability": { "enabled": true }
 }

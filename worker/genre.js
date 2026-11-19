@@ -1,0 +1,47 @@
+// Genret MusicBrainzista (avoin tietokanta, tunnisteet CC0). Haetaan ajastetusti, tulokset KV:hen.
+export const GENRES = ['Rock', 'Metalli', 'Punk', 'Pop', 'Rap', 'Elektroninen', 'Jazz & blues', 'Folk', 'Iskelmä', 'Klassinen', 'Lapsille'];
+const MAP = [
+  ['Lapsille', /children|lastenmusiikki|kids/],
+  ['Klassinen', /classical|opera|orchestral|baroque|symphon|chamber music|contemporary classical|choral/],
+  ['Iskelmä', /schlager|iskelmä|tango|humppa|chanson/],
+  ['Metalli', /metal|grindcore|djent|metalcore/],
+  ['Punk', /punk|hardcore|oi!|ska/],
+  ['Rap', /hip ?hop|rap|trap|grime/],
+  ['Elektroninen', /electronic|techno|house|edm|trance|synth|drum and bass|dubstep|electro|ambient|idm|breakbeat|hardstyle/],
+  ['Jazz & blues', /jazz|blues|soul|funk|swing|bebop|big band|fusion/],
+  ['Folk', /folk|country|americana|bluegrass|singer-songwriter|world|kansanmusiikki|reggae|latin/],
+  ['Pop', /pop|r&b|disco|dance/],
+  ['Rock', /rock|indie|alternative|grunge|garage|psychedel|shoegaze|post-punk|new wave/],
+];
+export function mapTags(tags) {
+  const score = {};
+  for (const t of tags) {
+    const name = String(t.name || '').toLowerCase(), c = Math.max(1, t.count || 1);
+    for (const [g, re] of MAP) if (re.test(name)) { score[g] = (score[g] || 0) + c; break; }
+  }
+  let best = null, bs = 0;
+  for (const [g] of MAP) if ((score[g] || 0) > bs) { best = g; bs = score[g]; }
+  return best;
+}
+export function artistKey(e) {
+  if (!e.title) return null;
+  if (/yökerho|klubi|disco|tanssit|club/i.test(e.cat || '') || /^dj[:\s]|\bdj:t\b|\bdj's\b|disco|karaoke|stand.?up|bingo|tietovisa|pikkujoulu/i.test(e.title)) return null;
+  let a = e.title.split(/\s+[+&]\s+|,\s+|\s+(?:ja|feat\.?|ft\.?|with|vs\.?)\s+|\s+[–-]\s+/i)[0];
+  a = a.replace(/\((?:[A-Z]{2,3}(?:\/[A-Z]{2,3})*|fi|uk|us)\)/gi, '').replace(/[“”"]/g, '').replace(/\s+/g, ' ').trim();
+  if (a.length < 2 || a.length > 60) return null;
+  return a.toLowerCase();
+}
+const norm = s => s.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
+export async function mbGenre(name, ua) {
+  const q = `artist:"${name.replace(/"/g, '')}"`;
+  const r = await fetch(`https://musicbrainz.org/ws/2/artist/?query=${encodeURIComponent(q)}&fmt=json&limit=8`, { headers: { 'User-Agent': ua, 'Accept': 'application/json' } });
+  if (r.status === 503) throw new Error('rate');
+  if (!r.ok) return null;
+  const j = await r.json();
+  const want = norm(name);
+  const cands = (j.artists || []).filter(a => norm(a.name) === want || (a.aliases || []).some(x => norm(x.name) === want));
+  if (!cands.length) return null;
+  cands.sort((a, b) => ((b.country === 'FI') - (a.country === 'FI')) || ((b.tags || []).length - (a.tags || []).length) || (b.score - a.score));
+  for (const c of cands) { const g = mapTags(c.tags || []); if (g) return g; }
+  return null;
+}
