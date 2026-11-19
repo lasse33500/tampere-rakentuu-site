@@ -13,7 +13,7 @@ export const SOURCES = [
     venue: t => /Rataklubi/i.test(t) ? 'Tavara-asema, Rataklubi' : 'Tavara-asema',
     addr: 'Ratapihankatu 33' },
 ];
-export const VERSION = '2026-11-19c';
+export const VERSION = '2026-11-19d';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const TTL = 3 * 3600;
 const GENERIC = /^(lue lisää|lisätietoja|liput|osta liput|osta lippu|read more|buy tickets|tickets|loppuunmyyty|sold out|›|→|»)$/i;
@@ -223,7 +223,7 @@ export default {
       const r = await fetch(u, { headers: { 'User-Agent': UA } }); let h = await r.text();
       h = h.replace(/<(script|style|svg|noscript)[\s\S]*?<\/\1>/gi, '').replace(/<(img|source|link|meta|path)\b[^>]*>/gi, '').replace(/\s(?!class=|href=)[\w:-]+=("[^"]*"|'[^']*')/g, '').replace(/\s+/g, ' ');
       const from = +(url.searchParams.get('from') || 0);
-      return new Response(`HTTP ${r.status}, ${h.length} merkkiä\n` + h.slice(from, from + 30000), { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' } });
+      return new Response(JSON.stringify({ status: r.status, length: h.length, html: h.slice(from, from + 30000) }), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
     }
     if (p === '/nyt/api/tapahtumat.json') {
       const debug = url.searchParams.has('debug');
