@@ -26,7 +26,11 @@ export function mapTags(tags) {
 export function artistKey(e) {
   if (!e.title) return null;
   if (/yökerho|klubi|disco|tanssit|club/i.test(e.cat || '') || /^dj[:\s]|\bdj:t\b|\bdj's\b|disco|karaoke|stand.?up|bingo|tietovisa|pikkujoulu/i.test(e.title)) return null;
-  let a = e.title.split(/\s+[+&]\s+|,\s+|\s+(?:ja|feat\.?|ft\.?|with|vs\.?)\s+|\s+[–-]\s+/i)[0];
+  let ti = e.title.replace(/\s+@\s+.*$/, '').replace(/\b(?:presents|esittää|levynjulkaisukonsertti|levyjulkkarit|juhlakonsertti|albumikiertue|kiertue|tour)\b.*$/i, '');
+  if (/^select event$|^tyk\b/i.test(ti)) return null;
+  if (ti.includes(':')) { const parts = ti.split(':').map(x => x.trim()).filter(Boolean); ti = parts.length > 1 && /stage|päivähypyt|klubi|club|ilta|disco|kerho|salonki|festiv|vol\b|sarja|series|presents|esittää|startti|jazz|kerhon?/i.test(parts[0]) ? parts[parts.length - 1] : parts[0] || ''; }
+  if (!ti) return null;
+  let a = ti.split(/\s+[+&]\s+|,\s+|\s+(?:ja|feat\.?|ft\.?|with|vs\.?)\s+|\s+[–-]\s+/i)[0];
   a = a.replace(/\((?:[A-Z]{2,3}(?:\/[A-Z]{2,3})*|fi|uk|us)\)/gi, '').replace(/[“”"]/g, '').replace(/\s+/g, ' ').trim();
   if (a.length < 2 || a.length > 60) return null;
   return a.toLowerCase();
@@ -46,11 +50,11 @@ export async function mbGenre(name, ua) {
 }
 
 // Varalähde: Wikidata (CC0). Haku nimellä → muusikko/yhtye → genre (P136) → luokka
-const MUSIC_DESC = /yhtye|bändi|band|muusikko|musician|laulaja|singer|rapper|räppäri|lauluntekijä|songwriter|dj|duo|orkesteri|orchestra|kuoro|choir|artisti|artist|säveltäjä|composer|kitaristi|pianisti|rumpali|trio|kvartetti|quartet/i;
+const MUSIC_DESC = /yhtye|bändi|band|group|muusikko|musician|laulaja|singer|vocalist|rapper|räppäri|lauluntekijä|songwriter|dj|duo|orkesteri|orchestra|ensemble|kuoro|choir|artisti|artist|säveltäjä|composer|producer|tuottaja|kitaristi|guitarist|pianisti|pianist|rumpali|drummer|viulisti|violinist|saksofonisti|saxophonist|trio|kvartetti|quartet|basisti|bassist/i;
 export async function wdGenre(name, ua, dbg) {
   const h = { 'User-Agent': ua, 'Accept': 'application/json' };
   const api = 'https://www.wikidata.org/w/api.php?format=json&origin=*&';
-  const sr = await fetch(api + 'action=wbsearchentities&type=item&limit=7&language=fi&uselang=fi&search=' + encodeURIComponent(name), { headers: h });
+  const sr = await fetch(api + 'action=wbsearchentities&type=item&limit=7&language=en&uselang=fi&strictlanguage=0&search=' + encodeURIComponent(name), { headers: h });
   if (!sr.ok) throw new Error('WD ' + sr.status);
   const sj = await sr.json();
   const want = norm(name);
