@@ -46,8 +46,11 @@ function pad(n) { return String(n).padStart(2, '0'); }
 export function parseCard(src, url, d, text, titles) {
   const t = text.replace(/\u0001[^\u0002]*\u0002([^\u0003]*)\u0003/g, '$1');
   const lines = t.split('\n').map(x => x.trim()).filter(Boolean);
-  let title = titles.filter(x => x && !GENERIC.test(x) && !/^\d{1,2}[.:]\d{2}$/.test(x)).sort((a, b) => b.length - a.length)[0] || '';
-  if (!title) title = lines.find(l => !/^(ma|ti|ke|to|pe|la|su)\b\.?\s*\d/i.test(l) && !/€|^ovet|^k\d|^s\/|^alk/i.test(l) && l.length > 2) || '';
+  const DATEISH = /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s*)?\d{1,2}\s*[./]\s*\d{1,2}(?:\s*[./]\s*(?:\d{4})?)?\.?$/i;
+  const NOTTITLE = /^(?:ma|ti|ke|to|pe|la|su)\.?$|^(?:ovet|alk|ovelta|liput|lue lisää|lisätietoja|loppuunmyyty|sold out|osta|k-?\d\d|s\s*\/|klo\b)|€|^(?:klubi|pakkahuone|tavara-asema|rataklubi|tullikamari)$|^\d{1,2}[:.]\d{2}(?:\s*[–-]\s*\d{1,2}[:.]\d{2})?$/i;
+  const ok = x => x && x.length > 1 && !GENERIC.test(x) && !DATEISH.test(x) && !NOTTITLE.test(x);
+  let title = titles.filter(ok).sort((a, b) => b.length - a.length)[0] || '';
+  if (!title) title = lines.find(ok) || '';
   let doors = null, start = null;
   const dm = /Ovet(?:\s*klo)?\s*:?\s*(\d{1,2})[:.](\d{2})/i.exec(t);
   if (dm) doors = `${pad(dm[1])}:${dm[2]}`;
