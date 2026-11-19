@@ -407,14 +407,18 @@ async function robotsAllows(src, ctx) {
     const r = await cachedFetch(src.site + '/robots.txt', ctx, 24 * 3600);
     if (!r.ok) return true;
     const txt = await r.text();
-    let applies = false; const dis = [];
+    let applies = false; const dis = [], allow = [];
     for (const line of txt.split('\n')) {
       const [k, ...v] = line.split(':'); const val = v.join(':').trim();
       if (/^user-agent$/i.test(k.trim())) applies = val === '*' || /mansessa/i.test(val);
       else if (applies && /^disallow$/i.test(k.trim()) && val) dis.push(val);
+      else if (applies && /^allow$/i.test(k.trim()) && val) allow.push(val);
     }
     const rx = p => new RegExp('^' + p.replace(/[.+?^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*').replace(/\\\$$/, '$'));
-    return !dis.some(p => rx(p).test(src.path));
+    // pisin osuva sääntö voittaa (Allow ohittaa yhtä pitkän tai lyhyemmän Disallow'n)
+    const d = Math.max(-1, ...dis.filter(p => rx(p).test(src.path)).map(p => p.length));
+    const a = Math.max(-1, ...allow.filter(p => rx(p).test(src.path)).map(p => p.length));
+    return d < 0 || a >= d;
   } catch { return true; }
 }
 
@@ -530,7 +534,7 @@ export default {
       if (url.searchParams.has('raw')) { // kehitystyökalu: tapahtumapaikan sivun HTML-lähde (vain sallitut paikat), skriptit ja rajapintaosoitteet näkyviin
         let u; try { u = new URL(url.searchParams.get('raw')); } catch { return new Response('bad url', { status: 400 }); }
         if (!/(^|\.)komediateatteri\.fi$|(^|\.)ttt-teatteri\.fi$|(^|\.)tampereenteatteri\.fi$/.test(u.hostname)) return new Response('host not allowed', { status: 403 });
-        const r = await fetch(u.href, { headers: { 'User-Agent': UA } }); const t = await r.text();
+        const pb = url.searchParams.get('post'); const r = await fetch(u.href, pb ? { method: 'POST', body: pb, headers: { 'User-Agent': UA, 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'X-Requested-With': 'XMLHttpRequest' } } : { headers: { 'User-Agent': UA } }); const t = await r.text();
         const ref = [...new Set([...t.matchAll(/(?:src|href|data-[\w-]+|url)\s*[=:]\s*["']([^"']*(?:ajax|api|json|\.js|lippu|eventim|tiketti|ohjelmisto)[^"']*)["']/gi)].map(m => m[1]))];
         return new Response('HTTP ' + r.status + '\n\nREFS:\n' + ref.join('\n') + '\n\nHTML:\n' + (() => { let h = url.searchParams.has('keep') ? t : t.replace(/<(svg|style|script|head|noscript)[\s\S]*?<\/\1>/gi, '').replace(/\s(?:style|srcset|sizes)="[^"]*"/gi, ''); const q = url.searchParams.get('q'); if (q) { const i = h.indexOf(q); h = i < 0 ? 'q not found' : h.slice(Math.max(0, i - 3000), i + 3000); } return h.slice(0, 60000); })(), { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' } });
       }
