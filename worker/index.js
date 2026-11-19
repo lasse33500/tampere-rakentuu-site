@@ -13,6 +13,7 @@ export const SOURCES = [
     venue: t => /Rataklubi/i.test(t) ? 'Tavara-asema, Rataklubi' : 'Tavara-asema',
     addr: 'Ratapihankatu 33' },
 ];
+export const VERSION = '2026-11-19c';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const TTL = 3 * 3600;
 const GENERIC = /^(lue lisää|lisätietoja|liput|osta liput|osta lippu|read more|buy tickets|tickets|loppuunmyyty|sold out|›|→|»)$/i;
@@ -205,7 +206,7 @@ export async function collect(ctx, debug = false) {
   }));
   const events = lists.flat().filter(e => e.date >= today)
     .sort((a, b) => (a.date + (a.start || a.doors || '99')).localeCompare(b.date + (b.start || b.doors || '99')));
-  return { updated: new Date().toISOString(), today, status, events };
+  return { v: VERSION, updated: new Date().toISOString(), today, status, events };
 }
 
 export default {
