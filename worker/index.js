@@ -95,20 +95,27 @@ export function elementTree(html) {
 
 const CAT = { 'konsertti-keikka': 'Keikka', 'klubi': 'Klubi', 'klubit': 'Klubi', 'tanssit': 'Tanssit', 'stand-up': 'Stand up', 'teatteri': 'Teatteri', 'muu-julkinen-tapahtuma': 'Muu tapahtuma', 'festivaali': 'Festivaali', 'disco': 'Disco' };
 function byClass(h, tag, cls) {
-  const m = new RegExp(`<${tag}\\b[^>]*class=["'][^"']*\\b${cls}\\b[^"']*["'][^>]*>([\\s\\S]*?)</${tag}>`, 'i').exec(h);
-  return m ? m[1] : null;
+  const all = byClassAll(h, tag, cls); return all.length ? all.join(' ') : null;
+}
+function byClassAll(h, tag, cls) {
+  const re = new RegExp(`<${tag}\\b[^>]*class=["'][^"']*\\b${cls}\\b[^"']*["'][^>]*>([\\s\\S]*?)</${tag}>`, 'gi'); const out = []; let m;
+  while ((m = re.exec(h))) out.push(m[1]);
+  return out;
 }
 // Tullikamarin ja Tavara-aseman WordPress-teema: article.event-feed-item, h2.event-title, h2.event-artist (+span aika), li.event-venue
 export function structured(ev, h) {
-  const art = byClass(h, 'h2', 'event-artist'), tit = byClass(h, 'h2', 'event-title');
+  const arts = byClassAll(h, 'h[1-6]', 'event-artist'), tit = byClass(h, 'h[1-6]', 'event-title');
+  const art = arts.length ? arts.join('\u0004') : null;
   if (art == null && tit == null) return ev;
   let start = null;
   const artist = art != null ? clean(art.replace(/<span\b[^>]*>([\s\S]*?)<\/span>/gi, (m, x) => { const t = /([01]?\d|2[0-3])[:.]([0-5]\d)/.exec(clean(x)); if (t) { start = `${t[1].padStart(2, '0')}:${t[2]}`; return ' '; } return m; })) : '';
   const etitle = tit != null ? clean(tit) : '';
-  if (etitle && artist) {
-    if (/:\s*$/.test(etitle)) { ev.title = etitle.replace(/\s*$/, '') + ' ' + artist; ev.sub = null; }
-    else { ev.title = artist; ev.sub = etitle; }
-  } else ev.title = (artist || etitle).replace(/:\s*$/, '');
+  const artistJ = artist.split('\u0004').map(x => x.trim()).filter(Boolean).join(', ');
+  if (etitle && artistJ) {
+    if (/:\s*$/.test(etitle)) { ev.title = etitle + ' ' + artistJ; ev.sub = null; }
+    else { ev.title = artistJ; ev.sub = etitle; }
+  } else ev.title = (artistJ || etitle);
+  ev.title = ev.title.replace(/\s*:\s*$/, '').replace(/\s+/g, ' ').trim();
   if (start) ev.start = start;
   const v = byClass(h, 'li', 'event-venue'); if (v && clean(v)) ev.venue = ev.place === 'Tullikamari' ? clean(v) : ev.venue;
   const c = /event_category-([a-z0-9-]+)/.exec(h);
