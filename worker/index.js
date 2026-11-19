@@ -21,6 +21,9 @@ export const SOURCES = [
     link: /^https?:\/\/(?:www\.)?lippu\.fi\/event\/[^?#]+/, dateFrom: 'text', group: 'container',
     perLink: SPORT_RE(),
     venue: () => 'Nokia Arena', addr: 'Kansikatu 3' },
+  { id: 'tammelan-stadion', name: 'Tammelan stadion', site: 'https://www.tammelanstadion.fi', path: '/stadionin-tapahtumat/', dateFrom: 'text',
+    link: /^https?:\/\/(?:www\.)?tammelanstadion\.fi\/tapahtumat\/[^/?#]+\/?$/,
+    venue: () => 'Tammelan stadion', addr: null },
   { id: 'telakka', name: 'Telakka', site: 'https://www.telakka.eu', path: '/ohjelma/', mode: 'text',
     dateLine: /^(?:ma|ti|ke|to|pe|la|su)\.?\s+(\d{1,2})\.(\d{1,2})\.?$/i,
     venue: () => 'Telakka', addr: 'Tullikamarin aukio 3' },
@@ -48,7 +51,7 @@ export const SOURCES = [
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19y';
+export const VERSION = '2026-11-19z';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -479,7 +482,7 @@ async function cachedFetch(url, ctx, ttl = TTL) {
 }
 
 // Pääkategoria: Keikka · Klubi · Teatteri · Urheilu · Muu
-const SPORT = /liiga|runkosarja|ottelu|salibandy|floorball|jääkiekko|hockey|\bWFC\b|MM-kilpailut|playoff|pudotuspeli|koripallo|lentopallo|futsal/i;
+const SPORT = /liiga|runkosarja|ottelu|uecl|uefa|conference league|veikkausliiga|jalkapallo|salibandy|floorball|jääkiekko|hockey|\bWFC\b|MM-kilpailut|playoff|pudotuspeli|koripallo|lentopallo|futsal/i;
 export function classify(e) {
   const t = (e.title || '') + ' ' + (e.sub || '') + ' ' + (e.cat || '');
   let k = 'Keikka';
