@@ -92,6 +92,30 @@ export function elementTree(html) {
   return nodes;
 }
 
+
+const CAT = { 'konsertti-keikka': 'Keikka', 'klubi': 'Klubi', 'klubit': 'Klubi', 'tanssit': 'Tanssit', 'stand-up': 'Stand up', 'teatteri': 'Teatteri', 'muu-julkinen-tapahtuma': 'Muu tapahtuma', 'festivaali': 'Festivaali', 'disco': 'Disco' };
+function byClass(h, tag, cls) {
+  const m = new RegExp(`<${tag}\\b[^>]*class=["'][^"']*\\b${cls}\\b[^"']*["'][^>]*>([\\s\\S]*?)</${tag}>`, 'i').exec(h);
+  return m ? m[1] : null;
+}
+// Tullikamarin ja Tavara-aseman WordPress-teema: article.event-feed-item, h2.event-title, h2.event-artist (+span aika), li.event-venue
+export function structured(ev, h) {
+  const art = byClass(h, 'h2', 'event-artist'), tit = byClass(h, 'h2', 'event-title');
+  if (art == null && tit == null) return ev;
+  let start = null;
+  const artist = art != null ? clean(art.replace(/<span\b[^>]*>([\s\S]*?)<\/span>/gi, (m, x) => { const t = /([01]?\d|2[0-3])[:.]([0-5]\d)/.exec(clean(x)); if (t) { start = `${t[1].padStart(2, '0')}:${t[2]}`; return ' '; } return m; })) : '';
+  const etitle = tit != null ? clean(tit) : '';
+  if (etitle && artist) {
+    if (/:\s*$/.test(etitle)) { ev.title = etitle.replace(/\s*$/, '') + ' ' + artist; ev.sub = null; }
+    else { ev.title = artist; ev.sub = etitle; }
+  } else ev.title = (artist || etitle).replace(/:\s*$/, '');
+  if (start) ev.start = start;
+  const v = byClass(h, 'li', 'event-venue'); if (v && clean(v)) ev.venue = ev.place === 'Tullikamari' ? clean(v) : ev.venue;
+  const c = /event_category-([a-z0-9-]+)/.exec(h);
+  if (c) ev.cat = CAT[c[1]] || c[1].replace(/-/g, ' ').replace(/^./, x => x.toUpperCase());
+  return ev;
+}
+
 export function parseListing(src, html, debug = false) {
   html = html.replace(/<!--[\s\S]*?-->/g, m => ' '.repeat(m.length));
   const base = src.site + src.path;
@@ -120,6 +144,7 @@ export function parseListing(src, html, debug = false) {
     const n = nodes[best];
     const text = linearize(html.slice(n.s, n.e), base);
     const ev = parseCard(src, url, list[0].d, text, list.map(a => a.text));
+    structured(ev, html.slice(n.s, n.e));
     if (debug) { ev._txt = text.replace(/[\u0001-\u0003]/g, '|').slice(0, 600); ev._html = html.slice(n.s, n.e).replace(/<(img|svg|source|picture)\b[^>]*>/gi, '').replace(/\s(?!class=)[\w:-]+=("[^"]*"|'[^']*')/g, '').replace(/\s+/g, ' ').slice(0, 900); }
     out.push(ev);
   }
