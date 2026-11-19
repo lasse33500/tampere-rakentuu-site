@@ -47,11 +47,18 @@ export const SOURCES = [
     addr: null },
   { id: 'ttt-klubi', name: 'TTT-klubi', site: 'https://ttt-teatteri.fi', path: '/wp-admin/admin-ajax.php', mode: 'ttt', pages: 5,
     addr: 'Hallituskatu 19' },
+  { id: 'vastavirta', name: 'Vastavirta-klubi', site: 'https://vastavirta.net', path: '/', mode: 'vv', addr: 'Pispalan valtatie 39' },
+  { id: 'paappa', name: 'Paapan Kapakka', site: 'https://paappa.fi', path: '/ohjelma/', mode: 'text', pub: true,
+    after: /tulevat esiintyjät/i,
+    dateLine: /^(?:ma|ti|ke|to|pe|la|su)\.?\s+(\d{1,2})\.(\d{1,2})\.?\s+(?<t>[^\d\s].{1,120})$/i,
+    venue: () => 'Paapan Kapakka', addr: 'Koskikatu 9' },
+  { id: 'tanssiteatteri-md', name: 'Tanssiteatteri MD', site: 'https://tanssiteatterimd.fi', path: '/naytokset/', mode: 'md', addr: 'Hämeenkatu 25' },
+  { id: 'oconnells', name: "Irish Bar O'Connell's", site: 'https://www.oconnells.fi', path: '/events/', mode: 'oc', pub: true, addr: 'Rautatienkatu 24' },
   { id: 'bar-kotelo', name: 'Bar Kotelo', site: 'https://barkotelo.fi', path: '/keikat/', mode: 'text',
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19z';
+export const VERSION = '2026-11-19z2';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -456,6 +463,59 @@ export function parseTTT(src, html) {
   return out;
 }
 
+const stripTags = h => clean(decode(String(h || '').replace(/<[^>]*>/g, ' ')));
+const baseEv = (src, o) => Object.assign({ doors: null, place: src.name, addr: src.addr, price: null, door: null, free: false, soldout: false, age: null, source: src.name, sub: null }, o);
+// Vastavirta-klubi (etusivu): div.vv-custom-events > h3 "27.11.2026 20:00 - Bändi (23.00), Bändi …", p "Tapahtumapaikka: …", p "Liput: 15 € / 18 €", linkit (cluby, Facebook)
+export function parseVV(src, html) {
+  const today = todayHelsinki(), out = [];
+  for (const ch of String(html).split(/<div[^>]*class="[^"]*vv-custom-events/i).slice(1)) {
+    const h = /<h3[^>]*>([\s\S]*?)<\/h3>/i.exec(ch); if (!h) continue;
+    const m = /^(\d{1,2})\.(\d{1,2})\.(20\d\d)\s+(\d{1,2})[.:](\d{2})\s*[-–]\s*(.+)$/.exec(stripTags(h[1])); if (!m) continue;
+    const date = `${m[3]}-${pad(m[2])}-${pad(m[1])}`; if (date < today) continue;
+    const title = m[6].replace(/\s*\(\s*\d{1,2}[.:]\d{2}\s*\)/g, '').replace(/\s+,/g, ',').trim();
+    const place = stripTags((/Tapahtumapaikka:\s*([^<]*)/i.exec(ch) || [])[1]);
+    const lp = stripTags((/Liput:\s*([^<]*)/i.exec(ch) || [])[1]);
+    const pm = /(\d+(?:[,.]\d+)?)\s*€/.exec(lp);
+    const links = [...ch.matchAll(/href="([^"]+)"/gi)].map(x => decode(x[1]));
+    const up = /yläkerta|terassi/i.test(place);
+    out.push(baseEv(src, { id: src.id + ':' + date + m[4] + ':' + title.slice(0, 30), title, sub: place ? (up ? 'Yläkerta (Terassi Pub)' : 'Alakerta') : null, date, start: `${pad(m[4])}:${m[5]}`,
+      venue: 'Vastavirta-klubi', price: pm ? parseFloat(pm[1].replace(',', '.')) : null, free: /ilmai|vapaa pääsy/i.test(ch),
+      url: links.find(u => /cluby|tiketti|lippu\.fi/.test(u)) || links.find(u => /facebook\.com\/events/.test(u)) || src.site + '/',
+      cat: up ? 'Pubikeikka' : 'Keikka' }));
+  }
+  return out;
+}
+// Tanssiteatteri MD (Hällä-näyttämö): article.naytos (luokka esityspaikka-<paikka>), h2.event-title a, span.event-date "19.11.2026" ja "18:00", a.btn lippu.fi
+export function parseMD(src, html) {
+  const today = todayHelsinki(), out = [];
+  for (const ch of String(html).split(/<article\b(?=[^>]*\bnaytos\b)/i).slice(1)) {
+    const a = /class="[^"]*event-title[^"]*"[^>]*>\s*<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i.exec(ch); if (!a) continue;
+    const ds = [...ch.matchAll(/class="event-date"[^>]*>([\s\S]*?)<\/span>/gi)].map(x => stripTags(x[1])).join(' ');
+    const d = /(\d{1,2})\.(\d{1,2})\.(20\d\d)/.exec(ds), t = /(\d{1,2})[:.](\d{2})(?!\.\d)/.exec(ds.replace(/\d{1,2}\.\d{1,2}\.20\d\d/, ''));
+    if (!d) continue;
+    const date = `${d[3]}-${pad(d[2])}-${pad(d[1])}`; if (date < today) continue;
+    const halla = /esityspaikka-halla/i.test(ch.slice(0, 600));
+    const title = stripTags(a[2]);
+    out.push(baseEv(src, { id: src.id + ':' + a[1] + ':' + date + (t ? t[1] + t[2] : ''), title: title === title.toUpperCase() && /[A-ZÅÄÖ]{3}/.test(title) ? title[0] + title.slice(1).toLowerCase() : title,
+      sub: 'Tanssiteatteri MD', date, start: t ? `${pad(t[1])}:${t[2]}` : null, venue: halla ? 'Hällä-näyttämö' : 'Tanssiteatteri MD', url: decode(a[1]), cat: 'Teatteri' }));
+  }
+  return out;
+}
+// O'Connell's: ul.evts > li.event: div.date "22.11", h3, p "Starts at: 11/22/26 16:00". Vain "Live Events" (ei Big Screen -urheilulähetyksiä).
+export function parseOC(src, html) {
+  const today = todayHelsinki(), out = [];
+  const live = String(html).split(/Big Screen/i)[0];
+  for (const ch of live.split(/<li[^>]*class="[^"]*\bevent\b/i).slice(1)) {
+    const h = /<h3[^>]*>([\s\S]*?)<\/h3>/i.exec(ch); if (!h) continue;
+    const m = /Starts at:\s*(\d{1,2})\/(\d{1,2})\/(\d{2})\s+(\d{1,2}):(\d{2})/i.exec(stripTags(ch)); if (!m) continue;
+    const date = `20${m[3]}-${pad(m[1])}-${pad(m[2])}`; if (date < today) continue;
+    const title = stripTags(h[1]);
+    out.push(baseEv(src, { id: src.id + ':' + date + ':' + title.slice(0, 30), title, date, start: `${pad(m[4])}:${m[5]}`, venue: "O'Connell's",
+      url: src.site + src.path, cat: /quiz|visa|discount|alennus|karaoke/i.test(title) ? 'Muu tapahtuma' : 'Pubikeikka' }));
+  }
+  return out;
+}
+
 async function robotsAllows(src, ctx) {
   try {
     const r = await cachedFetch(src.site + '/robots.txt', ctx, 24 * 3600);
@@ -499,7 +559,7 @@ function todayHelsinki() {
 }
 
 // Päivitys kahdessa erässä (Lasse 19.11.: klo 2 ja 3), jotta Workers-ilmaistason 50 alipyynnön raja riittää
-export const GROUP_B = new Set(['bar-k', 'kujakolli', 'pub-simon', 'maanalainen', 'komediateatteri', 'tampereen-teatteri', 'ttt-klubi']);
+export const GROUP_B = new Set(['vastavirta', 'paappa', 'tanssiteatteri-md', 'oconnells', 'bar-k', 'kujakolli', 'pub-simon', 'maanalainen', 'komediateatteri', 'tampereen-teatteri', 'ttt-klubi']);
 const inGroup = (src, g) => !g || g === 'all' || (g === 'b') === GROUP_B.has(src.id);
 export async function collect(ctx, debug = false, group = 'all') {
   const today = todayHelsinki();
@@ -525,6 +585,13 @@ export async function collect(ctx, debug = false, group = 'all') {
           if (!got.length || p >= max) break;
         }
         const seen = new Set(); ev = ev.filter(e => !seen.has(e.id) && seen.add(e.id));
+        status[src.id] = ev.length; return ev;
+      }
+      if (src.mode === 'vv' || src.mode === 'md' || src.mode === 'oc') {
+        const r = await cachedFetch(src.site + src.path, ctx);
+        if (!r.ok) { status[src.id] = 'HTTP ' + r.status; return []; }
+        const t = await r.text();
+        const ev = src.mode === 'vv' ? parseVV(src, t) : src.mode === 'md' ? parseMD(src, t) : parseOC(src, t);
         status[src.id] = ev.length; return ev;
       }
       if (src.mode === 'komedia') {
