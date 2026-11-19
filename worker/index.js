@@ -24,11 +24,18 @@ export const SOURCES = [
   { id: 'telakka', name: 'Telakka', site: 'https://www.telakka.eu', path: '/ohjelma/', mode: 'text',
     dateLine: /^(?:ma|ti|ke|to|pe|la|su)\.?\s+(\d{1,2})\.(\d{1,2})\.?$/i,
     venue: () => 'Telakka', addr: 'Tullikamarin aukio 3' },
+  { id: 'bar-k', name: 'Bar K', site: 'https://www.bar-k.fi', path: '/tapahtumat', mode: 'squarespace', pub: true,
+    venue: () => 'Bar K', addr: 'Kauppakatu 11' },
+  { id: 'kujakolli', name: 'Pub Kujakolli', site: 'https://kujakolli.fi', path: '/', mode: 'text', pub: true,
+    after: /tulevia keikkoja/i,
+    dateLine: /^(\d{1,2})\.(\d{1,2})\.?\s+(?<t>[^\d\s].{1,100})$/,
+    start: '22:00', free: true, // sivulla: showtime 22, vapaa pääsy
+    venue: () => 'Pub Kujakolli', addr: 'Tahmelan viertotie 2' },
   { id: 'bar-kotelo', name: 'Bar Kotelo', site: 'https://barkotelo.fi', path: '/keikat/', mode: 'text',
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19p';
+export const VERSION = '2026-11-19q';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -163,7 +170,7 @@ export function parseTextBlocks(src, html, debug = false) {
     const L = cur.lines;
     const links = []; const text = L.map(l => l.replace(/\u0001([^\u0002]*)\u0002([^\u0003]*)\u0003/g, (m, u, t) => { links.push(u); return t; })).filter(Boolean);
     const isMeta = l => /^(?:klo|keikat|ovet|liput|vapaa pääsy|loppuunmyyty|k-?1[68]|k-?20|s\b|\(.*\)$)|€/i.test(l);
-    const titleLines = []; for (const l of text) { if (isMeta(l)) break; if (l.length > 1 && !/^osta liput|^lue lisää/i.test(l)) titleLines.push(l); if (titleLines.length >= 4) break; }
+    const titleLines = cur.inline ? [text[0]] : []; if (!cur.inline) for (const l of text) { if (isMeta(l)) break; if (l.length > 1 && !/^osta liput|^lue lisää/i.test(l)) titleLines.push(l); if (titleLines.length >= 4) break; }
     const tc = l => (l === l.toUpperCase() && /[A-ZÅÄÖ]{3}/.test(l)) ? l.toLowerCase().replace(/(^|[\s(\-/&+.'])([a-zåäöü])/g, (m, a, b) => a + b.toUpperCase()).replace(/\((\w{2,3})\)/g, (m, x) => '(' + x.toUpperCase() + ')') : l;
     let title = titleLines.map(tc).join(', ').replace(/\s+/g, ' ').trim();
     if (title.length > 160) title = title.slice(0, 157) + '…';
@@ -174,19 +181,28 @@ export function parseTextBlocks(src, html, debug = false) {
     const tix = links.find(u => /tiketti\.fi|lippu\.fi|kide\.app|liveto|ticketmaster/i.test(u));
     const ev = {
       id: src.id + ':' + cur.date + ':' + title.slice(0, 40), title, date: cur.date,
-      start: tm ? `${pad(tm[1])}:${tm[2] || '00'}` : null, doors: dm ? `${pad(dm[1])}:${dm[2]}` : null,
+      start: cur.inline ? src.start || null : tm ? `${pad(tm[1])}:${tm[2] || '00'}` : null, doors: dm ? `${pad(dm[1])}:${dm[2]}` : null,
       venue: src.venue(t), place: src.name, addr: src.addr,
       price: pm ? parseFloat(pm[1].replace(',', '.')) : null, door: null,
-      free: /vapaa pääsy|maksuton|ilmainen/i.test(t), soldout: /loppuunmyyty|sold out/i.test(t),
+      free: !!src.free || /vapaa pääsy|maksuton|ilmainen/i.test(t), soldout: /loppuunmyyty|sold out/i.test(t),
       age: (/(?:^|[\s(])(K-?18|K-?20|S\s*\/\s*K-?18)(?=[\s),]|$)/i.exec(t) || [])[1] || null,
-      url: tix || base, source: src.name, cat: /klubi|disco|dj\b/i.test(title) ? 'Klubi' : 'Keikka',
+      url: tix || base, source: src.name, cat: src.pub ? 'Pubikeikka' : /klubi|disco|dj\b/i.test(title) ? 'Klubi' : 'Keikka',
     };
     if (debug) ev._txt = t.slice(0, 400);
     if (title && ev.date >= shiftDays(today, -1)) out.push(ev);
   };
+  let started = !src.after;
   for (const l of lines) {
     const plain = l.replace(/\u0001[^\u0002]*\u0002([^\u0003]*)\u0003/g, '$1').trim();
+    if (!started) { started = src.after.test(plain); continue; }
     const m = src.dateLine.exec(plain);
+    if (m && m.groups && m.groups.t) {
+      flush();
+      const dd = +m[1], mm = +m[2];
+      const date = dd >= 1 && dd <= 31 && mm >= 1 && mm <= 12 ? textDate(`${dd}.${mm}.`, today) : null;
+      cur = date ? { date, lines: [m.groups.t.trim()], inline: true } : null;
+      continue;
+    }
     if (m) {
       flush();
       let date;
@@ -287,6 +303,37 @@ export function parseListing(src, html, debug = false) {
   return out;
 }
 
+// Squarespace-tapahtumalista (Bar K): JSON (?format=json) tai HTML (article.eventlist-event)
+const hkiParts = ms => { const f = new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Helsinki', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(ms)); return { date: f.slice(0, 10), time: f.slice(11, 16) }; };
+const sqTitle = t => clean(t).replace(/^(?:ma|ti|ke|to|pe|la|su)\.?\s+\d{1,2}\.\d{1,2}\.?(?:\s*[–-]\s*\d{1,2}\.\d{1,2}\.?)?\s*/i, '')
+  .replace(/^(.*)$/, x => (x === x.toUpperCase() && /[A-ZÅÄÖ]{3}/.test(x)) ? x.toLowerCase().replace(/(^|[\s(\-/&+.'])([a-zåäöü])/g, (m, a, b) => a + b.toUpperCase()) : x);
+export function parseSquarespace(src, body, debug = false) {
+  const today = todayHelsinki(), out = [];
+  const mk = (title, date, start, url) => {
+    title = sqTitle(title);
+    if (!title || !date || date < today) return;
+    out.push({ id: src.id + ':' + url, title, date, start, doors: null, venue: src.venue(title), place: src.name, addr: src.addr,
+      price: null, door: null, free: false, soldout: false, age: null, url, source: src.name, cat: src.pub ? 'Pubikeikka' : 'Keikka' });
+  };
+  let j = null; try { j = JSON.parse(body); } catch {}
+  if (j) {
+    for (const it of [...(j.upcoming || []), ...(j.items || [])]) {
+      if (!it || !it.startDate) continue;
+      const p = hkiParts(it.startDate);
+      mk(it.title || '', p.date, p.time, new URL(it.fullUrl || src.path, src.site).href);
+    }
+  } else {
+    for (const ch of String(body).split(/<article\b(?=[^>]*eventlist-event)/i).slice(1)) {
+      const a = /class="[^"]*eventlist-title[^"]*"[\s\S]*?<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i.exec(ch);
+      const d = /datetime="(20\d\d-\d\d-\d\d)"/i.exec(ch);
+      const t = /event-time-24hr[^>]*>\s*(\d{1,2}:\d{2})/i.exec(ch);
+      if (a && d) mk(a[2], d[1], t ? (t[1].length === 4 ? '0' + t[1] : t[1]) : null, new URL(decode(a[1]), src.site).href);
+    }
+  }
+  const seen = new Set();
+  return out.filter(e => !seen.has(e.id) && seen.add(e.id));
+}
+
 async function robotsAllows(src, ctx) {
   try {
     const r = await cachedFetch(src.site + '/robots.txt', ctx, 24 * 3600);
@@ -322,8 +369,8 @@ export function classify(e) {
   let k = 'Keikka';
   if (e.kind === 'Urheilu' || SPORT.test(t + ' ' + (e.url || ''))) k = 'Urheilu';
   else if (/teatteri|näytelmä|ooppera|baletti|musikaali|stand ?up|komiikka|improvisaatio/i.test(t)) k = 'Teatteri';
+  else if (/muu tapahtuma|sarjakuva|salonki|markkinat|messut|luento|keskustelu|tietovisa|visailu|viihdevisa|pubivisa|\bvisa\b|bingo|työpaja/i.test(t)) k = 'Muu';
   else if (/yökerho|klubi|club|disco|\bdj\b|dj:t|dj's|dj:s|tanssit|karaoke|pubikeikka/i.test(t)) k = 'Klubi';
-  else if (/muu tapahtuma|sarjakuva|salonki|markkinat|messut|luento|keskustelu|tietovisa|bingo|työpaja/i.test(t)) k = 'Muu';
   e.kind = k;
   if (k !== 'Keikka') delete e.genre;
   return e;
@@ -338,6 +385,13 @@ export async function collect(ctx, debug = false) {
   const lists = await Promise.all(SOURCES.map(async src => {
     try {
       if (!(await robotsAllows(src, ctx))) { status[src.id] = 'robots.txt kieltää'; return []; }
+      if (src.mode === 'squarespace') {
+        let ev = [];
+        try { const rj = await cachedFetch(src.site + src.path + '?format=json', ctx); if (rj.ok) ev = parseSquarespace(src, await rj.text(), debug); } catch {}
+        if (!ev.length) { const rh = await cachedFetch(src.site + src.path, ctx); if (!rh.ok) { status[src.id] = 'HTTP ' + rh.status; return []; } ev = parseSquarespace(src, await rh.text(), debug); }
+        status[src.id] = ev.length;
+        return ev;
+      }
       const r = await cachedFetch(src.site + src.path, ctx);
       if (!r.ok) { status[src.id] = 'HTTP ' + r.status; return []; }
       const html = await r.text();
