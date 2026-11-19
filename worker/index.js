@@ -120,7 +120,7 @@ export function parseListing(src, html, debug = false) {
     const n = nodes[best];
     const text = linearize(html.slice(n.s, n.e), base);
     const ev = parseCard(src, url, list[0].d, text, list.map(a => a.text));
-    if (debug) ev._txt = text.replace(/[\u0001-\u0003]/g, '|').slice(0, 600);
+    if (debug) { ev._txt = text.replace(/[\u0001-\u0003]/g, '|').slice(0, 600); ev._html = html.slice(n.s, n.e).replace(/<(img|svg|source|picture)\b[^>]*>/gi, '').replace(/\s(?!class=)[\w:-]+=("[^"]*"|'[^']*')/g, '').replace(/\s+/g, ' ').slice(0, 900); }
     out.push(ev);
   }
   return out;
