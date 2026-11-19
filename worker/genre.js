@@ -44,3 +44,31 @@ export async function mbGenre(name, ua) {
   for (const c of cands) { const g = mapTags(c.tags || []); if (g) return g; }
   return null;
 }
+
+// Varalähde: Wikidata (CC0). Haku nimellä → muusikko/yhtye → genre (P136) → luokka
+const MUSIC_DESC = /yhtye|bändi|band|muusikko|musician|laulaja|singer|rapper|räppäri|lauluntekijä|songwriter|dj|duo|orkesteri|orchestra|kuoro|choir|artisti|artist|säveltäjä|composer|kitaristi|pianisti|rumpali|trio|kvartetti|quartet/i;
+export async function wdGenre(name, ua) {
+  const h = { 'User-Agent': ua, 'Accept': 'application/json' };
+  const api = 'https://www.wikidata.org/w/api.php?format=json&origin=*&';
+  const sr = await fetch(api + 'action=wbsearchentities&type=item&limit=7&language=fi&uselang=fi&search=' + encodeURIComponent(name), { headers: h });
+  if (!sr.ok) throw new Error('WD ' + sr.status);
+  const sj = await sr.json();
+  const want = norm(name);
+  const cands = (sj.search || []).filter(x => norm(x.label || '') === want && MUSIC_DESC.test(x.description || ''));
+  if (!cands.length) return null;
+  const er = await fetch(api + 'action=wbgetentities&props=claims&ids=' + cands.slice(0, 3).map(c => c.id).join('|'), { headers: h });
+  if (!er.ok) throw new Error('WD ' + er.status);
+  const ej = await er.json();
+  const gids = [];
+  for (const c of cands.slice(0, 3)) {
+    const cl = (ej.entities[c.id] || {}).claims || {};
+    for (const st of cl.P136 || []) { const id = st.mainsnak && st.mainsnak.datavalue && st.mainsnak.datavalue.value.id; if (id) gids.push(id); }
+    if (gids.length) break;
+  }
+  if (!gids.length) return null;
+  const lr = await fetch(api + 'action=wbgetentities&props=labels&languages=en&ids=' + [...new Set(gids)].slice(0, 20).join('|'), { headers: h });
+  if (!lr.ok) throw new Error('WD ' + lr.status);
+  const lj = await lr.json();
+  const tags = Object.values(lj.entities || {}).map(e => ({ name: ((e.labels || {}).en || {}).value || '', count: 1 }));
+  return mapTags(tags);
+}

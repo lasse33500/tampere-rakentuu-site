@@ -2,7 +2,7 @@
 // Sama Worker ("mansessa") palvelee historiasivuston staattiset tiedostot (assets) ja /nyt-polut.
 // Tapahtumista näytetään vain faktat (nimi, aika, paikka, hinta, ikäraja) ja linkki alkuperäiseen sivuun.
 import { PAGE } from './page.js';
-import { artistKey, mbGenre } from './genre.js';
+import { artistKey, mbGenre, wdGenre } from './genre.js';
 
 export const SOURCES = [
   { id: 'tullikamari', name: 'Tullikamari', site: 'https://tullikamari.fi', path: '/ohjelma/',
@@ -27,7 +27,7 @@ export const SOURCES = [
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19i';
+export const VERSION = '2026-11-19j';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -315,20 +315,22 @@ export async function collect(ctx, debug = false) {
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 // Ajastettu päivitys: hae tapahtumat, täydennä genret MusicBrainzista (enintään BUDGET uutta artistia / ajo), tallenna KV:hen
-export async function refresh(env, ctx, budget = 20) {
+export async function refresh(env, ctx, budget = 10) { // Workers free: max 50 alipyyntöä / ajo
   const data = await collect(ctx);
   let gmap = {};
   if (env.NYT) { try { gmap = JSON.parse(await env.NYT.get('genres') || '{}'); } catch { gmap = {}; } }
-  const now = Date.now(); let used = 0, changed = false; const log = [];
+  const now = Date.now(); let used = 0, changed = false, mbDown = false; const log = [];
   const keys = [...new Set(data.events.map(artistKey).filter(Boolean))];
   for (const k of keys) {
     const hit = gmap[k];
     if (hit && (hit.g || now - hit.t < 14 * 864e5)) continue;
     if (used >= budget) break;
     used++;
-    try { const g = await mbGenre(k, MB_UA); gmap[k] = { g, t: now }; changed = true; log.push(k + '=' + g); }
-    catch (e) { log.push(k + ' ! ' + e.message); break; }
-    await sleep(1100);
+    let g = null, src = '';
+    if (!mbDown) { try { g = await mbGenre(k, MB_UA); src = 'mb'; } catch (e) { mbDown = true; log.push('MB ' + e.message); } }
+    if (!g) { try { g = await wdGenre(k, MB_UA); src = g ? 'wd' : src || 'wd'; } catch (e) { log.push(k + ' ! ' + e.message); break; } }
+    gmap[k] = { g, t: now, s: src }; changed = true; log.push(k + '=' + g + '(' + src + ')');
+    await sleep(mbDown ? 300 : 1100);
   }
   for (const e of data.events) { const k = artistKey(e); if (k && gmap[k] && gmap[k].g) e.genre = gmap[k].g; }
   data.genres = { log, known: keys.filter(k => gmap[k] && gmap[k].g).length, checked: keys.filter(k => gmap[k]).length, artists: keys.length };
@@ -359,7 +361,7 @@ export default {
     if (p === '/nyt/api/tapahtumat.json') {
       const debug = url.searchParams.has('debug');
       if (debug) return new Response(JSON.stringify(await collect(ctx, true), null, 1), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
-      if (url.searchParams.has('refresh') && env.NYT) { const d = await refresh(env, ctx, 8); return new Response(JSON.stringify({ v: d.v, status: d.status, genres: d.genres }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
+      if (url.searchParams.has('refresh') && env.NYT) { const d = await refresh(env, ctx, 6); return new Response(JSON.stringify({ v: d.v, status: d.status, genres: d.genres }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
       if (env.NYT) { const stored = await env.NYT.get('events'); if (stored) { const d = JSON.parse(stored); d.events = d.events.filter(e => e.date >= todayHelsinki()); return new Response(JSON.stringify(d), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=600', 'Access-Control-Allow-Origin': '*' } }); } }
       const cache = caches.default, key = new Request(url.origin + p);
       let res = await cache.match(key);
