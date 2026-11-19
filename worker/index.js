@@ -1,0 +1,200 @@
+// Manse nyt – mansessa.fi/nyt
+// Sama Worker ("mansessa") palvelee historiasivuston staattiset tiedostot (assets) ja /nyt-polut.
+// Tapahtumista näytetään vain faktat (nimi, aika, paikka, hinta, ikäraja) ja linkki alkuperäiseen sivuun.
+import { PAGE } from './page.js';
+
+export const SOURCES = [
+  { id: 'tullikamari', name: 'Tullikamari', site: 'https://tullikamari.fi', path: '/ohjelma/',
+    link: /^https?:\/\/(?:www\.)?tullikamari\.fi\/tapahtumat\/[^?#]*?(\d{1,2})-(\d{1,2})-(\d{4})(?:-\d+)?\/?$/,
+    venue: t => /Pakkahuone/i.test(t) ? 'Pakkahuone' : /Klubi/i.test(t) ? 'Klubi' : 'Tullikamari',
+    addr: 'Tullikamarin aukio 2' },
+  { id: 'tavara-asema', name: 'Tavara-asema', site: 'https://tavara-asema.fi', path: '/ohjelma/',
+    link: /^https?:\/\/(?:www\.)?tavara-asema\.fi\/ohjelma\/[^?#]*?(\d{1,2})-(\d{1,2})-(\d{4})(?:-\d+)?\/?$/,
+    venue: t => /Rataklubi/i.test(t) ? 'Tavara-asema, Rataklubi' : 'Tavara-asema',
+    addr: 'Ratapihankatu 33' },
+];
+const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
+const TTL = 3 * 3600;
+const GENERIC = /^(lue lisää|lisätietoja|liput|osta liput|osta lippu|read more|buy tickets|tickets|loppuunmyyty|sold out|›|→|»)$/i;
+
+const ENT = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', ndash: '–', mdash: '—', hellip: '…', euro: '€', auml: 'ä', ouml: 'ö', aring: 'å', Auml: 'Ä', Ouml: 'Ö', Aring: 'Å', eacute: 'é', rsquo: '’', lsquo: '‘', ldquo: '“', rdquo: '”' };
+export function decode(s) {
+  return s.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) => {
+    if (e[0] === '#') { const n = e[1].toLowerCase() === 'x' ? parseInt(e.slice(2), 16) : parseInt(e.slice(1), 10); return Number.isFinite(n) ? String.fromCodePoint(n) : m; }
+    return ENT[e] ?? m;
+  });
+}
+const clean = s => decode(s.replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ').trim();
+
+// HTML → tekstirivit, joissa linkit merkitty: \u0001URL\u0002teksti\u0003
+export function linearize(html, base) {
+  html = html.replace(/<!--[\s\S]*?-->/g, ' ')
+    .replace(/<(script|style|noscript|svg|template|head)[\s\S]*?<\/\1>/gi, ' ');
+  html = html.replace(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi, (m, attrs, inner) => {
+    const h = /href\s*=\s*["']([^"']+)["']/i.exec(attrs);
+    let url = h ? decode(h[1]) : '';
+    try { url = new URL(url, base).href; } catch { url = ''; }
+    return `\u0001${url}\u0002${clean(inner)}\u0003`;
+  });
+  html = html.replace(/<(br|\/p|\/div|\/li|\/h\d|\/span|\/time|li|p|div|h\d|article|\/article|section|\/section|tr|\/tr|td|\/td|dt|dd)\b[^>]*>/gi, '\n');
+  html = html.replace(/<[^>]*>/g, ' ');
+  return decode(html).replace(/[ \t\r\f\v]+/g, ' ').replace(/ ?\n ?/g, '\n').replace(/\n{2,}/g, '\n');
+}
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+export function parseCard(src, url, d, text, titles) {
+  const t = text.replace(/\u0001[^\u0002]*\u0002([^\u0003]*)\u0003/g, '$1');
+  const lines = t.split('\n').map(x => x.trim()).filter(Boolean);
+  let title = titles.filter(x => x && !GENERIC.test(x) && !/^\d{1,2}[.:]\d{2}$/.test(x)).sort((a, b) => b.length - a.length)[0] || '';
+  if (!title) title = lines.find(l => !/^(ma|ti|ke|to|pe|la|su)\b\.?\s*\d/i.test(l) && !/€|^ovet|^k\d|^s\/|^alk/i.test(l) && l.length > 2) || '';
+  let doors = null, start = null;
+  const dm = /Ovet(?:\s*klo)?\s*:?\s*(\d{1,2})[:.](\d{2})/i.exec(t);
+  if (dm) doors = `${pad(dm[1])}:${dm[2]}`;
+  const tt = t.replace(/Ovet(?:\s*klo)?\s*:?\s*\d{1,2}[:.]\d{2}(?:\s*[–-]\s*\d{1,2}[:.]\d{2})?/gi, ' ')
+             .replace(/\(?(?:lämppäri|support|esiintyy)[^)\n]*\)?/gi, ' ');
+  const sm = /klo\s*([01]?\d|2[0-3])[:.]([0-5]\d)/i.exec(tt) || /(?:^|[^\d.:/])([01]?\d|2[0-3]):([0-5]\d)(?![\d€])/.exec(tt);
+  if (sm) start = `${pad(sm[1])}:${sm[2]}`;
+  const num = s => s ? parseFloat(s.replace(',', '.')) : null;
+  const pf = /alk\.?\s*(\d+(?:[,.]\d{1,2})?)\s*€/i.exec(t) || /(\d+(?:[,.]\d{1,2})?)\s*€/.exec(t);
+  const pd = /Ovelta\s*:?\s*(\d+(?:[,.]\d{1,2})?)\s*€/i.exec(t);
+  const age = (/(?:^|[\s(])(S\s*\/\s*K-?18|K-?18\s*\/\s*S|K-?18|K-?20|K-?16)(?=[\s),]|$)/i.exec(t) || [])[1];
+  title = title.replace(/\s*(?:klo\s*)?\b([01]?\d|2[0-3])[:.][0-5]\d\s*$/, '').replace(/\s+/g, ' ').trim();
+  return {
+    id: src.id + ':' + url.replace(/^https?:\/\/[^/]+/, ''),
+    title, date: `${d[3]}-${pad(d[2])}-${pad(d[1])}`, start, doors,
+    venue: src.venue(t), place: src.name, addr: src.addr,
+    price: num(pf && pf[1]), door: num(pd && pd[1]),
+    free: /vapaa pääsy|maksuton|ilmainen/i.test(t),
+    soldout: /loppuunmyyty|sold out/i.test(t),
+    age: age ? age.replace(/\s/g, '').toUpperCase() : null,
+    url, source: src.name,
+  };
+}
+
+const VOID = new Set(['area','base','br','col','embed','hr','img','input','link','meta','source','track','wbr','param']);
+// Kevyt elementtipuu: jokaiselle elementille [alku, loppu, vanhempi]
+export function elementTree(html) {
+  const nodes = [{ tag: '#root', s: 0, e: html.length, p: -1 }], stack = [0];
+  const re = /<(\/?)([a-zA-Z][\w-]*)\b[^>]*?(\/?)>/g; let m;
+  while ((m = re.exec(html))) {
+    const tag = m[2].toLowerCase();
+    if (m[1]) { // sulkeva
+      for (let k = stack.length - 1; k > 0; k--) if (nodes[stack[k]].tag === tag) { for (let j = stack.length - 1; j >= k; j--) nodes[stack[j]].e = re.lastIndex; stack.length = k; break; }
+    } else if (!VOID.has(tag) && !m[3]) {
+      nodes.push({ tag, s: m.index, e: html.length, p: stack[stack.length - 1] }); stack.push(nodes.length - 1);
+      if (tag === 'script' || tag === 'style') { const end = html.toLowerCase().indexOf('</' + tag, re.lastIndex); if (end > 0) re.lastIndex = end; }
+    }
+  }
+  return nodes;
+}
+
+export function parseListing(src, html, debug = false) {
+  html = html.replace(/<!--[\s\S]*?-->/g, m => ' '.repeat(m.length));
+  const base = src.site + src.path;
+  const nodes = elementTree(html);
+  const anchors = []; // {node, url, d, text}
+  nodes.forEach((n, i) => {
+    if (n.tag !== 'a') return;
+    const open = html.slice(n.s, html.indexOf('>', n.s) + 1);
+    const h = /href\s*=\s*["']([^"']+)["']/i.exec(open); if (!h) return;
+    let u; try { u = new URL(decode(h[1]), base).href; } catch { return; }
+    const d = src.link.exec(u); if (!d) return;
+    anchors.push({ i, url: u.replace(/\/?$/, '/'), d, text: clean(html.slice(n.s, n.e)) });
+  });
+  const byUrl = new Map();
+  for (const a of anchors) { if (!byUrl.has(a.url)) byUrl.set(a.url, []); byUrl.get(a.url).push(a); }
+  const containsOther = (n, url) => anchors.some(a => a.url !== url && nodes[a.i].s >= n.s && nodes[a.i].e <= n.e);
+  const out = [];
+  for (const [url, list] of byUrl) {
+    // nouse ensimmäisestä linkistä ylöspäin niin kauan kuin elementti ei sisällä muiden tapahtumien linkkejä
+    let cur = list[0].i, best = cur;
+    while (nodes[cur].p > 0) {
+      const par = nodes[nodes[cur].p];
+      if (['body', 'html', 'main'].includes(par.tag) || containsOther(par, url) || par.e - par.s > 20000) break;
+      cur = nodes[cur].p; best = cur;
+    }
+    const n = nodes[best];
+    const text = linearize(html.slice(n.s, n.e), base);
+    const ev = parseCard(src, url, list[0].d, text, list.map(a => a.text));
+    if (debug) ev._txt = text.replace(/[\u0001-\u0003]/g, '|').slice(0, 600);
+    out.push(ev);
+  }
+  return out;
+}
+
+async function robotsAllows(src, ctx) {
+  try {
+    const r = await cachedFetch(src.site + '/robots.txt', ctx, 24 * 3600);
+    if (!r.ok) return true;
+    const txt = await r.text();
+    let applies = false; const dis = [];
+    for (const line of txt.split('\n')) {
+      const [k, ...v] = line.split(':'); const val = v.join(':').trim();
+      if (/^user-agent$/i.test(k.trim())) applies = val === '*' || /mansessa/i.test(val);
+      else if (applies && /^disallow$/i.test(k.trim()) && val) dis.push(val);
+    }
+    return !dis.some(p => src.path.startsWith(p.replace(/\*.*$/, '')));
+  } catch { return true; }
+}
+
+async function cachedFetch(url, ctx, ttl = TTL) {
+  const cache = caches.default, key = new Request(url, { method: 'GET' });
+  const hit = await cache.match(key);
+  if (hit) return hit;
+  const r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept': 'text/html,*/*' }, cf: { cacheTtl: ttl } });
+  if (r.ok) {
+    const copy = new Response(r.clone().body, r);
+    copy.headers.set('Cache-Control', `public, max-age=${ttl}`);
+    ctx.waitUntil(cache.put(key, copy));
+  }
+  return r;
+}
+
+function todayHelsinki() {
+  return new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Helsinki' }).format(new Date());
+}
+
+export async function collect(ctx, debug = false) {
+  const today = todayHelsinki();
+  const status = {};
+  const lists = await Promise.all(SOURCES.map(async src => {
+    try {
+      if (!(await robotsAllows(src, ctx))) { status[src.id] = 'robots.txt kieltää'; return []; }
+      const r = await cachedFetch(src.site + src.path, ctx);
+      if (!r.ok) { status[src.id] = 'HTTP ' + r.status; return []; }
+      const ev = parseListing(src, await r.text(), debug);
+      status[src.id] = ev.length;
+      return ev;
+    } catch (e) { status[src.id] = 'virhe: ' + e.message; return []; }
+  }));
+  const events = lists.flat().filter(e => e.date >= today)
+    .sort((a, b) => (a.date + (a.start || a.doors || '99')).localeCompare(b.date + (b.start || b.doors || '99')));
+  return { updated: new Date().toISOString(), today, status, events };
+}
+
+export default {
+  async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+    const p = url.pathname;
+    if (p === '/nyt') return Response.redirect(url.origin + '/nyt/' + url.search, 301);
+    if (p === '/nyt/') {
+      return new Response(PAGE, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=600' } });
+    }
+    if (p === '/nyt/api/tapahtumat.json') {
+      const debug = url.searchParams.has('debug');
+      if (debug) return new Response(JSON.stringify(await collect(ctx, true), null, 1), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
+      const cache = caches.default, key = new Request(url.origin + p);
+      let res = await cache.match(key);
+      if (!res) {
+        const data = await collect(ctx);
+        res = new Response(JSON.stringify(data), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=1800', 'Access-Control-Allow-Origin': '*' } });
+        if (Object.values(data.status).every(v => typeof v === 'number')) ctx.waitUntil(cache.put(key, res.clone()));
+      }
+      return res;
+    }
+    // kaikki muu: historiasivuston staattiset tiedostot
+    if (env.ASSETS) return env.ASSETS.fetch(request);
+    return new Response('Not found', { status: 404 });
+  },
+};
