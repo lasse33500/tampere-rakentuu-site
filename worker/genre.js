@@ -35,8 +35,7 @@ const norm = s => s.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').repl
 export async function mbGenre(name, ua) {
   const q = `artist:"${name.replace(/"/g, '')}"`;
   const r = await fetch(`https://musicbrainz.org/ws/2/artist/?query=${encodeURIComponent(q)}&fmt=json&limit=8`, { headers: { 'User-Agent': ua, 'Accept': 'application/json' } });
-  if (r.status === 503) throw new Error('rate');
-  if (!r.ok) return null;
+  if (!r.ok) throw new Error('HTTP ' + r.status);
   const j = await r.json();
   const want = norm(name);
   const cands = (j.artists || []).filter(a => norm(a.name) === want || (a.aliases || []).some(x => norm(x.name) === want));

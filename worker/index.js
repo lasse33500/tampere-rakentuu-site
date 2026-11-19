@@ -21,7 +21,7 @@ export const SOURCES = [
     skip: /liiga|runkosarja|ottelu|otteluliput|salibandy|floorball|jääkiekko|hockey|\bWFC\b|MM-kilpailut|playoff|pudotuspeli/i,
     venue: () => 'Nokia Arena', addr: 'Kansikatu 3' },
 ];
-export const VERSION = '2026-11-19g';
+export const VERSION = '2026-11-19h';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -263,19 +263,19 @@ export async function refresh(env, ctx, budget = 20) {
   const data = await collect(ctx);
   let gmap = {};
   if (env.NYT) { try { gmap = JSON.parse(await env.NYT.get('genres') || '{}'); } catch { gmap = {}; } }
-  const now = Date.now(); let used = 0, changed = false;
+  const now = Date.now(); let used = 0, changed = false; const log = [];
   const keys = [...new Set(data.events.map(artistKey).filter(Boolean))];
   for (const k of keys) {
     const hit = gmap[k];
     if (hit && (hit.g || now - hit.t < 14 * 864e5)) continue;
     if (used >= budget) break;
     used++;
-    try { const g = await mbGenre(k, MB_UA); gmap[k] = { g, t: now }; changed = true; }
-    catch (e) { break; }
+    try { const g = await mbGenre(k, MB_UA); gmap[k] = { g, t: now }; changed = true; log.push(k + '=' + g); }
+    catch (e) { log.push(k + ' ! ' + e.message); break; }
     await sleep(1100);
   }
   for (const e of data.events) { const k = artistKey(e); if (k && gmap[k] && gmap[k].g) e.genre = gmap[k].g; }
-  data.genres = { known: keys.filter(k => gmap[k] && gmap[k].g).length, checked: keys.filter(k => gmap[k]).length, artists: keys.length };
+  data.genres = { log, known: keys.filter(k => gmap[k] && gmap[k].g).length, checked: keys.filter(k => gmap[k]).length, artists: keys.length };
   if (env.NYT) {
     if (changed) await env.NYT.put('genres', JSON.stringify(gmap));
     if (Object.values(data.status).every(v => typeof v === 'number')) await env.NYT.put('events', JSON.stringify(data));
