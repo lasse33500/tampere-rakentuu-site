@@ -9,6 +9,6 @@
     "not_found_handling": "none"
   },
   "kv_namespaces": [{ "binding": "NYT" }],
-  "triggers": { "crons": ["7,27,47 * * * *"] },
+  "triggers": { "crons": ["0 0 * * *"] },
   "observability": { "enabled": true }
 }
