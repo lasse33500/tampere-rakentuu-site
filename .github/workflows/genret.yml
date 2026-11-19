@@ -21,4 +21,4 @@ jobs:
           git config user.name "mansessa-bot"
           git config user.email "lasse33500@users.noreply.github.com"
           git add nyt-data/genres.json
-          git diff --cached --quiet || (git commit -m "Manse nyt: genret päivitetty" && git push)
+          git diff --cached --quiet || (git commit -m "Manse nyt: genret päivitetty" && git pull --rebase && git push)

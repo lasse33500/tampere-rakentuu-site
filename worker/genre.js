@@ -80,3 +80,26 @@ export async function wdGenre(name, ua, dbg) {
   if (dbg) dbg.tags = tags.map(t => t.name);
   return mapTags(tags);
 }
+
+// Genre tapahtumapaikan oman tapahtumasivun esittelytekstistä (vain avainsanat, tekstiä ei tallenneta)
+const DESC = [
+  ['Lapsille', /lastenmusiik|lastenkonsert|perhekonsert|koko perheen konsert/g],
+  ['Klassinen', /sinfoni|kamarimusiik|ooppera|klassisen musiikin|filharmon/g],
+  ['Iskelmä', /iskelm|tango|humppa/g],
+  ['Metalli', /metalli|\bmetal\b|metalcore|thrash|death metal|black metal|doom/g],
+  ['Punk', /punk|hardcore/g],
+  ['Rap', /\bräp|\brap\b|räppä|hip ?hop/g],
+  ['Elektroninen', /elektroni|techno|tekno\b|\bhouse\b|\bedm\b|syntikkapop|synthpop/g],
+  ['Jazz & blues', /jazz|blues|\bsoul\b|\bfunk|big band/g],
+  ['Folk', /\bfolk|kansanmusiik|\bcountry|americana|laulaja-lauluntekijä|reggae/g],
+  ['Pop', /\bpop\b|\bpopin|\bpoppi|popyhtye|poptähti|popartisti/g],
+  ['Rock', /rock|proge|progressiivi|\bindie|grunge/g],
+];
+export function descGenre(html) {
+  const ps = [...String(html).replace(/<(script|style|nav|header|footer)[\s\S]*?<\/\1>/gi, ' ').matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)]
+    .map(m => m[1].replace(/<[^>]*>/g, ' ')).join(' ').toLowerCase();
+  if (ps.length < 80) return null;
+  let best = null, bs = 0;
+  for (const [g, re] of DESC) { const n = (ps.match(re) || []).length; if (n > bs) { best = g; bs = n; } }
+  return best;
+}
