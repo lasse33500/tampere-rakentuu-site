@@ -40,11 +40,15 @@ export const SOURCES = [
     venue: () => 'Tampere-talo', addr: 'Yliopistonkatu 55' },
   { id: 'komediateatteri', name: 'Tampereen Komediateatteri', site: 'https://www.komediateatteri.fi', path: '/24/ohjelmisto', mode: 'komedia',
     addr: 'Lapintie 3a' },
+  { id: 'tampereen-teatteri', name: 'Tampereen Teatteri', site: 'https://tampereenteatteri.fi', path: '/wp-admin/admin-ajax.php', mode: 'tt', pages: 4,
+    addr: null },
+  { id: 'ttt-klubi', name: 'TTT-klubi', site: 'https://ttt-teatteri.fi', path: '/wp-admin/admin-ajax.php', mode: 'ttt', pages: 5,
+    addr: 'Hallituskatu 19' },
   { id: 'bar-kotelo', name: 'Bar Kotelo', site: 'https://barkotelo.fi', path: '/keikat/', mode: 'text',
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19w';
+export const VERSION = '2026-11-19x';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -402,6 +406,53 @@ export function parseKomedia(src, html) {
   return out;
 }
 
+// Tampereen Teatteri: sivuston oma kalenteripyyntö (admin-ajax, action tt_fetch_calendar_events, 10 näytöstä / sivu).
+// Päiväotsikko <h3>, sen alla div.row.show: h4 a (näytelmä), p.time "KLO 19.00" + näyttämö, p.status.
+export function parseTT(src, html) {
+  const today = todayHelsinki(), out = [];
+  const parts = String(html).split(/(<h3\b[^>]*>[\s\S]*?<\/h3>)/i);
+  let date = null;
+  for (const part of parts) {
+    const h = /^<h3\b[^>]*>([\s\S]*?)<\/h3>$/i.exec(part);
+    if (h) { const t = clean(decode(h[1])); const m = /(\d{1,2})\.(\d{1,2})\.(20\d\d)/.exec(t); date = m ? `${m[3]}-${pad(m[2])}-${pad(m[1])}` : textDate(t, today); continue; }
+    if (!date || date < today) continue;
+    for (const ch of part.split(/<div\s+class="row show/i).slice(1)) {
+      const a = /<h4[^>]*>\s*<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i.exec(ch);
+      if (!a) continue;
+      const tl = clean(decode(((/class="time"[^>]*>([\s\S]*?)<\/p>/i.exec(ch) || [])[1] || '').replace(/<[^>]*>/g, ' ')));
+      const tm = /(\d{1,2})[.:](\d{2})/.exec(tl);
+      const stage = tl.replace(/^.*?\d{1,2}[.:]\d{2}\s*/, '').trim();
+      const st = clean(decode(((/class="status"[^>]*>([\s\S]*?)<\/p>/i.exec(ch) || [])[1] || '').replace(/<[^>]*>/g, ' ')));
+      const title = clean(decode(a[2]));
+      out.push({ id: src.id + ':' + a[1] + ':' + date + (tm ? tm[1] + tm[2] : ''), title, sub: stage || null, date, start: tm ? `${pad(tm[1])}:${tm[2]}` : null, doors: null,
+        venue: 'Tampereen Teatteri', place: src.name, addr: src.addr, price: null, door: null, free: false,
+        soldout: /loppuunmyyty|ei lippuja/i.test(st), age: null, url: new URL(decode(a[1]), src.site).href, source: src.name,
+        cat: /konsertti|musiikki-ilta/i.test(title) && !/musikaali/i.test(title) ? 'Konsertti' : 'Teatteri' });
+    }
+  }
+  return out;
+}
+// TTT-klubi: lomakkeen admin-ajax-pyyntö (action esityskalenterifiltteri, kategoria 25, paikka 42), JSON { result: HTML, max_pages }.
+// Rivi div.kalenteri-esitysrivi: p.esitysrivi__date "TO 19.11.", p.esitysrivi__time "KLO 18:30", p.esitysrivi__title a, span.esitysrivi_ticket_text.
+export function parseTTT(src, html) {
+  const today = todayHelsinki(), out = [];
+  for (const ch of String(html).split(/<div[^>]*class="[^"]*kalenteri-esitysrivi/i).slice(1)) {
+    const d = /class="esitysrivi__date"[^>]*>([^<]*)</i.exec(ch);
+    const t = /class="esitysrivi__time"[^>]*>[^<\d]*(\d{1,2})[.:](\d{2})/i.exec(ch);
+    const a = /class="esitysrivi__title"[^>]*>[\s\S]*?<a\b[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i.exec(ch);
+    if (!d || !a) continue;
+    const date = textDate(d[1], today);
+    if (!date || date < today) continue;
+    const title = clean(decode(a[2]));
+    const st = clean(decode((/esitysrivi_ticket_text"[^>]*>([^<]*)</i.exec(ch) || [])[1] || ''));
+    const music = /\bfeat\.?|\btrio\b|kvartetti|quartet|\bband\b|konsertti|orkesteri|jazz|blues|levynjulkaisu|& [A-ZÅÄÖ]/i.test(title) && !/stand ?up/i.test(title);
+    out.push({ id: src.id + ':' + a[1] + ':' + date + (t ? t[1] + t[2] : ''), title, date, start: t ? `${pad(t[1])}:${t[2]}` : null, doors: null,
+      venue: 'TTT-klubi', place: src.name, addr: src.addr, price: null, door: null, free: false,
+      soldout: /loppuunmyyty/i.test(st), age: null, url: decode(a[1]), source: src.name, cat: music ? 'Konsertti' : 'Teatteri' });
+  }
+  return out;
+}
+
 async function robotsAllows(src, ctx) {
   try {
     const r = await cachedFetch(src.site + '/robots.txt', ctx, 24 * 3600);
@@ -450,6 +501,26 @@ export async function collect(ctx, debug = false) {
   const lists = await Promise.all(SOURCES.map(async src => {
     try {
       if (!(await robotsAllows(src, ctx))) { status[src.id] = 'robots.txt kieltää'; return []; }
+      if (src.mode === 'tt' || src.mode === 'ttt') {
+        const AJ = { 'User-Agent': UA, 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'X-Requested-With': 'XMLHttpRequest' };
+        const [y, mo, da] = today.split('-');
+        let ev = [];
+        for (let p = 1; p <= (src.pages || 3); p++) {
+          const body = src.mode === 'tt'
+            ? 'action=tt_fetch_calendar_events&params=' + encodeURIComponent(JSON.stringify({ date: `${da}.${mo}.${y}`, stage: '', genre: '', page: p, show_id: 0 }))
+            : 'action=esityskalenterifiltteri&eventdate=noselecteddate&includecategory%5B%5D=25&includevenue%5B%5D=42&paged=' + p;
+          const r = await fetch(src.site + src.path, { method: 'POST', body, headers: AJ });
+          if (!r.ok) { if (p === 1) { status[src.id] = 'HTTP ' + r.status; return []; } break; }
+          const txt = await r.text();
+          let html = txt, max = 99;
+          if (src.mode === 'ttt') { try { const j = JSON.parse(txt); html = j.result || ''; max = +j.max_pages || 1; } catch { html = ''; } }
+          const got = src.mode === 'tt' ? parseTT(src, html) : parseTTT(src, html);
+          ev = ev.concat(got);
+          if (!got.length || p >= max) break;
+        }
+        const seen = new Set(); ev = ev.filter(e => !seen.has(e.id) && seen.add(e.id));
+        status[src.id] = ev.length; return ev;
+      }
       if (src.mode === 'komedia') {
         const r = await cachedFetch(src.site + src.path, ctx);
         if (!r.ok) { status[src.id] = 'HTTP ' + r.status; return []; }
@@ -482,7 +553,7 @@ export async function collect(ctx, debug = false) {
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 // Ajastettu päivitys: hae tapahtumat, täydennä genret MusicBrainzista (enintään BUDGET uutta artistia / ajo), tallenna KV:hen
-export async function refresh(env, ctx, budget = 5) { // Workers free: max 50 alipyyntöä / ajo (lähteet 2×10 + Wikidata 3×5)
+export async function refresh(env, ctx, budget = 2) { // Workers free: max 50 alipyyntöä / ajo (lähteet 2×13 + teatterisivut 9+2 + Wikidata 3×2; genret pääosin GitHub Actionsista)
   const data = await collect(ctx);
   let gmap = {};
   if (env.NYT) { try { gmap = JSON.parse(await env.NYT.get('genres') || '{}'); } catch { gmap = {}; } }
@@ -540,7 +611,7 @@ export default {
         return new Response('HTTP ' + r.status + '\n\nREFS:\n' + ref.join('\n') + '\n\nHTML:\n' + (() => { let h = url.searchParams.has('keep') ? t : t.replace(/<(svg|style|script|head|noscript)[\s\S]*?<\/\1>/gi, '').replace(/\s(?:style|srcset|sizes)="[^"]*"/gi, ''); const q = url.searchParams.get('q'); if (q) { const i = h.indexOf(q); h = i < 0 ? 'q not found' : h.slice(Math.max(0, i - 3000), i + 3000); } return h.slice(0, 60000); })(), { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' } });
       }
       if (url.searchParams.has('wd')) { const dbg = {}; let g = null, err = null; try { g = await wdGenre(url.searchParams.get('wd'), MB_UA, dbg); } catch (e) { err = e.message; } return new Response(JSON.stringify({ g, err, dbg }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
-      if (url.searchParams.has('refresh') && env.NYT) { const d = await refresh(env, ctx, 5); return new Response(JSON.stringify({ v: d.v, status: d.status, genres: d.genres }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
+      if (url.searchParams.has('refresh') && env.NYT) { const d = await refresh(env, ctx, 2); return new Response(JSON.stringify({ v: d.v, status: d.status, genres: d.genres }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
       if (env.NYT) { const stored = await env.NYT.get('events'); if (stored) { const d = JSON.parse(stored); d.events = d.events.filter(e => e.date >= todayHelsinki()); return new Response(JSON.stringify(d), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=600', 'Access-Control-Allow-Origin': '*' } }); } }
       const cache = caches.default, key = new Request(url.origin + p);
       let res = await cache.match(key);
