@@ -28,7 +28,7 @@ export const SOURCES = [
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19n';
+export const VERSION = '2026-11-19o';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -257,6 +257,19 @@ export function parseListing(src, html, debug = false) {
     const ev = parseCard(src, g.url, date, text, heads.length ? heads : g.list.map(a => a.text));
     structured(ev, chunk);
     if (src.skip && src.skip.test(ev.title + ' ' + g.url)) continue;
+    if (src.perLink && src.perLink.test(ev.title + ' ' + g.url)) {
+      // sarjakortti (Liiga, MM-kisat): tekstissä rivejä "|URL|pp.kk.vvvv Koti – Vieras|" – jokainen oma ottelunsa
+      const games = [...text.matchAll(/\u0001?(https?:[^\u0001-\u0003|\s]+)[\u0001-\u0003|]+\s*(\d{1,2})\.(\d{1,2})\.(20\d\d)\s+([^\u0001-\u0003|\n]{3,80})/g)];
+      const seen = new Set();
+      for (const m of games) {
+        const dt = `${m[4]}-${pad(m[3])}-${pad(m[2])}`;
+        if (dt < today || seen.has(m[1])) continue; seen.add(m[1]);
+        const name = m[5].trim();
+        out.push(Object.assign({}, ev, { id: src.id + ':' + m[1], url: m[1], date: dt, start: null, title: name, sub: null, kind: 'Urheilu' }));
+      }
+      if (seen.size) continue;
+      if (/^select event$/i.test(ev.title)) ev.title = heads.find(h => !/^select event$/i.test(h)) || ev.title;
+    }
     if (src.perLink && src.perLink.test(ev.title) && g.list.length > 1) {
       // sarjakortti (esim. Liiga): jokainen lippulinkki on oma ottelunsa, päivä linkin tekstistä tai sen ympäriltä
       for (const a of g.list) {
@@ -307,7 +320,7 @@ const SPORT = /liiga|runkosarja|ottelu|salibandy|floorball|jääkiekko|hockey|\b
 export function classify(e) {
   const t = (e.title || '') + ' ' + (e.sub || '') + ' ' + (e.cat || '');
   let k = 'Keikka';
-  if (SPORT.test(t)) k = 'Urheilu';
+  if (e.kind === 'Urheilu' || SPORT.test(t + ' ' + (e.url || ''))) k = 'Urheilu';
   else if (/teatteri|näytelmä|ooppera|baletti|musikaali|stand ?up|komiikka|improvisaatio/i.test(t)) k = 'Teatteri';
   else if (/yökerho|klubi|club|disco|\bdj\b|dj:t|dj's|dj:s|tanssit|karaoke|pubikeikka/i.test(t)) k = 'Klubi';
   else if (/muu tapahtuma|sarjakuva|salonki|markkinat|messut|luento|keskustelu|tietovisa|bingo|työpaja/i.test(t)) k = 'Muu';
