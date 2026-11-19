@@ -20,8 +20,14 @@ export const SOURCES = [
     link: /^https?:\/\/(?:www\.)?lippu\.fi\/event\/[^?#]+/, dateFrom: 'text', group: 'container',
     skip: /liiga|runkosarja|ottelu|otteluliput|salibandy|floorball|jääkiekko|hockey|\bWFC\b|MM-kilpailut|playoff|pudotuspeli/i,
     venue: () => 'Nokia Arena', addr: 'Kansikatu 3' },
+  { id: 'telakka', name: 'Telakka', site: 'https://www.telakka.eu', path: '/ohjelma/', mode: 'text',
+    dateLine: /^(?:ma|ti|ke|to|pe|la|su)\.?\s+(\d{1,2})\.(\d{1,2})\.?$/i,
+    venue: () => 'Telakka', addr: 'Tullikamarin aukio 3' },
+  { id: 'bar-kotelo', name: 'Bar Kotelo', site: 'https://barkotelo.fi', path: '/keikat/', mode: 'text',
+    dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
+    venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19h';
+export const VERSION = '2026-11-19i';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -144,6 +150,55 @@ export function structured(ev, h) {
   return ev;
 }
 
+// Lähteet, joissa ohjelma on vapaata tekstiä: päivärivi aloittaa lohkon
+export function parseTextBlocks(src, html, debug = false) {
+  const base = src.site + src.path, today = todayHelsinki();
+  const lin = linearize(html, base);
+  const lines = lin.split('\n').map(l => l.trim()).filter(Boolean);
+  const out = [];
+  let cur = null;
+  const flush = () => {
+    if (!cur) return;
+    const L = cur.lines;
+    const links = []; const text = L.map(l => l.replace(/\u0001([^\u0002]*)\u0002([^\u0003]*)\u0003/g, (m, u, t) => { links.push(u); return t; })).filter(Boolean);
+    const isMeta = l => /^(?:klo|keikat|ovet|liput|vapaa pääsy|loppuunmyyty|k-?1[68]|k-?20|s\b|\(.*\)$)|€/i.test(l);
+    const titleLines = []; for (const l of text) { if (isMeta(l)) break; if (l.length > 1 && !/^osta liput|^lue lisää/i.test(l)) titleLines.push(l); if (titleLines.length >= 4) break; }
+    const tc = l => (l === l.toUpperCase() && /[A-ZÅÄÖ]{3}/.test(l)) ? l.toLowerCase().replace(/(^|[\s(\-/&+.'])([a-zåäöü])/g, (m, a, b) => a + b.toUpperCase()).replace(/\((\w{2,3})\)/g, (m, x) => '(' + x.toUpperCase() + ')') : l;
+    let title = titleLines.map(tc).join(', ').replace(/\s+/g, ' ').trim();
+    if (title.length > 160) title = title.slice(0, 157) + '…';
+    const t = text.join('\n');
+    const tm = /(?:klo|keikat:?\s*klo)\s*(\d{1,2})(?:[.:](\d{2}))?/i.exec(t);
+    const dm = /ovet:?\s*(?:klo\s*)?(\d{1,2})[.:](\d{2})/i.exec(t);
+    const pm = /(\d+(?:[,.]\d{1,2})?)\s*(?:\/\s*\d+(?:[,.]\d{1,2})?)?\s*€/.exec(t);
+    const tix = links.find(u => /tiketti\.fi|lippu\.fi|kide\.app|liveto|ticketmaster/i.test(u));
+    const ev = {
+      id: src.id + ':' + cur.date + ':' + title.slice(0, 40), title, date: cur.date,
+      start: tm ? `${pad(tm[1])}:${tm[2] || '00'}` : null, doors: dm ? `${pad(dm[1])}:${dm[2]}` : null,
+      venue: src.venue(t), place: src.name, addr: src.addr,
+      price: pm ? parseFloat(pm[1].replace(',', '.')) : null, door: null,
+      free: /vapaa pääsy|maksuton|ilmainen/i.test(t), soldout: /loppuunmyyty|sold out/i.test(t),
+      age: (/(?:^|[\s(])(K-?18|K-?20|S\s*\/\s*K-?18)(?=[\s),]|$)/i.exec(t) || [])[1] || null,
+      url: tix || base, source: src.name, cat: /klubi|disco|dj\b/i.test(title) ? 'Klubi' : 'Keikka',
+    };
+    if (debug) ev._txt = t.slice(0, 400);
+    if (title && ev.date >= shiftDays(today, -1)) out.push(ev);
+  };
+  for (const l of lines) {
+    const plain = l.replace(/\u0001[^\u0002]*\u0002([^\u0003]*)\u0003/g, '$1').trim();
+    const m = src.dateLine.exec(plain);
+    if (m) {
+      flush();
+      let date;
+      if (m[3]) date = `${m[3]}-${pad(m[2])}-${pad(m[1])}`; else date = textDate(`${m[1]}.${m[2]}.`, today);
+      cur = date ? { date, lines: [] } : null;
+      continue;
+    }
+    if (cur) { cur.lines.push(l); if (cur.lines.length > 25) { flush(); cur = null; } }
+  }
+  flush();
+  return out;
+}
+
 export function parseListing(src, html, debug = false) {
   html = html.replace(/<!--[\s\S]*?-->/g, m => ' '.repeat(m.length));
   const base = src.site + src.path;
@@ -247,7 +302,8 @@ export async function collect(ctx, debug = false) {
       if (!(await robotsAllows(src, ctx))) { status[src.id] = 'robots.txt kieltää'; return []; }
       const r = await cachedFetch(src.site + src.path, ctx);
       if (!r.ok) { status[src.id] = 'HTTP ' + r.status; return []; }
-      const ev = parseListing(src, await r.text(), debug);
+      const html = await r.text();
+      const ev = src.mode === 'text' ? parseTextBlocks(src, html, debug) : parseListing(src, html, debug);
       status[src.id] = ev.length;
       return ev;
     } catch (e) { status[src.id] = 'virhe: ' + e.message; return []; }
