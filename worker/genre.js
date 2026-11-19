@@ -95,10 +95,10 @@ const DESC = [
   ['Pop', /\bpop\b|\bpopin|\bpoppi|popyhtye|poptähti|popartisti/g],
   ['Rock', /rock|proge|progressiivi|\bindie|grunge/g],
 ];
-export function descGenre(html) {
+export function descGenre(html, min = 80) {
   const ps = [...String(html).replace(/<(script|style|nav|header|footer)[\s\S]*?<\/\1>/gi, ' ').matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)]
     .map(m => m[1].replace(/<[^>]*>/g, ' ')).join(' ').toLowerCase();
-  if (ps.length < 80) return null;
+  if (ps.length < min) return null;
   let best = null, bs = 0;
   for (const [g, re] of DESC) { const n = (ps.match(re) || []).length; if (n > bs) { best = g; bs = n; } }
   return best;

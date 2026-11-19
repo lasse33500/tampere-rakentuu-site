@@ -2,7 +2,7 @@
 // Sama Worker ("mansessa") palvelee historiasivuston staattiset tiedostot (assets) ja /nyt-polut.
 // Tapahtumista näytetään vain faktat (nimi, aika, paikka, hinta, ikäraja) ja linkki alkuperäiseen sivuun.
 import { PAGE } from './page.js';
-import { artistKey, mbGenre, wdGenre } from './genre.js';
+import { artistKey, mbGenre, wdGenre, descGenre } from './genre.js';
 
 const SPORT_RE = () => /liiga|runkosarja|ottelu|salibandy|floorball|jääkiekko|hockey|\bWFC\b|MM-kilpailut|playoff|pudotuspeli/i;
 export const SOURCES = [
@@ -36,11 +36,13 @@ export const SOURCES = [
   { id: 'maanalainen', name: 'Maanalainen', site: 'https://maanalainen.net', path: '/tapahtumat/', mode: 'text',
     dateLine: /^(\d{1,2})\.(\d{1,2})\.\s*(?<t>[^\d\s].{1,160})$/,
     venue: () => 'Maanalainen', addr: 'Itsenäisyydenkatu 2' },
+  { id: 'tampere-talo', name: 'Tampere-talo', site: 'https://www.tampere-talo.fi', path: '/wp-json/events/v1/feed', mode: 'ttfeed',
+    venue: () => 'Tampere-talo', addr: 'Yliopistonkatu 55' },
   { id: 'bar-kotelo', name: 'Bar Kotelo', site: 'https://barkotelo.fi', path: '/keikat/', mode: 'text',
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19t';
+export const VERSION = '2026-11-19u';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -339,6 +341,29 @@ export function parseSquarespace(src, body, debug = false) {
   return out.filter(e => !seen.has(e.id) && seen.add(e.id));
 }
 
+// Tampere-talon WordPress-syöte (events/v1/feed): id, title, description, start_date. Kuvausta ei tallenneta,
+// siitä päätellään vain tyyppi ja genre. Linkki ?p=<id> ohjaa tapahtumasivulle.
+export function parseTTFeed(src, body) {
+  const today = todayHelsinki(), out = [];
+  let j; try { j = JSON.parse(body); } catch { return out; }
+  for (const it of (j && j.events) || []) {
+    const m = /^(20\d\d-\d\d-\d\d)[ T](\d\d):(\d\d)/.exec(it.start_date || '');
+    if (!m || m[1] < today || !it.title) continue;
+    const title = clean(decode(String(it.title)));
+    const d = clean(decode(String(it.description || '').replace(/<[^>]*>/g, ' '))).toLowerCase();
+    let cat = 'Konsertti';
+    if (/näyttely|messut|seminaari|kongressi|konferenssi|rekrytointi|ura\b|luento|myyjäiset/.test(d + ' ' + title.toLowerCase())) cat = 'Muu tapahtuma';
+    else if (/baletti|tanssiteos|tanssiesitys|teatteri|näytelmä|musikaali|ooppera|stand ?up|komiikka|sirkus|esitys/.test(d + ' ' + title.toLowerCase())) cat = 'Teatteri';
+    const ev = { id: src.id + ':' + it.id + ':' + m[1] + m[2] + m[3], title, date: m[1], start: `${m[2]}:${m[3]}`, doors: null,
+      venue: 'Tampere-talo', place: src.name, addr: src.addr, price: null, door: null, free: /vapaa pääsy|maksuton|ilmainen/.test(d),
+      soldout: /loppuunmyyty/.test(d), age: null, url: `${src.site}/?p=${it.id}`, source: src.name, cat };
+    if (cat === 'Konsertti') { const g = descGenre('<p>' + d + '</p>', 5); if (g) ev.genre = g; }
+    if (cat === 'Muu tapahtuma' && out.some(x => x.id.startsWith(src.id + ':' + it.id + ':'))) continue; // näyttely joka päivä → vain ensimmäinen
+    out.push(ev);
+  }
+  return out;
+}
+
 async function robotsAllows(src, ctx) {
   try {
     const r = await cachedFetch(src.site + '/robots.txt', ctx, 24 * 3600);
@@ -383,6 +408,11 @@ export async function collect(ctx, debug = false) {
   const lists = await Promise.all(SOURCES.map(async src => {
     try {
       if (!(await robotsAllows(src, ctx))) { status[src.id] = 'robots.txt kieltää'; return []; }
+      if (src.mode === 'ttfeed') {
+        const r = await cachedFetch(src.site + src.path, ctx);
+        if (!r.ok) { status[src.id] = 'HTTP ' + r.status; return []; }
+        const ev = parseTTFeed(src, await r.text()); status[src.id] = ev.length; return ev;
+      }
       if (src.mode === 'squarespace') {
         let ev = [];
         // robots.txt kieltää ?format=json -osoitteet → luetaan tavallinen HTML-sivu
