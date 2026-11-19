@@ -28,7 +28,7 @@ export function artistKey(e) {
   if (/yökerho|klubi|disco|tanssit|club/i.test(e.cat || '') || /^dj[:\s]|\bdj:t\b|\bdj's\b|disco|karaoke|stand.?up|bingo|tietovisa|pikkujoulu/i.test(e.title)) return null;
   let ti = e.title.replace(/\s+@\s+.*$/, '').replace(/\b(?:presents|esittää|levynjulkaisukonsertti|levyjulkkarit|juhlakonsertti|albumikiertue|kiertue|tour)\b.*$/i, '');
   if (/^select event$|^tyk\b/i.test(ti)) return null;
-  if (ti.includes(':')) { const parts = ti.split(':').map(x => x.trim()).filter(Boolean); ti = parts.length > 1 && /stage|päivähypyt|klubi|club|ilta|disco|kerho|salonki|festiv|vol\b|sarja|series|presents|esittää|startti|jazz|kerhon?/i.test(parts[0]) ? parts[parts.length - 1] : parts[0] || ''; }
+  if (ti.includes(':')) { const parts = ti.split(':').map(x => x.trim()).filter(Boolean); ti = parts.length > 1 && /stage|päivähypyt|klubi|club|maanalainen|down home|afterwork|ilta|disco|kerho|salonki|festiv|vol\b|sarja|series|presents|esittää|startti|jazz|kerhon?/i.test(parts[0]) ? parts[parts.length - 1] : parts[0] || ''; }
   if (!ti) return null;
   let a = ti.split(/\s+[+&]\s+|,\s+|\s+(?:ja|feat\.?|ft\.?|with|vs\.?)\s+|\s+[–-]\s+/i)[0];
   a = a.replace(/\((?:[A-Z]{2,3}(?:\/[A-Z]{2,3})*|fi|uk|us)\)/gi, '').replace(/[“”"]/g, '').replace(/\s+/g, ' ').trim();

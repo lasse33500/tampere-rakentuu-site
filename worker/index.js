@@ -31,11 +31,16 @@ export const SOURCES = [
     dateLine: /^(\d{1,2})\.(\d{1,2})\.?\s+(?<t>[^\d\s].{1,100})$/,
     start: '22:00', free: true, // sivulla: showtime 22, vapaa pääsy
     venue: () => 'Pub Kujakolli', addr: 'Tahmelan viertotie 2' },
+  { id: 'pub-simon', name: 'Pub Simon', site: 'https://www.pubsimon.fi', path: '/tapahtumat', mode: 'squarespace', pub: true,
+    venue: () => 'Pub Simon', addr: 'Hämeenkatu 26' },
+  { id: 'maanalainen', name: 'Maanalainen', site: 'https://maanalainen.net', path: '/tapahtumat/', mode: 'text',
+    dateLine: /^(\d{1,2})\.(\d{1,2})\.\s*(?<t>[^\d\s].{1,160})$/,
+    venue: () => 'Maanalainen', addr: 'Itsenäisyydenkatu 2' },
   { id: 'bar-kotelo', name: 'Bar Kotelo', site: 'https://barkotelo.fi', path: '/keikat/', mode: 'text',
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19r';
+export const VERSION = '2026-11-19s';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -170,7 +175,7 @@ export function parseTextBlocks(src, html, debug = false) {
     const L = cur.lines;
     const links = []; const text = L.map(l => l.replace(/\u0001([^\u0002]*)\u0002([^\u0003]*)\u0003/g, (m, u, t) => { links.push(u); return t; })).filter(Boolean);
     const isMeta = l => /^(?:klo|keikat|ovet|liput|vapaa pääsy|loppuunmyyty|k-?1[68]|k-?20|s\b|\(.*\)$)|€/i.test(l);
-    const titleLines = cur.inline ? [text[0]] : []; if (!cur.inline) for (const l of text) { if (isMeta(l)) break; if (l.length > 1 && !/^osta liput|^lue lisää/i.test(l)) titleLines.push(l); if (titleLines.length >= 4) break; }
+    const titleLines = cur.inline ? [text[0].replace(/\s*\([^)]*€[^)]*\)\s*$/, '').replace(/\s*[–-]\s*$/, '')] : []; if (!cur.inline) for (const l of text) { if (isMeta(l)) break; if (l.length > 1 && !/^osta liput|^lue lisää/i.test(l)) titleLines.push(l); if (titleLines.length >= 4) break; }
     const tc = l => (l === l.toUpperCase() && /[A-ZÅÄÖ]{3}/.test(l)) ? l.toLowerCase().replace(/(^|[\s(\-/&+.'])([a-zåäöü])/g, (m, a, b) => a + b.toUpperCase()).replace(/\((\w{2,3})\)/g, (m, x) => '(' + x.toUpperCase() + ')') : l;
     let title = titleLines.map(tc).join(', ').replace(/\s+/g, ' ').trim();
     if (title.length > 160) title = title.slice(0, 157) + '…';
