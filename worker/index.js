@@ -40,7 +40,7 @@ export const SOURCES = [
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19s';
+export const VERSION = '2026-11-19t';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -355,17 +355,9 @@ async function robotsAllows(src, ctx) {
   } catch { return true; }
 }
 
+// Ei Cache API:a: haku tehdään vain kerran vuorokaudessa, ja välimuistikutsut kuluttaisivat Workers-ilmaistason 50 alipyynnön kiintiötä
 async function cachedFetch(url, ctx, ttl = TTL) {
-  const cache = caches.default, key = new Request(url, { method: 'GET' });
-  const hit = await cache.match(key);
-  if (hit) return hit;
-  const r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept': 'text/html,*/*' }, cf: { cacheTtl: ttl } });
-  if (r.ok) {
-    const copy = new Response(r.clone().body, r);
-    copy.headers.set('Cache-Control', `public, max-age=${ttl}`);
-    ctx.waitUntil(cache.put(key, copy));
-  }
-  return r;
+  return fetch(url, { headers: { 'User-Agent': UA, 'Accept': 'text/html,*/*' }, cf: { cacheTtl: ttl } });
 }
 
 // Pääkategoria: Keikka · Klubi · Teatteri · Urheilu · Muu
@@ -413,7 +405,7 @@ export async function collect(ctx, debug = false) {
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 // Ajastettu päivitys: hae tapahtumat, täydennä genret MusicBrainzista (enintään BUDGET uutta artistia / ajo), tallenna KV:hen
-export async function refresh(env, ctx, budget = 10) { // Workers free: max 50 alipyyntöä / ajo
+export async function refresh(env, ctx, budget = 5) { // Workers free: max 50 alipyyntöä / ajo (lähteet 2×10 + Wikidata 3×5)
   const data = await collect(ctx);
   let gmap = {};
   if (env.NYT) { try { gmap = JSON.parse(await env.NYT.get('genres') || '{}'); } catch { gmap = {}; } }
@@ -463,7 +455,7 @@ export default {
       const debug = url.searchParams.has('debug');
       if (debug) return new Response(JSON.stringify(await collect(ctx, true), null, 1), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
       if (url.searchParams.has('wd')) { const dbg = {}; let g = null, err = null; try { g = await wdGenre(url.searchParams.get('wd'), MB_UA, dbg); } catch (e) { err = e.message; } return new Response(JSON.stringify({ g, err, dbg }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
-      if (url.searchParams.has('refresh') && env.NYT) { const d = await refresh(env, ctx, 6); return new Response(JSON.stringify({ v: d.v, status: d.status, genres: d.genres }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
+      if (url.searchParams.has('refresh') && env.NYT) { const d = await refresh(env, ctx, 5); return new Response(JSON.stringify({ v: d.v, status: d.status, genres: d.genres }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
       if (env.NYT) { const stored = await env.NYT.get('events'); if (stored) { const d = JSON.parse(stored); d.events = d.events.filter(e => e.date >= todayHelsinki()); return new Response(JSON.stringify(d), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=600', 'Access-Control-Allow-Origin': '*' } }); } }
       const cache = caches.default, key = new Request(url.origin + p);
       let res = await cache.match(key);
