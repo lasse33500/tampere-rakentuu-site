@@ -4,10 +4,11 @@
 import { PAGE } from './page.js';
 import { artistKey, mbGenre, wdGenre } from './genre.js';
 
+const SPORT_RE = () => /liiga|runkosarja|ottelu|salibandy|floorball|jääkiekko|hockey|\bWFC\b|MM-kilpailut|playoff|pudotuspeli/i;
 export const SOURCES = [
   { id: 'tullikamari', name: 'Tullikamari', site: 'https://tullikamari.fi', path: '/ohjelma/',
     link: /^https?:\/\/(?:www\.)?tullikamari\.fi\/tapahtumat\/[^?#]*?(\d{1,2})-(\d{1,2})-(\d{4})(?:-\d+)?\/?$/,
-    venue: t => /Pakkahuone/i.test(t) ? 'Pakkahuone' : /Klubi/i.test(t) ? 'Klubi' : 'Tullikamari',
+    venue: t => /Pakkahuone/i.test(t) ? 'Pakkahuone' : /Klubi/i.test(t) ? 'Tullikamarin Klubi' : 'Tullikamari',
     addr: 'Tullikamarin aukio 2' },
   { id: 'tavara-asema', name: 'Tavara-asema', site: 'https://tavara-asema.fi', path: '/ohjelma/',
     link: /^https?:\/\/(?:www\.)?tavara-asema\.fi\/ohjelma\/[^?#]*?(\d{1,2})-(\d{1,2})-(\d{4})(?:-\d+)?\/?$/,
@@ -18,7 +19,7 @@ export const SOURCES = [
     venue: () => 'G Livelab', addr: 'Puutarhakatu 1' },
   { id: 'nokia-arena', name: 'Nokia Arena', site: 'https://nokiaarena.fi', path: '/en/events/',
     link: /^https?:\/\/(?:www\.)?lippu\.fi\/event\/[^?#]+/, dateFrom: 'text', group: 'container',
-    skip: /liiga|runkosarja|ottelu|otteluliput|salibandy|floorball|jääkiekko|hockey|\bWFC\b|MM-kilpailut|playoff|pudotuspeli/i,
+    perLink: SPORT_RE(),
     venue: () => 'Nokia Arena', addr: 'Kansikatu 3' },
   { id: 'telakka', name: 'Telakka', site: 'https://www.telakka.eu', path: '/ohjelma/', mode: 'text',
     dateLine: /^(?:ma|ti|ke|to|pe|la|su)\.?\s+(\d{1,2})\.(\d{1,2})\.?$/i,
@@ -27,7 +28,7 @@ export const SOURCES = [
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19l';
+export const VERSION = '2026-11-19m';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -120,7 +121,7 @@ export function elementTree(html) {
 }
 
 
-const CAT = { 'konsertti-keikka': 'Keikka', 'klubi': 'Klubi', 'klubit': 'Klubi', 'tanssit': 'Tanssit', 'stand-up': 'Stand up', 'teatteri': 'Teatteri', 'muu-julkinen-tapahtuma': 'Muu tapahtuma', 'festivaali': 'Festivaali', 'disco': 'Disco' };
+const CAT = { 'yokerho': 'Yökerho', 'konsertti-keikka': 'Keikka', 'klubi': 'Klubi', 'klubit': 'Klubi', 'tanssit': 'Tanssit', 'stand-up': 'Stand up', 'teatteri': 'Teatteri', 'muu-julkinen-tapahtuma': 'Muu tapahtuma', 'festivaali': 'Festivaali', 'disco': 'Disco' };
 function byClass(h, tag, cls) {
   const all = byClassAll(h, tag, cls); return all.length ? all.join(' ') : null;
 }
@@ -144,7 +145,7 @@ export function structured(ev, h) {
   } else ev.title = (artistJ || etitle);
   ev.title = ev.title.replace(/\s*:\s*$/, '').replace(/\s+/g, ' ').trim();
   if (start) ev.start = start;
-  const v = byClass(h, 'li', 'event-venue'); if (v && clean(v)) ev.venue = ev.place === 'Tullikamari' ? clean(v) : ev.venue;
+  const v = byClass(h, 'li', 'event-venue'); if (v && clean(v)) ev.venue = ev.place === 'Tullikamari' ? (/^klubi$/i.test(clean(v)) ? 'Tullikamarin Klubi' : clean(v)) : ev.venue;
   const c = /event_category-([a-z0-9-]+)/.exec(h);
   if (c) ev.cat = CAT[c[1]] || c[1].replace(/-/g, ' ').replace(/^./, x => x.toUpperCase());
   return ev;
@@ -256,6 +257,17 @@ export function parseListing(src, html, debug = false) {
     const ev = parseCard(src, g.url, date, text, heads.length ? heads : g.list.map(a => a.text));
     structured(ev, chunk);
     if (src.skip && src.skip.test(ev.title + ' ' + g.url)) continue;
+    if (src.perLink && src.perLink.test(ev.title) && g.list.length > 1) {
+      // sarjakortti (esim. Liiga): jokainen lippulinkki on oma ottelunsa, päivä linkin tekstistä tai sen ympäriltä
+      for (const a of g.list) {
+        let dt = textDate(a.text, today);
+        if (!dt) { const par = nodes[nodes[a.i].p]; dt = textDate(clean(html.slice(par.s, par.e)), today); }
+        if (!dt) continue;
+        const tm = /([01]?\d|2[0-3])[:.]([0-5]\d)/.exec(a.text);
+        out.push(Object.assign({}, ev, { id: src.id + ':' + a.url, url: a.url, date: dt, start: tm ? `${pad(tm[1])}:${tm[2]}` : null, sub: clean(a.text).slice(0, 80) }));
+      }
+      continue;
+    }
     if (debug) { ev._txt = text.replace(/[\u0001-\u0003]/g, '|').slice(0, 600); ev._html = chunk.replace(/<(img|svg|source|picture)\b[^>]*>/gi, '').replace(/\s(?!class=)[\w:-]+=("[^"]*"|'[^']*')/g, '').replace(/\s+/g, ' ').slice(0, 900); }
     out.push(ev);
   }
@@ -290,6 +302,19 @@ async function cachedFetch(url, ctx, ttl = TTL) {
   return r;
 }
 
+// Pääkategoria: Keikka · Klubi · Teatteri · Urheilu · Muu
+const SPORT = /liiga|runkosarja|ottelu|salibandy|floorball|jääkiekko|hockey|\bWFC\b|MM-kilpailut|playoff|pudotuspeli|koripallo|lentopallo|futsal/i;
+export function classify(e) {
+  const t = (e.title || '') + ' ' + (e.sub || '') + ' ' + (e.cat || '');
+  let k = 'Keikka';
+  if (SPORT.test(t)) k = 'Urheilu';
+  else if (/teatteri|näytelmä|ooppera|baletti|musikaali|stand ?up|komiikka|improvisaatio/i.test(t)) k = 'Teatteri';
+  else if (/yökerho|klubi|club|disco|\bdj\b|dj:t|dj's|dj:s|tanssit|karaoke|pubikeikka/i.test(t)) k = 'Klubi';
+  else if (/muu tapahtuma|sarjakuva|salonki|markkinat|messut|luento|keskustelu|tietovisa|bingo|työpaja/i.test(t)) k = 'Muu';
+  e.kind = k;
+  if (k !== 'Keikka') delete e.genre;
+  return e;
+}
 function todayHelsinki() {
   return new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Helsinki' }).format(new Date());
 }
@@ -308,7 +333,7 @@ export async function collect(ctx, debug = false) {
       return ev;
     } catch (e) { status[src.id] = 'virhe: ' + e.message; return []; }
   }));
-  const events = lists.flat().filter(e => e.date >= today)
+  const events = lists.flat().map(classify).filter(e => e.date >= today)
     .sort((a, b) => (a.date + (a.start || a.doors || '99')).localeCompare(b.date + (b.start || b.doors || '99')));
   return { v: VERSION, updated: new Date().toISOString(), today, status, events };
 }
