@@ -504,7 +504,9 @@ export function parseMD(src, html) {
 // O'Connell's: ul.evts > li.event: div.date "22.11", h3, p "Starts at: 11/22/26 16:00". Vain "Live Events" (ei Big Screen -urheilulähetyksiä).
 export function parseOC(src, html) {
   const today = todayHelsinki(), out = [];
-  const live = String(html).split(/Big Screen/i)[0];
+  const H = String(html), first = H.search(/<li[^>]*class="[^"]*\bevent\b/i);
+  const bs = first < 0 ? -1 : H.slice(first).search(/Big Screen/i);
+  const live = bs < 0 ? H : H.slice(0, first + bs);
   for (const ch of live.split(/<li[^>]*class="[^"]*\bevent\b/i).slice(1)) {
     const h = /<h3[^>]*>([\s\S]*?)<\/h3>/i.exec(ch); if (!h) continue;
     const m = /Starts at:\s*(\d{1,2})\/(\d{1,2})\/(\d{2})\s+(\d{1,2}):(\d{2})/i.exec(stripTags(ch)); if (!m) continue;
