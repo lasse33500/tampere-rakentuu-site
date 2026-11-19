@@ -42,7 +42,7 @@ export const SOURCES = [
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19u';
+export const VERSION = '2026-11-19v';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -352,16 +352,24 @@ export function parseTTFeed(src, body) {
     const title = clean(decode(String(it.title)));
     const d = clean(decode(String(it.description || '').replace(/<[^>]*>/g, ' '))).toLowerCase();
     let cat = 'Konsertti';
-    if (/näyttely|messut|seminaari|kongressi|konferenssi|rekrytointi|ura\b|luento|myyjäiset/.test(d + ' ' + title.toLowerCase())) cat = 'Muu tapahtuma';
+    if (/näyttely|messut|seminaari|kongressi|konferenssi|rekrytointi|ura\b|luento|myyjäiset|lounas|brunssi|esittäytyy|kirjafestar|tanssiaiset|messu\b/.test(d + ' ' + title.toLowerCase())) cat = 'Muu tapahtuma';
     else if (/baletti|tanssiteos|tanssiesitys|teatteri|näytelmä|musikaali|ooppera|stand ?up|komiikka|sirkus|esitys/.test(d + ' ' + title.toLowerCase())) cat = 'Teatteri';
     const ev = { id: src.id + ':' + it.id + ':' + m[1] + m[2] + m[3], title, date: m[1], start: `${m[2]}:${m[3]}`, doors: null,
       venue: 'Tampere-talo', place: src.name, addr: src.addr, price: null, door: null, free: /vapaa pääsy|maksuton|ilmainen/.test(d),
       soldout: /loppuunmyyty/.test(d), age: null, url: `${src.site}/?p=${it.id}`, source: src.name, cat };
     if (cat === 'Konsertti') { const g = descGenre('<p>' + d + '</p>', 5); if (g) ev.genre = g; }
-    if (cat === 'Muu tapahtuma' && out.some(x => x.id.startsWith(src.id + ':' + it.id + ':'))) continue; // näyttely joka päivä → vain ensimmäinen
     out.push(ev);
   }
-  return out;
+  // näyttelyt ym. toistuvat lähes joka päivä: jos sama nimi ≥ 5 kertaa (tai Muu ≥ 2), näytetään vain ensimmäinen
+  const cnt = {}; for (const e of out) cnt[e.title] = (cnt[e.title] || 0) + 1;
+  const seen = new Set();
+  return out.filter(e => {
+    const rep = cnt[e.title] >= 5 || (e.cat === 'Muu tapahtuma' && cnt[e.title] >= 2);
+    if (!rep) return true;
+    if (seen.has(e.title)) return false;
+    seen.add(e.title); if (cnt[e.title] >= 5) { e.cat = 'Muu tapahtuma'; e.sub = 'Useana päivänä'; delete e.genre; }
+    return true;
+  });
 }
 
 async function robotsAllows(src, ctx) {
