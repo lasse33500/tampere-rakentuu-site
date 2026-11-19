@@ -48,7 +48,7 @@ export const SOURCES = [
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19x';
+export const VERSION = '2026-11-19y';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -495,10 +495,13 @@ function todayHelsinki() {
   return new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Helsinki' }).format(new Date());
 }
 
-export async function collect(ctx, debug = false) {
+// Päivitys kahdessa erässä (Lasse 19.11.: klo 2 ja 3), jotta Workers-ilmaistason 50 alipyynnön raja riittää
+export const GROUP_B = new Set(['bar-k', 'kujakolli', 'pub-simon', 'maanalainen', 'komediateatteri', 'tampereen-teatteri', 'ttt-klubi']);
+const inGroup = (src, g) => !g || g === 'all' || (g === 'b') === GROUP_B.has(src.id);
+export async function collect(ctx, debug = false, group = 'all') {
   const today = todayHelsinki();
   const status = {};
-  const lists = await Promise.all(SOURCES.map(async src => {
+  const lists = await Promise.all(SOURCES.filter(src => inGroup(src, group)).map(async src => {
     try {
       if (!(await robotsAllows(src, ctx))) { status[src.id] = 'robots.txt kieltää'; return []; }
       if (src.mode === 'tt' || src.mode === 'ttt') {
@@ -553,37 +556,48 @@ export async function collect(ctx, debug = false) {
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 // Ajastettu päivitys: hae tapahtumat, täydennä genret MusicBrainzista (enintään BUDGET uutta artistia / ajo), tallenna KV:hen
-export async function refresh(env, ctx, budget = 2) { // Workers free: max 50 alipyyntöä / ajo (lähteet 2×13 + teatterisivut 9+2 + Wikidata 3×2; genret pääosin GitHub Actionsista)
-  const data = await collect(ctx);
+export async function refresh(env, ctx, budget = 2, group = 'all') { // Workers free: max 50 alipyyntöä / ajo; erä a tai b, Wikidata 3×budget (genret pääosin GitHub Actionsista)
+  const fresh = await collect(ctx, false, group);
+  const today = fresh.today;
+  // edellinen tallennettu kokonaisuus: toisen erän tapahtumat ja epäonnistuneiden lähteiden vanhat tapahtumat säilyvät
+  let prev = null;
+  if (env.NYT) { try { prev = JSON.parse(await env.NYT.get('events') || 'null'); } catch { prev = null; } }
+  const ids = new Set(SOURCES.filter(src => inGroup(src, group)).map(src => src.id));
+  const srcOf = e => (String(e.id).split(':')[0]);
+  const status = Object.assign({}, (prev && prev.status) || {}, fresh.status);
+  const keepOld = new Set(SOURCES.map(x => x.id).filter(id => !ids.has(id) || typeof fresh.status[id] !== 'number'));
+  for (const id of keepOld) if (ids.has(id) && prev && prev.status && typeof prev.status[id] === 'number') status[id] = prev.status[id] + ' (vanha: ' + fresh.status[id] + ')';
+  const old = ((prev && prev.events) || []).filter(e => keepOld.has(srcOf(e)) && e.date >= today);
+  const data = { v: VERSION, updated: new Date().toISOString(), today, status, group,
+    events: old.concat(fresh.events).sort((a, b) => (a.date + (a.start || a.doors || '99')).localeCompare(b.date + (b.start || b.doors || '99'))) };
   let gmap = {};
   if (env.NYT) { try { gmap = JSON.parse(await env.NYT.get('genres') || '{}'); } catch { gmap = {}; } }
   // GitHub Actionsin MusicBrainz-haun tulokset (nyt-data/genres.json) ovat ensisijaisia
   let fromFile = 0;
   if (env.ASSETS) { try { const r = await env.ASSETS.fetch('https://assets.local/nyt-data/genres.json'); if (r.ok) { const fm = await r.json(); for (const [k, v] of Object.entries(fm)) if (v && v.g && !(gmap[k] && gmap[k].g)) { gmap[k] = v; fromFile++; } } } catch {} }
-  const now = Date.now(); let used = 0, changed = false, mbDown = true; const log = ['tiedostosta ' + fromFile];
+  const now = Date.now(); let used = 0, changed = false; const log = ['tiedostosta ' + fromFile];
   const keys = [...new Set(data.events.map(artistKey).filter(Boolean))];
   for (const k of keys) {
     const hit = gmap[k];
     if (hit && (hit.g || now - hit.t < 14 * 864e5)) continue;
     if (used >= budget) break;
     used++;
-    let g = null, src = '';
-    if (!mbDown) { try { g = await mbGenre(k, MB_UA); src = 'mb'; } catch (e) { mbDown = true; log.push('MB ' + e.message); } }
-    if (!g) { try { g = await wdGenre(k, MB_UA); src = g ? 'wd' : src || 'wd'; } catch (e) { log.push(k + ' ! ' + e.message); break; } }
-    gmap[k] = { g, t: now, s: src }; changed = true; log.push(k + '=' + g + '(' + src + ')');
-    await sleep(mbDown ? 300 : 1100);
+    let g = null;
+    try { g = await wdGenre(k, MB_UA); } catch (e) { log.push(k + ' ! ' + e.message); break; }
+    gmap[k] = { g, t: now, s: 'wd' }; changed = true; log.push(k + '=' + g + '(wd)');
+    await sleep(300);
   }
-  for (const e of data.events) { const k = artistKey(e); if (k && gmap[k] && gmap[k].g) e.genre = gmap[k].g; }
+  for (const e of data.events) { const k = artistKey(e); if (k && gmap[k] && gmap[k].g && e.kind === 'Keikka') e.genre = gmap[k].g; }
   data.genres = { log, known: keys.filter(k => gmap[k] && gmap[k].g).length, checked: keys.filter(k => gmap[k]).length, artists: keys.length };
   if (env.NYT) {
     if (changed) await env.NYT.put('genres', JSON.stringify(gmap));
-    if (Object.values(data.status).every(v => typeof v === 'number')) await env.NYT.put('events', JSON.stringify(data));
+    if (data.events.length) await env.NYT.put('events', JSON.stringify(data));
   }
   return data;
 }
 
 export default {
-  async scheduled(event, env, ctx) { ctx.waitUntil(refresh(env, ctx)); },
+  async scheduled(event, env, ctx) { ctx.waitUntil(refresh(env, ctx, 2, /^0 1 /.test(event.cron || '') ? 'b' : 'a')); },
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const p = url.pathname;
@@ -611,7 +625,7 @@ export default {
         return new Response('HTTP ' + r.status + '\n\nREFS:\n' + ref.join('\n') + '\n\nHTML:\n' + (() => { let h = url.searchParams.has('keep') ? t : t.replace(/<(svg|style|script|head|noscript)[\s\S]*?<\/\1>/gi, '').replace(/\s(?:style|srcset|sizes)="[^"]*"/gi, ''); const q = url.searchParams.get('q'); if (q) { const i = h.indexOf(q); h = i < 0 ? 'q not found' : h.slice(Math.max(0, i - 3000), i + 3000); } return h.slice(0, 60000); })(), { headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' } });
       }
       if (url.searchParams.has('wd')) { const dbg = {}; let g = null, err = null; try { g = await wdGenre(url.searchParams.get('wd'), MB_UA, dbg); } catch (e) { err = e.message; } return new Response(JSON.stringify({ g, err, dbg }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
-      if (url.searchParams.has('refresh') && env.NYT) { const d = await refresh(env, ctx, 2); return new Response(JSON.stringify({ v: d.v, status: d.status, genres: d.genres }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
+      if (url.searchParams.has('refresh') && env.NYT) { const d = await refresh(env, ctx, 2, url.searchParams.get('g') || 'all'); return new Response(JSON.stringify({ v: d.v, status: d.status, genres: d.genres }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
       if (env.NYT) { const stored = await env.NYT.get('events'); if (stored) { const d = JSON.parse(stored); d.events = d.events.filter(e => e.date >= todayHelsinki()); return new Response(JSON.stringify(d), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=600', 'Access-Control-Allow-Origin': '*' } }); } }
       const cache = caches.default, key = new Request(url.origin + p);
       let res = await cache.match(key);
