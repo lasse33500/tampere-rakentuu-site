@@ -58,7 +58,7 @@ export const SOURCES = [
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-19z2';
+export const VERSION = '2026-11-20a';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -552,8 +552,10 @@ export function classify(e) {
   if (e.kind === 'Urheilu' || SPORT.test(t + ' ' + (e.url || ''))) k = 'Urheilu';
   else if (/teatteri|näytelmä|ooppera|baletti|musikaali|stand ?up|komiikka|improvisaatio/i.test(t)) k = 'Teatteri';
   else if (/muu tapahtuma|sarjakuva|salonki|markkinat|basaari|joulumyyjäiset|runoraati|runoilta|lausunta|messut|luento|keskustelu|tietovisa|visailu|viihdevisa|pubivisa|\bvisa\b|bingo|työpaja/i.test(t)) k = 'Muu';
-  else if (/yökerho|klubi|club|disco|\bdj\b|dj:t|dj's|dj:s|tanssit|karaoke|pubikeikka/i.test(t)) k = 'Klubi';
+  else if (/yökerho|klubi|club|disco|\bdj\b|dj:t|dj's|dj:s|tanssit|karaoke/i.test(t.replace(/pubikeikka/ig, ''))) k = 'Klubi';
   e.kind = k;
+  // pubikeikat ovat keikkoja; sivulla Keikat-välilehden suodatin Isot paikat / Pubit (Lasse 20.11.)
+  if (k === 'Keikka' && /pubikeikka/i.test(e.cat || '')) e.pub = true; else delete e.pub;
   if (k !== 'Keikka') delete e.genre;
   return e;
 }
