@@ -551,7 +551,7 @@ export function classify(e) {
   let k = 'Keikka';
   if (e.kind === 'Urheilu' || SPORT.test(t + ' ' + (e.url || ''))) k = 'Urheilu';
   else if (/teatteri|näytelmä|ooppera|baletti|musikaali|stand ?up|komiikka|improvisaatio/i.test(t)) k = 'Teatteri';
-  else if (/muu tapahtuma|sarjakuva|salonki|markkinat|messut|luento|keskustelu|tietovisa|visailu|viihdevisa|pubivisa|\bvisa\b|bingo|työpaja/i.test(t)) k = 'Muu';
+  else if (/muu tapahtuma|sarjakuva|salonki|markkinat|basaari|joulumyyjäiset|runoraati|runoilta|lausunta|messut|luento|keskustelu|tietovisa|visailu|viihdevisa|pubivisa|\bvisa\b|bingo|työpaja/i.test(t)) k = 'Muu';
   else if (/yökerho|klubi|club|disco|\bdj\b|dj:t|dj's|dj:s|tanssit|karaoke|pubikeikka/i.test(t)) k = 'Klubi';
   e.kind = k;
   if (k !== 'Keikka') delete e.genre;
