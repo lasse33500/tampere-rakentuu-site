@@ -54,11 +54,16 @@ export const SOURCES = [
     venue: () => 'Paapan Kapakka', addr: 'Koskikatu 9' },
   { id: 'tanssiteatteri-md', name: 'Tanssiteatteri MD', site: 'https://tanssiteatterimd.fi', path: '/naytokset/', mode: 'md', addr: 'Hämeenkatu 25' },
   { id: 'oconnells', name: "Irish Bar O'Connell's", site: 'https://www.oconnells.fi', path: '/events/', mode: 'oc', pub: true, addr: 'Rautatienkatu 24' },
+  { id: 'bistro-vilja', name: 'Bistro Vilja', site: 'https://www.bistrovilja.fi', path: '/tapahtumat', mode: 'squarespace', pub: true,
+    venue: () => 'Bistro Vilja', addr: 'Hatanpään valtatie 40' },
+  { id: 'john-scotts-ratina', name: "John Scott's Ratina", site: 'https://johnscotts.se', path: '/ratina/event/john-scotts-ratina-live/', mode: 'text', pub: true,
+    dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.?\s+(?:(?<h>\d{1,2})[:.](?<mi>\d{2})\s+)?(?<t>[^\d\s].{1,120})$/i,
+    venue: () => "John Scott's Ratina", addr: null },
   { id: 'bar-kotelo', name: 'Bar Kotelo', site: 'https://barkotelo.fi', path: '/keikat/', mode: 'text',
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-20a';
+export const VERSION = '2026-11-20b';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -204,7 +209,7 @@ export function parseTextBlocks(src, html, debug = false) {
     const tix = links.find(u => /tiketti\.fi|lippu\.fi|kide\.app|liveto|ticketmaster/i.test(u));
     const ev = {
       id: src.id + ':' + cur.date + ':' + title.slice(0, 40), title, date: cur.date,
-      start: cur.inline ? src.start || null : tm ? `${pad(tm[1])}:${tm[2] || '00'}` : null, doors: dm ? `${pad(dm[1])}:${dm[2]}` : null,
+      start: cur.inline ? cur.start || src.start || null : tm ? `${pad(tm[1])}:${tm[2] || '00'}` : null, doors: dm ? `${pad(dm[1])}:${dm[2]}` : null,
       venue: src.venue(t), place: src.name, addr: src.addr,
       price: pm ? parseFloat(pm[1].replace(',', '.')) : null, door: null,
       free: !!src.free || /vapaa pääsy|maksuton|ilmainen/i.test(t), soldout: /loppuunmyyty|sold out/i.test(t),
@@ -223,7 +228,7 @@ export function parseTextBlocks(src, html, debug = false) {
       flush();
       const dd = +m[1], mm = +m[2];
       const date = dd >= 1 && dd <= 31 && mm >= 1 && mm <= 12 ? textDate(`${dd}.${mm}.`, today) : null;
-      cur = date ? { date, lines: [m.groups.t.trim()], inline: true } : null;
+      cur = date ? { date, lines: [m.groups.t.trim()], inline: true, start: m.groups.h ? `${pad(m.groups.h)}:${m.groups.mi}` : null } : null;
       continue;
     }
     if (m) {
@@ -335,6 +340,7 @@ export function parseSquarespace(src, body, debug = false) {
   const mk = (title, date, start, url) => {
     title = sqTitle(title);
     if (!title || !date || date < today) return;
+    if (/yksityistilaisuus|private event|suljettu|lomailee|kiinni\b/i.test(title)) return;
     out.push({ id: src.id + ':' + url, title, date, start, doors: null, venue: src.venue(title), place: src.name, addr: src.addr,
       price: null, door: null, free: false, soldout: false, age: null, url, source: src.name, cat: src.pub ? 'Pubikeikka' : 'Keikka' });
   };
@@ -550,8 +556,8 @@ export function classify(e) {
   const t = (e.title || '') + ' ' + (e.sub || '') + ' ' + (e.cat || '');
   let k = 'Keikka';
   if (e.kind === 'Urheilu' || SPORT.test(t + ' ' + (e.url || ''))) k = 'Urheilu';
-  else if (/teatteri|näytelmä|ooppera|baletti|musikaali|stand ?up|komiikka|improvisaatio/i.test(t)) k = 'Teatteri';
-  else if (/muu tapahtuma|sarjakuva|salonki|markkinat|basaari|joulumyyjäiset|runoraati|runoilta|lausunta|messut|luento|keskustelu|tietovisa|visailu|viihdevisa|pubivisa|\bvisa\b|bingo|työpaja/i.test(t)) k = 'Muu';
+  else if (/teatteri|näytelmä|ooppera|baletti|musikaali|stand ?up|komiikka|improvisaatio|\bimpro|komedia|naurat/i.test(t)) k = 'Teatteri';
+  else if (/muu tapahtuma|sarjakuva|salonki|markkinat|basaari|joulumyyjäiset|runoraati|levyraati|runoilta|lausunta|messut|luento|keskustelu|tietovisa|visailu|viihdevisa|pubivisa|\bvisa\b|bingo|työpaja/i.test(t)) k = 'Muu';
   else if (/yökerho|klubi|club|disco|\bdj\b|dj:t|dj's|dj:s|tanssit|karaoke/i.test(t.replace(/pubikeikka/ig, ''))) k = 'Klubi';
   e.kind = k;
   // pubikeikat ovat keikkoja; sivulla Keikat-välilehden suodatin Isot paikat / Pubit (Lasse 20.11.)
@@ -564,7 +570,7 @@ function todayHelsinki() {
 }
 
 // Päivitys kahdessa erässä (Lasse 19.11.: klo 2 ja 3), jotta Workers-ilmaistason 50 alipyynnön raja riittää
-export const GROUP_B = new Set(['vastavirta', 'paappa', 'tanssiteatteri-md', 'oconnells', 'bar-k', 'kujakolli', 'pub-simon', 'maanalainen', 'komediateatteri', 'tampereen-teatteri', 'ttt-klubi']);
+export const GROUP_B = new Set(['bistro-vilja', 'john-scotts-ratina', 'vastavirta', 'paappa', 'tanssiteatteri-md', 'oconnells', 'bar-k', 'kujakolli', 'pub-simon', 'maanalainen', 'komediateatteri', 'tampereen-teatteri', 'ttt-klubi']);
 const inGroup = (src, g) => !g || g === 'all' || (g === 'b') === GROUP_B.has(src.id);
 export async function collect(ctx, debug = false, group = 'all') {
   const today = todayHelsinki();
