@@ -707,7 +707,7 @@ export default {
       }
       if (url.searchParams.has('wd')) { const dbg = {}; let g = null, err = null; try { g = await wdGenre(url.searchParams.get('wd'), MB_UA, dbg); } catch (e) { err = e.message; } return new Response(JSON.stringify({ g, err, dbg }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
       if (url.searchParams.has('refresh') && env.NYT) { const d = await refresh(env, ctx, 2, url.searchParams.get('g') || 'all'); return new Response(JSON.stringify({ v: d.v, status: d.status, genres: d.genres }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }); }
-      if (env.NYT) { const stored = await env.NYT.get('events'); if (stored) { const d = JSON.parse(stored); d.events = d.events.filter(e => e.date >= todayHelsinki()); return new Response(JSON.stringify(d), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=600', 'Access-Control-Allow-Origin': '*' } }); } }
+      if (env.NYT) { const stored = await env.NYT.get('events'); if (stored) { const d = JSON.parse(stored); const td = todayHelsinki(); d.today = td; d.events = d.events.filter(e => e.date >= td); return new Response(JSON.stringify(d), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=600', 'Access-Control-Allow-Origin': '*' } }); } }
       const cache = caches.default, key = new Request(url.origin + p);
       let res = await cache.match(key);
       if (!res) {
