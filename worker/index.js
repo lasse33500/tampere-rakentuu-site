@@ -1,7 +1,7 @@
 // Manse nyt – mansessa.fi/nyt
 // Sama Worker ("mansessa") palvelee historiasivuston staattiset tiedostot (assets) ja /nyt-polut.
 // Tapahtumista näytetään vain faktat (nimi, aika, paikka, hinta, ikäraja) ja linkki alkuperäiseen sivuun.
-import { PAGE, ABOUT_HEAD } from './page.js';
+import { PAGE, ABOUT_HEAD, PAGE_EN, ABOUT_HEAD_EN } from './page.js';
 import { artistKey, mbGenre, wdGenre, descGenre } from './genre.js';
 
 const SPORT_RE = () => /liiga|runkosarja|ottelu|salibandy|floorball|jääkiekko|hockey|\bWFC\b|MM-kilpailut|playoff|pudotuspeli/i;
@@ -63,7 +63,7 @@ export const SOURCES = [
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-24a';
+export const VERSION = '2026-11-24b';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -692,25 +692,49 @@ export function jsonLd(events) {
   return '<script type="application/ld+json">' + JSON.stringify({ '@context': 'https://schema.org', '@graph': list }).replace(/</g, '\\u003c') + '</script>';
 }
 // Manse nytin oma Tietoa ja yhteystiedot -sivu (Lasse 24.11.: ei historiasivun Tietoa-näkymää)
-function aboutPage() {
-  const seen = new Set(), venues = SOURCES.filter(x => !seen.has(x.name) && seen.add(x.name)).sort((a, b) => a.name.localeCompare(b.name, 'fi'));
+function aboutPage(lang) {
+  const en = lang === 'en';
+  const seen = new Set(), venues = SOURCES.filter(x => !seen.has(x.name) && seen.add(x.name)).sort((a, b) => a.name.localeCompare(b.name, en ? 'en' : 'fi'));
   const list = venues.map(x => `<li><a href="${escH(x.site + (x.path && x.path !== '/' && !/admin-ajax|wp-json|\/event\//.test(x.path) ? x.path : '/'))}" rel="noopener">${escH(x.name)}</a></li>`).join('');
-  return ABOUT_HEAD + `<main class="about">
-  <p class="back"><a href="/nyt/">← Takaisin tapahtumiin</a></p>
-  <h1>Tietoa Manse nytistä</h1>
-  <p class="lede">Manse nyt kokoaa Tampereen keikat, klubi-illat, teatteriesitykset ja urheilutapahtumat yhdelle sivulle, jotta näet yhdellä silmäyksellä, mitä kaupungissa tapahtuu tänään ja tulevina päivinä.</p>
-  <h2>Miten tiedot kootaan</h2>
-  <p>Tapahtumat haetaan kerran yössä tapahtumapaikkojen omilta, julkisilta ohjelmasivuilta. Sivulla näytetään vain perustiedot: tapahtuman nimi, päivä ja kellonaika, paikka ja mahdollinen hinta. Esittelytekstejä ja kuvia ei kopioida, vaan jokaisesta tapahtumasta on linkki paikan omalle sivulle, josta saat liput ja lisätiedot. Tarkista ajat ja saatavuus aina sieltä.</p>
-  <p>Musiikkityylit (genret) ovat suuntaa antavia. Ne haetaan avoimista MusicBrainz- ja Wikidata-tietokannoista tai päätellään tapahtumapaikan omasta esittelystä.</p>
-  <h2>Tapahtumapaikat</h2>
-  <p>Tiedot tulevat näiden ${venues.length} paikan sivuilta:</p>
+  const T = en ? {
+    back: '← Back to events', backH: '/nyt/en/', h1: 'About Manse nyt',
+    lede: 'Manse nyt gathers gigs, club nights, theatre and sports events in Tampere on a single page, so you can see at a glance what is happening in the city today and in the coming days.',
+    h2a: 'How the information is gathered',
+    pa: 'Events are collected once a night from the venues\' own public programme pages. Only basic details are shown: the event name, date and time, venue and price where available. Descriptions and images are not copied; each event links to the venue\'s own page, where you will find tickets and further details. Always check times and availability there.',
+    pb: 'Music genres are indicative. They come from the open MusicBrainz and Wikidata databases or are inferred from the venue\'s own description.',
+    h2b: 'Venues', pc: `Information comes from the websites of these ${venues.length} venues:`,
+    h2c: 'Contact', pd: 'Spotted a mistake, missing a venue, or interested in working together? Get in touch: <a href="mailto:lasse33500@gmail.com">lasse33500@gmail.com</a>.',
+    pe: 'If you represent a venue and do not want your events listed, let us know and we will remove them.',
+    h2d: 'Mansessa', pf: 'Manse nyt is part of the Mansessa site. Its other half is <a href="/?lang=en">Tampere Builds</a>, a history map of Tampere. Both are independent hobby projects, not official services of the venues or the city.',
+    foot: 'Mansessa · <a href="/nyt/en/">Manse nyt</a> · <a href="/?lang=en">Tampere Builds – history map</a>'
+  } : {
+    back: '← Takaisin tapahtumiin', backH: '/nyt/', h1: 'Tietoa Manse nytistä',
+    lede: 'Manse nyt kokoaa Tampereen keikat, klubi-illat, teatteriesitykset ja urheilutapahtumat yhdelle sivulle, jotta näet yhdellä silmäyksellä, mitä kaupungissa tapahtuu tänään ja tulevina päivinä.',
+    h2a: 'Miten tiedot kootaan',
+    pa: 'Tapahtumat haetaan kerran yössä tapahtumapaikkojen omilta, julkisilta ohjelmasivuilta. Sivulla näytetään vain perustiedot: tapahtuman nimi, päivä ja kellonaika, paikka ja mahdollinen hinta. Esittelytekstejä ja kuvia ei kopioida, vaan jokaisesta tapahtumasta on linkki paikan omalle sivulle, josta saat liput ja lisätiedot. Tarkista ajat ja saatavuus aina sieltä.',
+    pb: 'Musiikkityylit (genret) ovat suuntaa antavia. Ne haetaan avoimista MusicBrainz- ja Wikidata-tietokannoista tai päätellään tapahtumapaikan omasta esittelystä.',
+    h2b: 'Tapahtumapaikat', pc: `Tiedot tulevat näiden ${venues.length} paikan sivuilta:`,
+    h2c: 'Yhteystiedot', pd: 'Huomasitko virheen, puuttuuko listalta jokin paikka tai haluatko tehdä yhteistyötä? Ota yhteyttä: <a href="mailto:lasse33500@gmail.com">lasse33500@gmail.com</a>.',
+    pe: 'Jos edustat tapahtumapaikkaa etkä halua tapahtumianne listalle, kerro siitä, niin poistamme ne.',
+    h2d: 'Mansessa', pf: 'Manse nyt on osa Mansessa-sivustoa. Sen toinen puoli on <a href="/">Tampere rakentuu</a>, Tampereen historiakartta. Molemmat ovat itsenäisiä harrastusprojekteja, eivät tapahtumapaikkojen tai kaupungin virallisia palveluja.',
+    foot: 'Mansessa · <a href="/nyt/">Manse nyt</a> · <a href="/">Tampere rakentuu – historiakartta</a>'
+  };
+  return (en ? ABOUT_HEAD_EN : ABOUT_HEAD) + `<main class="about">
+  <p class="back"><a href="${T.backH}">${T.back}</a></p>
+  <h1>${T.h1}</h1>
+  <p class="lede">${T.lede}</p>
+  <h2>${T.h2a}</h2>
+  <p>${T.pa}</p>
+  <p>${T.pb}</p>
+  <h2>${T.h2b}</h2>
+  <p>${T.pc}</p>
   <ul class="venues">${list}</ul>
-  <h2>Yhteystiedot</h2>
-  <p>Huomasitko virheen, puuttuuko listalta jokin paikka tai haluatko tehdä yhteistyötä? Ota yhteyttä: <a href="mailto:lasse33500@gmail.com">lasse33500@gmail.com</a>.</p>
-  <p>Jos edustat tapahtumapaikkaa etkä halua tapahtumianne listalle, kerro siitä, niin poistamme ne.</p>
-  <h2>Mansessa</h2>
-  <p>Manse nyt on osa Mansessa-sivustoa. Sen toinen puoli on <a href="/">Tampere rakentuu</a>, Tampereen historiakartta. Molemmat ovat itsenäisiä harrastusprojekteja, eivät tapahtumapaikkojen tai kaupungin virallisia palveluja.</p>
-  <footer><p>Mansessa · <a href="/nyt/">Manse nyt</a> · <a href="/">Tampere rakentuu – historiakartta</a></p></footer>
+  <h2>${T.h2c}</h2>
+  <p>${T.pd}</p>
+  <p>${T.pe}</p>
+  <h2>${T.h2d}</h2>
+  <p>${T.pf}</p>
+  <footer><p>${T.foot}</p></footer>
 </main>
 <style>.about{max-width:720px}.about h2{font-size:20px;margin:28px 0 8px}.about p{line-height:1.6}.about .back{margin:0 0 6px;font-size:14px}.about .back a,.about a{color:var(--brick)}.venues{columns:2;gap:24px;padding-left:18px;line-height:1.8}@media(max-width:600px){.venues{columns:1}}</style>
 </body></html>`;
@@ -739,6 +763,13 @@ export default {
     const url = new URL(request.url);
     const p = url.pathname;
     if (p === '/nyt') return Response.redirect(url.origin + '/nyt/' + url.search, 301);
+    if (p === '/nyt/en' || p === '/nyt/en/about') return Response.redirect(url.origin + p + '/', 301);
+    if (p === '/nyt/en/about/') return new Response(aboutPage('en'), { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=3600' } });
+    if (p === '/nyt/en/') {
+      let html = PAGE_EN;
+      try { if (env.NYT) { const d = JSON.parse(await env.NYT.get('events') || 'null'); if (d) html = PAGE_EN.replace('</head>', jsonLd(d.events) + '\n</head>'); } } catch {}
+      return new Response(html, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=600' } });
+    }
     if (p === '/nyt/tietoa') return Response.redirect(url.origin + '/nyt/tietoa/', 301);
     if (p === '/nyt/tietoa/') return new Response(aboutPage(), { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=3600' } });
     if (p === '/nyt/') {
