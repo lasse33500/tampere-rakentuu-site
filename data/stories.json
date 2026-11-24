@@ -2464,7 +2464,7 @@
    },
    {
     "h": "Sellua ja rautatietä",
-    "p": "J. W. Enqvist perusti kartanon talouspihalle sellutehtaan 1913, ja sen jälkeen Hiedanranta oli puunjalostusteollisuuden aluetta. Sellutehtaan haju tuli tutuksi koko Länsi-Tampereelle. Thure Hällströmin suunnittelema punatiilinen Lielahden asemarakennus valmistui 1927. Lielahti liitettiin Tampereeseen Ylöjärveltä 1950. Kaupunki osti tehdasalueen 2014, ja sen paikalle rakennetaan Hiedanrannan kaupunginosaa."
+    "p": "J. W. Enqvist perusti kartanon talouspihalle sellutehtaan 1913, ja sen jälkeen Hiedanranta oli puunjalostusteollisuuden aluetta. Sellutehtaan haju tuli tutuksi koko Länsi-Tampereelle. Thure Hellströmin suunnittelema punatiilinen Lielahden asemarakennus valmistui 1927. Lielahti liitettiin Tampereeseen Ylöjärveltä 1950. Kaupunki osti tehdasalueen 2014, ja sen paikalle rakennetaan Hiedanrannan kaupunginosaa."
    }
   ],
   "tl": [
@@ -2512,7 +2512,7 @@
     "Kehitti Lielahdesta suurtilan"
    ],
    [
-    "Thure Hällström",
+    "Thure Hellström",
     "",
     "Aseman arkkitehti"
    ]
@@ -2555,7 +2555,7 @@
     },
     {
      "h": "Pulp and railway",
-     "p": "In 1913 J. W. Enqvist founded a pulp mill in the manor's farmyard, and from then on Hiedanranta was a wood-processing area. The smell of the pulp mill became familiar across western Tampere. The red-brick Lielahti station building, designed by Thure Hällström, was completed in 1927. Lielahti was transferred to Tampere from Ylöjärvi in 1950. The city bought the factory site in 2014, and the Hiedanranta district is being built in its place."
+     "p": "In 1913 J. W. Enqvist founded a pulp mill in the manor's farmyard, and from then on Hiedanranta was a wood-processing area. The smell of the pulp mill became familiar across western Tampere. The red-brick Lielahti station building, designed by Thure Hellström, was completed in 1927. Lielahti was transferred to Tampere from Ylöjärvi in 1950. The city bought the factory site in 2014, and the Hiedanranta district is being built in its place."
     }
    ],
    "tlt": [
@@ -3667,5 +3667,503 @@
     "Annexed to Tampere"
    ]
   }
+ },
+ "Tahmela": {
+  "status": "tarkistettu",
+  "lede": "Pyhäjärven rantarinne Pispalan ja Pyynikin välissä: torpan nimestä syntynyt huvila- ja työläisalue, jonka lähteestä satojen talouksien juomavesi tuli vielä 1960-luvulla.",
+  "sections": [
+   {
+    "h": "Torpasta kaupunginosaksi",
+    "p": "Tahmela on saanut nimensä noin vuonna 1870 rakennetusta samannimisestä torpasta, joka sijaitsi nykyisen Selininkadun varrella. Alue kuului Pohjois-Pirkkalan kuntaan ja oli osa Pispalan taajaväkistä yhdyskuntaa, kunnes se liitettiin Tampereeseen vuoden 1937 alussa. Asemakaava vahvistettiin vuonna 1945 samaan aikaan kuin Pispalan kaava. Varalan urheiluopiston lähellä on Ansionkallion asutusalue: tarinan mukaan maanomistaja Otto Thuneberg myi sieltä tontteja 1900-luvun vaihteessa 'ei armosta vaan ansiosta', vastineeksi läheiselle Armonkalliolle."
+   },
+   {
+    "h": "Lähde, linnoitukset ja hyppyrimäki",
+    "p": "Tahmelan suuresta lähteestä yli 600 taloutta Pispalassa ja Tahmelassa sai juomavetensä. Jakelusta huolehti osuuskunta, joka toimi vuoteen 1961. Vallikadun tienoilla on jäänteitä linnoituksista, joita Venäjän armeija rakennutti ensimmäisen maailmansodan aikana Tahmelasta Pispalanharjulle. Hopankadun nimi muistuttaa vuonna 1908 rakennetusta hyppyrimäestä, joka purettiin 1980-luvun lopulla. Runoilija Yrjö Jylhä asui Tahmelassa nuoruudessaan, ja hänen mukaansa on nimetty katu."
+   },
+   {
+    "h": "Huvilat ja palstat",
+    "p": "Rantaan rakennettu Tahmelan huvila Uramonkatu 9:ssä toimi myöhemmin muun muassa lastenkotina ja monitoimitalona. Vuonna 2024 hyväksytyllä asemakaavalla sen käyttö muutettiin asumisen ja yleisen käytön sallivaksi ja kulttuuriympäristö suojeltiin. Ranta pysyy yleisessä käytössä. Rannassa on vuokrapalstoja, joiden säilymistä puolustamaan perustettiin vuonna 1998 Kurpitsaliike ry. Kaupunginosassa toimii myös kulttuurikeskus Hirvitalo."
+   }
+  ],
+  "tl": [
+   [
+    1870,
+    "Tahmelan torppa rakennetaan (noin)"
+   ],
+   [
+    1908,
+    "Hyppyrimäki rakennetaan"
+   ],
+   [
+    1937,
+    "Tahmela liitetään Tampereeseen"
+   ],
+   [
+    1945,
+    "Asemakaava vahvistetaan"
+   ],
+   [
+    1961,
+    "Lähteen vesiosuuskunta lopettaa"
+   ],
+   [
+    1998,
+    "Kurpitsaliike perustetaan"
+   ],
+   [
+    2024,
+    "Tahmelan huvilan asemakaava ja suojelu"
+   ]
+  ],
+  "people": [
+   [
+    "Yrjö Jylhä",
+    "1903–1956",
+    "Runoilija, asui Tahmelassa nuoruudessaan"
+   ]
+  ],
+  "src": [
+   [
+    "Wikipedia: Tahmela",
+    "https://fi.wikipedia.org/wiki/Tahmela"
+   ],
+   [
+    "Pirkanmaan maakuntamuseo: Pispalan–Tahmelan rakennetun ympäristön inventointi, loppuraportti 2013",
+    "https://www.tampere.fi/sites/default/files/2023-03/pispalan-tahmelan_alueen_rakennetun_ympariston_inventointi_loppuraportti_2013_8309.pdf"
+   ],
+   [
+    "Tampereen kaupunki: asemakaavan 8752 selostus (Uramonkatu 9)",
+    "https://tampere.fi/sites/default/files/2024-05/8752_selostus_20240514.pdf"
+   ],
+   [
+    "Rakennushistoriaselvitys Uramonkatu 9 (2018)",
+    "https://tampere.fi/sites/default/files/2023-04/8752_rakennushistoriaselvitys_20181106.pdf"
+   ]
+  ],
+  "en": {
+   "lede": "A lakeside slope between Pispala and Pyynikki: a villa and working-class area named after a croft, whose spring supplied drinking water to hundreds of households until the 1960s.",
+   "sections": [
+    {
+     "h": "From croft to district",
+     "p": "Tahmela takes its name from a croft built around 1870 on what is now Selininkatu. The area belonged to the municipality of Pohjois-Pirkkala and was part of the densely built Pispala community until it was joined to Tampere at the start of 1937. Its town plan was confirmed in 1945, together with Pispala's. Near the Varala sports institute lies the Ansionkallio area: the story goes that landowner Otto Thuneberg sold plots there around 1900 'not out of mercy but on merit', as a counterpart to nearby Armonkallio ('mercy rock')."
+    },
+    {
+     "h": "Spring, fortifications and a ski jump",
+     "p": "More than 600 households in Pispala and Tahmela got their drinking water from Tahmela's large spring. Distribution was run by a cooperative that operated until 1961. Around Vallikatu there are remains of fortifications built by the Russian army during the First World War, running from Tahmela to the Pispala ridge. The street name Hopankatu recalls a ski jump built in 1908 and demolished in the late 1980s. The poet Yrjö Jylhä lived in Tahmela in his youth, and a street is named after him."
+    },
+    {
+     "h": "Villas and allotments",
+     "p": "The Tahmela villa at Uramonkatu 9 on the shore later served as a children's home and a community centre, among other uses. A town plan approved in 2024 allows it to be used for housing and public purposes and protects its cultural environment. The shoreline stays open to the public. The shore has rental allotments, and the Kurpitsaliike association was founded in 1998 to defend them. The district is also home to the Hirvitalo cultural centre."
+    }
+   ],
+   "tlt": [
+    "Tahmela croft built (approx.)",
+    "Ski jump built",
+    "Tahmela joined to Tampere",
+    "Town plan confirmed",
+    "Spring water cooperative closes",
+    "Kurpitsaliike founded",
+    "Town plan and protection for the Tahmela villa"
+   ]
+  },
+  "places": []
+ },
+ "Hiedanranta": {
+  "status": "tarkistettu",
+  "lede": "Kartanon, sellutehtaan ja katutaiteen kerrostuma Näsijärven rannalla. Kaupunki osti suljetun tehdasalueen vuonna 2014, ja sille rakentuu uusi kaupunginosa.",
+  "sections": [
+   {
+    "h": "Ratsutilasta Nottbeckien kartanoksi",
+    "p": "Lielahden kartano oli alun perin ratsutila. Vuosina 1872–1904 sen ja lähitalot omisti Finlaysonin tehtailijasuku von Nottbeck. Kartanopuisto sai nykyisen muotonsa Wilhelm Fredrik von Nottbeckin aikana 1890-luvulla. Suku jätti alueelle myös hautausmaan ja kappelin vuodelta 1885. Kartano ja alueen vesitorni ovat suojeltuja ja valtakunnallisesti merkittäviä rakennuksia."
+   },
+   {
+    "h": "Sellutehdas",
+    "p": "Tehtailija J. W. Enqvist osti kartanon von Nottbeckeiltä, ja vuonna 1913 sen maille perustettiin Ab J. W. Enqvist Oy:n sellutehdas. Tehdas osti myös viereisen Niemen kartanon, jonne rakennettiin työntekijöiden asuinalue. Kartanon puiston ja rakennusten linjat ohjasivat tehtaan sijoittelua, joten kartano ja teollisuus kerrostuivat samaan maisemaan. Puunjalostus jatkui lähes sata vuotta: viimeisenä toimi Metsä Boardin edeltäjien kemihierretehdas, joka suljettiin vuonna 2008."
+   },
+   {
+    "h": "Väliaikaisesta pysyvään",
+    "p": "Vuonna 2014 yhtiö myi alueen Tampereen kaupungille 26 miljoonalla eurolla. Kauppaan kuului 90 hehtaaria maata ja noin tuhat hehtaaria vesialuetta. Alueelle annettiin vanha, unohtunut lahdenpoukaman nimi Hiedanranta. Vuodesta 2015 kaupunki avasi tehdastiloja kaupunkilaisten käyttöön, ja alueesta tuli tunnettu katutaiteen paikka, jonka suurimmat seinämaalaukset ovat jopa 15 metriä korkeita. Maankäytön yleissuunnitelma hyväksyttiin vuonna 2020. Kaupungin tavoitteena on 18 500 asukkaan kaupunginosa, jonne pääsee keskustasta raitiovaunulla."
+   }
+  ],
+  "tl": [
+   [
+    1872,
+    "Von Nottbeckit omistavat Lielahden kartanon"
+   ],
+   [
+    1885,
+    "Kappeli ja hautausmaa"
+   ],
+   [
+    1913,
+    "Sellutehdas perustetaan kartanon maille"
+   ],
+   [
+    2008,
+    "Viimeinen tehdas suljetaan"
+   ],
+   [
+    2014,
+    "Tampereen kaupunki ostaa alueen"
+   ],
+   [
+    2015,
+    "Väliaikainen Hiedanranta avataan"
+   ],
+   [
+    2020,
+    "Maankäytön yleissuunnitelma hyväksytään"
+   ]
+  ],
+  "people": [
+   [
+    "Wilhelm Fredrik von Nottbeck",
+    "",
+    "Kartanopuisto sai muotonsa hänen aikanaan"
+   ],
+   [
+    "J. W. Enqvist",
+    "",
+    "Tehtailija, sellutehtaan perustaja"
+   ]
+  ],
+  "src": [
+   [
+    "Wikipedia: Hiedanranta",
+    "https://fi.wikipedia.org/wiki/Hiedanranta"
+   ],
+   [
+    "Wikipedia: Lielahden kartano",
+    "https://fi.wikipedia.org/wiki/Lielahden_kartano"
+   ],
+   [
+    "Heiskanen & Niukko: Hiedanrannan rakennetun ympäristön selvitys 2016",
+    "https://www.tampere.fi/sites/default/files/2022-11/8793_hiedanrannan_rakennetun_ympariston_selvitys.pdf"
+   ],
+   [
+    "Hiedanrannan maisemaselvitys 2016",
+    "https://tampere.fi/sites/default/files/2024-12/8894_maisemaselvitys_20160414.pdf"
+   ],
+   [
+    "Tampereen kaupunki: Hiedanranta",
+    "https://www.tampere.fi/en/urban-design/renewing-city/hiedanranta"
+   ]
+  ],
+  "en": {
+   "lede": "Layers of manor, pulp mill and street art on the shore of Lake Näsijärvi. The city bought the closed mill site in 2014, and a new district is rising on it.",
+   "sections": [
+    {
+     "h": "From cavalry farm to Nottbeck manor",
+     "p": "Lielahti manor was originally a cavalry farm. From 1872 to 1904 it and the neighbouring farms were owned by the von Nottbeck family of the Finlayson mill. The manor park took its present form under Wilhelm Fredrik von Nottbeck in the 1890s. The family also left a cemetery and a chapel from 1885. The manor and the area's water tower are protected buildings of national importance."
+    },
+    {
+     "h": "The pulp mill",
+     "p": "The industrialist J. W. Enqvist bought the manor from the von Nottbecks, and in 1913 Ab J. W. Enqvist Oy's pulp mill was founded on its land. The company also bought the neighbouring Niemi manor, where housing for the workers was built. The lines of the manor park and buildings guided the layout of the mill, so manor and industry became layered in the same landscape. Wood processing continued for almost a hundred years: the last plant, a chemi-mechanical pulp mill of Metsä Board's predecessors, closed in 2008."
+    },
+    {
+     "h": "From temporary to permanent",
+     "p": "In 2014 the company sold the site to the City of Tampere for 26 million euros. The deal covered 90 hectares of land and about a thousand hectares of water. The area was given Hiedanranta, an old, forgotten name of the bay. From 2015 the city opened the factory spaces to residents, and the area became a well-known street-art site whose largest murals are up to 15 metres high. A master plan for land use was approved in 2020. The city aims for a district of 18,500 residents, reachable from the centre by tram."
+    }
+   ],
+   "tlt": [
+    "The von Nottbecks own Lielahti manor",
+    "Chapel and cemetery",
+    "Pulp mill founded on the manor's land",
+    "The last mill closes",
+    "The City of Tampere buys the site",
+    "Temporary Hiedanranta opens",
+    "Land-use master plan approved"
+   ]
+  },
+  "places": []
+ },
+ "Nekala (XXIV)": {
+  "status": "tarkistettu",
+  "lede": "Hatanpään kartanon pelloille palstoitettu työväen omakotialue, jossa on Suomen toiseksi suurin siirtolapuutarha ja Alvar Aallon suunnittelema Asevelikylä.",
+  "sections": [
+   {
+    "h": "Nekan talo ja kartanon pellot",
+    "p": "Ensimmäiset tiedot Nekalan asukkaista ovat 1500-luvulta, jolloin Iidesjärven rannalla oli Per Nekan isännöimä Nekalan talo. Siitä kaupunginosa sai nimensä. Alue kuului Messukylään ja oli pitkään Hatanpään kartanon viljapeltoa. Monet kadunnimet, kuten Kuokkamaantie ja Kuoppamäentie, juontuvat vanhoista pelto- ja niittynimistä."
+   },
+   {
+    "h": "Palstat työväelle",
+    "p": "Tampereen kaupunki osti Hatanpään kartanon vuonna 1913 ja palstoitti sen pellot työväestön omakotitaloalueeksi. Alue liitettiin kaupunkiin vuonna 1920. Kesäkuussa 1922 Nekalassa pidettiin Suomen XII yleinen maatalousnäyttely. Vuonna 1932 perustettu siirtolapuutarha on Suomen toiseksi suurin: siinä on reilut 300 mökkiä 16,4 hehtaarin alueella. Ensimmäinen tehdastontti luovutettiin vuonna 1938, ja radan varren teollisuusalue rakentui 1940-luvulta alkaen."
+   },
+   {
+    "h": "Sota-ajan kodit",
+    "p": "Suomen Aseveljien Liiton Tampereen piiri rakennutti Asevelikylän, jossa oli alun perin 13 Alvar Aallon suunnittelemaa kaksoistaloa. Siellä asui muun muassa yhdeksän sotaleskeä perheineen. Kylä vihittiin käyttöön 5. syyskuuta 1943, ja tilaisuudessa oli mukana presidentti Risto Ryti. Vuonna 1946 asuntopulaa helpottamaan rakennettiin kymmenen vaatimatonta pikataloa ilman vesijohtoja. Ne purettiin vuonna 2009. Nykyään Nekala kuuluu valtakunnallisesti arvokkaaseen Viinikka–Nekalan pientaloalueeseen."
+   }
+  ],
+  "tl": [
+   [
+    1913,
+    "Kaupunki ostaa Hatanpään kartanon"
+   ],
+   [
+    1920,
+    "Nekala liitetään Tampereeseen"
+   ],
+   [
+    1922,
+    "Yleinen maatalousnäyttely"
+   ],
+   [
+    1932,
+    "Siirtolapuutarha perustetaan"
+   ],
+   [
+    1938,
+    "Ensimmäinen tehdastontti"
+   ],
+   [
+    1943,
+    "Asevelikylä vihitään"
+   ],
+   [
+    1946,
+    "Pikatalot rakennetaan"
+   ],
+   [
+    2009,
+    "Pikatalot puretaan"
+   ]
+  ],
+  "people": [
+   [
+    "Alvar Aalto",
+    "1898–1976",
+    "Asevelikylän kaksoistalojen arkkitehti"
+   ]
+  ],
+  "src": [
+   [
+    "Wikipedia: Nekala",
+    "https://fi.wikipedia.org/wiki/Nekala"
+   ],
+   [
+    "Hinnerichsen: Nekalan korttelien rakennetun kulttuuriympäristön inventointi 2017",
+    "https://ekstrat.tampere.fi/ytoteto/aka/nahtavillaolevat/8644/selvitykset/nekala_osa1.pdf"
+   ],
+   [
+    "Nekalan lastentalon rakennushistoriaselvitys 2018",
+    "https://www.tampere.fi/sites/default/files/2023-05/rakennushistoriaselvitys_15.10.20181_8860.pdf"
+   ],
+   [
+    "Tampereen kaupunki: asemakaavan 8860 selostus (RKY Viinikka–Nekala)",
+    "https://tampere.fi/sites/default/files/2024-05/8860_selostus_20240520.pdf"
+   ]
+  ],
+  "en": {
+   "lede": "A working-class area of family houses parcelled out of the Hatanpää manor's fields, with Finland's second-largest allotment garden and the Asevelikylä village designed by Alvar Aalto.",
+   "sections": [
+    {
+     "h": "The Neka farm and the manor fields",
+     "p": "The first records of Nekala's residents date from the 16th century, when the Nekala farm, run by Per Neka, stood on the shore of Lake Iidesjärvi. The district takes its name from it. The area belonged to Messukylä and was long the grain fields of the Hatanpää manor. Many street names, such as Kuokkamaantie and Kuoppamäentie, come from old field and meadow names."
+    },
+    {
+     "h": "Plots for workers",
+     "p": "The City of Tampere bought the Hatanpää manor in 1913 and divided its fields into plots for workers' family houses. The area was joined to the city in 1920. In June 1922 Nekala hosted Finland's 12th general agricultural exhibition. The allotment garden founded in 1932 is the second largest in Finland, with just over 300 cottages on 16.4 hectares. The first factory plot was handed over in 1938, and the industrial area beside the railway grew from the 1940s onward."
+    },
+    {
+     "h": "Wartime homes",
+     "p": "The Tampere district of the Brothers-in-Arms League built Asevelikylä, originally 13 semi-detached houses designed by Alvar Aalto. Among its residents were nine war widows and their families. The village was inaugurated on 5 September 1943 in the presence of President Risto Ryti. In 1946, ten simple quick-build houses without running water were built to ease the housing shortage. They were demolished in 2009. Today Nekala is part of the nationally valuable Viinikka–Nekala area of small houses."
+    }
+   ],
+   "tlt": [
+    "The city buys the Hatanpää manor",
+    "Nekala joined to Tampere",
+    "General agricultural exhibition",
+    "Allotment garden founded",
+    "First factory plot",
+    "Asevelikylä inaugurated",
+    "Quick-build houses built",
+    "Quick-build houses demolished"
+   ]
+  },
+  "places": []
+ },
+ "Härmälä": {
+  "status": "tarkistettu",
+  "lede": "Vanha kylä Pyhäjärven rannalla, josta tuli puutarhakaupunginosa, lentoasema ja lentokonetehdas. Tehdasalueelle on noussut uusi Härmälänrannan asuinalue.",
+  "sections": [
+   {
+    "h": "Kylästä puutarhakaupunginosaksi",
+    "p": "Härmälä mainitaan vuoden 1540 maakirjassa kahden talon kylänä Pirkkalan pitäjässä. Talot yhdistettiin ratsutilaksi vuonna 1629, ja tila siirtyi Hatanpään kartanolle vuonna 1759. Kun kaupunki osti Hatanpään vuonna 1913, Härmälä tuli mukana, ja alue liitettiin virallisesti Tampereeseen vuonna 1920. Uusi kaupunginosa perustettiin 1925. Asemakaavaan merkittiin 163 omakotitonttia, jotka rakennettiin 1920- ja 1930-luvuilla. Välirauhan aikana Nuolialantien eteläpuolelle rakennettiin niin sanotut suurperheiden talot."
+   },
+   {
+    "h": "Lentokenttä ja lentokonetehdas",
+    "p": "Taiteilija Adolf Aarno yritti ensimmäisenä suomalaisena lentää Pyhäjärven jäällä Härmälän edustalla huhtikuussa 1911. Vuonna 1936 valmistui Härmälän lentoasema, Suomen toinen siviili-ilmailun maakenttä. Samana vuonna Valtion lentokonetehdas muutti Suomenlinnasta Härmälään. Tehdas muuttui vuonna 1946 Valmetin tehtaaksi, ja myöhemmin samalla paikalla tehtiin satamien lukkeja. Lentoasema suljettiin vuonna 1979, kun liikenne siirtyi Pirkkalaan. Kiitotien paikalla kulkee nyt Ilmailunkatu, ja sen päässä on messu- ja urheilukeskus."
+   },
+   {
+    "h": "Härmälänranta",
+    "p": "Vanhaa lentokonetehdasta oli tarkoitus suojella, mutta pilaantunut maaperä pakotti purkamaan sen. Tehdasalueelle on 2010-luvulta lähtien rakennettu Härmälänrannan asuinaluetta, jonne on suunniteltu noin 1 500 asuntoa, palveluita, puistoja ja uimaranta. Kadunnimet, kuten Lentokonetehtaankatu ja Valmetinkatu, sekä alueen muraali muistuttavat ilmailun ja teollisuuden ajasta."
+   }
+  ],
+  "tl": [
+   [
+    1540,
+    "Härmälän kylä mainitaan maakirjassa"
+   ],
+   [
+    1629,
+    "Talot yhdistetään ratsutilaksi"
+   ],
+   [
+    1911,
+    "Adolf Aarnon lentoyritys"
+   ],
+   [
+    1920,
+    "Härmälä liitetään Tampereeseen"
+   ],
+   [
+    1936,
+    "Lentoasema ja Valtion lentokonetehdas"
+   ],
+   [
+    1946,
+    "Lentokonetehtaasta Valmet"
+   ],
+   [
+    1979,
+    "Lentoasema suljetaan"
+   ]
+  ],
+  "people": [
+   [
+    "Adolf Aarno",
+    "",
+    "Taiteilija, ensimmäinen suomalainen lentoyritys 1911"
+   ]
+  ],
+  "src": [
+   [
+    "Wikipedia: Härmälä",
+    "https://fi.wikipedia.org/wiki/H%C3%A4rm%C3%A4l%C3%A4"
+   ],
+   [
+    "Wikipedia: Tampere–Pirkkala Airport",
+    "https://en.wikipedia.org/wiki/Tampere_Airport"
+   ],
+   [
+    "Tengbom: Härmälänranta",
+    "https://en.tengbom.se/?p=31505"
+   ],
+   [
+    "Tampereen kaupunki: Palstoittamalla syntyneet pientaloalueet",
+    "https://www.tampere.fi/sites/default/files/2022-05/Palstoittamalla_syntyneet_pientaloalueet_Tampere.pdf"
+   ]
+  ],
+  "en": {
+   "lede": "An old village on Lake Pyhäjärvi that became a garden suburb, an airport and an aircraft factory. A new residential area, Härmälänranta, has risen on the factory site.",
+   "sections": [
+    {
+     "h": "From village to garden suburb",
+     "p": "Härmälä appears in the 1540 land register as a two-farm village in the parish of Pirkkala. The farms were merged into a cavalry farm in 1629, and it passed to the Hatanpää manor in 1759. When the city bought Hatanpää in 1913, Härmälä came with it, and the area officially joined Tampere in 1920. The new district was founded in 1925. Its town plan set out 163 plots for family houses, built in the 1920s and 1930s. During the Interim Peace, houses for large families were built south of Nuolialantie."
+    },
+    {
+     "h": "Airfield and aircraft factory",
+     "p": "The artist Adolf Aarno made the first Finnish attempt to fly on the ice of Lake Pyhäjärvi off Härmälä in April 1911. In 1936 Härmälä airport was completed as Finland's second civil-aviation land airfield. The same year the State Aircraft Factory moved from Suomenlinna to Härmälä. The factory became a Valmet works in 1946, and later straddle carriers for ports were made on the same site. The airport closed in 1979 when traffic moved to Pirkkala. Ilmailunkatu now runs where the runway was, with the exhibition and sports centre at its end."
+    },
+    {
+     "h": "Härmälänranta",
+     "p": "The old aircraft factory was meant to be protected, but contaminated soil forced its demolition. Since the 2010s the Härmälänranta residential area has been built on the factory site, planned for about 1,500 homes, services, parks and a beach. Street names such as Lentokonetehtaankatu and Valmetinkatu, and a mural in the area, recall the era of aviation and industry."
+    }
+   ],
+   "tlt": [
+    "Härmälä village in the land register",
+    "Farms merged into a cavalry farm",
+    "Adolf Aarno's flight attempt",
+    "Härmälä joined to Tampere",
+    "Airport and State Aircraft Factory",
+    "The aircraft factory becomes Valmet",
+    "The airport closes"
+   ]
+  },
+  "places": []
+ },
+ "Linnainmaa": {
+  "status": "tarkistettu",
+  "lede": "Messukylän peltojen ja kantatalojen paikalle kaavoitettu itäinen omakotialue, josta on kasvanut kauppojen ja raitiotien Koilliskeskus.",
+  "sections": [
+   {
+    "h": "Linnan suvun maat",
+    "p": "Nimi on peräisin alueella vaikuttaneelta Linnan suvulta, jolta kaupunki pakkolunasti maat. Viimeinen maanomistaja oli Antti Linna, ja kartanon piha-alue on nykyään puistona. Vuoden 1785 isonjaon asiakirjoissa mainitaan Linnama-niminen pelto, jonka nimi voi viitata myös pellavaan (liina). Vanhat asukkaat puhuivat Jussilan alueesta Jussilan tilan mukaan. Kadunnimet, kuten Hannulankatu, Jussilankatu ja Kirviälänkatu, muistuttavat vanhoista kantataloista."
+   },
+   {
+    "h": "Messukylästä Tampereeseen",
+    "p": "Linnainmaa kuului Messukylän kuntaan, joka liitettiin Tampereeseen vuonna 1947. Liitos yli kaksinkertaisti kaupungin maa-alan. Linnainmaan ensimmäinen asemakaava vahvistettiin vuonna 1955. Rakennuskanta on enimmäkseen 1950- ja 1960-lukujen omakotitaloja, ja 1970-luvulta lähtien alueelle on rakennettu myös rivi- ja kerrostaloja."
+   },
+   {
+    "h": "Koilliskeskus",
+    "p": "Kaupalliset palvelut ovat 1990-luvulta lähtien keskittyneet itäisen ohikulkutien ja Lahdentien risteyksen tuntumaan. Koilliskeskusta kehitetään Tampereen kolmanneksi aluekeskukseksi, joka palvelee myös muita itäisiä kaupunginosia. Alueelle suunnitellaan Pirkkala–Linnainmaa-raitiotien päätä ja raitiotievarikkoa. Kaupunginosassa asuu noin 6 000 ihmistä."
+   }
+  ],
+  "tl": [
+   [
+    1785,
+    "Linnama-pelto isonjaon asiakirjoissa"
+   ],
+   [
+    1947,
+    "Messukylä liitetään Tampereeseen"
+   ],
+   [
+    1955,
+    "Ensimmäinen asemakaava"
+   ]
+  ],
+  "people": [
+   [
+    "Antti Linna",
+    "",
+    "Alueen viimeinen maanomistaja"
+   ]
+  ],
+  "src": [
+   [
+    "Wikipedia: Linnainmaa",
+    "https://fi.wikipedia.org/wiki/Linnainmaa"
+   ],
+   [
+    "Wikipedia: Linnainmaa (en)",
+    "https://en.wikipedia.org/wiki/Linnainmaa"
+   ],
+   [
+    "Wikipedia: Messukylä",
+    "https://en.wikipedia.org/wiki/Messukyl%C3%A4"
+   ],
+   [
+    "Tampereen kaupunki: asemakaavan 8982 luonnos (Pirkkala–Linnainmaa-raitiotie)",
+    "https://www.tampere.fi/sites/default/files/2024-04/8982_luonnos_selostus_20240502.pdf"
+   ],
+   [
+    "Tampereen kaupunki: asemakaavan 8876 ehdotus (raitiotievarikko)",
+    "https://www.tampere.fi/sites/default/files/2024-04/8876_ehdotus_selostus_20240403.pdf"
+   ]
+  ],
+  "en": {
+   "lede": "An eastern area of family houses planned on the fields and old farms of Messukylä, which has grown into Koilliskeskus, a hub of shops and the tram.",
+   "sections": [
+    {
+     "h": "The Linna family's land",
+     "p": "The name comes from the Linna family, whose land the city expropriated. The last landowner was Antti Linna, and the yard of their manor is now a park. Land-reform records from 1785 mention a field called Linnama, a name that may also refer to flax (liina). Older residents spoke of the Jussila area, after the Jussila farm. Street names such as Hannulankatu, Jussilankatu and Kirviälänkatu recall the old farms."
+    },
+    {
+     "h": "From Messukylä to Tampere",
+     "p": "Linnainmaa belonged to the municipality of Messukylä, which was annexed to Tampere in 1947. The annexation more than doubled the city's land area. Linnainmaa's first town plan was confirmed in 1955. Most of the buildings are family houses from the 1950s and 1960s, and from the 1970s onward terraced houses and blocks of flats have also been built."
+    },
+    {
+     "h": "Koilliskeskus",
+     "p": "Since the 1990s commercial services have gathered near the junction of the eastern bypass and the Lahti road. Koilliskeskus is being developed into Tampere's third regional centre, serving other eastern districts too. A terminus of the Pirkkala–Linnainmaa tram line and a tram depot are planned for the area. About 6,000 people live in the district."
+    }
+   ],
+   "tlt": [
+    "Linnama field in land-reform records",
+    "Messukylä annexed to Tampere",
+    "First town plan"
+   ]
+  },
+  "places": []
  }
 }
