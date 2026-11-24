@@ -841,7 +841,7 @@ function initSearch(){
 
 // ---------- side panel ----------
 const side=document.getElementById('side');
-let STORIES={}; const STORY_ALIAS={'Liisankallio (XX)':'Kaleva','Amuri (IV–V)':'Amuri','Kyttälä (XI–XII)':'Kyttälä','Tammela (XV–XVI)':'Tammela','Lappi':'Lapinniemi','Tahmela':'Pispala','Hiedanranta':'Lielahti','Ristimäki':'Tesoma','Tesomajärvi':'Tesoma','Nekala (XXIV)':'Viinikka (XXIII)','Velaatta':'Terälahti','Polso':'Terälahti','Viitapohja':'Terälahti','Nurmi':'Sorila','Aitoniemi':'Sorila','Niemenranta':'Niemi','Ryydynpohja':'Pohtola'};
+let STORIES={}; const STORY_ALIAS={'Liisankallio (XX)':'Kaleva','Amuri (IV–V)':'Amuri','Kyttälä (XI–XII)':'Kyttälä','Tammela (XV–XVI)':'Tammela','Lappi':'Lapinniemi','Ristimäki':'Tesoma','Tesomajärvi':'Tesoma','Velaatta':'Terälahti','Polso':'Terälahti','Viitapohja':'Terälahti','Nurmi':'Sorila','Aitoniemi':'Sorila','Niemenranta':'Niemi','Ryydynpohja':'Pohtola'};
 const storyFor=d=>loc(STORIES[d.n]||STORIES[STORY_ALIAS[d.n]]||null);
 function intro(){ showView('aika'); }
 function nameIdx(n,d){let best=-1,bd=1e12;const cx=(d.bb[0]+d.bb[2])/2,cy=(d.bb[1]+d.bb[3])/2;NAMES.n.forEach((o,i)=>{if(o[2]!==n)return;const dd=(o[0]-cx)**2+(o[1]-cy)**2;if(dd<bd){bd=dd;best=i;}});return best;}
