@@ -63,7 +63,7 @@ export const SOURCES = [
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-20b';
+export const VERSION = '2026-11-24a';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -677,6 +677,38 @@ export async function refresh(env, ctx, budget = 2, group = 'all') { // Workers 
   return data;
 }
 
+const escH = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const hkiOffset = date => { try { const m = /GMT([+-]\d+)/.exec(new Intl.DateTimeFormat('en', { timeZone: 'Europe/Helsinki', timeZoneName: 'shortOffset' }).format(new Date(date + 'T12:00:00Z'))); const h = m ? +m[1] : 2; return (h < 0 ? '-' : '+') + String(Math.abs(h)).padStart(2, '0') + ':00'; } catch { return '+02:00'; } };
+export function jsonLd(events) {
+  const td = todayHelsinki(), lim = shiftDays(td, 14);
+  const TYPE = { Keikka: 'MusicEvent', Klubi: 'MusicEvent', Teatteri: 'TheaterEvent', Urheilu: 'SportsEvent' };
+  const list = (events || []).filter(e => e.date >= td && e.date <= lim && e.title && e.url).slice(0, 150).map(e => {
+    const o = { '@type': TYPE[e.kind] || 'Event', name: e.title, startDate: e.start ? `${e.date}T${e.start}:00${hkiOffset(e.date)}` : e.date,
+      eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', url: e.url,
+      location: { '@type': 'Place', name: e.venue || e.place, address: { '@type': 'PostalAddress', ...(e.addr ? { streetAddress: e.addr } : {}), addressLocality: 'Tampere', addressCountry: 'FI' } } };
+    if (e.price != null || e.free) o.offers = { '@type': 'Offer', url: e.url, price: e.free ? 0 : e.price, priceCurrency: 'EUR', availability: e.soldout ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock' };
+    return o;
+  });
+  return '<script type="application/ld+json">' + JSON.stringify({ '@context': 'https://schema.org', '@graph': list }).replace(/</g, '\\u003c') + '</script>';
+}
+let SEO = null;
+async function seoPage(env, url, key) {
+  if (!SEO) { try { const r = await env.ASSETS.fetch(new Request(url.origin + '/data/seo.json')); SEO = r.ok ? await r.json() : {}; } catch { SEO = {}; } }
+  const m = SEO[key]; if (!m) return null;
+  const r = await env.ASSETS.fetch(new Request(url.origin + '/index.html')); if (!r.ok) return null;
+  let h = await r.text();
+  const can = `https://mansessa.fi/${key}`, t = escH(m.t), d = escH(m.d || '');
+  h = h.replace(/<title>[^<]*<\/title>/, `<title>${t}</title>`)
+    .replace(/(<meta name="description" content=")[^"]*/, `$1${d}`)
+    .replace(/(<link rel="canonical" href=")[^"]*/, `$1${can}`)
+    .replace(/(<meta property="og:title" content=")[^"]*/, `$1${t}`)
+    .replace(/(<meta property="og:description" content=")[^"]*/, `$1${d}`)
+    .replace(/(<meta property="og:url" content=")[^"]*/, `$1${can}`)
+    .replace(/<link rel="alternate" hreflang="[^"]*" href="[^"]*">\s*/g, '')
+    .replace('<head>', `<head><script>if(!location.hash)history.replaceState(null,'','/#${key}'+location.search)</script>`);
+  return new Response(h, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=3600' } });
+}
+
 export default {
   async scheduled(event, env, ctx) { ctx.waitUntil(refresh(env, ctx, 2, /^0 1 /.test(event.cron || '') ? 'b' : 'a')); },
   async fetch(request, env, ctx) {
@@ -684,7 +716,10 @@ export default {
     const p = url.pathname;
     if (p === '/nyt') return Response.redirect(url.origin + '/nyt/' + url.search, 301);
     if (p === '/nyt/') {
-      return new Response(PAGE, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=600' } });
+      // hakukoneille: tulevat tapahtumat schema.org-muodossa (JSON-LD), jotta ne voivat näkyä Googlen tapahtumahauissa
+      let html = PAGE;
+      try { if (env.NYT) { const d = JSON.parse(await env.NYT.get('events') || 'null'); if (d) html = PAGE.replace('<!--JSONLD-->', jsonLd(d.events)); } } catch {}
+      return new Response(html, { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=600' } });
     }
     if (p === '/nyt/api/probe') { // kehitystyökalu: näyttää tunnetun lähdesivun rakenteen (ei avoin välityspalvelin)
       const PROBE = { glivelab: 'https://glivelab.fi/tampere/', nokia: 'https://nokiaarena.fi/tapahtumat/', nokiaen: 'https://nokiaarena.fi/en/events/', tampteretalo: 'https://www.tampere-talo.fi/tapahtumakalenteri/' };
@@ -716,6 +751,12 @@ export default {
         if (Object.values(data.status).every(v => typeof v === 'number')) ctx.waitUntil(cache.put(key, res.clone()));
       }
       return res;
+    }
+    // hakukoneosoitteet historiasivulle: /kaleva, /henkilo-…, /teema-… → index.html omalla otsikolla ja kuvauksella (data/seo.json)
+    const sm = /^\/([a-z0-9][a-z0-9-]{1,80})\/?$/.exec(p);
+    if (sm && env.ASSETS && request.method === 'GET') {
+      const r = await seoPage(env, url, sm[1]);
+      if (r) return r;
     }
     // kaikki muu: historiasivuston staattiset tiedostot
     if (env.ASSETS) return env.ASSETS.fetch(request);
