@@ -1,7 +1,7 @@
 // Manse nyt – mansessa.fi/nyt
 // Sama Worker ("mansessa") palvelee historiasivuston staattiset tiedostot (assets) ja /nyt-polut.
 // Tapahtumista näytetään vain faktat (nimi, aika, paikka, hinta, ikäraja) ja linkki alkuperäiseen sivuun.
-import { PAGE } from './page.js';
+import { PAGE, ABOUT_HEAD } from './page.js';
 import { artistKey, mbGenre, wdGenre, descGenre } from './genre.js';
 
 const SPORT_RE = () => /liiga|runkosarja|ottelu|salibandy|floorball|jääkiekko|hockey|\bWFC\b|MM-kilpailut|playoff|pudotuspeli/i;
@@ -691,6 +691,30 @@ export function jsonLd(events) {
   });
   return '<script type="application/ld+json">' + JSON.stringify({ '@context': 'https://schema.org', '@graph': list }).replace(/</g, '\\u003c') + '</script>';
 }
+// Manse nytin oma Tietoa ja yhteystiedot -sivu (Lasse 24.11.: ei historiasivun Tietoa-näkymää)
+function aboutPage() {
+  const seen = new Set(), venues = SOURCES.filter(x => !seen.has(x.name) && seen.add(x.name)).sort((a, b) => a.name.localeCompare(b.name, 'fi'));
+  const list = venues.map(x => `<li><a href="${escH(x.site + (x.path && x.path !== '/' && !/admin-ajax|wp-json|\/event\//.test(x.path) ? x.path : '/'))}" rel="noopener">${escH(x.name)}</a></li>`).join('');
+  return ABOUT_HEAD + `<main class="about">
+  <p class="back"><a href="/nyt/">← Takaisin tapahtumiin</a></p>
+  <h1>Tietoa Manse nytistä</h1>
+  <p class="lede">Manse nyt kokoaa Tampereen keikat, klubi-illat, teatteriesitykset ja urheilutapahtumat yhdelle sivulle, jotta näet yhdellä silmäyksellä, mitä kaupungissa tapahtuu tänään ja tulevina päivinä.</p>
+  <h2>Miten tiedot kootaan</h2>
+  <p>Tapahtumat haetaan kerran yössä tapahtumapaikkojen omilta, julkisilta ohjelmasivuilta. Sivulla näytetään vain perustiedot: tapahtuman nimi, päivä ja kellonaika, paikka ja mahdollinen hinta. Esittelytekstejä ja kuvia ei kopioida, vaan jokaisesta tapahtumasta on linkki paikan omalle sivulle, josta saat liput ja lisätiedot. Tarkista ajat ja saatavuus aina sieltä.</p>
+  <p>Musiikkityylit (genret) ovat suuntaa antavia. Ne haetaan avoimista MusicBrainz- ja Wikidata-tietokannoista tai päätellään tapahtumapaikan omasta esittelystä.</p>
+  <h2>Tapahtumapaikat</h2>
+  <p>Tiedot tulevat näiden ${venues.length} paikan sivuilta:</p>
+  <ul class="venues">${list}</ul>
+  <h2>Yhteystiedot</h2>
+  <p>Huomasitko virheen, puuttuuko listalta jokin paikka tai haluatko tehdä yhteistyötä? Ota yhteyttä: <a href="mailto:lasse33500@gmail.com">lasse33500@gmail.com</a>.</p>
+  <p>Jos edustat tapahtumapaikkaa etkä halua tapahtumianne listalle, kerro siitä, niin poistamme ne.</p>
+  <h2>Mansessa</h2>
+  <p>Manse nyt on osa Mansessa-sivustoa. Sen toinen puoli on <a href="/">Tampere rakentuu</a>, Tampereen historiakartta. Molemmat ovat itsenäisiä harrastusprojekteja, eivät tapahtumapaikkojen tai kaupungin virallisia palveluja.</p>
+  <footer><p>Mansessa · <a href="/nyt/">Manse nyt</a> · <a href="/">Tampere rakentuu – historiakartta</a></p></footer>
+</main>
+<style>.about{max-width:720px}.about h2{font-size:20px;margin:28px 0 8px}.about p{line-height:1.6}.about .back{margin:0 0 6px;font-size:14px}.about .back a,.about a{color:var(--brick)}.venues{columns:2;gap:24px;padding-left:18px;line-height:1.8}@media(max-width:600px){.venues{columns:1}}</style>
+</body></html>`;
+}
 let SEO = null;
 async function seoPage(env, url, key) {
   if (!SEO) { try { const r = await env.ASSETS.fetch(new Request(url.origin + '/data/seo.json')); SEO = r.ok ? await r.json() : {}; } catch { SEO = {}; } }
@@ -715,6 +739,8 @@ export default {
     const url = new URL(request.url);
     const p = url.pathname;
     if (p === '/nyt') return Response.redirect(url.origin + '/nyt/' + url.search, 301);
+    if (p === '/nyt/tietoa') return Response.redirect(url.origin + '/nyt/tietoa/', 301);
+    if (p === '/nyt/tietoa/') return new Response(aboutPage(), { headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=3600' } });
     if (p === '/nyt/') {
       // hakukoneille: tulevat tapahtumat schema.org-muodossa (JSON-LD), jotta ne voivat näkyä Googlen tapahtumahauissa
       let html = PAGE;
