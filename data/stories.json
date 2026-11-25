@@ -4406,5 +4406,143 @@
    ]
   },
   "places": []
+ },
+ "Rantaperkiö": {
+  "status": "tarkistettu",
+  "lede": "Hatanpään kartanon entisille rantaniityille kasvanut eteläinen kaupunginosa, jonka 1950- ja 1960-lukujen asuinalueet ovat maakunnallisesti arvokkaita. Rantsu tunnetaan myös lentopalloseura Iskusta.",
+  "sections": [
+   {
+    "h": "Kartanon laitumista Rantsuksi",
+    "p": "Alue oli vuosisatoja enimmäkseen Hatanpään kartanon laidunmaata, eikä sillä ollut varsinaista nimeä. Pysyvää asutusta siellä on ollut ainakin 1880-luvulta. Nimen arvellaan syntyneen, kun Pyhäjärven rantoja alettiin raivata viljelyyn: perkiö tarkoittaa ojitettua ja kuokittua rantaniittyä. Rannoilla oli aikanaan useita koristeellisia huviloita. Alue liitettiin Tampereeseen vuonna 1920."
+   },
+   {
+    "h": "Sodanjälkeinen rakentaminen",
+    "p": "Kaupunginosa kasvoi tasaisesti, mutta voimakkain rakentamisen kausi alkoi toisen maailmansodan jälkeisestä asuntopulasta. Asemakaava vahvistettiin vuonna 1945, ja silloin rakennettiin paljon omakotitaloja. 1950-luvulla tulivat rivitalot ja 1960- ja 1970-luvuilla kerrostalot. Rivitaloalueilla näkyy kaupunkisuunnittelija Otto-Iivari Meurmanin suunnitteluperiaatteiden vaikutus. Suurin osa asuinrakennuksista kuuluu maakunnallisesti arvokkaaseen kulttuuriympäristöön, joka kertoo tehdasyhteisöjen tukemasta 1950- ja 1960-lukujen asuntorakentamisesta ja kouluarkkitehtuurista."
+   },
+   {
+    "h": "Isku ja seisake",
+    "p": "Vuonna 1911 perustettu urheiluseura Rantaperkiön Isku nousi lentopallon Suomen kärkijoukkueisiin, ja 1990-luvun vaihteessa sen nimeksi tuli Isku-Volley. Riihimäki–Tampere-radalla oli vuosina 1945–1988 Rantaperkiön seisake. Pyhäjärven puoleinen pohjoisosa on yhä lehtomaista metsää."
+   }
+  ],
+  "tl": [
+   [
+    1880,
+    "Pysyvää asutusta (viimeistään)"
+   ],
+   [
+    1911,
+    "Rantaperkiön Isku perustetaan"
+   ],
+   [
+    1920,
+    "Alue liitetään Tampereeseen"
+   ],
+   [
+    1945,
+    "Asemakaava vahvistetaan; Rantaperkiön seisake avataan"
+   ],
+   [
+    1988,
+    "Seisake lakkautetaan"
+   ]
+  ],
+  "people": [],
+  "src": [
+   [
+    "Wikipedia: Rantaperkiö",
+    "https://fi.wikipedia.org/wiki/Rantaperki%C3%B6"
+   ],
+   [
+    "Rivitalo osana modernia kaupunki- ja asuntosuunnittelua: Petsamon ja Rantaperkiön 1950-luvun rivitaloalueet (Jyväskylän yliopisto)",
+    "https://jyx.jyu.fi/handle/123456789/54532"
+   ],
+   [
+    "Tampereen kaupunki: asemakaavan 8906 kaavakuvaus (Rantaperkiö)",
+    "https://tampere.fi/sites/default/files/2024-11/8906_luonnos_kaavakuvaus_20241118.pdf"
+   ]
+  ],
+  "en": {
+   "lede": "A southern district grown on the former lakeside meadows of the Hatanpää manor, whose residential areas from the 1950s and 1960s are regionally valuable. 'Rantsu' is also known for the volleyball club Isku.",
+   "sections": [
+    {
+     "h": "From manor pasture to Rantsu",
+     "p": "For centuries the area was mostly pasture of the Hatanpää manor and had no real name. It has been permanently inhabited since at least the 1880s. The name is thought to date from when the shores of Lake Pyhäjärvi were cleared for farming: 'perkiö' means a ditched and hoed lakeside meadow. The shores once had several ornate villas. The area was joined to Tampere in 1920."
+    },
+    {
+     "h": "Post-war building",
+     "p": "The district grew steadily, but the most intensive building began with the housing shortage after the Second World War. The town plan was confirmed in 1945, when many family houses were built. Terraced houses followed in the 1950s and blocks of flats in the 1960s and 1970s. The terraced-house areas show the influence of town planner Otto-Iivari Meurman's principles. Most of the residential buildings belong to a regionally valuable cultural environment that reflects the factory-supported housing and school architecture of the 1950s and 1960s."
+    },
+    {
+     "h": "Isku and the halt",
+     "p": "The sports club Rantaperkiön Isku, founded in 1911, rose to Finland's top volleyball teams, and around 1990 it was renamed Isku-Volley. From 1945 to 1988 the Riihimäki–Tampere railway had a halt at Rantaperkiö. The northern part facing Lake Pyhäjärvi is still lush deciduous woodland."
+    }
+   ],
+   "tlt": [
+    "Permanent settlement (at the latest)",
+    "Rantaperkiön Isku founded",
+    "Area joined to Tampere",
+    "Town plan confirmed; Rantaperkiö halt opens",
+    "Halt closed"
+   ]
+  },
+  "places": []
+ },
+ "Muotiala": {
+  "status": "tarkistettu",
+  "lede": "Kolmen vanhan talon niityille 2000-luvulla rakennettu uusi asuinalue, jonka asukasluku nelinkertaistui muutamassa vuodessa.",
+  "sections": [
+   {
+    "h": "Muotiala, Penttilä ja Hurinki",
+    "p": "Ennen asuinaluetta seudulla oli kolme taloa: Muotiala, Penttilä ja Hurinki. Niistä vain Muotiala on yhä asuinkäytössä. Penttilä purettiin, kun paikalle rakennettiin taimisto, ja sen kohdalla on nykyään Muotialatalo. Muotialantien ja Hallilantien risteyksessä sijainnut Huringin talo on Steinerkoulun käytössä."
+   },
+   {
+    "h": "Niityistä kaupunginosaksi",
+    "p": "Alueen uudet osoitteet vahvistettiin tammikuussa 2007, ja asuintaloja on rakennettu siitä lähtien niin paljon, että lähes kaikki niityt ovat kadonneet. Vuosina 2005–2011 asukasluku kasvoi 376:sta 1 476:een. Muotiala on siten yksi Tampereen nuorimmista asuinalueista, ja sen naapureina ovat vanhemmat Jokipohja, Vuohenoja, Korkinmäki ja Turtola."
+   }
+  ],
+  "tl": [
+   [
+    2005,
+    "Asukkaita 376"
+   ],
+   [
+    2007,
+    "Uuden asuinalueen rakentaminen alkaa"
+   ],
+   [
+    2011,
+    "Asukkaita 1 476"
+   ]
+  ],
+  "people": [],
+  "src": [
+   [
+    "Wikipedia: Muotiala",
+    "https://fi.wikipedia.org/wiki/Muotiala"
+   ],
+   [
+    "Tampereen kaupunki: asemakaava-alueen osoitteenvahvistus 3291, Muotiala (24.1.2007)",
+    "https://kartat.tampere.fi/arkisto/osoitevahvistukset/asemakaava-alue/3291_Muotiala.pdf"
+   ]
+  ],
+  "en": {
+   "lede": "A new residential area built in the 2000s on the meadows of three old farms, whose population quadrupled in a few years.",
+   "sections": [
+    {
+     "h": "Muotiala, Penttilä and Hurinki",
+     "p": "Before the residential area there were three farms: Muotiala, Penttilä and Hurinki. Only Muotiala is still lived in. Penttilä was demolished when a plant nursery was built on the site, and Muotialatalo now stands there. The Hurinki house at the junction of Muotialantie and Hallilantie is used by the Steiner school."
+    },
+    {
+     "h": "From meadows to a district",
+     "p": "The area's new addresses were confirmed in January 2007, and so many homes have been built since that almost all the meadows have gone. Between 2005 and 2011 the population grew from 376 to 1,476. Muotiala is thus one of Tampere's youngest residential areas, with the older districts of Jokipohja, Vuohenoja, Korkinmäki and Turtola as neighbours."
+    }
+   ],
+   "tlt": [
+    "376 residents",
+    "Building of the new residential area begins",
+    "1,476 residents"
+   ]
+  },
+  "places": []
  }
 }
