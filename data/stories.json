@@ -4175,6 +4175,10 @@
     "p": "Kaukajärven ympäristö on vanhaa asuinseutua: Vilusenharjulta löytyi 1960-luvun kaivauksissa useita viikinkiaikaisia miekkoja ja keihäänkärkiä. Ennen lähiötä järven ympärys oli lähes yhtenäistä kartanon maata ja kuului Messukylän kuntaan, joka liitettiin Tampereeseen vuonna 1947."
    },
    {
+    "h": "Haiharan kartano",
+    "p": "Kaukajärven kaupunginosassa on 1870-luvulla rakennettu Haiharan kartano. Sen osti Porin tarkk'ampujapataljoonan kapteeni Anshelm Grahn, joka oli muuttanut Tampereelle vuonna 1867 Suomen Säästöpankin johtajaksi. Gunvor Grahn-Ekroos testamenttasi sen Tampereen kaupungille, ja siitä tuli taidekeskus, jossa on näyttelyitä ja nukketeatteri. Puistomainen kartanoalue on kaikkien käytössä."
+   },
+   {
     "h": "Pelloista suurlähiöksi",
     "p": "1960-luvulla maalta kaupunkeihin muuttavat tarvitsivat asuntoja nopeasti ja edullisesti, ja betonielementeistä rakentaminen teki sen mahdolliseksi. Tampereen lähiöt rakennettiin pääosin aluerakennussopimuksilla: kaupunki kaavoitti, ja rakennusliike rakensi talot ja kunnallistekniikan. Varsinainen lähiörakentaminen alkoi Tesoman Ristimäestä ja Kaukajärveltä. Kaukajärven alueen suunnittelun pohjana oli asemakaavakilpailu. Alkuperäinen kerrostalovaltainen lähiö on myöhemmin täydentynyt rivi- ja pientaloilla."
    },
@@ -4214,6 +4218,10 @@
    [
     "Tampereen kaupunki: asemakaava 8944",
     "https://www.tampere.fi/sites/default/files/2025-04/8944_selostus_20250429.pdf"
+   ],
+   [
+    "Tampereen kaupunki: History of Haihara",
+    "https://www.tampere.fi/en/culture-and-museums/cultural-centres/haihara-art-centre/history-haihara"
    ]
   ],
   "en": {
@@ -4222,6 +4230,10 @@
     {
      "h": "Viking swords and manor land",
      "p": "The surroundings of Lake Kaukajärvi have long been inhabited: excavations on Vilusenharju in the 1960s found several Viking Age swords and spearheads. Before the suburb, the land around the lake was an almost continuous manor estate in the municipality of Messukylä, which was annexed to Tampere in 1947."
+    },
+    {
+     "h": "Haihara manor",
+     "p": "The Haihara manor, built in the 1870s, stands in the Kaukajärvi district. It was bought by Anshelm Grahn, a captain of the Pori sharpshooter battalion, who had moved to Tampere in 1867 to head the Finnish Savings Bank. Gunvor Grahn-Ekroos bequeathed the manor to the City of Tampere, and it became an art centre with exhibitions and a puppet theatre. The park-like manor grounds are open to everyone."
     },
     {
      "h": "From fields to a large suburb",
@@ -4541,6 +4553,152 @@
     "376 residents",
     "Building of the new residential area begins",
     "1,476 residents"
+   ]
+  },
+  "places": []
+ },
+ "Hallila": {
+  "status": "tarkistettu",
+  "lede": "Keskiaikaisen kylän nimeä kantava 1990-luvun metsäkaupunginosa Hervannan ja Korkinmäen välissä. Sen kadut on nimetty metsän ja sen kasvien mukaan.",
+  "sections": [
+   {
+    "h": "Martti Hallin talo",
+    "p": "Hallilan kylä mainitaan asiakirjoissa jo vuonna 1441. Ensimmäinen nimeltä tunnettu isäntä oli Martti Halli, joka on merkitty vuoden 1544 maakirjaan. Talon alkuperäinen nimi oli luultavasti Halli. Myöhemmin tilasta tuli Hatanpään kartanon sivutila, ja sen rakennukset purettiin 1930-luvulla. Silloin vanhasta kylästä olivat vielä jäljellä Vanha-Juva, Uusi-Juva, Suutarla ja Karimaa. Alue liitettiin Messukylän mukana Tampereeseen vuonna 1947."
+   },
+   {
+    "h": "Metsään rakennettu kaupunginosa",
+    "p": "Ennen kaupunginosan rakentamista nykyisellä Hallilan alueella oli vain kaksi taloa. Ensimmäinen osa-asemakaava vahvistettiin vuonna 1988, ja vilkkain rakentaminen ajoittui 1990-luvun alku- ja keskivuosiin. Ensimmäiset talot valmistuivat noin vuonna 1992 Pehkusuonkadun varteen, ja asukkaat kutsuvat niitä peltitaloiksi. Vanhaa paikallista nimistöä oli vähän, joten kadut ja puistot nimettiin metsän ja sen kasvien mukaan, kuten Havumetsänkatu ja Neulaspuisto."
+   },
+   {
+    "h": "Lapsiperheiden Hallila",
+    "p": "Hallila on ollut lapsiperheiden suosiossa, ja asukkaiden keski-ikä oli 2000-luvun alussa vain noin 29 vuotta. Vuonna 2015 asukkaita oli 2 685. Kaupunginosaa rajaavat valtatie 9, Hervannan valtaväylä, suo sekä Lahdes- ja Särkijärvi. Syksyllä 2021 valmistunut raitiotie kulkee Hallilan reunaa."
+   }
+  ],
+  "tl": [
+   [
+    1441,
+    "Hallilan kylä mainitaan asiakirjoissa"
+   ],
+   [
+    1544,
+    "Martti Halli maakirjassa"
+   ],
+   [
+    1947,
+    "Alue liitetään Tampereeseen"
+   ],
+   [
+    1988,
+    "Ensimmäinen osa-asemakaava"
+   ],
+   [
+    1992,
+    "Ensimmäiset talot valmistuvat (noin)"
+   ],
+   [
+    2021,
+    "Raitiotie valmistuu"
+   ]
+  ],
+  "people": [],
+  "src": [
+   [
+    "Wikipedia: Hallila",
+    "https://fi.wikipedia.org/wiki/Hallila"
+   ],
+   [
+    "Wikipedia: Messukylä",
+    "https://en.wikipedia.org/wiki/Messukyl%C3%A4"
+   ]
+  ],
+  "en": {
+   "lede": "A 1990s forest district between Hervanta and Korkinmäki that carries the name of a medieval village. Its streets are named after the forest and its plants.",
+   "sections": [
+    {
+     "h": "Martti Halli's farm",
+     "p": "The village of Hallila is mentioned in documents as early as 1441. The first master known by name was Martti Halli, recorded in the 1544 land register. The farm's original name was probably Halli. It later became a subsidiary farm of the Hatanpää manor, and its buildings were demolished in the 1930s. At that time Vanha-Juva, Uusi-Juva, Suutarla and Karimaa still remained of the old village. The area was annexed to Tampere along with Messukylä in 1947."
+    },
+    {
+     "h": "A district built in the forest",
+     "p": "Before the district was built there were only two houses in what is now Hallila. The first partial town plan was confirmed in 1988, and the busiest building took place in the early and mid-1990s. The first houses were completed around 1992 on Pehkusuonkatu, and residents call them the 'tin houses'. There were few old local names, so the streets and parks were named after the forest and its plants, such as Havumetsänkatu and Neulaspuisto."
+    },
+    {
+     "h": "A district for families",
+     "p": "Hallila has been popular with families with children, and in the early 2000s the residents' average age was only about 29. In 2015 there were 2,685 residents. The district is bounded by Highway 9, the Hervanta main road, a bog, and Lakes Lahdesjärvi and Särkijärvi. The tram line completed in autumn 2021 runs along the edge of Hallila."
+    }
+   ],
+   "tlt": [
+    "Hallila village mentioned in documents",
+    "Martti Halli in the land register",
+    "Area joined to Tampere",
+    "First partial town plan",
+    "First houses completed (approx.)",
+    "Tram line completed"
+   ]
+  },
+  "places": []
+ },
+ "Sarankulma": {
+  "status": "tarkistettu",
+  "lede": "Hatanpään kartanon torpan mukaan nimetty eteläinen teollisuusalue Pirkkalan rajalla. Siellä toimi pitkään Aamulehden toimitus ja painotalo.",
+  "sections": [
+   {
+    "h": "Sarka-torppa",
+    "p": "Nimi tulee Hatanpään kartanon alueella sijainneesta Sarka-nimisestä torpasta, joka jaettiin myöhemmin Nuutisaran ja Pöytäsaran tiloiksi. Niiden nimet elävät katujen nimissä, kuten Nuutisarankadussa. Hatanpään ympäristön mukana alue siirtyi Messukylästä Tampereeseen vuonna 1920."
+   },
+   {
+    "h": "Teollisuusalue",
+    "p": "Sarankulma kaavoitettiin pääasiassa teollisuusalueeksi, ja nykyisin voimassa oleva asemakaava on vuodelta 1972. Alueella toimi pitkään Aamulehden toimitus ja painotalo. Myöhemmin toimitus muutti Finlaysonin alueelle ja painotalo myytiin."
+   },
+   {
+    "h": "Pärrinkoski",
+    "p": "Pohjoisessa Sarankulma rajautuu Härmälään, idässä Peltolammiin ja lännessä Pirkkalaan. Sen eteläreunalla on Pärrinkosken luonnonsuojelualue."
+   }
+  ],
+  "tl": [
+   [
+    1920,
+    "Alue siirtyy Tampereeseen"
+   ],
+   [
+    1972,
+    "Teollisuusalueen asemakaava vahvistetaan"
+   ]
+  ],
+  "people": [],
+  "src": [
+   [
+    "Wikipedia: Sarankulma",
+    "https://en.wikipedia.org/wiki/Sarankulma"
+   ],
+   [
+    "Wikipedia: Messukylä",
+    "https://en.wikipedia.org/wiki/Messukyl%C3%A4"
+   ],
+   [
+    "Tampereen kaupunki: asemakaavamuutos 8456, Sarankulma (muuttaa 8.5.1972 vahvistettua asemakaavaa 3608)",
+    "https://tampere.fi/sites/default/files/2022-12/8456_lausunto_tampereen_sahkoverkko.pdf"
+   ]
+  ],
+  "en": {
+   "lede": "A southern industrial area on the Pirkkala border, named after a croft of the Hatanpää manor. For a long time it was home to Aamulehti's newsroom and printing house.",
+   "sections": [
+    {
+     "h": "The Sarka croft",
+     "p": "The name comes from a croft called Sarka in the Hatanpää manor area, which was later divided into the Nuutisara and Pöytäsara farms. Their names live on in street names such as Nuutisarankatu. The area passed from Messukylä to Tampere in 1920 together with the surroundings of Hatanpää."
+    },
+    {
+     "h": "An industrial area",
+     "p": "Sarankulma was zoned mainly as an industrial area, and the current town plan dates from 1972. For a long time the area housed Aamulehti's newsroom and printing house. The newsroom later moved to the Finlayson area and the printing house was sold."
+    },
+    {
+     "h": "Pärrinkoski",
+     "p": "Sarankulma borders Härmälä to the north, Peltolammi to the east and Pirkkala to the west. On its southern edge lies the Pärrinkoski nature reserve."
+    }
+   ],
+   "tlt": [
+    "Area passes to Tampere",
+    "Industrial town plan confirmed"
    ]
   },
   "places": []
