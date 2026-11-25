@@ -697,7 +697,7 @@ export function jsonLd(events) {
     o.organizer = { '@type': 'Organization', name: e.source || plc, ...(src ? { url: src.site } : {}) };
     if (o['@type'] === 'MusicEvent') o.performer = { '@type': 'PerformingGroup', name: e.title };
     // offers aina (Search Console 25.11.: Missing field 'offers'); hinta vain, jos tiedossa
-    o.offers = { '@type': 'Offer', url: e.url, availability: e.soldout ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock', validFrom: e.date,
+    o.offers = { '@type': 'Offer', url: e.url, availability: e.soldout ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
       ...(e.price != null || e.free ? { price: e.free ? 0 : e.price, priceCurrency: 'EUR' } : {}) };
     return o;
   });
