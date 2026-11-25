@@ -1,4 +1,4 @@
-// Manse nyt – mansessa.fi/nyt
+// Manse Nyt – mansessa.fi/nyt
 // Sama Worker ("mansessa") palvelee historiasivuston staattiset tiedostot (assets) ja /nyt-polut.
 // Tapahtumista näytetään vain faktat (nimi, aika, paikka, hinta, ikäraja) ja linkki alkuperäiseen sivuun.
 import { PAGE, ABOUT_HEAD, PAGE_EN, ABOUT_HEAD_EN } from './page.js';
@@ -704,33 +704,33 @@ export function jsonLd(events) {
   });
   return '<script type="application/ld+json">' + JSON.stringify({ '@context': 'https://schema.org', '@graph': list }).replace(/</g, '\\u003c') + '</script>';
 }
-// Manse nytin oma Tietoa ja yhteystiedot -sivu (Lasse 24.11.: ei historiasivun Tietoa-näkymää)
+// Manse Nytin oma Tietoa ja yhteystiedot -sivu (Lasse 24.11.: ei historiasivun Tietoa-näkymää)
 function aboutPage(lang) {
   const en = lang === 'en';
   const seen = new Set(), venues = SOURCES.filter(x => !seen.has(x.name) && seen.add(x.name)).sort((a, b) => a.name.localeCompare(b.name, en ? 'en' : 'fi'));
   const list = venues.map(x => `<li><a href="${escH(x.site + (x.path && x.path !== '/' && !/admin-ajax|wp-json|\/event\//.test(x.path) ? x.path : '/'))}" rel="noopener">${escH(x.name)}</a></li>`).join('');
   const T = en ? {
-    back: '← Back to events', backH: '/nyt/en/', h1: 'About Manse nyt',
-    lede: 'Manse nyt gathers gigs, club nights, theatre and sports events in Tampere on a single page, so you can see at a glance what is happening in the city today and in the coming days.',
+    back: '← Back to events', backH: '/nyt/en/', h1: 'About Manse Nyt',
+    lede: 'Manse Nyt gathers gigs, club nights, theatre and sports events in Tampere on a single page, so you can see at a glance what is happening in the city today and in the coming days.',
     h2a: 'How the information is gathered',
     pa: 'Events are collected once a night from the venues\' own public programme pages. Only basic details are shown: the event name, date and time, venue and price where available. Descriptions and images are not copied; each event links to the venue\'s own page, where you will find tickets and further details. Always check times and availability there.',
     pb: 'Music genres are indicative. They come from the open MusicBrainz and Wikidata databases or are inferred from the venue\'s own description.',
     h2b: 'Venues', pc: `Information comes from the websites of these ${venues.length} venues:`,
     h2c: 'Contact', pd: 'Spotted a mistake, missing a venue, or interested in working together? Get in touch: <a href="mailto:lasse33500@gmail.com">lasse33500@gmail.com</a>.',
     pe: 'If you represent a venue and do not want your events listed, let us know and we will remove them.',
-    h2d: 'Mansessa', pf: 'Manse nyt is part of the Mansessa site. Its other half is <a href="/?lang=en">Tampere Builds</a>, a history map of Tampere. Both are independent hobby projects, not official services of the venues or the city.',
-    foot: 'Mansessa · <a href="/nyt/en/">Manse nyt</a> · <a href="/?lang=en">Tampere Builds – history map</a>'
+    h2d: 'Mansessa', pf: 'Manse Nyt is part of the Mansessa site. Its other half is <a href="/?lang=en">Tampere Builds</a>, a history map of Tampere. Both are independent hobby projects, not official services of the venues or the city.',
+    foot: 'Mansessa · <a href="/nyt/en/">Manse Nyt</a> · <a href="/?lang=en">Tampere Builds – history map</a>'
   } : {
-    back: '← Takaisin tapahtumiin', backH: '/nyt/', h1: 'Tietoa Manse nytistä',
-    lede: 'Manse nyt kokoaa Tampereen keikat, klubi-illat, teatteriesitykset ja urheilutapahtumat yhdelle sivulle, jotta näet yhdellä silmäyksellä, mitä kaupungissa tapahtuu tänään ja tulevina päivinä.',
+    back: '← Takaisin tapahtumiin', backH: '/nyt/', h1: 'Tietoa Manse Nytistä',
+    lede: 'Manse Nyt kokoaa Tampereen keikat, klubi-illat, teatteriesitykset ja urheilutapahtumat yhdelle sivulle, jotta näet yhdellä silmäyksellä, mitä kaupungissa tapahtuu tänään ja tulevina päivinä.',
     h2a: 'Miten tiedot kootaan',
     pa: 'Tapahtumat haetaan kerran yössä tapahtumapaikkojen omilta, julkisilta ohjelmasivuilta. Sivulla näytetään vain perustiedot: tapahtuman nimi, päivä ja kellonaika, paikka ja mahdollinen hinta. Esittelytekstejä ja kuvia ei kopioida, vaan jokaisesta tapahtumasta on linkki paikan omalle sivulle, josta saat liput ja lisätiedot. Tarkista ajat ja saatavuus aina sieltä.',
     pb: 'Musiikkityylit (genret) ovat suuntaa antavia. Ne haetaan avoimista MusicBrainz- ja Wikidata-tietokannoista tai päätellään tapahtumapaikan omasta esittelystä.',
     h2b: 'Tapahtumapaikat', pc: `Tiedot tulevat näiden ${venues.length} paikan sivuilta:`,
     h2c: 'Yhteystiedot', pd: 'Huomasitko virheen, puuttuuko listalta jokin paikka tai haluatko tehdä yhteistyötä? Ota yhteyttä: <a href="mailto:lasse33500@gmail.com">lasse33500@gmail.com</a>.',
     pe: 'Jos edustat tapahtumapaikkaa etkä halua tapahtumianne listalle, kerro siitä, niin poistamme ne.',
-    h2d: 'Mansessa', pf: 'Manse nyt on osa Mansessa-sivustoa. Sen toinen puoli on <a href="/">Tampere rakentuu</a>, Tampereen historiakartta. Molemmat ovat itsenäisiä harrastusprojekteja, eivät tapahtumapaikkojen tai kaupungin virallisia palveluja.',
-    foot: 'Mansessa · <a href="/nyt/">Manse nyt</a> · <a href="/">Tampere rakentuu – historiakartta</a>'
+    h2d: 'Mansessa', pf: 'Manse Nyt on osa Mansessa-sivustoa. Sen toinen puoli on <a href="/">Tampere rakentuu</a>, Tampereen historiakartta. Molemmat ovat itsenäisiä harrastusprojekteja, eivät tapahtumapaikkojen tai kaupungin virallisia palveluja.',
+    foot: 'Mansessa · <a href="/nyt/">Manse Nyt</a> · <a href="/">Tampere rakentuu – historiakartta</a>'
   };
   return (en ? ABOUT_HEAD_EN : ABOUT_HEAD) + `<main class="about">
   <p class="back"><a href="${T.backH}">${T.back}</a></p>
