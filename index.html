@@ -383,7 +383,7 @@ const POPC=['#f2dcef','#d3a6cd','#a8729f','#7a4673','#4b1f48'];
 const fmt=(v,d=0)=>v==null?'–':Number(v).toLocaleString('fi',{maximumFractionDigits:d});
 const GREEN={f:'#b1c68c',p:'#cfdca8'};
 // Maanpeite 2022 (Tampereen kaupunki): puusto, matala kasvillisuus ja pellot rasterina, 4 m/px. Kattaa kantakaupungin.
-const LC={src:'img/maanpeite.png',x0:-600,y0:-100,x1:24400,y1:14700};let LCIMG=null;
+const LC={src:'img/maanpeite.webp',png:'img/maanpeite.png',x0:-600,y0:-100,x1:24400,y1:14700};let LCIMG=null;
 const SEUTU_C=[12500,9000];
 const C={region:'#e8e0cd',land:'#efe6d4',outside:'#e2d9c6',water:'#a7c0c6',shore:'#7f9ea6',dist:'rgba(90,72,55,.55)',unk:'#cfc5b3'};
 
@@ -457,7 +457,7 @@ Promise.all(['base','streets','buildings'].map(n=>fetch('data/'+n+'.json').then(
   P.dem=blds.dem; BCODE=blds.codes||[]; BLAB=blds.lab||[]; BADDR=blds.addr||[]; BSR=blds.sr||[];
   BL=blds.b.map(([y,c,di,rings,ci,ka,kr,ai,si])=>({y,y0:y,c,di,r:rings,bb:bbox(rings),ci,ka,kr,ai,si}));
   buildBld();
-  LCIMG=new Image();LCIMG.onload=()=>{draw();m3LC();};LCIMG.src=LC.src;
+  LCIMG=new Image();LCIMG.onload=()=>{draw();m3LC();};LCIMG.onerror=()=>{if(LCIMG.src.indexOf(LC.png)<0)LCIMG.src=LC.png;};LCIMG.src=LC.src;
   fetch('data/green.json').then(r=>r.ok?r.json():null).then(g=>{if(!g)return;DATA.green=g;P.green={f:new Path2D(),p:new Path2D()};for(const k of ['f','p'])for(const pg of g[k])ringsToPath(pg,P.green[k]);draw();if(M3&&M3.getSource&&!M3.getSource('green'))m3Green();}).catch(()=>{});
   for(let k=0;k<BL.length;k++){const b=BL[k].bb;for(let gx=Math.floor(b[0]/GS);gx<=Math.floor(b[2]/GS);gx++)for(let gy=Math.floor(b[1]/GS);gy<=Math.floor(b[3]/GS);gy++){const key=gx+','+gy;(BG[key]=BG[key]||[]).push(k);}}
   document.getElementById('loading').remove();
@@ -620,7 +620,7 @@ function drawNames(){
   const v=visNames(), r=T.k>.25?3.6:2.4;
   for(const [i,sx,sy] of v){const o=NAMES.n[i];ctx.beginPath();ctx.arc(sx,sy,i===nsel?6:r,0,7);ctx.fillStyle=NG[o[6]][1];ctx.fill();ctx.lineWidth=1.2;ctx.strokeStyle='#fffaf0';ctx.stroke();}
   if(T.k>.32){ctx.font="italic 12px 'IBM Plex Sans', system-ui, sans-serif";ctx.textAlign='left';ctx.textBaseline='middle';
-    const order=v.slice().sort((a,b)=>(b[0]===nsel)-(a[0]===nsel)||NAMES.n[a[0]][4].length-NAMES.n[b[0]][4].length);
+    const order=v.slice().sort((a,b)=>(b[0]===nsel)-(a[0]===nsel)||nLen(NAMES.n[a[0]])-nLen(NAMES.n[b[0]]));
     for(const [i,sx,sy] of order){const t=NAMES.n[i][2];const w=ctx.measureText(t).width;const b=[sx+5,sy-8,sx+9+w,sy+8];
       if(boxes.some(o=>!(b[2]<o[0]||b[0]>o[2]||b[3]<o[1]||b[1]>o[3])))continue;boxes.push(b);
       ctx.lineWidth=3;ctx.strokeStyle='rgba(241,233,216,.9)';ctx.strokeText(t,sx+7,sy);ctx.fillStyle=NG[NAMES.n[i][6]][1];ctx.fillText(t,sx+7,sy);}}
@@ -630,9 +630,12 @@ function pickName(sx,sy){let best=-1,bd=9;for(const [i,x,y] of visNames()){const
 function ngrpUI(){const el=document.getElementById('ngrp');el.innerHTML=Object.entries(NG).map(([k,[n,c]])=>`<span data-g="${k}" class="${NOFF.has(k)?'off':''}"><i style="background:${c}"></i>${n}</span>`).join('');
   el.querySelectorAll('span').forEach(sp=>sp.onclick=()=>{const g=sp.dataset.g;NOFF.has(g)?NOFF.delete(g):NOFF.add(g);ngrpUI();draw();});}
 const ncard=document.getElementById('ncard');
-function openName(i,fly){nsel=i;const o=NAMES.n[i];
+// Paikannimien kuvaukset ladataan vasta tarvittaessa (names_desc.json; 25.11.2026). Artifaktissa names.json sisältää kuvaukset suoraan.
+let NDESC=null;function nLen(o){return typeof o[4]==='string'?o[4].length:o[4];}
+function nDesc(i){const o=NAMES.n[i];return typeof o[4]==='string'?o[4]:NDESC?(NDESC[i]||''):null;}
+function openName(i,fly){if(nDesc(i)===null){nsel=i;fetch('data/names_desc.json').then(r=>r.json()).then(d=>{NDESC=d;if(nsel===i)openName(i,fly);}).catch(()=>{NDESC=[];if(nsel===i)openName(i,fly);});return;}nsel=i;const o=NAMES.n[i];
   if(fly){const pad=400;fit([o[0]-pad,o[1]-pad,o[0]+pad,o[1]+pad]);}
-  const desc=o[4].replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  const desc=nDesc(i).replace(/&/g,'&amp;').replace(/</g,'&lt;');
   ncard.innerHTML=`<button class="x" title="Sulje">×</button><div class="kick" style="color:${NG[o[6]][1]}">${NAMES.lab[o[3]]}</div><h4>${o[2]}</h4><p>${desc||'Ei selitystä.'}</p>${o[5]?`<div class="note">Varhaisin vuosiluku kuvauksessa: ${o[5]}</div>`:''}<div class="note">Lähde: Tampereen historiallinen nimistö (nimiarkiston keruuaineisto).</div>`;
   ncard.style.display='block'; placeCard(); ncard.querySelector('.x').onclick=closeName; draw();}
 function placeCard(){if(nsel<0)return;const o=NAMES.n[nsel];const [sx,sy]=toScreen(o[0],o[1]);
