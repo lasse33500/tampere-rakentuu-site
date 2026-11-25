@@ -63,7 +63,7 @@ export const SOURCES = [
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-25a';
+export const VERSION = '2026-11-25b';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -696,7 +696,9 @@ export function jsonLd(events) {
     o.description = `${KIND_FI[e.kind] || 'Tapahtuma'}: ${e.title}${plc ? ' – ' + plc : ''}, Tampere ${e.date.split('-').reverse().map(Number).join('.')}${e.start ? ' klo ' + e.start.replace(':', '.') : ''}.`;
     o.organizer = { '@type': 'Organization', name: e.source || plc, ...(src ? { url: src.site } : {}) };
     if (o['@type'] === 'MusicEvent') o.performer = { '@type': 'PerformingGroup', name: e.title };
-    if (e.price != null || e.free) o.offers = { '@type': 'Offer', url: e.url, price: e.free ? 0 : e.price, priceCurrency: 'EUR', availability: e.soldout ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock' };
+    // offers aina (Search Console 25.11.: Missing field 'offers'); hinta vain, jos tiedossa
+    o.offers = { '@type': 'Offer', url: e.url, availability: e.soldout ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock', validFrom: e.date,
+      ...(e.price != null || e.free ? { price: e.free ? 0 : e.price, priceCurrency: 'EUR' } : {}) };
     return o;
   });
   return '<script type="application/ld+json">' + JSON.stringify({ '@context': 'https://schema.org', '@graph': list }).replace(/</g, '\\u003c') + '</script>';
