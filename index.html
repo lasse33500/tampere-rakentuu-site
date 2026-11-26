@@ -698,7 +698,8 @@ function pick(sx,sy){if(!DATA)return -1;const [wx,wy]=toWorld(sx,sy);const ds=DA
 ['lBorder','lLM','lKadut','lAer'].forEach(id=>document.getElementById(id).onchange=draw);
 document.getElementById('lKadut').addEventListener('change',e=>{if(M3&&M3.getLayer('knames'))M3.setLayoutProperty('knames','visibility',e.target.checked?'visible':'none');});
 const yr=document.getElementById('year');
-function setYear(y){YEAR=+y;{const mp=document.getElementById('mpause');if(mp){mp.hidden=!timer;const b=document.getElementById('mpausey');if(b)b.textContent=YEAR;}}yr.value=YEAR;yr.style.setProperty('--p',((YEAR-1850)/176*100)+'%');document.getElementById('yr').textContent=YEAR;
+function mpSync(on){const mp=document.getElementById('mpause');if(mp){mp.hidden=!on;const b=document.getElementById('mpausey');if(b)b.textContent=YEAR;}}
+function setYear(y){YEAR=+y;mpSync(!!timer);yr.value=YEAR;yr.style.setProperty('--p',((YEAR-1850)/176*100)+'%');document.getElementById('yr').textContent=YEAR;
   const a=P.annex?P.annex.filter(x=>x.y<=YEAR).pop():null;
   document.getElementById('yrnote').textContent = YEAR<1990?'Ennen 1990-lukua puretut talot puuttuvat rekisteristä, joten kartalla näkyvät vain nykyään pystyssä olevat.':(a?`Viimeisin alueliitos: ${a.t} (${a.k}), ${a.y}.`:'');
   draw(); if(M3)m3Sync(); if(sel>=0&&TAB==='rak') panelYear(); side.querySelectorAll('.tl li').forEach(li=>li.classList.toggle('on',+li.dataset.y<=YEAR && YEAR<2026)); }
@@ -723,13 +724,13 @@ function evHide(){const c=document.getElementById('evc');if(c)c.hidden=true;EVNO
 function evCheck(a,b){const L=evList().filter(e=>e.y>a&&e.y<=b);if(!L.length)return;EVQ.push(...L);}
 let EVQ=[], RESUME=null;
 function resPill(){const m=document.getElementById('mres');if(!RESUME){m.hidden=true;return;}document.getElementById('mresy').textContent=RESUME.y;m.hidden=false;}
-function resumePlay(){const r=RESUME;if(!r)return;RESUME=null;resPill();
+function resumePlay(){const r=RESUME;if(!r)return;RESUME=null;resPill();mpSync(true);
   if(r.h)location.hash='#'+r.h;else showHome();
   setTimeout(()=>{T=r.T;setYear(r.y);EVQ=r.q;draw();document.getElementById('play').click();},200);}
 function stopPlay(){{const mp=document.getElementById('mpause');if(mp)mp.hidden=true;}if(timer){clearInterval(timer);timer=null;EVQ=[];EVHOLD=0;document.getElementById('play').textContent='▶ Toista';setTimeout(()=>{if(!timer)evHide();},2500);}}
 document.getElementById('play').onclick=()=>{if(timer){stopPlay();return;}if(RESUME){resumePlay();return;}let y=YEAR>=2026?1850:YEAR;document.getElementById('play').textContent='❚❚ Tauko';
   evHide();if(!(YEAR<2026&&EVQ.length))EVQ=[];EVHOLD=0;
-  timer=setInterval(()=>{if(EVHOLD>0){EVHOLD--;return;}if(EVQ.length){evShow(EVQ.shift());EVHOLD=10;return;}const y0=y;y+=y<1900?5:1;if(y>=2026){y=2026;setYear(2026);evCheck(y0,2026);if(!EVQ.length){stopPlay();}return;}setYear(y);evCheck(y0,y);},120);};
+  timer=setInterval(()=>{if(EVHOLD>0){EVHOLD--;return;}if(EVQ.length){evShow(EVQ.shift());EVHOLD=10;return;}const y0=y;y+=y<1900?5:1;if(y>=2026){y=2026;setYear(2026);evCheck(y0,2026);if(!EVQ.length){stopPlay();}return;}setYear(y);evCheck(y0,y);},120);mpSync(true);};
 
 function binOf(v){const b=popBins;let i=0;while(i<4&&v>=b[i])i++;return i;}
 // Luokkarajat: kiinteät, pyöreät luokat tilastojulkaisujen tapaan (esim. ikä 35–39, 40–44 v; osuudet 10 %-yksikön välein).
@@ -1215,7 +1216,7 @@ function wireMuutos(d){ if(aerFor(sel)) wireAer(aerFor(sel));
   b.onclick=()=>{stopPlay();const W=distWaves(sel);const a=annexOf(d);const ds2=Object.keys(W.g).map(Number).sort((x,z)=>x-z);let acc=0,fd=1900;for(const x of ds2){acc+=Object.values(W.g[x]).reduce((p,q)=>p+q,0);if(acc>=W.tot*.02){fd=x;break;}}let y=Math.max(1850,(W.tot?fd:1900)-6);y=Math.floor(y/5)*5;
     const bb=grpOf(sel).reduce((b,j)=>{const q=DATA.base.districts[j].bb;return [Math.min(b[0],q[0]),Math.min(b[1],q[1]),Math.max(b[2],q[2]),Math.max(b[3],q[3])];},[1e9,1e9,-1e9,-1e9]),px=(bb[2]-bb[0])*.4+250,py=(bb[3]-bb[1])*.4+250;fit([bb[0]-px,bb[1]-py,bb[2]+px,bb[3]+py],true,10);
     setYear(y);document.getElementById('play').textContent='❚❚ Tauko';
-    timer=setInterval(()=>{y+=y<1900?5:1;if(y>=2026){setYear(2026);stopPlay();return;}setYear(y);},y<1900?140:110);};
+    timer=setInterval(()=>{y+=y<1900?5:1;if(y>=2026){setYear(2026);stopPlay();return;}setYear(y);},y<1900?140:110);mpSync(true);};
 }
 
 
