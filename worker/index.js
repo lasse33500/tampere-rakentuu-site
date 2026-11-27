@@ -59,11 +59,15 @@ export const SOURCES = [
   { id: 'john-scotts-ratina', name: "John Scott's Ratina", site: 'https://johnscotts.se', path: '/ratina/event/john-scotts-ratina-live/', mode: 'text', pub: true,
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.?\s+(?:(?<h>\d{1,2})[:.](?<mi>\d{2})\s+)?(?<t>[^\d\s].{1,120})$/i,
     venue: () => "John Scott's Ratina", addr: null },
+  // Liigan kotiottelut Tampereella (Tappara, Ilves) kellonaikoineen liiga.fi:n ottelurajapinnasta (27.11.2026).
+  // Rajapinnan vastaus on ~2 Mt, joten sen hakee GitHub Actions (liiga/update.mjs → nyt-data/liiga.json) ja Worker lukee tiedoston.
+  // Nokia Arenan sivun Liiga-sarjakortissa ei ole aloitusaikoja; päällekkäiset ottelut poistetaan dedupeGames()-funktiolla.
+  { id: 'liiga', name: 'Liiga', site: 'https://liiga.fi', path: '/api/v2/games', mode: 'liiga' },
   { id: 'bar-kotelo', name: 'Bar Kotelo', site: 'https://barkotelo.fi', path: '/keikat/', mode: 'text',
     dateLine: /^(?:(?:ma|ti|ke|to|pe|la|su)\.?\s+)?(\d{1,2})\.(\d{1,2})\.(20\d\d)$/i,
     venue: () => 'Bar Kotelo', addr: 'Sammonkatu 50' },
 ];
-export const VERSION = '2026-11-25c';
+export const VERSION = '2026-11-27a';
 const UA = 'MansessaNyt/0.1 (+https://mansessa.fi/nyt; tapahtumakooste, haku kerran 3 tunnissa)';
 const MB_UA = 'MansessaNyt/0.1 ( https://mansessa.fi/nyt ; lasse33500@gmail.com )';
 const TTL = 3 * 3600;
@@ -508,6 +512,37 @@ export function parseMD(src, html) {
   return out;
 }
 // O'Connell's: ul.evts > li.event: div.date "22.11", h3, p "Starts at: 11/22/26 16:00". Vain "Live Events" (ei Big Screen -urheilulähetyksiä).
+export function parseLiiga(src, json, today = todayHelsinki()) {
+  let arr; try { arr = typeof json === 'string' ? JSON.parse(json) : json; } catch { return []; }
+  if (!Array.isArray(arr)) return [];
+  const out = [];
+  for (const g of arr) {
+    const r = g && g.iceRink || {};
+    if (!/^tampere$/i.test(String(r.city || '').trim())) continue;
+    const m = /^(\d{4}-\d{2}-\d{2})T(\d{2}):(\d{2})/.exec(String(g.gameStartDateTime || ''));
+    if (!m || m[1] < today || g.ended) continue;
+    const home = g.homeTeam && g.homeTeam.teamName, away = g.awayTeam && g.awayTeam.teamName;
+    if (!home || !away) continue;
+    out.push(baseEv(src, { id: src.id + ':' + g.id, title: `${home} – ${away}`, date: m[1], start: `${m[2]}:${m[3]}`,
+      venue: /nokia/i.test(r.name || '') || !r.name ? 'Nokia Arena' : r.name, place: /nokia/i.test(r.name || '') || !r.name ? 'Nokia Arena' : r.name, addr: r.streetAddress || undefined, kind: 'Urheilu', cat: 'Jääkiekko',
+      sub: 'Liiga' + (g.serie && !/runkosarja/i.test(g.serie) ? ' · ' + String(g.serie).toLowerCase() : ''),
+      url: /^https:\/\//.test(g.buyTicketsUrl || '') ? g.buyTicketsUrl : 'https://liiga.fi/fi/ottelut' }));
+  }
+  return out;
+}
+// Sama ottelu Nokia Arenan sivulta (ilman kellonaikaa) ja Liigasta (kellonajalla): pidetään Liigan versio.
+const teamsOf = s => String(s || '').toLowerCase().split(/\s*[–—-]\s*|\s+vs\.?\s+/).map(x => x.trim()).filter(Boolean);
+export function dedupeGames(events) {
+  const lg = events.filter(e => String(e.id).startsWith('liiga:'));
+  if (!lg.length) return events;
+  const key = new Set(lg.map(e => e.date + '|' + teamsOf(e.title).sort().join('|')));
+  return events.filter(e => {
+    if (String(e.id).startsWith('liiga:') || e.kind !== 'Urheilu') return true;
+    const t = teamsOf(e.title).sort();
+    return !(t.length === 2 && key.has(e.date + '|' + t.join('|')));
+  });
+}
+
 export function parseOC(src, html) {
   const today = todayHelsinki(), out = [];
   const H = String(html), first = H.search(/<li[^>]*class="[^"]*\bevent\b/i);
@@ -572,12 +607,12 @@ function todayHelsinki() {
 // Päivitys kahdessa erässä (Lasse 19.11.: klo 2 ja 3), jotta Workers-ilmaistason 50 alipyynnön raja riittää
 export const GROUP_B = new Set(['bistro-vilja', 'john-scotts-ratina', 'vastavirta', 'paappa', 'tanssiteatteri-md', 'oconnells', 'bar-k', 'kujakolli', 'pub-simon', 'maanalainen', 'komediateatteri', 'tampereen-teatteri', 'ttt-klubi']);
 const inGroup = (src, g) => !g || g === 'all' || (g === 'b') === GROUP_B.has(src.id);
-export async function collect(ctx, debug = false, group = 'all') {
+export async function collect(ctx, debug = false, group = 'all', env = null) {
   const today = todayHelsinki();
   const status = {};
   const lists = await Promise.all(SOURCES.filter(src => inGroup(src, group)).map(async src => {
     try {
-      if (!(await robotsAllows(src, ctx))) { status[src.id] = 'robots.txt kieltää'; return []; }
+      if (src.mode !== 'liiga' && !(await robotsAllows(src, ctx))) { status[src.id] = 'robots.txt kieltää'; return []; }
       if (src.mode === 'tt' || src.mode === 'ttt') {
         const AJ = { 'User-Agent': UA, 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'X-Requested-With': 'XMLHttpRequest' };
         const [y, mo, da] = today.split('-');
@@ -610,6 +645,12 @@ export async function collect(ctx, debug = false, group = 'all') {
         if (!r.ok) { status[src.id] = 'HTTP ' + r.status; return []; }
         const ev = parseKomedia(src, await r.text()); status[src.id] = ev.length; return ev;
       }
+      if (src.mode === 'liiga') {
+        if (!env || !env.ASSETS) { status[src.id] = 'ei tiedostoa'; return []; }
+        const r = await env.ASSETS.fetch('https://assets.local/nyt-data/liiga.json');
+        if (!r.ok) { status[src.id] = 'tiedosto HTTP ' + r.status; return []; }
+        const ev = (await r.json()).filter(e => e.date >= today); status[src.id] = ev.length; return ev;
+      }
       if (src.mode === 'ttfeed') {
         const r = await cachedFetch(src.site + src.path, ctx);
         if (!r.ok) { status[src.id] = 'HTTP ' + r.status; return []; }
@@ -630,7 +671,7 @@ export async function collect(ctx, debug = false, group = 'all') {
       return ev;
     } catch (e) { status[src.id] = 'virhe: ' + e.message; return []; }
   }));
-  const events = lists.flat().map(classify).filter(e => e.date >= today)
+  const events = dedupeGames(lists.flat().map(classify).filter(e => e.date >= today))
     .sort((a, b) => (a.date + (a.start || a.doors || '99')).localeCompare(b.date + (b.start || b.doors || '99')));
   return { v: VERSION, updated: new Date().toISOString(), today, status, events };
 }
@@ -638,7 +679,7 @@ export async function collect(ctx, debug = false, group = 'all') {
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 // Ajastettu päivitys: hae tapahtumat, täydennä genret MusicBrainzista (enintään BUDGET uutta artistia / ajo), tallenna KV:hen
 export async function refresh(env, ctx, budget = 2, group = 'all') { // Workers free: max 50 alipyyntöä / ajo; erä a tai b, Wikidata 3×budget (genret pääosin GitHub Actionsista)
-  const fresh = await collect(ctx, false, group);
+  const fresh = await collect(ctx, false, group, env);
   const today = fresh.today;
   // edellinen tallennettu kokonaisuus: toisen erän tapahtumat ja epäonnistuneiden lähteiden vanhat tapahtumat säilyvät
   let prev = null;
@@ -650,7 +691,7 @@ export async function refresh(env, ctx, budget = 2, group = 'all') { // Workers 
   for (const id of keepOld) if (ids.has(id) && prev && prev.status && typeof prev.status[id] === 'number') status[id] = prev.status[id] + ' (vanha: ' + fresh.status[id] + ')';
   const old = ((prev && prev.events) || []).filter(e => keepOld.has(srcOf(e)) && e.date >= today);
   const data = { v: VERSION, updated: new Date().toISOString(), today, status, group,
-    events: old.concat(fresh.events).sort((a, b) => (a.date + (a.start || a.doors || '99')).localeCompare(b.date + (b.start || b.doors || '99'))) };
+    events: dedupeGames(old.concat(fresh.events)).sort((a, b) => (a.date + (a.start || a.doors || '99')).localeCompare(b.date + (b.start || b.doors || '99'))) };
   let gmap = {};
   if (env.NYT) { try { gmap = JSON.parse(await env.NYT.get('genres') || '{}'); } catch { gmap = {}; } }
   // GitHub Actionsin MusicBrainz-haun tulokset (nyt-data/genres.json) ovat ensisijaisia
@@ -801,7 +842,7 @@ export default {
     }
     if (p === '/nyt/api/tapahtumat.json') {
       const debug = url.searchParams.has('debug');
-      if (debug) return new Response(JSON.stringify(await collect(ctx, true), null, 1), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
+      if (debug) return new Response(JSON.stringify(await collect(ctx, true, 'all', env), null, 1), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });
       if (url.searchParams.has('raw')) { // kehitystyökalu: tapahtumapaikan sivun HTML-lähde (vain sallitut paikat), skriptit ja rajapintaosoitteet näkyviin
         let u; try { u = new URL(url.searchParams.get('raw')); } catch { return new Response('bad url', { status: 400 }); }
         if (!/(^|\.)komediateatteri\.fi$|(^|\.)ttt-teatteri\.fi$|(^|\.)tampereenteatteri\.fi$|(^|\.)vastavirta\.net$|(^|\.)paappa\.fi$|(^|\.)tanssiteatterimd\.fi$|(^|\.)oconnells\.fi$|(^|\.)bistrovilja\.fi$|(^|\.)johnscotts\.se$/.test(u.hostname)) return new Response('host not allowed', { status: 403 });
@@ -816,7 +857,7 @@ export default {
       const cache = caches.default, key = new Request(url.origin + p);
       let res = await cache.match(key);
       if (!res) {
-        const data = await collect(ctx);
+        const data = await collect(ctx, false, 'all', env);
         res = new Response(JSON.stringify(data), { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=1800', 'Access-Control-Allow-Origin': '*' } });
         if (Object.values(data.status).every(v => typeof v === 'number')) ctx.waitUntil(cache.put(key, res.clone()));
       }
