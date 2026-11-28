@@ -23,6 +23,9 @@ for (const tour of ['runkosarja', 'playoffs']) {
     if (Array.isArray(arr)) {
       s.games = arr.length;
       s.tampere = arr.filter(g => /^tampere$/i.test(String(g?.iceRink?.city || '').trim())).length;
+      const fut = arr.filter(g => /^tampere$/i.test(String(g?.iceRink?.city || '').trim()) && String(g?.start || '') > new Date().toISOString());
+      s.tampereFuture = fut.length;
+      if (fut[0]) { const g = fut[0]; s.sample = JSON.stringify({ id: g.id, gameStartDateTime: g.gameStartDateTime, start: g.start, started: g.started, ended: g.ended, home: g.homeTeam && Object.keys(g.homeTeam), homeName: g.homeTeam && g.homeTeam.teamName, away: g.awayTeam && g.awayTeam.teamName }).slice(0, 400); }
       const got = parseLiiga(src, arr, today);
       s.upcoming = got.length;
       ev = ev.concat(got);
