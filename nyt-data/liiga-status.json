@@ -1,0 +1,16 @@
+{
+ "run": "2026-11-28T09:34:38.872Z",
+ "today": "2026-11-28",
+ "season": 2027,
+ "tours": {
+  "runkosarja": {
+   "http": 200,
+   "type": "application/json",
+   "bytes": 2214140,
+   "head": "[{\"id\":2701274,\"season\":2027,\"start\":\"2026-09-01T15:30:00Z\",\"end\":\"2026-09-01T12:28:08Z\",\"homeTeam\":{\"teamId\":\"292293444",
+   "games": 544,
+   "tampere": 64,
+   "upcoming": 0
+  }
+ }
+}
