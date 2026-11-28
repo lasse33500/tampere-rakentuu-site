@@ -40,3 +40,4 @@ if (!ok) { console.log('Liiga-haku epäonnistui – vanha liiga.json säilyy'); 
 const seen = new Set(); ev = ev.filter(e => !seen.has(e.id) && seen.add(e.id)).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
 fs.writeFileSync(OUT, JSON.stringify(ev));
 console.log('kirjoitettu', OUT, ev.length);
+// 2026-11-28T09:42:40

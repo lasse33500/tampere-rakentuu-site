@@ -519,7 +519,10 @@ export function parseLiiga(src, json, today = todayHelsinki()) {
   for (const g of arr) {
     const r = g && g.iceRink || {};
     if (!/^tampere$/i.test(String(r.city || '').trim())) continue;
-    const m = /^(\d{4}-\d{2}-\d{2})T(\d{2}):(\d{2})/.exec(String(g.gameStartDateTime || ''));
+    // paikallinen aika on rajapinnassa homeTeam.gameStartDateTime-kentässä; varalla UTC-kenttä start muunnettuna Helsingin aikaan
+    let loc = g.gameStartDateTime || (g.homeTeam && g.homeTeam.gameStartDateTime) || '';
+    if (!loc && g.start) { const d = new Date(g.start); if (!isNaN(d)) loc = d.toLocaleString('sv-SE', { timeZone: 'Europe/Helsinki' }).replace(' ', 'T'); }
+    const m = /^(\d{4}-\d{2}-\d{2})T(\d{2}):(\d{2})/.exec(String(loc));
     if (!m || m[1] < today || g.ended) continue;
     const home = g.homeTeam && g.homeTeam.teamName, away = g.awayTeam && g.awayTeam.teamName;
     if (!home || !away) continue;
