@@ -524,7 +524,7 @@ export function parseLiiga(src, json, today = todayHelsinki()) {
     const home = g.homeTeam && g.homeTeam.teamName, away = g.awayTeam && g.awayTeam.teamName;
     if (!home || !away) continue;
     out.push(baseEv(src, { id: src.id + ':' + g.id, title: `${home} – ${away}`, date: m[1], start: `${m[2]}:${m[3]}`,
-      venue: /nokia/i.test(r.name || '') || !r.name ? 'Nokia Arena' : r.name, place: /nokia/i.test(r.name || '') || !r.name ? 'Nokia Arena' : r.name, addr: r.streetAddress || undefined, kind: 'Urheilu', cat: 'Jääkiekko',
+      venue: /nokia|kansi\s*are/i.test(r.name || '') || !r.name ? 'Nokia Arena' : r.name, place: /nokia|kansi\s*are/i.test(r.name || '') || !r.name ? 'Nokia Arena' : r.name, addr: r.streetAddress || undefined, kind: 'Urheilu', cat: 'Jääkiekko',
       sub: 'Liiga' + (g.serie && !/runkosarja/i.test(g.serie) ? ' · ' + String(g.serie).toLowerCase() : ''),
       url: /^https:\/\//.test(g.buyTicketsUrl || '') ? g.buyTicketsUrl : 'https://liiga.fi/fi/ottelut' }));
   }

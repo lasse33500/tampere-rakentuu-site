@@ -3,6 +3,8 @@ on:
   schedule:
     - cron: '30 23 * * *'
   workflow_dispatch:
+  push:
+    paths: ['liiga/**']
 permissions:
   contents: write
 concurrency: genret
@@ -23,5 +25,5 @@ jobs:
         run: |
           git config user.name "mansessa-bot"
           git config user.email "lasse33500@users.noreply.github.com"
-          git add nyt-data/genres.json nyt-data/liiga.json 2>/dev/null || git add nyt-data/genres.json
+          git add nyt-data/ 
           git diff --cached --quiet || (git commit -m "Manse Nyt: genret ja Liigan ottelut päivitetty" && git pull --rebase && git push)
